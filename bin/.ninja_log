@@ -1,0 +1,6 @@
+# ninja log v5
+1	967	1703255379429854833	CMakeFiles/Executable.dir/src/demo.cpp.o	11a3f3873a0a399f
+0	29	1703255865526817212	build.ninja	cd6652767818f60a
+5	719	1703255362126962886	CMakeFiles/Executable.dir/src/main.cpp.o	4cbb94f72737e980
+1	486	1703255874089763457	CMakeFiles/platformer-game.dir/src/main.cpp.o	6e6bd1c0d294208f
+0	649	1703255874252762434	CMakeFiles/platformer-game.dir/src/demo.cpp.o	735718dbfa1ce5c0

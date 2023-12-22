@@ -1,4 +1,4 @@
-#include "graphics.h"
+#include "../sgg/include/graphics.h"
 
 // The custom callback function that the library calls
 // to check for and set the current application state.

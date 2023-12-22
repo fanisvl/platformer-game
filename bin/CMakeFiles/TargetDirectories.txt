@@ -1,3 +1,0 @@
-/home/fanisvl/repos/platformer-game/bin/CMakeFiles/platformer-game.dir
-/home/fanisvl/repos/platformer-game/bin/CMakeFiles/edit_cache.dir
-/home/fanisvl/repos/platformer-game/bin/CMakeFiles/rebuild_cache.dir

@@ -1,11 +1,11 @@
 #include "../sgg/include/graphics.h"
 
 void update(float ms) {
+
 }
 
-// The window content drawing function.
 void draw() {
-
+    
 }
 
 int main()

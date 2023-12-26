@@ -38,3 +38,6 @@ bin/
 
 #cmake
 CMakeLists.txt
+
+# script
+./compile.sh

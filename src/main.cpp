@@ -1,6 +1,6 @@
-#include "../sgg/include/graphics.h"
-#include "../include/Game.h"
-#include "../include/config.h"
+#include "graphics.h"
+#include "Game.h"
+#include "config.h"
 
 void update(float ms) {
     Game* game = reinterpret_cast<Game *> (graphics::getUserData());

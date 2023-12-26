@@ -4,6 +4,8 @@
 
 void Player::update() {
 
+
+    // WASD Keyboard Controls
     if (graphics::getKeyState(graphics::SCANCODE_A)) {
         posX -= speed * graphics::getDeltaTime() / 10.0f;
     }
@@ -19,6 +21,13 @@ void Player::update() {
     if (graphics::getKeyState(graphics::SCANCODE_S)) {
         posY += speed * graphics::getDeltaTime() / 10.0f;
     }
+
+    // Boundaries
+    if (posX < 0) posX = 0;
+    if (posX > CANVAS_WIDTH) posX = CANVAS_WIDTH;
+    if (posY < 0) posY = 0;
+    if (posY > CANVAS_HEIGHT) posY = CANVAS_HEIGHT;
+
 }
 
 void Player::draw() {

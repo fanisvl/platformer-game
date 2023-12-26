@@ -1,5 +1,4 @@
-#ifndef PLATFORMER_GAME_GAME_H
-#define PLATFORMER_GAME_GAME_H
+#pragma once
 
 class Game {
 public:
@@ -9,5 +8,3 @@ public:
     Game();
     ~Game();
 };
-
-#endif //PLATFORMER_GAME_GAME_H

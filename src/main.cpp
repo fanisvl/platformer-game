@@ -1,5 +1,6 @@
 #include "../sgg/include/graphics.h"
 #include "../include/Game.h"
+#include "../include/config.h"
 
 void update(float ms) {
     Game* game = reinterpret_cast<Game *> (graphics::getUserData());
@@ -14,7 +15,7 @@ void draw() {
 int main() {
 
     // Window
-    graphics::createWindow(1200, 600, "Tutorial");
+    graphics::createWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Tutorial");
     graphics::setCanvasSize(1000, 500);
     graphics::setCanvasScaleMode(graphics::CANVAS_SCALE_FIT);
 

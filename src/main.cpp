@@ -1,12 +1,14 @@
 #include "../sgg/include/graphics.h"
-#include "Game.h"
+#include "../include/Game.h"
 
 void update(float ms) {
-    Game* game = graphics::getUserData();
+    Game* game = reinterpret_cast<Game *> (graphics::getUserData());
+    game->update();
 }
 
 void draw() {
-
+    Game* game = reinterpret_cast<Game *> (graphics::getUserData());
+    game->draw();
 }
 
 int main() {

@@ -15,7 +15,7 @@ void draw() {
 int main() {
 
     // Window
-    graphics::createWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Tutorial");
+    graphics::createWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Game");
     graphics::setCanvasSize(CANVAS_WIDTH, CANVAS_HEIGHT);
     graphics::setCanvasScaleMode(graphics::CANVAS_SCALE_FIT);
 

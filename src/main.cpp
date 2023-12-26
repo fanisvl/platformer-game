@@ -16,7 +16,7 @@ int main() {
 
     // Window
     graphics::createWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Tutorial");
-    graphics::setCanvasSize(1000, 500);
+    graphics::setCanvasSize(CANVAS_WIDTH, CANVAS_HEIGHT);
     graphics::setCanvasScaleMode(graphics::CANVAS_SCALE_FIT);
 
     // Draw & Update setup

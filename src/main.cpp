@@ -1,21 +1,21 @@
 #include "graphics.h"
-#include "Game.h"
+#include "GameState.h"
 #include "config.h"
 
 void update(float ms) {
-    Game* game = reinterpret_cast<Game *> (graphics::getUserData());
+    GameState* game = reinterpret_cast<GameState *> (graphics::getUserData());
     game->update();
 }
 
 void draw() {
-    Game* game = reinterpret_cast<Game *> (graphics::getUserData());
+    GameState* game = reinterpret_cast<GameState *> (graphics::getUserData());
     game->draw();
 }
 
 int main() {
 
     // Window
-    graphics::createWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Game");
+    graphics::createWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "GameState");
     graphics::setCanvasSize(CANVAS_WIDTH, CANVAS_HEIGHT);
     graphics::setCanvasScaleMode(graphics::CANVAS_SCALE_FIT);
 
@@ -23,8 +23,8 @@ int main() {
     graphics::setDrawFunction(draw);
     graphics::setUpdateFunction(update);
 
-    // Game object
-    Game game;
+    // GameState object
+    GameState game;
     graphics::setUserData(&game);
     game.init();
 

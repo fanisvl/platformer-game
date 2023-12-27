@@ -8,7 +8,7 @@
 	It contains the declaration of all SGG library functions and data structures.
 */
 
-/** \namespace graphics includes all functions of the Simple Game Graphics library.
+/** \namespace graphics includes all functions of the Simple GameState Graphics library.
 */
 namespace graphics
 {
@@ -287,25 +287,25 @@ namespace graphics
 	void resize(int new_w, int new_h)
 	{
 		...
-		Game* the_game = (Game*)graphics::getUserData();
+		GameState* the_game = (GameState*)graphics::getUserData();
 		...
 	}
 
 	void update(float ms)
 	{
 		...
-		Game* the_game = (Game*)graphics::getUserData();
+		GameState* the_game = (GameState*)graphics::getUserData();
 		...
 	}
 
 	void draw()
 	{
 		...
-		Game* the_game = (Game*)graphics::getUserData();
+		GameState* the_game = (GameState*)graphics::getUserData();
 		...
 	}
 
-	struct Game {
+	struct GameState {
 		int data_a;
 		int data_b;
 		...
@@ -315,7 +315,7 @@ namespace graphics
 	int main()
 	{
 		...
-		Game* the_game = new Game();
+		GameState* the_game = new GameState();
 
 		graphics::createWindow(960, 540, "Night of the Living Arkanoid");
 		graphics::setUserData(the_game);

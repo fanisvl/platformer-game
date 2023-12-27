@@ -19,7 +19,7 @@ void Game::draw() {
     // Draw Background
     graphics::Brush br;
     br.texture = std::string(ASSET_PATH) + "city_background.png";
-    graphics::drawRect(CANVAS_WIDTH/2, CANVAS_HEIGHT/2, CANVAS_WIDTH, CANVAS_HEIGHT, br);
+    graphics::drawRect(CANVAS_WIDTH/2.0f, CANVAS_HEIGHT/2.0f, CANVAS_WIDTH, CANVAS_HEIGHT, br);
 
     // Draw Player
     if (player) {

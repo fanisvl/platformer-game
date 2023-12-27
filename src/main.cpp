@@ -3,30 +3,27 @@
 #include "config.h"
 
 void update(float ms) {
-    GameState* game = reinterpret_cast<GameState *> (graphics::getUserData());
-    game->update();
+    GameState::getInstance()->update(ms);
 }
 
 void draw() {
-    GameState* game = reinterpret_cast<GameState *> (graphics::getUserData());
-    game->draw();
+    GameState::getInstance()->draw();
+}
+
+void init() {
+    GameState::getInstance()->init();
 }
 
 int main() {
 
     // Window
-    graphics::createWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "GameState");
+    graphics::createWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Game");
     graphics::setCanvasSize(CANVAS_WIDTH, CANVAS_HEIGHT);
     graphics::setCanvasScaleMode(graphics::CANVAS_SCALE_FIT);
 
     // Draw & Update setup
     graphics::setDrawFunction(draw);
     graphics::setUpdateFunction(update);
-
-    // GameState object
-    GameState game;
-    graphics::setUserData(&game);
-    game.init();
 
     // Library starts calling update & draw
     graphics::startMessageLoop();

@@ -22,7 +22,4 @@ public:
     void init();
     static GameState* getInstance();
     ~GameState();
-
-    std::string getAssetDir();
-    std::string getFullAssetPath(const std::string& asset);
 };

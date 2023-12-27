@@ -12,9 +12,7 @@ void GameState::draw() {
     graphics::drawRect(CANVAS_WIDTH/2.0f, CANVAS_HEIGHT/2.0f, CANVAS_WIDTH, CANVAS_HEIGHT, br);
 
     // Draw Player
-    if (player) {
-        player->draw();
-    }
+    if (player) player->draw();
 }
 
 
@@ -23,9 +21,7 @@ void GameState::init() {
 }
 
 GameState::GameState() {
-    if (!player) {
-        player = new Player();
-    }
+    if (!player) player = new Player();
 }
 
 GameState::~GameState() {
@@ -36,14 +32,6 @@ GameState* GameState::getInstance() {
     if (mUniqueInstance == nullptr) mUniqueInstance = new GameState();
     return mUniqueInstance;
 }
-
-std::string GameState::getAssetDir() {
-    return ASSET_PATH;
-}
-
-std::string GameState::getFullAssetPath(const std::string &asset) {
-    return ASSET_PATH + asset;
-};
 
 GameState* GameState::mUniqueInstance = nullptr;
 

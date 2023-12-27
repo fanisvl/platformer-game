@@ -4,11 +4,6 @@
 #include "../sgg/include/graphics.h"
 
 void Game::update() {
-
-    if (!player) {
-        player = new Player();
-    }
-
     if (player) {
         player->update();
     }
@@ -32,8 +27,11 @@ void Game::init() {
 
 }
 Game::Game() {
-
+    if (!player) {
+        player = new Player();
+    }
 };
+
 Game::~Game() {
     if (player) {
         delete player;

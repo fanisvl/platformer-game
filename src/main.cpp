@@ -25,6 +25,8 @@ int main() {
     graphics::setDrawFunction(draw);
     graphics::setUpdateFunction(update);
 
+    init();
+    
     // Library starts calling update & draw
     graphics::startMessageLoop();
 

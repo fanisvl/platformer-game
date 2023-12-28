@@ -1,7 +1,7 @@
 #include "GameState.h"
 
 void GameState::update(float dt) {
-    if (player) player->update(dt);
+    if (mPlayer) mPlayer->update(dt);
 }
 
 void GameState::draw() {
@@ -11,8 +11,8 @@ void GameState::draw() {
     br.texture = std::string(ASSET_PATH) + "city_background.png";
     graphics::drawRect(CANVAS_WIDTH/2.0f, CANVAS_HEIGHT/2.0f, CANVAS_WIDTH, CANVAS_HEIGHT, br);
 
-    // Draw Player
-    if (player) player->draw();
+    // Draw mPlayer
+    if (mPlayer) mPlayer->draw();
 }
 
 
@@ -21,11 +21,11 @@ void GameState::init() {
 }
 
 GameState::GameState() {
-    if (!player) player = new Player();
+    if (!mPlayer) mPlayer = new Player("player1");
 }
 
 GameState::~GameState() {
-    if (player) delete player;
+    if (mPlayer) delete mPlayer;
 }
 
 GameState* GameState::getInstance() {

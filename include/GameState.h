@@ -6,7 +6,7 @@
 
 class GameState {
 private:
-    Player* player = nullptr;
+    Player* mPlayer = nullptr;
     static GameState* mUniqueInstance;
 
     GameState();
@@ -22,4 +22,6 @@ public:
     void init();
     static GameState* getInstance();
     ~GameState();
+
+    class Player* getPlayer() {return mPlayer;}
 };

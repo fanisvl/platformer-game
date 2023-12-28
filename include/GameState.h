@@ -1,12 +1,14 @@
 #pragma once
 #include "Player.h"
+#include "Level.h"
 #include <string>
 #include "graphics.h"
 
 
 class GameState {
 private:
-    Player* mPlayer = nullptr;
+    class Player* mPlayer = nullptr;
+    class Level* mCurrentLevel;
     static GameState* mUniqueInstance;
 
     GameState();

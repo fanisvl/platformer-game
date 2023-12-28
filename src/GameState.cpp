@@ -1,27 +1,35 @@
 #include "GameState.h"
+#include "Level.h"
+#include "Player.h"
 
 void GameState::update(float dt) {
+
+    // Don't update when window resizes
+    if (dt>500) return;
+
+    if (mCurrentLevel) mCurrentLevel->update(dt);
     if (mPlayer) mPlayer->update(dt);
 }
 
 void GameState::draw() {
-
-    // Draw Background
-    graphics::Brush br;
-    br.texture = std::string(ASSET_PATH) + "city_background.png";
-    graphics::drawRect(CANVAS_WIDTH/2.0f, CANVAS_HEIGHT/2.0f, CANVAS_WIDTH, CANVAS_HEIGHT, br);
-
-    // Draw mPlayer
+    if (mCurrentLevel) mCurrentLevel->draw();
     if (mPlayer) mPlayer->draw();
 }
 
 
 void GameState::init() {
+    if (!mCurrentLevel) mCurrentLevel = new Level();
+    mCurrentLevel->init();
 
+    if (!mPlayer) mPlayer = new Player("player1");
+    mPlayer->init();
+
+    graphics::preloadBitmaps(ASSET_PATH);
+    // Font
+    //    graphics::setFont(std::string(ASSET_PATH) + "font.ttf");
 }
 
 GameState::GameState() {
-    if (!mPlayer) mPlayer = new Player("player1");
 }
 
 GameState::~GameState() {

@@ -1,7 +1,7 @@
 #include "GameState.h"
 
 void GameState::update(float dt) {
-    if (player) player->update();
+    if (player) player->update(dt);
 }
 
 void GameState::draw() {

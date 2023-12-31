@@ -18,7 +18,7 @@ void Level::draw() {
     // Draw background
     float backgroundX = mState->mGlobalOffsetX + CANVAS_WIDTH / 2.0f;
     float backgroundY = mState->mGlobalOffsetY + CANVAS_HEIGHT/ 2.0f;
-    graphics::drawRect(backgroundX, backgroundY, CANVAS_WIDTH, CANVAS_HEIGHT, mBrushBackground);
+    graphics::drawRect(backgroundX, backgroundY, 2*CANVAS_WIDTH, 2*CANVAS_HEIGHT, mBrushBackground);
 
     // Draw Player
     if (mState->getPlayer()->isActive()) mState->getPlayer()->draw();

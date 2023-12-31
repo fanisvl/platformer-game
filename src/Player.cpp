@@ -1,44 +1,52 @@
 #include <cmath>
 #include "Player.h"
+#include "GameState.h"
 #include "graphics.h"
 
-void Player::update() {
+void Player::update(float dt) {
 
 
     // WASD Keyboard Controls
     if (graphics::getKeyState(graphics::SCANCODE_A)) {
-        posX -= speed * graphics::getDeltaTime() / 10.0f;
+        mPosX -= speed * graphics::getDeltaTime();
     }
 
     if (graphics::getKeyState(graphics::SCANCODE_D)) {
-        posX += speed * graphics::getDeltaTime() / 10.0f;
+        mPosX += speed * graphics::getDeltaTime();
     }
 
     if (graphics::getKeyState(graphics::SCANCODE_W)) {
-        posY -= speed * graphics::getDeltaTime() / 10.0f ;
+        mPosY -= speed * graphics::getDeltaTime();
     }
 
     if (graphics::getKeyState(graphics::SCANCODE_S)) {
-        posY += speed * graphics::getDeltaTime() / 10.0f;
+        mPosY += speed * graphics::getDeltaTime();
     }
 
+    // Update Global Offset
+    mState->mGlobalOffsetX = CANVAS_WIDTH / 2.0f - mPosX;
+    mState->mGlobalOffsetY = CANVAS_HEIGHT / 2.0f - mPosY;
+
     // Boundaries
-    if (posX < 0) posX = 0;
-    if (posX > CANVAS_WIDTH) posX = CANVAS_WIDTH;
-    if (posY < 0) posY = 0;
-    if (posY > CANVAS_HEIGHT) posY = CANVAS_HEIGHT;
+    if (mPosX < 0) mPosX = 0;
+    if (mPosX > CANVAS_WIDTH) mPosX = CANVAS_WIDTH;
+    if (mPosY < 0) mPosY = 0;
+    if (mPosY > CANVAS_HEIGHT) mPosY = CANVAS_HEIGHT;
 
 }
 
 void Player::draw() {
-
-    graphics::Brush br;
-    br.texture = std::string(ASSET_PATH) + "ghost.png";
-    br.outline_opacity = 0.0f;
-    graphics::drawRect(posX, posY, 100, 100, br);
-
+    // TODO: Experiment with drawing player on mPosX, mPosY
+    graphics::drawRect(mPosX, mPosY, 100, 100, mPlayerBrush);
 }
 
 void Player::init() {
 
+    // Initialize player position
+    mPosX = CANVAS_WIDTH / 2.0f;
+    mPosY = CANVAS_HEIGHT / 2.0f;
+
+    // Initialize brush to draw player
+    mPlayerBrush.texture = std::string(ASSET_PATH) + "ghost.png";
+    mPlayerBrush.outline_opacity = 0.0f;
 }

@@ -1,15 +1,17 @@
 #include "graphics.h"
-#include "Game.h"
+#include "GameState.h"
 #include "config.h"
 
 void update(float ms) {
-    Game* game = reinterpret_cast<Game *> (graphics::getUserData());
-    game->update();
+    GameState::getInstance()->update(ms);
 }
 
 void draw() {
-    Game* game = reinterpret_cast<Game *> (graphics::getUserData());
-    game->draw();
+    GameState::getInstance()->draw();
+}
+
+void init() {
+    GameState::getInstance()->init();
 }
 
 int main() {
@@ -23,11 +25,8 @@ int main() {
     graphics::setDrawFunction(draw);
     graphics::setUpdateFunction(update);
 
-    // Game object
-    Game game;
-    graphics::setUserData(&game);
-    game.init();
-
+    init();
+    
     // Library starts calling update & draw
     graphics::startMessageLoop();
 

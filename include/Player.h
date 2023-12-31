@@ -1,15 +1,19 @@
 #pragma once
 #include "GameObject.h"
+#include "graphics.h"
+#include "box.h"
 #include "config.h"
 
-class Player : public GameObject {
+class Player : public GameObject, public Box {
 
-    float posX = CANVAS_WIDTH / 2;
-    float posY = CANVAS_HEIGHT / 2;
-    float speed = 10.0f;
+    graphics::Brush mPlayerBrush;
+    float mPosX = CANVAS_WIDTH / 2.0f;
+    float mPosY = CANVAS_HEIGHT / 2.0f;
+    float speed = 0.5f;
 
 public:
-    void update() override;
+    Player(std::string name) : GameObject(name) {}
+    void update(float dt) override;
     void draw() override;
     void init() override;
 };

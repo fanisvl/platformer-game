@@ -6,8 +6,6 @@
 class Level : public GameObject {
 
     graphics::Brush mBrushBackground;
-    float mCenterX = 5.0f;
-    float mCenterY = 5.0f;
 
     std::vector<GameObject*> mStaticObjects;
     std::list<GameObject*> mDynamicObjects;

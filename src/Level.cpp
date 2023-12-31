@@ -11,16 +11,14 @@ void Level::update(float dt) {
     // If player is active call update
     if (mState->getPlayer()->isActive()) mState->getPlayer()->update(dt);
 
-    //GameObject::update(dt);
-
 }
 
 void Level::draw() {
 
     // Draw background
-    float offsetX = mState->mGlobalOffsetX + CANVAS_WIDTH / 2.0f;
-    float offsetY = mState -> mGlobalOffsetY + CANVAS_HEIGHT / 2.0f;
-    graphics::drawRect(offsetX, offsetY, CANVAS_WIDTH, CANVAS_HEIGHT, mBrushBackground);
+    float backgroundX = mState->mGlobalOffsetX + CANVAS_WIDTH / 2.0f;
+    float backgroundY = mState->mGlobalOffsetY + CANVAS_HEIGHT/ 2.0f;
+    graphics::drawRect(backgroundX, backgroundY, CANVAS_WIDTH, CANVAS_HEIGHT, mBrushBackground);
 
     // Draw Player
     if (mState->getPlayer()->isActive()) mState->getPlayer()->draw();
@@ -41,6 +39,7 @@ void Level::init() {
     // Initialize brush to draw background
     mBrushBackground.outline_opacity = 0.0f;
     mBrushBackground.texture = std::string(ASSET_PATH) + "city_background.png";
+
 
     // Call init() for all static and dynamic objects of level
     for (auto pGob : mStaticObjects) {

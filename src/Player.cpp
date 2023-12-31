@@ -8,24 +8,24 @@ void Player::update(float dt) {
 
     // WASD Keyboard Controls
     if (graphics::getKeyState(graphics::SCANCODE_A)) {
-        mPosX -= speed * graphics::getDeltaTime() / 10.0f;
+        mPosX -= speed * graphics::getDeltaTime();
     }
 
     if (graphics::getKeyState(graphics::SCANCODE_D)) {
-        mPosX += speed * graphics::getDeltaTime() / 10.0f;
+        mPosX += speed * graphics::getDeltaTime();
     }
 
     if (graphics::getKeyState(graphics::SCANCODE_W)) {
-        mPosY -= speed * graphics::getDeltaTime() / 10.0f ;
+        mPosY -= speed * graphics::getDeltaTime();
     }
 
     if (graphics::getKeyState(graphics::SCANCODE_S)) {
-        mPosY += speed * graphics::getDeltaTime() / 10.0f;
+        mPosY += speed * graphics::getDeltaTime();
     }
 
     // Update Global Offset
     mState->mGlobalOffsetX = CANVAS_WIDTH / 2.0f - mPosX;
-    mState->mGlobalOffsetY = CANVAS_WIDTH / 2.0f - mPosY;
+    mState->mGlobalOffsetY = CANVAS_HEIGHT / 2.0f - mPosY;
 
     // Boundaries
     if (mPosX < 0) mPosX = 0;
@@ -37,7 +37,7 @@ void Player::update(float dt) {
 
 void Player::draw() {
     // TODO: Experiment with drawing player on mPosX, mPosY
-    graphics::drawRect(CANVAS_WIDTH / 2.0f, CANVAS_WIDTH / 2.0f, 100, 100, mPlayerBrush);
+    graphics::drawRect(mPosX, mPosY, 100, 100, mPlayerBrush);
 }
 
 void Player::init() {
@@ -45,10 +45,6 @@ void Player::init() {
     // Initialize player position
     mPosX = CANVAS_WIDTH / 2.0f;
     mPosY = CANVAS_HEIGHT / 2.0f;
-
-    // Update Global Offset
-    mState->mGlobalOffsetX = CANVAS_WIDTH / 2.0f - mPosX;
-    mState->mGlobalOffsetY = CANVAS_WIDTH / 2.0f - mPosY;
 
     // Initialize brush to draw player
     mPlayerBrush.texture = std::string(ASSET_PATH) + "ghost.png";

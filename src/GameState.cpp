@@ -9,6 +9,8 @@ void GameState::update(float dt) {
 
     if (mCurrentLevel) mCurrentLevel->update(dt);
     if (mPlayer) mPlayer->update(dt);
+
+    mDebugging = graphics::getKeyState(graphics::SCANCODE_0);
 }
 
 void GameState::draw() {

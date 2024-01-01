@@ -22,8 +22,9 @@ void Level::update(float dt) {
 void Level::draw() {
 
     // Draw background
-    float backgroundX = mState->mGlobalOffsetX + CANVAS_WIDTH / 2.0f;
-    float backgroundY = mState->mGlobalOffsetY + CANVAS_HEIGHT/ 2.0f;
+    float backgroundSpeed = 0.5f;
+    float backgroundX = (mState->mGlobalOffsetX + CANVAS_WIDTH / 2.0f) * backgroundSpeed;
+    float backgroundY = (mState->mGlobalOffsetY + CANVAS_HEIGHT/ 2.0f) * backgroundSpeed;
     graphics::drawRect(backgroundX, backgroundY, 2*CANVAS_WIDTH, 2*CANVAS_HEIGHT, mBrushBackground);
 
     // Draw Player

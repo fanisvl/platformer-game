@@ -4,7 +4,7 @@
 #include "graphics.h"
 #include <vector>
 
-class Block : public GameObject {
+class Block : public GameObject{
 
     std::string mAssetName;
     graphics::Brush mBlockBrush;

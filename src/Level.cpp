@@ -5,11 +5,17 @@
 #include "graphics.h"
 #include "Player.h"
 #include "GameObject.h"
+#include "Block.h"
 
 void Level::update(float dt) {
 
     // If player is active call update
     if (mState->getPlayer()->isActive()) mState->getPlayer()->update(dt);
+
+    // Update dynamic objects
+    for (auto& pGob : mDynamicObjects) {
+        if (pGob) pGob->update(dt);
+    }
 
 }
 
@@ -24,11 +30,11 @@ void Level::draw() {
     if (mState->getPlayer()->isActive()) mState->getPlayer()->draw();
 
     // Call draw() for all static and dynamic objects of level
-    for (auto pGob : mStaticObjects) {
+    for (auto& pGob : mStaticObjects) {
         if (pGob) pGob->draw();
     }
 
-    for (auto pGob : mDynamicObjects) {
+    for (auto& pGob : mDynamicObjects) {
         if (pGob) pGob->draw();
     }
 
@@ -42,11 +48,11 @@ void Level::init() {
 
 
     // Call init() for all static and dynamic objects of level
-    for (auto pGob : mStaticObjects) {
+    for (auto& pGob : mStaticObjects) {
         if (pGob) pGob->init();
     }
 
-    for (auto pGob : mDynamicObjects) {
+    for (auto& pGob : mDynamicObjects) {
         if (pGob) pGob->init();
     }
 
@@ -58,11 +64,11 @@ Level::Level (const std::string& name) {
 
 Level::~Level() {
 
-    for (auto pGob : mStaticObjects) {
+    for (auto& pGob : mStaticObjects) {
         if (pGob) delete pGob;
     }
 
-    for (auto pGob : mDynamicObjects) {
+    for (auto& pGob : mDynamicObjects) {
         if (pGob) delete pGob;
     }
 };

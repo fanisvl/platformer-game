@@ -12,7 +12,6 @@ class Player : public GameObject, public Box {
     float speed;
 
 public:
-    Player(std::string name) : GameObject(name) {}
     void update(float dt) override;
     void draw() override;
     void init() override;

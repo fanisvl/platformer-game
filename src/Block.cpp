@@ -10,10 +10,11 @@ void Block::draw() {
 }
 
 void Block::init() {
+    mBlockBrush.outline_opacity = 0.0f;
     mBlockBrush.texture = std::string(ASSET_PATH) + mAssetName;
 }
 
-Block::Block(float x, float y, float w, float h, std::string &assetName) {
+Block::Block(float x, float y, float w, float h, const std::string &assetName) {
     mPosX = x;
     mPosY = y;
     mWidth = w;

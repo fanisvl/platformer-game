@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "graphics.h"
 #include <list>
+#include <vector>
 
 class Level : public GameObject {
 

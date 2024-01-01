@@ -11,6 +11,7 @@ class Level : public GameObject {
     std::vector<GameObject*> mStaticObjects;
     std::list<GameObject*> mDynamicObjects;
 
+    void checkCollisions();
 
 public:
     void update(float dt) override;

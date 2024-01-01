@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
+#include "box.h"
 
-class GameObject {
+class GameObject : public Box {
 
     static int mNextId;
 

@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "GameObject.h"
 #include "Block.h"
+#include <iostream>
 
 void Level::update(float dt) {
 
@@ -16,6 +17,8 @@ void Level::update(float dt) {
     for (auto& pGob : mDynamicObjects) {
         if (pGob) pGob->update(dt);
     }
+
+    checkCollisions();
 
 }
 
@@ -63,6 +66,14 @@ void Level::init() {
     }
 
 }
+
+void Level::checkCollisions() {
+    for (auto& pGob : mStaticObjects) {
+        if (mState->getPlayer()->intersect(*pGob)) {
+            std::cout << "*" << std::endl;
+        }
+    }
+};
 
 Level::Level (const std::string& name) {
 

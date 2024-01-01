@@ -21,7 +21,7 @@ void GameState::init() {
     if (!mCurrentLevel) mCurrentLevel = new Level();
     mCurrentLevel->init();
 
-    if (!mPlayer) mPlayer = new Player("player1");
+    if (!mPlayer) mPlayer = new Player();
     mPlayer->init();
 
     graphics::preloadBitmaps(ASSET_PATH);

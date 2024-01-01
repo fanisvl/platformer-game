@@ -8,7 +8,7 @@
 class GameState {
 private:
     class Player* mPlayer = nullptr;
-    class Level* mCurrentLevel;
+    class Level* mCurrentLevel = nullptr;
     static GameState* mUniqueInstance;
 
     GameState();

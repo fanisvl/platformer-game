@@ -2,7 +2,7 @@
 #include <string>
 #include "box.h"
 
-class GameObject : public Box {
+class GameObject {
 
     static int mNextId;
 

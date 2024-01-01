@@ -4,7 +4,7 @@
 #include "box.h"
 #include "config.h"
 
-class Player : public GameObject{
+class Player : public GameObject, public Box {
 
     graphics::Brush mPlayerBrush;
     float mPosX;

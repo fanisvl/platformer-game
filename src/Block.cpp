@@ -1,12 +1,15 @@
 #include "Block.h"
 #include "config.h"
+#include "GameState.h"
 
 void Block::update(float dt) {
 
 }
 
 void Block::draw() {
-    graphics::drawRect(mPosX, mPosY, mWidth, mHeight, mBlockBrush);
+    float x = mPosX + mState->mGlobalOffsetX;
+    float y = mPosY + mState->mGlobalOffsetY;
+    graphics::drawRect(x, y, mWidth, mHeight, mBlockBrush);
 }
 
 void Block::init() {

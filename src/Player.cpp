@@ -42,8 +42,8 @@ void Player::draw() {
 void Player::init() {
 
     // Initialize player position & speed
-    mPosX = 100.0f;
-    mPosY = CANVAS_HEIGHT-100.0f;
+    mPosX = CANVAS_WIDTH / 2.0f;
+    mPosY = CANVAS_HEIGHT / 2.0f;
     speed = 0.5f;
 
     // Initialize brush to draw player

@@ -65,7 +65,7 @@ void Level::init() {
 }
 
 Level::Level (const std::string& name) {
-
+    
 };
 
 Level::~Level() {

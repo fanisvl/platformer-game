@@ -46,6 +46,11 @@ void Level::init() {
     mBrushBackground.outline_opacity = 0.0f;
     mBrushBackground.texture = std::string(ASSET_PATH) + "city_background.png";
 
+    // TODO: Load level from txt file
+    // TODO: load based on current level
+    // Load Level
+    mStaticObjects.push_back(new Block(CANVAS_WIDTH/2.0f, CANVAS_HEIGHT/2.0f, 250.0f, 55.0f, "platform.png"));
+
 
     // Call init() for all static and dynamic objects of level
     for (auto& pGob : mStaticObjects) {

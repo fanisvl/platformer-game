@@ -36,9 +36,9 @@ void Player::update(float dt) {
 }
 
 void Player::draw() {
-    graphics::drawRect(mPosX, mPosY, mWidth, mHeight, mPlayerBrush);
+    graphics::drawRect(mPosX, mPosY, 70, 70, mPlayerBrush);
     if (mState->mDebugging) {
-        graphics::drawRect(mPosX, mPosY, mWidth, mHeight, mPlayerBrushDebug);
+        graphics::drawRect(mPosX, mPosY, 70, 70, mPlayerBrushDebug);
     }
 }
 
@@ -47,8 +47,6 @@ void Player::init() {
     // Initialize player position & speed
     mPosX = CANVAS_WIDTH / 2.0f;
     mPosY = CANVAS_HEIGHT / 2.0f;
-    mWidth = 70.0f;
-    mHeight = 70.0f;
     speed = 0.5f;
 
     // Initialize brush to draw player

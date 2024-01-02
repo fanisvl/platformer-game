@@ -86,11 +86,11 @@ void Level::checkCollisions() {
         //    which are arguably necessary for every GameObject.
         //    Even for GameObjects like UI Elements, collisions could also prove to be useful for clicking/selecting.
         //
-        // 2. Store Box* types inside mStaticObjects instead of GameObject* types, however that introduces a similar
+        // 2. Composite approach. Every GameObject would contain a 'Box' member that would be responsible for collisions.
+
+        // 3. Store Box* types inside mStaticObjects instead of GameObject* types, however that introduces a similar
         //    problem for the init, update & draw GameObject methods, since Box and GameObject don't have any relationship.
         //    Not a great option.
-        //
-        // 3. Composite approach. Every GameObject would contain a 'Box' member that would be responsible for collisions.
     }
 }
 

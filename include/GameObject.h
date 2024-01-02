@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "box.h"
 
 class GameObject {
 

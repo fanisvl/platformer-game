@@ -7,8 +7,6 @@
 class Player : public GameObject, public Box {
 
     graphics::Brush mPlayerBrush;
-    float mPosX;
-    float mPosY;
     float speed;
 
 public:

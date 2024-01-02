@@ -13,7 +13,7 @@ struct Box
     *   \param other is a reference to another Box instance to check for collision with
     *   \return true if the two boxes overlap
     */
-    bool intersect(Box &other)
+    bool intersect(const Box &other)
     {
         return (fabs(mPosX - other.mPosX) * 2.0f < (mWidth + other.mWidth)) &&
                (fabs(mPosY - other.mPosY) * 2.0f < (mHeight + other.mHeight));

@@ -75,9 +75,8 @@ void Level::checkCollisions() {
         // otherwise it returns a nullptr and the if-statement isn't executed.
         if (Box* pBox = dynamic_cast<Box*>(pGob)) {
             // Check for collision
-            if (float offset = mState->getPlayer()->intersectDown(*pBox)) {
-                mState->getPlayer()->mPosY += offset;
-
+            if (mState->getPlayer()->intersect(*pBox)) {
+                std::cout << "intersect" << std::endl;
             }
         }
 

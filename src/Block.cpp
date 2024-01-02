@@ -3,17 +3,17 @@
 #include "GameState.h"
 
 void Block::update(float dt) {
+
 }
 
 void Block::draw() {
-
-    // TODO: Fix collision bug
     float x = mPosX + mState->mGlobalOffsetX;
     float y = mPosY + mState->mGlobalOffsetY;
     graphics::drawRect(x, y, mWidth, mHeight, mBlockBrush);
 
     if (mState->mDebugging) {
-        graphics::drawRect(mPosX, mPosY, mWidth, mHeight, mBlockBrushDebug);
+        graphics::drawRect(x, y, mWidth, mHeight, mBlockBrushDebug);
+
     }
 }
 

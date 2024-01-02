@@ -69,24 +69,28 @@ void Level::init() {
 
 void Level::checkCollisions() {
     for (auto& pGob : mStaticObjects) {
+
         // If the object pointed to by pGob is a derived type of 'Box' (e.g. 'Block' or 'Player')
         // the cast returns a pointer of type Box*, necessary for the intersect method.
         // otherwise it returns a nullptr and the if-statement isn't executed.
-
-        // NOTE: We have a few other options here, we could:
-        // 1. Make every GameObject inherit from Box.
-        //    This approach also had the added benefit of inheriting the attributes mPosX, mPosY, mWidth, mHeight from Box, which
-        //    are arguably necessary for every GameObject. Even for GameObjects like UI Elements, collisions could
-        //    prove to be useful for clicking/selecting.
-        //
-        // 2. Store Box* types inside mStaticObjects instead of GameObject* types, however that introduces a similar
-        //    problem for the init, update & draw GameObject methods. Not a great option.
         if (Box* pBox = dynamic_cast<Box*>(pGob)) {
             // Check for collision
             if (mState->getPlayer()->intersect(*pBox)) {
                 std::cout << "intersect" << std::endl;
             }
         }
+
+        // NOTE: We have a few other options here, we could:
+        // 1. Make every GameObject inherit from Box.
+        //    This approach also had the added benefit of inheriting the attributes mPosX, mPosY, mWidth, mHeight from Box,
+        //    which are arguably necessary for every GameObject.
+        //    Even for GameObjects like UI Elements, collisions could also prove to be useful for clicking/selecting.
+        //
+        // 2. Store Box* types inside mStaticObjects instead of GameObject* types, however that introduces a similar
+        //    problem for the init, update & draw GameObject methods, since Box and GameObject don't have any relationship.
+        //    Not a great option.
+        //
+        // 3. Composite approach. Every GameObject would contain a 'Box' member that would be responsible for collisions.
     }
 }
 

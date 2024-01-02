@@ -37,6 +37,9 @@ void Player::update(float dt) {
 
 void Player::draw() {
     graphics::drawRect(mPosX, mPosY, 70, 70, mPlayerBrush);
+    if (mState->mDebugging) {
+        graphics::drawRect(mPosX, mPosY, 70, 70, mPlayerBrushDebug);
+    }
 }
 
 void Player::init() {
@@ -49,4 +52,9 @@ void Player::init() {
     // Initialize brush to draw player
     mPlayerBrush.texture = std::string(ASSET_PATH) + "ghost.png";
     mPlayerBrush.outline_opacity = 0.0f;
+
+    // Initialize Debug brush
+    mPlayerBrushDebug.fill_opacity = 0.1f;
+    SETCOLOR(mPlayerBrushDebug.fill_color, 0.5f, 0.0f, 0.0f);
+    SETCOLOR(mPlayerBrushDebug.outline_color, 1.0f, 0.0f, 0.0f);
 }

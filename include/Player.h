@@ -7,6 +7,7 @@
 class Player : public GameObject, public Box {
 
     graphics::Brush mPlayerBrush;
+    graphics::Brush mPlayerBrushDebug;
     float speed;
 
 public:

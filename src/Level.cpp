@@ -76,7 +76,7 @@ void Level::checkCollisions() {
         if (Box* pBox = dynamic_cast<Box*>(pGob)) {
             // Check for collision
             if (mState->getPlayer()->intersect(*pBox)) {
-                std::cout << "intersect" << std::endl;
+                std::cout << "intersect" << std::rand() << std::endl;
             }
         }
 

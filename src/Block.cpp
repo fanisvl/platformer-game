@@ -42,6 +42,12 @@ Block::Block(float x, float y, float w, float h, const std::string &assetName) {
 }
 
 void Block::move(float dx, float dy) {
+    // Boundaries
+//    if (mPosX < 0) mPosX = 0;
+//    if (mPosX > CANVAS_WIDTH) mPosX = CANVAS_WIDTH;
+//    if (mPosY < 0) mPosY = 0;
+//    if (mPosY > CANVAS_HEIGHT) mPosY = CANVAS_HEIGHT;
+
     mPosX += dx * mSpeed;
     mPosY += dy * mSpeed;
 }

@@ -26,6 +26,8 @@ void Controller::update(float dt) {
         dy = +1.0f * graphics::getDeltaTime();
     }
 
+    // If player is out of bounds, then all movement stops.
+
     // Move player
     mPlayer->move(dx, dy);
 

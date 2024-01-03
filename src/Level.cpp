@@ -82,7 +82,7 @@ void Level::checkCollisions() {
 
         // NOTE: We have a few other options here, we could:
         // 1. Make every GameObject inherit from Box.
-        //    This approach also had the added benefit of inheriting the attributes mPosX, mPosY, mWidth, mHeight from Box,
+        //    This approach also had the added benefit of inheriting the attributes backgroundX, backgroundY, mWidth, mHeight from Box,
         //    which are arguably necessary for every GameObject.
         //    Even for GameObjects like UI Elements, collisions could also prove to be useful for clicking/selecting.
         //
@@ -120,6 +120,12 @@ std::list<GameObject *> &Level::getDynamicObjects() {
 
 void Level::moveBackground(float dx, float dy) {
     //= (mState->mGlobalOffsetX + CANVAS_WIDTH / 2.0f) * backgroundSpeed;
+    // Boundaries
+    if (backgroundX < 0) backgroundX = 0;
+    if (backgroundX > CANVAS_WIDTH) backgroundX = CANVAS_WIDTH;
+    if (backgroundY < 0) backgroundY = 0;
+    if (backgroundY > CANVAS_HEIGHT) backgroundY = CANVAS_HEIGHT;
+    
     backgroundX += dx * backgroundSpeed;
     backgroundY += dy * backgroundSpeed;
 }

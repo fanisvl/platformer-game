@@ -23,9 +23,6 @@ void Block::draw() {
 
 void Block::init() {
 
-    // Speed
-    mSpeed = 1.0f;
-
     // Normal Brush init
     mBlockBrush.outline_opacity = 0.0f;
     mBlockBrush.texture = std::string(ASSET_PATH) + mAssetName;

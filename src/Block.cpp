@@ -7,13 +7,17 @@ void Block::update(float dt) {
 }
 
 void Block::draw() {
-    float x = mPosX + mState->mGlobalOffsetX;
-    float y = mPosY + mState->mGlobalOffsetY;
-    graphics::drawRect(x, y, mWidth, mHeight, mBlockBrush);
+
+
+//    mPosX += mState->mGlobalOffsetX;
+//    mPosY += mState->mGlobalOffsetY;
+
+//    float x = mPosX + mState -> mGlobalOffsetX;
+//    float y = mPosY + mState -> mGlobalOffsetY;
+    graphics::drawRect(mPosX, mPosY, mWidth, mHeight, mBlockBrush);
 
     if (mState->mDebugging) {
-        graphics::drawRect(x, y, mWidth, mHeight, mBlockBrushDebug);
-
+        graphics::drawRect(mPosX, mPosY, mWidth, mHeight, mBlockBrushDebug);
     }
 }
 
@@ -35,4 +39,15 @@ Block::Block(float x, float y, float w, float h, const std::string &assetName) {
     mWidth = w;
     mHeight = h;
     mAssetName = assetName;
+}
+
+void Block::move(float dx, float dy) {
+    // Boundaries
+//    if (mPosX < 0) mPosX = 0;
+//    if (mPosX > CANVAS_WIDTH) mPosX = CANVAS_WIDTH;
+//    if (mPosY < 0) mPosY = 0;
+//    if (mPosY > CANVAS_HEIGHT) mPosY = CANVAS_HEIGHT;
+
+    mPosX += dx * mSpeed;
+    mPosY += dy * mSpeed;
 }

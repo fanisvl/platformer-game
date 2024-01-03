@@ -25,9 +25,6 @@ void Level::update(float dt) {
 void Level::draw() {
 
     // Draw background
-    float backgroundSpeed = 0.5f;
-    float backgroundX = (mState->mGlobalOffsetX + CANVAS_WIDTH / 2.0f) * backgroundSpeed;
-    float backgroundY = (mState->mGlobalOffsetY + CANVAS_HEIGHT/ 2.0f) * backgroundSpeed;
     graphics::drawRect(backgroundX, backgroundY, 2*CANVAS_WIDTH, 2*CANVAS_HEIGHT, mBrushBackground);
 
     // Draw Player
@@ -49,6 +46,9 @@ void Level::init() {
     // Initialize brush to draw background
     mBrushBackground.outline_opacity = 0.0f;
     mBrushBackground.texture = std::string(ASSET_PATH) + "city_background.png";
+    backgroundX = CANVAS_WIDTH / 2.0f;
+    backgroundY = CANVAS_HEIGHT / 2.0f;
+    backgroundSpeed = 0.5f;
 
     // TODO: Load level from txt file
     // TODO: load based on current level
@@ -76,21 +76,21 @@ void Level::checkCollisions() {
         if (Box* pBox = dynamic_cast<Box*>(pGob)) {
             // Check for collision
             if (mState->getPlayer()->intersect(*pBox)) {
-                std::cout << "intersect" << std::endl;
+                std::cout << "intersect" << std::rand() << std::endl;
             }
         }
 
         // NOTE: We have a few other options here, we could:
         // 1. Make every GameObject inherit from Box.
-        //    This approach also had the added benefit of inheriting the attributes mPosX, mPosY, mWidth, mHeight from Box,
+        //    This approach also had the added benefit of inheriting the attributes backgroundX, backgroundY, mWidth, mHeight from Box,
         //    which are arguably necessary for every GameObject.
         //    Even for GameObjects like UI Elements, collisions could also prove to be useful for clicking/selecting.
         //
-        // 2. Store Box* types inside mStaticObjects instead of GameObject* types, however that introduces a similar
+        // 2. Composite approach. Every GameObject would contain a 'Box' member that would be responsible for collisions.
+
+        // 3. Store Box* types inside mStaticObjects instead of GameObject* types, however that introduces a similar
         //    problem for the init, update & draw GameObject methods, since Box and GameObject don't have any relationship.
         //    Not a great option.
-        //
-        // 3. Composite approach. Every GameObject would contain a 'Box' member that would be responsible for collisions.
     }
 }
 
@@ -109,3 +109,23 @@ Level::~Level() {
         if (pGob) delete pGob;
     }
 };
+
+std::vector<GameObject *> &Level::getStaticObjects() {
+    return mStaticObjects;
+}
+
+std::list<GameObject *> &Level::getDynamicObjects() {
+    return mDynamicObjects;
+}
+
+void Level::moveBackground(float dx, float dy) {
+    //= (mState->mGlobalOffsetX + CANVAS_WIDTH / 2.0f) * backgroundSpeed;
+    // Boundaries
+    if (backgroundX < 0) backgroundX = 0;
+    if (backgroundX > CANVAS_WIDTH) backgroundX = CANVAS_WIDTH;
+    if (backgroundY < 0) backgroundY = 0;
+    if (backgroundY > CANVAS_HEIGHT) backgroundY = CANVAS_HEIGHT;
+    
+    backgroundX += dx * backgroundSpeed;
+    backgroundY += dy * backgroundSpeed;
+}

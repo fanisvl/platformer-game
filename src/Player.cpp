@@ -6,47 +6,44 @@
 void Player::update(float dt) {
 
 
-    // WASD Keyboard Controls
-    if (graphics::getKeyState(graphics::SCANCODE_A)) {
-        mPosX -= speed * graphics::getDeltaTime();
+
+}
+
+void Player::draw() {
+    graphics::drawRect(mPosX, mPosY, mWidth, mHeight, mPlayerBrush);
+    if (mState->mDebugging) {
+        graphics::drawRect(mPosX, mPosY, mWidth, mHeight, mPlayerBrushDebug);
     }
+}
 
-    if (graphics::getKeyState(graphics::SCANCODE_D)) {
-        mPosX += speed * graphics::getDeltaTime();
-    }
+void Player::init() {
 
-    if (graphics::getKeyState(graphics::SCANCODE_W)) {
-        mPosY -= speed * graphics::getDeltaTime();
-    }
+    // Initialize player position & mSpeed
+    mPosX = CANVAS_WIDTH / 2.0f;
+    mPosY = CANVAS_HEIGHT / 2.0f;
+    mWidth = 70.0f;
+    mHeight = 70.0f;
+    mSpeed = 1.0f;
 
-    if (graphics::getKeyState(graphics::SCANCODE_S)) {
-        mPosY += speed * graphics::getDeltaTime();
-    }
+    // Initialize brush to draw player
+    mPlayerBrush.texture = std::string(ASSET_PATH) + "ghost.png";
+    mPlayerBrush.outline_opacity = 0.0f;
 
-    // Update Global Offset
-    mState->mGlobalOffsetX = CANVAS_WIDTH / 2.0f - mPosX;
-    mState->mGlobalOffsetY = CANVAS_HEIGHT / 2.0f - mPosY;
+    // Initialize Debug brush
+    mPlayerBrushDebug.fill_opacity = 0.1f;
+    SETCOLOR(mPlayerBrushDebug.fill_color, 0.5f, 0.0f, 0.0f);
+    SETCOLOR(mPlayerBrushDebug.outline_color, 1.0f, 0.0f, 0.0f);
+}
 
+#include <iostream>
+void Player::move(float dx, float dy) {
     // Boundaries
     if (mPosX < 0) mPosX = 0;
     if (mPosX > CANVAS_WIDTH) mPosX = CANVAS_WIDTH;
     if (mPosY < 0) mPosY = 0;
     if (mPosY > CANVAS_HEIGHT) mPosY = CANVAS_HEIGHT;
 
-}
-
-void Player::draw() {
-    graphics::drawRect(mPosX, mPosY, 70, 70, mPlayerBrush);
-}
-
-void Player::init() {
-
-    // Initialize player position & speed
-    mPosX = CANVAS_WIDTH / 2.0f;
-    mPosY = CANVAS_HEIGHT / 2.0f;
-    speed = 0.5f;
-
-    // Initialize brush to draw player
-    mPlayerBrush.texture = std::string(ASSET_PATH) + "ghost.png";
-    mPlayerBrush.outline_opacity = 0.0f;
+    std::cout << "PlayerXY: " << mPosX << " " << mPosY << std::endl;
+    mPosX += dx * mSpeed;
+    mPosY += dy * mSpeed;
 }

@@ -46,7 +46,7 @@ void Level::init() {
     // Initialize brush to draw background
     mBrushBackground.outline_opacity = 0.0f;
     mBrushBackground.texture = std::string(ASSET_PATH) + "city_background.png";
-    backgroundSpeed = 0.5f;
+    backgroundSpeed = 0.05f;
 
     // TODO: Load level from txt file
     // TODO: load based on current level

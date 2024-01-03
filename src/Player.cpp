@@ -27,7 +27,7 @@ void Player::init() {
     mPosY = CANVAS_HEIGHT / 2.0f;
     mWidth = 70.0f;
     mHeight = 70.0f;
-    mSpeed = 0.01f;
+    mSpeed = 1.0f;
 
     // Initialize brush to draw player
     mPlayerBrush.texture = std::string(ASSET_PATH) + "ghost.png";

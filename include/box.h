@@ -1,7 +1,7 @@
 #pragma once
 #include <cmath>
 #include <algorithm>
-#include "graphics.h"
+#include <iostream>
 
 struct Box
 {

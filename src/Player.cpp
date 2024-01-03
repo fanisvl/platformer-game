@@ -5,28 +5,6 @@
 
 void Player::update(float dt) {
 
-
-    // WASD Keyboard Controls
-    if (graphics::getKeyState(graphics::SCANCODE_A)) {
-        mPosX -= speed * graphics::getDeltaTime();
-    }
-
-    if (graphics::getKeyState(graphics::SCANCODE_D)) {
-        mPosX += speed * graphics::getDeltaTime();
-    }
-
-    if (graphics::getKeyState(graphics::SCANCODE_W)) {
-        mPosY -= speed * graphics::getDeltaTime();
-    }
-
-    if (graphics::getKeyState(graphics::SCANCODE_S)) {
-        mPosY += speed * graphics::getDeltaTime();
-    }
-
-    // Update Global Offset
-    mState->mGlobalOffsetX = CANVAS_WIDTH / 2.0f - mPosX;
-    mState->mGlobalOffsetY = CANVAS_HEIGHT / 2.0f - mPosY;
-
     // Boundaries
     if (mPosX < 0) mPosX = 0;
     if (mPosX > CANVAS_WIDTH) mPosX = CANVAS_WIDTH;
@@ -44,12 +22,12 @@ void Player::draw() {
 
 void Player::init() {
 
-    // Initialize player position & speed
+    // Initialize player position & mSpeed
     mPosX = CANVAS_WIDTH / 2.0f;
     mPosY = CANVAS_HEIGHT / 2.0f;
     mWidth = 70.0f;
     mHeight = 70.0f;
-    speed = 0.5f;
+    mSpeed = 0.01f;
 
     // Initialize brush to draw player
     mPlayerBrush.texture = std::string(ASSET_PATH) + "ghost.png";
@@ -60,3 +38,4 @@ void Player::init() {
     SETCOLOR(mPlayerBrushDebug.fill_color, 0.5f, 0.0f, 0.0f);
     SETCOLOR(mPlayerBrushDebug.outline_color, 1.0f, 0.0f, 0.0f);
 }
+

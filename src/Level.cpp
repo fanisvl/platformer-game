@@ -25,9 +25,6 @@ void Level::update(float dt) {
 void Level::draw() {
 
     // Draw background
-    float backgroundSpeed = 0.5f;
-    float backgroundX = (mState->mGlobalOffsetX + CANVAS_WIDTH / 2.0f) * backgroundSpeed;
-    float backgroundY = (mState->mGlobalOffsetY + CANVAS_HEIGHT/ 2.0f) * backgroundSpeed;
     graphics::drawRect(backgroundX, backgroundY, 2*CANVAS_WIDTH, 2*CANVAS_HEIGHT, mBrushBackground);
 
     // Draw Player
@@ -49,6 +46,7 @@ void Level::init() {
     // Initialize brush to draw background
     mBrushBackground.outline_opacity = 0.0f;
     mBrushBackground.texture = std::string(ASSET_PATH) + "city_background.png";
+    backgroundSpeed = 0.5f;
 
     // TODO: Load level from txt file
     // TODO: load based on current level
@@ -109,3 +107,17 @@ Level::~Level() {
         if (pGob) delete pGob;
     }
 };
+
+std::vector<GameObject *> &Level::getStaticObjects() {
+    return mStaticObjects;
+}
+
+std::list<GameObject *> &Level::getDynamicObjects() {
+    return mDynamicObjects;
+}
+
+void Level::moveBackground(float dx, float dy) {
+    //= (mState->mGlobalOffsetX + CANVAS_WIDTH / 2.0f) * backgroundSpeed;
+    backgroundX += dx * backgroundSpeed;
+    backgroundY += dy * backgroundSpeed;
+}

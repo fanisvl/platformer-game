@@ -7,13 +7,17 @@ void Block::update(float dt) {
 }
 
 void Block::draw() {
-    float x = mPosX + mState->mGlobalOffsetX;
-    float y = mPosY + mState->mGlobalOffsetY;
-    graphics::drawRect(x, y, mWidth, mHeight, mBlockBrush);
+
+
+//    mPosX += mState->mGlobalOffsetX;
+//    mPosY += mState->mGlobalOffsetY;
+
+//    float x = mPosX + mState -> mGlobalOffsetX;
+//    float y = mPosY + mState -> mGlobalOffsetY;
+    graphics::drawRect(mPosX, mPosY, mWidth, mHeight, mBlockBrush);
 
     if (mState->mDebugging) {
-        graphics::drawRect(x, y, mWidth, mHeight, mBlockBrushDebug);
-
+        graphics::drawRect(mPosX, mPosY, mWidth, mHeight, mBlockBrushDebug);
     }
 }
 

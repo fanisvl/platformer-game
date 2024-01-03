@@ -40,3 +40,8 @@ Block::Block(float x, float y, float w, float h, const std::string &assetName) {
     mHeight = h;
     mAssetName = assetName;
 }
+
+void Block::move(float dx, float dy) {
+    mPosX += dx * mSpeed;
+    mPosY += dy * mSpeed;
+}

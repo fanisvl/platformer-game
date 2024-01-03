@@ -39,3 +39,7 @@ void Player::init() {
     SETCOLOR(mPlayerBrushDebug.outline_color, 1.0f, 0.0f, 0.0f);
 }
 
+void Player::move(float dx, float dy) {
+    mPosX += dx * mSpeed;
+    mPosY += dy * mSpeed;
+}

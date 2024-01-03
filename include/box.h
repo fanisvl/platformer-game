@@ -9,6 +9,7 @@ struct Box
     float mPosY = 0.0f;
     float mWidth = 1.0f;
     float mHeight = 1.0f;
+    float mSpeed = 1.0f;
 
     /** Detects intersection (overlap) between this Box and another Box instance.
     *   \param other is a reference to another Box instance to check for collision with
@@ -50,6 +51,8 @@ struct Box
         else
             return std::min<float>(0.0f, other.mPosX - (other.mWidth / 2.0f) - mPosX - (mWidth / 2.0f));
     }
+
+    virtual void move(float dx, float dy) {};
 
     /** Default ctor
     */

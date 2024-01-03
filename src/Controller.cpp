@@ -6,6 +6,8 @@ void Controller::update(float dt) {
     float dy = 0.0f;
 
     // WASD Keyboard Controls
+    // Determine dx. Speed is determined by the object moving (move method)
+    // dx = direction * t * speed
     if (graphics::getKeyState(graphics::SCANCODE_A)) {
         dx = -1.0f * graphics::getDeltaTime();
     }
@@ -27,7 +29,7 @@ void Controller::update(float dt) {
     // Move player
     mPlayer->move(dx, dy);
 
-    // Move Static & Dynamic Objects
+    // Move Static & Dynamic Objects relative to Player
     for (auto& pGob : mLevel->getStaticObjects()) {
         // If the object pointed to by pGob is a derived type of 'Box' (e.g. 'Block' or 'Player')
         // the cast returns a pointer of type Box*, necessary for the intersect method.
@@ -43,7 +45,7 @@ void Controller::update(float dt) {
         }
     }
 
-    // Move background
+    // Move background relative to Player
     mLevel->moveBackground(-dx, -dy);
 
 }

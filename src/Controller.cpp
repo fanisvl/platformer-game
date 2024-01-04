@@ -12,43 +12,43 @@ void Controller::update(float dt) {
     // Determine dx. Speed is determined by the object moving (move method)
     // dx = direction * t * speed
     if (graphics::getKeyState(graphics::SCANCODE_A)) {
+        dx = -1.0f * graphics::getDeltaTime();
         direction = LEFT;
-        if (intersectLeft) return;
         intersectDown = false;
         intersectRight = false;
-        dx = -1.0f * graphics::getDeltaTime();
-        // Possible Collision left
+        intersectUp = false;
+        if (intersectLeft) return;
     }
 
     if (graphics::getKeyState(graphics::SCANCODE_D)) {
+        dx = +1.0f * graphics::getDeltaTime();
         direction = RIGHT;
-        if (intersectRight) return;
         intersectDown = false;
         intersectLeft = false;
-        dx = +1.0f * graphics::getDeltaTime();
-        // Possible collision right
+        intersectUp = false;
+        if (intersectRight) return;
     }
 
     if (graphics::getKeyState(graphics::SCANCODE_W)) {
-        direction = UP;
         dy = -1.0f * graphics::getDeltaTime();
+        direction = UP;
         intersectDown = false;
         intersectLeft = false;
         intersectRight = false;
-
-        // Possible collision up
+        if (intersectUp) return;
 
     }
 
     if (graphics::getKeyState(graphics::SCANCODE_S)) {
+        dy = +1.0f * graphics::getDeltaTime();
         direction = DOWN;
-        if (intersectDown) return;
         intersectLeft = false;
         intersectRight = false;
-
-        dy = +1.0f * graphics::getDeltaTime();
-        // Possible collision down
+        intersectUp = false;
+        if (intersectDown) return;
     }
+
+
 
     // TODO: Move all movement calls to a new method
     mPlayer->move(dx, dy);
@@ -76,48 +76,47 @@ void Controller::update(float dt) {
 // TODO: Remove after debugging.
 #include <iostream>
 void Controller::checkCollisions() {
-    for (auto& pGob : mLevel->getStaticObjects()) {
-        if (Box* pBox = dynamic_cast<Box*>(pGob)) {
+    for (auto &pGob: mLevel->getStaticObjects()) {
+        if (Box *pBox = dynamic_cast<Box *>(pGob)) {
 
             // Check for collision
+
             if (float offset = mPlayer->intersectDown(*pBox)) {
                 mPlayer->mPosY += offset;
                 intersectDown = true;
             }
-            
-            // TODO: Seperate left and right intersect sideways using offset.
-//            intersectDown = mState->getPlayer()->intersectDown(*pBox);
-//
-//            float sidewaysOffset = mState->getPlayer()->intersectSideways(*pBox);
-//
-//            std::cout << "sidewaysOffset: " << sidewaysOffset << std::endl;
-//
+            if (float offset = mPlayer->intersectUp(*pBox)) {
+                mPlayer->mPosY += offset;
+                intersectUp = true;
+            }
+            if (float offset = mPlayer->intersectRight(*pBox)) {
+                mPlayer->mPosX -= offset;
+                intersectRight = true;
+            }
+            if (float offset = mPlayer->intersectLeft(*pBox)) {
+                mPlayer->mPosX -= offset;
+                intersectLeft = true;
+            }
 
-//
-//            if (intersectDown) std::cout << "intersectDown  V " << std::endl;
-//            if (intersectRight) std::cout << "intersectRight >> " << intersectRight << std::endl;
-//            if (intersectLeft) std::cout << "intersectLeft  << " << intersectLeft << std::endl;
+
+
+
+
+
+            // NOTE on dynamic_cast<Box>: We have a few other options here, we could:
+            // 1. Make every GameObject inherit from Box.
+            //    This approach also had the added benefit of inheriting the attributes mPosX, mPosY, mWidth, mHeight from Box,
+            //    which are arguably necessary for every GameObject.
+            //    Even for GameObjects like UI Elements, collisions could also prove to be useful for clicking/selecting.
+            //
+            // 2. Composite approach. Every GameObject would contain a 'Box' member that would be responsible for collisions.
+
+            // 3. Store Box* types inside mStaticObjects instead of GameObject* types, however that introduces a similar
+            //    problem for the init, update & draw GameObject methods, since Box and GameObject don't have any relationship.
+            //    Not a great option.
         }
-
-
-
-
-
-        // NOTE on dynamic_cast<Box>: We have a few other options here, we could:
-        // 1. Make every GameObject inherit from Box.
-        //    This approach also had the added benefit of inheriting the attributes mPosX, mPosY, mWidth, mHeight from Box,
-        //    which are arguably necessary for every GameObject.
-        //    Even for GameObjects like UI Elements, collisions could also prove to be useful for clicking/selecting.
-        //
-        // 2. Composite approach. Every GameObject would contain a 'Box' member that would be responsible for collisions.
-
-        // 3. Store Box* types inside mStaticObjects instead of GameObject* types, however that introduces a similar
-        //    problem for the init, update & draw GameObject methods, since Box and GameObject don't have any relationship.
-        //    Not a great option.
     }
 }
-
-
 void Controller::draw() {
 
 }

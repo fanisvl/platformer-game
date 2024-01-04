@@ -35,6 +35,13 @@ struct Box
         return std::min<float>(0.0f, other.mPosY - (other.mHeight / 2.0f) - mPosY - (mHeight / 2.0f));
     }
 
+    float intersectUp(const Box& other) {
+        if (fabs(mPosX - other.mPosX) * 2.0f >= (mWidth + other.mWidth) || mPosY < other.mPosY)
+            return 0.0f;
+        return std::max<float>(0.0f, other.mPosY + (other.mHeight / 2.0f) - mPosY + (mHeight / 2.0f));
+    }
+
+
     /** Detects a horizontal intersection this Box is beside a target box (other).
     *   and reports the adjustment offset so that the two boxes are separated.
     *
@@ -50,6 +57,18 @@ struct Box
             return std::max<float>(0.0f, other.mPosX + (other.mWidth / 2.0f) - mPosX + (mWidth / 2.0f));
         else
             return std::min<float>(0.0f, other.mPosX - (other.mWidth / 2.0f) - mPosX - (mWidth / 2.0f));
+    }
+
+    float intersectLeft(const Box& other) {
+        if (fabs(mPosY - other.mPosY) * 2.0f >= (mHeight + other.mHeight) || mPosX < other.mPosX)
+            return 0.0f;
+        return std::max<float>(0.0f, other.mPosX + (other.mWidth / 2.0f) - mPosX + (mWidth / 2.0f));
+    }
+
+    float intersectRight(const Box& other) {
+        if (fabs(mPosY - other.mPosY) * 2.0f >= (mHeight + other.mHeight) || mPosX > other.mPosX)
+            return 0.0f;
+        return std::min<float>(0.0f, other.mPosX - (other.mWidth / 2.0f) - mPosX - (mWidth / 2.0f));
     }
 
     virtual void move(float dx, float dy) {};

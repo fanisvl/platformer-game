@@ -11,12 +11,14 @@ enum MoveDirection {
     DOWN,
 };
 
+
 class Controller : public GameObject {
 
     Level* mLevel;
     Player* mPlayer;
     MoveDirection direction;
     bool intersectDown = false;
+    bool intersectUp = false;
     bool intersectRight = false;
     bool intersectLeft = false;
 

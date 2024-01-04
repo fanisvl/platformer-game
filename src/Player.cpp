@@ -20,7 +20,7 @@ void Player::init() {
 
     // Initialize player position & mSpeed
     mPosX = CANVAS_WIDTH / 2.0f;
-    mPosY = CANVAS_HEIGHT / 2.0f;
+    mPosY = CANVAS_HEIGHT / 2.0f - 100.0f;
     mWidth = 70.0f;
     mHeight = 70.0f;
     mSpeed = 1.0f;

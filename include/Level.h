@@ -7,14 +7,12 @@
 class Level : public GameObject {
 
     graphics::Brush mBrushBackground;
-    float backgroundSpeed;
-    float backgroundX; // = (mState->mGlobalOffsetX + CANVAS_WIDTH / 2.0f) * backgroundSpeed;
-    float backgroundY; // = (mState->mGlobalOffsetY + CANVAS_HEIGHT/ 2.0f) * backgroundSpeed;
+    const float backgroundSpeed = 400.0f;
+    float backgroundX;
+    float backgroundY;
 
     std::vector<GameObject*> mStaticObjects;
     std::list<GameObject*> mDynamicObjects;
-
-    void checkCollisions();
 
 public:
     void update(float dt) override;

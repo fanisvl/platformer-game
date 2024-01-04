@@ -47,8 +47,6 @@ void Level::init() {
     mBrushBackground.texture = std::string(ASSET_PATH) + "city_background.png";
     backgroundX = CANVAS_WIDTH / 2.0f;
     backgroundY = CANVAS_HEIGHT / 2.0f;
-    backgroundSpeed = 0.5f;
-
     // TODO: Load level from txt file
     // TODO: load based on current level
     // Load Level

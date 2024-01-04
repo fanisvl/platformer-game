@@ -23,7 +23,8 @@ void Player::init() {
     mPosY = CANVAS_HEIGHT / 2.0f - 100.0f;
     mWidth = 70.0f;
     mHeight = 70.0f;
-    mSpeed = 1.0f;
+    mVelocityX = 800.0f;
+    mVelocityY = 800.0f;
 
     // Initialize brush to draw player
     mPlayerBrush.texture = std::string(ASSET_PATH) + "ghost.png";
@@ -43,6 +44,6 @@ void Player::move(float dx, float dy) {
     if (mPosY < 0) mPosY = 0;
     if (mPosY > CANVAS_HEIGHT) mPosY = CANVAS_HEIGHT;
 
-    mPosX += dx * mSpeed;
-    mPosY += dy * mSpeed;
+    mPosX += dx * mVelocityX;
+    mPosY += dy * mVelocityY;
 }

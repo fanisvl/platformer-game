@@ -14,6 +14,5 @@ public:
     void update(float dt) override;
     void draw() override;
     void init() override;
-    void move(float dx, float dy) override;
     Block(float x, float y, float w, float h, const std::string& assetName);
 };

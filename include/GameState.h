@@ -24,4 +24,5 @@ public:
     ~GameState();
 
     class Player* getPlayer() {return mPlayer;}
+    class Controller* getController() {return mController;}
 };

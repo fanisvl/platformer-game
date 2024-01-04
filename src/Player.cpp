@@ -43,7 +43,6 @@ void Player::move(float dx, float dy) {
     if (mPosY < 0) mPosY = 0;
     if (mPosY > CANVAS_HEIGHT) mPosY = CANVAS_HEIGHT;
 
-    std::cout << "PlayerXY: " << mPosX << " " << mPosY << std::endl;
     mPosX += dx * mSpeed;
     mPosY += dy * mSpeed;
 }

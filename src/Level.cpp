@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "GameObject.h"
 #include "Block.h"
+#include "Controller.h"
 #include <iostream>
 
 void Level::update(float dt) {
@@ -17,8 +18,6 @@ void Level::update(float dt) {
     for (auto& pGob : mDynamicObjects) {
         if (pGob) pGob->update(dt);
     }
-
-    checkCollisions();
 
 }
 
@@ -67,32 +66,6 @@ void Level::init() {
 
 }
 
-void Level::checkCollisions() {
-    for (auto& pGob : mStaticObjects) {
-
-        // If the object pointed to by pGob is a derived type of 'Box' (e.g. 'Block' or 'Player')
-        // the cast returns a pointer of type Box*, necessary for the intersect method.
-        // otherwise it returns a nullptr and the if-statement isn't executed.
-        if (Box* pBox = dynamic_cast<Box*>(pGob)) {
-            // Check for collision
-            if (mState->getPlayer()->intersect(*pBox)) {
-                std::cout << "intersect" << std::rand() << std::endl;
-            }
-        }
-
-        // NOTE: We have a few other options here, we could:
-        // 1. Make every GameObject inherit from Box.
-        //    This approach also had the added benefit of inheriting the attributes backgroundX, backgroundY, mWidth, mHeight from Box,
-        //    which are arguably necessary for every GameObject.
-        //    Even for GameObjects like UI Elements, collisions could also prove to be useful for clicking/selecting.
-        //
-        // 2. Composite approach. Every GameObject would contain a 'Box' member that would be responsible for collisions.
-
-        // 3. Store Box* types inside mStaticObjects instead of GameObject* types, however that introduces a similar
-        //    problem for the init, update & draw GameObject methods, since Box and GameObject don't have any relationship.
-        //    Not a great option.
-    }
-}
 
 
 Level::Level (const std::string& name) {

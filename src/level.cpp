@@ -2,6 +2,7 @@
 #include <graphics.h>
 #include "player.h"
 #include "util.h"
+#include "block.h"
 
 
 void Level::drawBlock(int i)
@@ -23,14 +24,13 @@ void Level::drawBlock(int i)
 
 void Level::checkCollisions()
 {
-	/*
-	for (auto& box : m_blocks)
-	{
-		if (m_state->getPlayer()->intersect(box))
-			printf("*");
-	}
-	*/
+    // Static Objects
+    for (auto p_go : m_static_objects) {
 
+    }
+
+
+    // TODO: Why 2 for loops?
 	for (auto & block : m_blocks)
 	{
 		float offset = 0.0f;
@@ -78,7 +78,6 @@ void Level::draw()
 {
 	float w = m_state->getCanvasWidth();
 	float h = m_state->getCanvasHeight();
-	
 	float offset_x = m_state->m_global_offset_x / 2.0f + w/2.0f;
 	float offset_y = m_state->m_global_offset_y / 2.0f + h/2.0f;
 
@@ -90,21 +89,31 @@ void Level::draw()
 		m_state->getPlayer()->draw();
 
 	// draw blocks
-
 	for (int i = 0; i < m_blocks.size(); i++)
 	{
 		drawBlock(i);
 	}
+
+    // Draw Static & Dynamic Objects
+    for (auto p_go : m_static_objects)
+        p_go->draw();
+    for (auto p_go : m_dynamic_objects)
+        p_go->draw();
 }
 
 void Level::init()
 {
+
+    // Add Static & Dynamic Objects to Level
+    m_static_objects.push_back(new Block(5, 6, 2, 2, "block8.png"));
+
 	// Stage 1
 	for (auto p_gob : m_static_objects)
 		if (p_gob) p_gob->init();
 	
 	for (auto p_gob : m_dynamic_objects)
 		if (p_gob) p_gob->init();
+
 
 
 	// initialize some collidable blocks here.

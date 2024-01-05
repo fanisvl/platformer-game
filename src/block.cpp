@@ -8,10 +8,12 @@ void Block::update(float dt) {
 
 void Block::draw() {
 
-    graphics::drawRect(m_pos_x, m_pos_y, m_width, m_height, m_block_brush);
+    float x = m_pos_x + m_state->m_global_offset_x;
+    float y = m_pos_y + m_state->m_global_offset_y;
+    graphics::drawRect(x, y, m_width, m_height, m_block_brush);
 
     if (m_state->m_debugging) {
-        graphics::drawRect(m_pos_x, m_pos_y, m_width, m_height, m_block_brush_debug);
+        graphics::drawRect(x, y, m_width, m_height, m_block_brush_debug);
     }
 }
 

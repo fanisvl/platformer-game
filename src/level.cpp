@@ -47,13 +47,14 @@ void Level::update(float dt)
 
 void Level::draw()
 {
-	float w = CANVAS_WIDTH;
-	float h = CANVAS_HEIGHT;
-	float offset_x = m_state->m_global_offset_x / 2.0f + w/2.0f;
-	float offset_y = m_state->m_global_offset_y / 2.0f + h/2.0f;
+//	float w = CANVAS_WIDTH;
+//	float h = CANVAS_HEIGHT;
+//	float offset_x = m_state->m_global_offset_x / 2.0f + w/2.0f;
+//	float offset_y = m_state->m_global_offset_y / 2.0f + h/2.0f;
 
 	//Draw Background
-	graphics::drawRect(offset_x, offset_y, 2.0f*w, 4.0f*w, m_brush_background);
+//	graphics::drawRect(offset_x, offset_y, 2.0f*w, 4.0f*w, m_brush_background);
+    if (m_background) m_background->draw();
 
 	// Draw Player
 	if (m_state->getPlayer()->isActive())
@@ -68,6 +69,7 @@ void Level::draw()
 
 void Level::init()
 {
+    if (m_background) m_background->init();
 
     // Add Static & Dynamic Objects to Level
     m_static_objects.push_back(new Block(5, 6, 1, 1, "block8.png"));
@@ -92,14 +94,18 @@ void Level::init()
 Level::Level(const std::string & name)
 	: GameObject(name)
 {
-	m_brush_background.outline_opacity = 0.0f;
-	m_brush_background.texture = m_state->getFullAssetPath("background.png");
+//	m_brush_background.outline_opacity = 0.0f;
+//	m_brush_background.texture = m_state->getFullAssetPath("background.png");
+    if (m_background == nullptr) {
+        m_background = new Background();
+    }
 
 
 }
 
 Level::~Level()
 {
+    delete m_background;
 	for (auto p_go : m_static_objects)
 		delete p_go;
 	for (auto p_go : m_dynamic_objects)

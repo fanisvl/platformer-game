@@ -1,6 +1,7 @@
 #include "player.h"
 #include "util.h"
 #include <cmath>
+#include <iomanip>
 
 void Player::update(float dt)
 {
@@ -16,22 +17,6 @@ void Player::update(float dt)
 
 }
 
-void Player::draw()
-{
-    if (!m_sprites.empty()) {
-        // Calculate the raw index
-        int rawIndex = (int)fmod(100.0f - m_pos_x * 9.0f, m_sprites.size());
-
-        // Use modulo to wrap the index within the bounds of m_sprites
-        int spriteIndex = (rawIndex + m_sprites.size()) % m_sprites.size();
-        m_brush_player.texture = m_sprites[spriteIndex];
-    }
-
-	graphics::drawRect(CANVAS_WIDTH*0.5f, CANVAS_HEIGHT * 0.5f, 1.0f, 1.0f, m_brush_player);
-	if (m_state->m_debugging)
-		debugDraw();
-}
-
 void Player::init()
 {
 	// stage 1
@@ -45,18 +30,33 @@ void Player::init()
 	m_brush_player.outline_opacity = 0.0f;
 	m_brush_player.texture = m_state->getFullAssetPath("Boing-turn3.png");
 
-	m_sprites.push_back(m_state->getFullAssetPath("Boing-left0.png"));
-	m_sprites.push_back(m_state->getFullAssetPath("Boing-left1.png"));
-	m_sprites.push_back(m_state->getFullAssetPath("Boing-left2.png"));
-	m_sprites.push_back(m_state->getFullAssetPath("Boing-left3.png"));
-	m_sprites.push_back(m_state->getFullAssetPath("Boing-left4.png"));
-	m_sprites.push_back(m_state->getFullAssetPath("Boing-left5.png"));
-	m_sprites.push_back(m_state->getFullAssetPath("Boing-left6.png"));
-	m_sprites.push_back(m_state->getFullAssetPath("Boing-left7.png"));
-	m_sprites.push_back(m_state->getFullAssetPath("Boing-left8.png"));
+    int numSprites = 19;
+    for (int i = 0; i <= numSprites; ++i) {
+        // Use std::setw and std::setfill to format the index as "00", "01", etc.
+        std::stringstream ss;
+        ss << "player/WizardWalk" << std::setw(2) << std::setfill('0') << i << ".png";
+        m_sprites.push_back(m_state->getFullAssetPath(ss.str()));
+    }
 
 	// Adjust width for finer collision detection
 	m_width = 0.5f;
+
+}
+
+void Player::draw()
+{
+    if (!m_sprites.empty()) {
+        // Calculate the raw index
+        int rawIndex = (int)fmod(100.0f - m_pos_x * 9.0f, m_sprites.size());
+
+        // Use modulo to wrap the index within the bounds of m_sprites
+        int spriteIndex = (rawIndex + m_sprites.size()) % m_sprites.size();
+        m_brush_player.texture = m_sprites[spriteIndex];
+    }
+
+    graphics::drawRect(CANVAS_WIDTH*0.5f, CANVAS_HEIGHT * 0.5f, 2.0f, 2.0f, m_brush_player);
+    if (m_state->m_debugging)
+        debugDraw();
 }
 
 void Player::debugDraw()

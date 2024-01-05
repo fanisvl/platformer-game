@@ -10,7 +10,7 @@ void Block::draw() {
 
     float x = m_pos_x + m_state->m_global_offset_x;
     float y = m_pos_y + m_state->m_global_offset_y;
-    graphics::drawRect(x, y, m_width, m_height, m_block_brush);
+    graphics::drawRect(x, y, 1.8f*m_width, 1.8f*m_height, m_block_brush);
 
     if (m_state->m_debugging) {
         graphics::drawRect(x, y, m_width, m_height, m_block_brush_debug);

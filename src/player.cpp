@@ -20,8 +20,8 @@ void Player::update(float dt)
 void Player::init()
 {
 	// stage 1
-	m_pos_x = 5.0f;
-	m_pos_y = 5.0f;
+	m_pos_x = 2.0f;
+	m_pos_y = 6.0f;
 	
 	m_state->m_global_offset_x = CANVAS_WIDTH / 2.0f - m_pos_x;
 	m_state->m_global_offset_y = CANVAS_HEIGHT / 2.0f - m_pos_y;

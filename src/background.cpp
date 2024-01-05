@@ -4,7 +4,7 @@ void Background::update(float dt) {
 }
 
 void Background::init() {
-    m_background_path = m_state->getFullAssetPath("background/background_layer_1.png");
+    m_background_path = m_state->getFullAssetPath("city_background.png");
     m_brush_background.texture = m_background_path;
     m_brush_background.outline_opacity = 0.0f;
 }

@@ -1,34 +1,31 @@
-#include "graphics.h"
-#include "GameState.h"
+#include <graphics.h>
 #include "config.h"
+#include "gamestate.h"
 
-void update(float ms) {
-    GameState::getInstance()->update(ms);
-}
-
-void draw() {
+void draw()
+{
     GameState::getInstance()->draw();
 }
 
-void init() {
-    GameState::getInstance()->init();
+void update(float dt)
+{
+    GameState::getInstance()->update(dt);
 }
 
-int main() {
 
-    // Window
+int main(int argc, char** argv)
+{
     graphics::createWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Game");
-    graphics::setCanvasSize(CANVAS_WIDTH, CANVAS_HEIGHT);
-    graphics::setCanvasScaleMode(graphics::CANVAS_SCALE_FIT);
 
-    // Draw & Update setup
+    GameState::getInstance()->init();
+
     graphics::setDrawFunction(draw);
     graphics::setUpdateFunction(update);
 
-    init();
-    
-    // Library starts calling update & draw
-    graphics::startMessageLoop();
+    graphics::setCanvasSize(CANVAS_WIDTH, CANVAS_HEIGHT);
+    graphics::setCanvasScaleMode(graphics::CANVAS_SCALE_FIT);
 
-    return 0;
+    graphics::startMessageLoop();
+	return 0;
 }
+

@@ -72,6 +72,7 @@ void Level::init()
     if (m_background) m_background->init();
 
     // Add Static & Dynamic Objects to Level
+    // TODO:
     m_static_objects.push_back(new Block(5, 6, 1, 1, "block8.png"));
     m_static_objects.push_back(new Block(4, 6, 1, 1, "block1.png"));
     m_static_objects.push_back(new Block(3, 6, 1, 1, "block7.png"));

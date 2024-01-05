@@ -32,8 +32,8 @@ bool GameState::init()
 	m_player = new Player("Player");
 	m_player->init();
 
-//	graphics::preloadBitmaps(getAssetDir());
-//	graphics::setFont(m_asset_path + "OpenSans-Regular.ttf");
+	graphics::preloadBitmaps(getAssetDir());
+	graphics::setFont(m_asset_path + "OpenSans-Regular.ttf");
 
 	return true;
 }

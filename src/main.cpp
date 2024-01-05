@@ -1,5 +1,5 @@
 #include <graphics.h>
-
+#include "config.h"
 #include "gamestate.h"
 
 void draw()
@@ -15,7 +15,7 @@ void update(float dt)
 
 int main(int argc, char** argv)
 {
-    graphics::createWindow(800, 800, "Boing");
+    graphics::createWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Game");
 
     GameState::getInstance()->init();
 

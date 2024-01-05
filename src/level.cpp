@@ -47,13 +47,7 @@ void Level::update(float dt)
 
 void Level::draw()
 {
-	float w = CANVAS_WIDTH;
-	float h = CANVAS_HEIGHT;
-	float offset_x = m_state->m_global_offset_x / 2.0f + w/2.0f;
-	float offset_y = m_state->m_global_offset_y / 2.0f + h/2.0f;
-
-	//Draw Background
-	graphics::drawRect(offset_x, offset_y, 2.0f*w, 4.0f*w, m_brush_background);
+    if (m_background) m_background->draw();
 
 	// Draw Player
 	if (m_state->getPlayer()->isActive())
@@ -68,17 +62,18 @@ void Level::draw()
 
 void Level::init()
 {
+    if (m_background) m_background->init();
 
     // Add Static & Dynamic Objects to Level
-    m_static_objects.push_back(new Block(5, 6, 1, 1, "block8.png"));
-    m_static_objects.push_back(new Block(4, 6, 1, 1, "block1.png"));
-    m_static_objects.push_back(new Block(3, 6, 1, 1, "block7.png"));
-    m_static_objects.push_back(new Block(2, 5, 1, 1, "block6.png"));
-    m_static_objects.push_back(new Block(6, 6, 1, 1, "block10.png"));
-    m_static_objects.push_back(new Block(7, 6, 1, 1, "block1.png"));
-    m_static_objects.push_back(new Block(7, 5, 1, 1, "block2.png"));
-    m_static_objects.push_back(new Block(3, 2, 1, 1, "block8.png"));
-    m_static_objects.push_back(new Block(4, 3, 1, 1, "block3.png"));
+    // TODO: Load level by reading file.
+    // Add Static & Dynamic Objects to Level
+    m_static_objects.push_back(new Block(1, 7, 1, 1, "none.png"));
+    m_static_objects.push_back(new Block(2, 7, 1, 1, "none.png"));
+    m_static_objects.push_back(new Block(5, 6, 1, 1, "none.png"));
+    m_static_objects.push_back(new Block(6, 6, 1, 1, "none.png"));
+    m_static_objects.push_back(new Block(7, 6, 1, 1, "none.png"));
+    m_static_objects.push_back(new Block(8, 6, 1, 1, "none.png"));
+    m_static_objects.push_back(new Block(10, 7, 1, 1, "none.png"));
 
     // Stage 1
 	for (auto& p_gob : m_static_objects)
@@ -92,14 +87,18 @@ void Level::init()
 Level::Level(const std::string & name)
 	: GameObject(name)
 {
-	m_brush_background.outline_opacity = 0.0f;
-	m_brush_background.texture = m_state->getFullAssetPath("background.png");
+//	m_brush_background.outline_opacity = 0.0f;
+//	m_brush_background.texture = m_state->getFullAssetPath("background.png");
+    if (m_background == nullptr) {
+        m_background = new Background();
+    }
 
 
 }
 
 Level::~Level()
 {
+    delete m_background;
 	for (auto p_go : m_static_objects)
 		delete p_go;
 	for (auto p_go : m_dynamic_objects)

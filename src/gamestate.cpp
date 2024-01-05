@@ -33,7 +33,7 @@ bool GameState::init()
 	m_player->init();
 
 	graphics::preloadBitmaps(getAssetDir());
-	graphics::setFont(m_asset_path + "OpenSans-Regular.ttf");
+	graphics::setFont(getFullAssetPath("OpenSans-Regular.ttf"));
 
 	return true;
 }
@@ -74,12 +74,12 @@ void GameState::update(float dt)
 
 std::string GameState::getFullAssetPath(const std::string& asset)
 {
-	return m_asset_path + asset;
+	return ASSET_PATH + asset;
 }
 
 std::string GameState::getAssetDir()
 {
-	return m_asset_path;
+	return ASSET_PATH;
 }
 
 GameState* GameState::m_unique_instance = nullptr;

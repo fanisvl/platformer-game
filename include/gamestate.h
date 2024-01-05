@@ -1,5 +1,5 @@
 #pragma once
-
+#include "config.h"
 #include <string>
 
 class GameState
@@ -7,11 +7,6 @@ class GameState
 private:
 	static GameState* m_unique_instance;
 
-	const std::string m_asset_path = "bin/assets/";
-
-	const float m_canvas_width  = 6.0f;
-	const float m_canvas_height = 6.0f;
-	
 	class Level * m_current_level = nullptr;
 	class Player* m_player = nullptr;
 	
@@ -33,9 +28,5 @@ public:
 
 	std::string getFullAssetPath(const std::string& asset);
 	std::string getAssetDir();
-
-	float getCanvasWidth() { return m_canvas_width; }
-	float getCanvasHeight() { return m_canvas_height; }
-
 	class Player* getPlayer() { return m_player; }
 };

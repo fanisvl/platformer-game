@@ -47,8 +47,8 @@ void Level::update(float dt)
 
 void Level::draw()
 {
-	float w = m_state->getCanvasWidth();
-	float h = m_state->getCanvasHeight();
+	float w = CANVAS_WIDTH;
+	float h = CANVAS_HEIGHT;
 	float offset_x = m_state->m_global_offset_x / 2.0f + w/2.0f;
 	float offset_y = m_state->m_global_offset_y / 2.0f + h/2.0f;
 

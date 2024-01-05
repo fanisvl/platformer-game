@@ -21,7 +21,7 @@ void Block::init() {
 
     // Normal Brush init
     m_block_brush.outline_opacity = 0.0f;
-    m_block_brush.texture = std::string(ASSET_PATH) + m_asset_name;
+    m_block_brush.texture = m_state->getFullAssetPath(m_asset_name);
 
     // Debug Brush init
     m_block_brush_debug.fill_opacity = 0.1f;

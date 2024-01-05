@@ -7,7 +7,7 @@
 class Player : public Box, public GameObject
 {
 	// animated player
-	std::vector<std::string> m_sprites;
+//	std::vector<std::string> m_sprites;
 
 	graphics::Brush m_brush_player;
 

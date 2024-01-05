@@ -7,11 +7,10 @@ void Level::checkCollisions()
 {
     // Static Objects
     // Intersect Down
-    for (auto& p_go : m_static_objects) {
+    for (auto& p_box : m_static_objects) {
         // If the object pointed to by pGob is a derived type of 'Box' (e.g. 'Block' or 'Player')
         // the cast returns a pointer of type Box*, necessary for the intersect method.
         // otherwise it returns a nullptr and the if-statement isn't executed.
-        if (Box* p_box = dynamic_cast<Box*>(p_go)) {
             float offset = 0.0f;
             if (offset = m_state->getPlayer()->intersectDown(*p_box))
             {
@@ -22,11 +21,9 @@ void Level::checkCollisions()
                 m_state->getPlayer()->m_vy = 0.0f;
                 break;
             }
-        }
     }
     // Intersect Sideways
-    for (auto& p_go : m_static_objects) {
-        if (Box* p_box = dynamic_cast<Box*>(p_go)) {
+    for (auto& p_box : m_static_objects) {
             float offset = 0.0f;
             if (offset = m_state->getPlayer()->intersectSideways(*p_box))
             {
@@ -34,7 +31,6 @@ void Level::checkCollisions()
                 m_state->getPlayer()->m_vx = 0.0f;
                 break;
             }
-        }
     }
 
 }

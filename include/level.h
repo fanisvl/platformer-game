@@ -6,12 +6,13 @@
 #include <string>
 #include <graphics.h>
 #include "player.h"
+#include "block.h"
 
 class Level : public GameObject
 {
 	graphics::Brush m_brush_background;
 
-	std::vector<GameObject*> m_static_objects;
+	std::vector<Block*> m_static_objects;
 	std::list<GameObject*> m_dynamic_objects;
 
 	void checkCollisions();

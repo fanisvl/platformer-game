@@ -13,6 +13,8 @@ GameState::~GameState()
 {
 	if (m_current_level)
 		delete m_current_level;
+	if (m_player)
+		delete m_player;
 }
 
 GameState* GameState::getInstance()

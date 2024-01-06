@@ -19,7 +19,6 @@ void Player::update(float dt)
 
 void Player::init()
 {
-	// stage 1
 	m_pos_x = 2.0f;
 	m_pos_y = 6.0f;
 	

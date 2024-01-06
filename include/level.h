@@ -11,7 +11,6 @@
 
 class Level : public GameObject
 {
-	graphics::Brush m_brush_background;
     Background* m_background = nullptr;
 	std::vector<Block*> m_static_objects;
 	std::list<GameObject*> m_dynamic_objects;

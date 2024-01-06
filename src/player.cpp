@@ -28,7 +28,7 @@ void Player::init()
 
 	m_brush_player.fill_opacity = 1.0f;
 	m_brush_player.outline_opacity = 0.0f;
-	m_brush_player.texture = m_state->getFullAssetPath("Boing-turn3.png");
+	m_brush_player.texture = m_state->getFullAssetPath("player/WizardWalk.png");
 
     int numSprites = 19;
     for (int i = 0; i <= numSprites; ++i) {

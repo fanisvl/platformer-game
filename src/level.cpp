@@ -1,5 +1,5 @@
 #include "level.h"
-#include <graphics.h>
+#include <sgg/graphics.h>
 #include "player.h"
 #include "block.h"
 
@@ -15,9 +15,6 @@ void Level::checkCollisions()
             if (offset = m_state->getPlayer()->intersectDown(*p_box))
             {
                 m_state->getPlayer()->m_pos_y += offset;
-                // Add sound event
-                if (m_state->getPlayer()->m_vy > 1.0f)
-                    graphics::playSound(m_state->getFullAssetPath("Metal2.wav"), 1.0f);
                 m_state->getPlayer()->m_vy = 0.0f;
                 break;
             }

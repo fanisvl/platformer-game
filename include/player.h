@@ -1,7 +1,7 @@
 #pragma once
 
 #include "gameobject.h"
-#include <graphics.h>
+#include <sgg/graphics.h>
 #include "box.h"
 
 class Player : public Box, public GameObject

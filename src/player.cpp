@@ -28,16 +28,14 @@ void Player::init()
 
 	m_brush_player.fill_opacity = 1.0f;
 	m_brush_player.outline_opacity = 0.0f;
-	m_brush_player.texture = m_state->getFullAssetPath("player/WizardWalk.png");
+	m_brush_player.texture = m_state->getFullAssetPath("player\\WizardWalk00.png");
 
-    int numSprites = 19;
-    for (int i = 0; i <= numSprites; ++i) {
-        // Use std::setw and std::setfill to format the index as "00", "01", etc.
-        std::stringstream ss;
-        ss << "player/WizardWalk" << std::setw(2) << std::setfill('0') << i << ".png";
-        m_sprites.push_back(m_state->getFullAssetPath(ss.str()));
+    for (int i = 0; i <= 9; ++i) {
+		m_sprites.push_back(m_state->getFullAssetPath("player\\WizardWalk0" + std::to_string(i) + ".png"));
     }
-
+	for (int i = 0; i <= 9; ++i) {
+		m_sprites.push_back(m_state->getFullAssetPath("player\\WizardWalk1" + std::to_string(i) + ".png"));
+	}
 	// Adjust width for finer collision detection
 	m_width = 0.5f;
 
@@ -100,8 +98,9 @@ void Player::movePlayer(float dt)
 	m_pos_x += m_vx * delta_time;
 
 	// jump only when not in flight:
-	if (m_vy == 0.0f)
-		m_vy -= (graphics::getKeyState(graphics::SCANCODE_W) ? m_accel_vertical : 0.0f) * 0.02f;// not delta_time!! Burst 
+	if (m_vy == 0.0f) {
+		m_vy -= (graphics::getKeyState(graphics::SCANCODE_W) ? m_accel_vertical : 0.0f) * 0.02f; // not delta_time!! Burst 
+	}
 
 	// add gravity
 	m_vy += delta_time * m_gravity;

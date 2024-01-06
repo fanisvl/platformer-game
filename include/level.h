@@ -4,7 +4,7 @@
 #include <vector>
 #include <list>
 #include <string>
-#include <graphics.h>
+#include <sgg/graphics.h>
 #include "player.h"
 #include "block.h"
 #include "background.h"

@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "gameobject.h"
-#include "graphics.h"
+#include "sgg/graphics.h"
 
 class Background : public GameObject {
     std::string m_ground_path;

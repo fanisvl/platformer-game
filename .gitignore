@@ -43,3 +43,7 @@ CMakeLists.txt
 compile.sh
 
 game
+
+# Visual Studio
+x64/
+.vs/

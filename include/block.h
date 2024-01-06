@@ -1,7 +1,7 @@
 #pragma once
 #include "gameobject.h"
 #include "box.h"
-#include "graphics.h"
+#include "sgg/graphics.h"
 #include <vector>
 
 class Block : public GameObject, public Box {

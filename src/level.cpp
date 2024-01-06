@@ -81,8 +81,6 @@ void Level::init()
 Level::Level(const std::string & name)
 	: GameObject(name)
 {
-//	m_brush_background.outline_opacity = 0.0f;
-//	m_brush_background.texture = m_state->getFullAssetPath("background.png");
     if (m_background == nullptr) {
         m_background = new Background();
     }

@@ -8,9 +8,6 @@ void Level::checkCollisions()
     // Static Objects
     // Intersect Down
     for (auto& p_box : m_static_objects) {
-        // If the object pointed to by pGob is a derived type of 'Box' (e.g. 'Block' or 'Player')
-        // the cast returns a pointer of type Box*, necessary for the intersect method.
-        // otherwise it returns a nullptr and the if-statement isn't executed.
             float offset = 0.0f;
             if (offset = m_state->getPlayer()->intersectDown(*p_box))
             {

@@ -78,6 +78,12 @@ void Level::init()
     //floor
     m_static_objects.push_back(new Block(3, 11.25, 1, 0.5, "terrain\\floor.png"));
     m_static_objects.push_back(new Block(4, 11.25, 1, 0.5, "terrain\\floor.png"));
+    m_static_objects.push_back(new Block(5, 11.25, 1, 0.5, "terrain\\floor.png"));
+    m_static_objects.push_back(new Block(6, 11.25, 1, 0.5, "terrain\\floor.png"));
+    m_static_objects.push_back(new Block(7, 11.25, 1, 0.5, "terrain\\floor.png"));
+    m_static_objects.push_back(new Block(8, 11.25, 1, 0.5, "terrain\\floor.png"));
+    m_static_objects.push_back(new Block(9, 11.25, 1, 0.5, "terrain\\floor.png"));
+    m_static_objects.push_back(new Block(10, 11.25, 1, 0.5, "terrain\\floor.png"));
     // next platforms
     m_static_objects.push_back(new Block(5, 9, 1, 1, "terrain\\grass_block.png"));
     m_static_objects.push_back(new Block(6, 9, 1, 1, "terrain\\grass_block.png"));

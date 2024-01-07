@@ -66,10 +66,23 @@ void Level::init()
     // Add Static & Dynamic Objects to Level
     m_static_objects.push_back(new Block(1, 7, 1, 1, "terrain\\grass_block.png"));
     m_static_objects.push_back(new Block(2, 7, 1, 1, "terrain\\grass_block.png"));
-    m_static_objects.push_back(new Block(5, 6, 1, 1, "terrain\\grass_block.png"));
-    m_static_objects.push_back(new Block(6, 6, 1, 1, "terrain\\grass_block.png"));
-    m_static_objects.push_back(new Block(7, 6, 1, 1, "terrain\\grass_block.png"));
-    m_static_objects.push_back(new Block(8, 6, 1, 1, "terrain\\grass_block.png"));
+    //vertical blocks
+    m_static_objects.push_back(new Block(1, 8, 1, 1, "terrain\\dirt_block2.png"));
+    m_static_objects.push_back(new Block(2, 8, 1, 1, "terrain\\dirt_block2.png"));
+    m_static_objects.push_back(new Block(1, 9, 1, 1, "terrain\\dirt_block2.png"));
+    m_static_objects.push_back(new Block(2, 9, 1, 1, "terrain\\dirt_block2.png"));
+    m_static_objects.push_back(new Block(1, 10, 1, 1, "terrain\\dirt_block2.png"));
+    m_static_objects.push_back(new Block(2, 10, 1, 1, "terrain\\dirt_block2.png"));
+    m_static_objects.push_back(new Block(1, 11, 1, 1, "terrain\\dirt_block2.png"));
+    m_static_objects.push_back(new Block(2, 11, 1, 1, "terrain\\dirt_block2.png"));
+    //floor
+    m_static_objects.push_back(new Block(3, 11.25, 1, 0.5, "terrain\\floor.png"));
+    m_static_objects.push_back(new Block(4, 11.25, 1, 0.5, "terrain\\floor.png"));
+    // next platforms
+    m_static_objects.push_back(new Block(5, 9, 1, 1, "terrain\\grass_block.png"));
+    m_static_objects.push_back(new Block(6, 9, 1, 1, "terrain\\grass_block.png"));
+    m_static_objects.push_back(new Block(7, 9, 1, 1, "terrain\\grass_block.png"));
+    m_static_objects.push_back(new Block(8, 9, 1, 1, "terrain\\grass_block.png"));
     m_static_objects.push_back(new Block(10, 7, 1, 1, "terrain\\grass_block.png"));
 
 	for (auto& p_gob : m_static_objects)

@@ -45,7 +45,11 @@ void GameState::draw()
 	if (!m_current_level)
 		return;
 
+	// Draw Level
 	m_current_level->draw();
+
+	// Draw Player
+	if (m_player->isActive()) m_player->draw();
 	
 	
 }

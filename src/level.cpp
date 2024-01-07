@@ -46,11 +46,6 @@ void Level::draw()
 {
     if (m_background) m_background->draw();
 
-	// Draw Player
-    // TODO: Move to GameState.
-	if (m_state->getPlayer()->isActive())
-		m_state->getPlayer()->draw();
-
     // Draw Static & Dynamic Objects
     for (auto& p_go : m_static_objects)
         p_go->draw();

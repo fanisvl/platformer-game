@@ -30,9 +30,6 @@ void Block::init() {
 }
 
 Block::Block(float x, float y, float w, float h, const std::string &assetName) {
-    m_pos_x = x;
-    m_pos_y = y;
-    m_width = w;
-    m_height = h;
+    Box(x, y, w, h);
     m_asset_name = assetName;
 }

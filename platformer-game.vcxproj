@@ -141,6 +141,7 @@
     <ClInclude Include="include\block.h" />
     <ClInclude Include="include\box.h" />
     <ClInclude Include="include\config.h" />
+    <ClInclude Include="include\enemy.h" />
     <ClInclude Include="include\gameobject.h" />
     <ClInclude Include="include\gamestate.h" />
     <ClInclude Include="include\level.h" />

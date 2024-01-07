@@ -76,7 +76,7 @@ void Player::movePlayer(float dt)
 {
 	float delta_time = dt / 1000.0f;
 
-	// Stage 2 code: Acceleration-based velocity
+	// Acceleration-based velocity
 	float move = 0.0f;
 	if (graphics::getKeyState(graphics::SCANCODE_A))
 		move -= 1.0f;

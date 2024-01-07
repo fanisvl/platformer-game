@@ -47,3 +47,7 @@ game
 # Visual Studio
 x64/
 .vs/
+platformer-game.sln
+platformer-game.vcxproj
+platformer-game.vcxproj.filters
+platformer-game.vcxproj.user

@@ -8,12 +8,11 @@ class GameObject
 	
 protected:
 	class GameState* m_state;
-	std::string m_name;
 	int m_id = 0;
 	bool m_active = true;
 
 public:
-	GameObject(const std::string& name = "");
+	GameObject();
 	virtual void update(float dt) {}
 	virtual void init() {}
 	virtual void draw() {}

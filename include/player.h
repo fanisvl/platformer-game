@@ -24,8 +24,6 @@ public:
 	void update(float dt) override;
 	void draw() override;
 	void init() override;
-	Player(std::string name) : GameObject(name) {}
-
 	
 protected:
 	void debugDraw();

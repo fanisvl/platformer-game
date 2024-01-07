@@ -10,5 +10,4 @@ public:
 	void update(float dt) override;
 	void draw() override;
 	void init() override;
-	Enemy(std::string name) : GameObject(name) {}
 };

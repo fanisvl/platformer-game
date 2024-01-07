@@ -21,6 +21,6 @@ public:
 	void draw() override;
 	void init() override;
 
-	Level(const std::string & name = "Level0");
+	Level();
 	~Level() override;
 };

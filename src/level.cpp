@@ -55,6 +55,10 @@ void Level::draw()
 
 void Level::init()
 {
+    // Create background
+    if (m_background == nullptr) {
+        m_background = new Background();
+    }
     if (m_background) m_background->init();
 
     // Add Static & Dynamic Objects to Level
@@ -68,7 +72,6 @@ void Level::init()
     m_static_objects.push_back(new Block(8, 6, 1, 1, "tile.png"));
     m_static_objects.push_back(new Block(10, 7, 1, 1, "tile.png"));
 
-    // Stage 1
 	for (auto& p_gob : m_static_objects)
 		if (p_gob) p_gob->init();
 	
@@ -77,13 +80,8 @@ void Level::init()
 
 }
 
-Level::Level(const std::string & name)
-	: GameObject(name)
+Level::Level()
 {
-    if (m_background == nullptr) {
-        m_background = new Background();
-    }
-
 
 }
 

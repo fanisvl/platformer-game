@@ -64,13 +64,13 @@ void Level::init()
     // Add Static & Dynamic Objects to Level
     // TODO: Load level by reading file.
     // Add Static & Dynamic Objects to Level
-    m_static_objects.push_back(new Block(1, 7, 1, 1, "tile.png"));
-    m_static_objects.push_back(new Block(2, 7, 1, 1, "tile.png"));
-    m_static_objects.push_back(new Block(5, 6, 1, 1, "tile.png"));
-    m_static_objects.push_back(new Block(6, 6, 1, 1, "tile.png"));
-    m_static_objects.push_back(new Block(7, 6, 1, 1, "tile.png"));
-    m_static_objects.push_back(new Block(8, 6, 1, 1, "tile.png"));
-    m_static_objects.push_back(new Block(10, 7, 1, 1, "tile.png"));
+    m_static_objects.push_back(new Block(1, 7, 1, 1, "terrain\\grass_block.png"));
+    m_static_objects.push_back(new Block(2, 7, 1, 1, "terrain\\grass_block.png"));
+    m_static_objects.push_back(new Block(5, 6, 1, 1, "terrain\\grass_block.png"));
+    m_static_objects.push_back(new Block(6, 6, 1, 1, "terrain\\grass_block.png"));
+    m_static_objects.push_back(new Block(7, 6, 1, 1, "terrain\\grass_block.png"));
+    m_static_objects.push_back(new Block(8, 6, 1, 1, "terrain\\grass_block.png"));
+    m_static_objects.push_back(new Block(10, 7, 1, 1, "terrain\\grass_block.png"));
 
 	for (auto& p_gob : m_static_objects)
 		if (p_gob) p_gob->init();

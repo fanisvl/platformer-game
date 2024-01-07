@@ -6,13 +6,13 @@
 #include <string>
 #include <sgg/graphics.h>
 #include "player.h"
-#include "block.h"
+#include "static_block.h"
 #include "background.h"
 
 class Level : public GameObject
 {
     Background* m_background = nullptr;
-	std::vector<Block*> m_static_objects;
+	std::vector<StaticBlock*> m_static_objects;
 	std::list<GameObject*> m_dynamic_objects;
 
 	void checkCollisions();

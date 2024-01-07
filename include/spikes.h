@@ -1,12 +1,11 @@
 #pragma once
-#include "gameobject.h"
-#include "box.h"
+#include "static_block.h"
 
-class Spikes : public GameObject, public Box {
-	std::string m_asset_path;
+class Spikes : public StaticBlock {
+	
 public:
 	void update(float dt) override;
 	void draw() override;
 	void init() override;
-	Spikes(float x, float y, float w, float h, std::string asset);
+	Spikes(float x, float y, float w, float h, const std::string& asset);
 };

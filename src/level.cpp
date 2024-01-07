@@ -1,15 +1,15 @@
 #include "level.h"
 #include <sgg/graphics.h>
 #include "player.h"
-#include "block.h"
+#include "spikes.h"
 
 void Level::checkCollisions()
 {
     // Static Objects
     // Intersect Down
-    for (auto& p_box : m_static_objects) {
+    for (auto& p_sb : m_static_objects) {
             float offset = 0.0f;
-            if (offset = m_state->getPlayer()->intersectDown(*p_box))
+            if (offset = m_state->getPlayer()->intersectDown(*p_sb))
             {
                 m_state->getPlayer()->m_pos_y += offset;
                 m_state->getPlayer()->m_vy = 0.0f;
@@ -17,9 +17,9 @@ void Level::checkCollisions()
             }
     }
     // Intersect Sideways
-    for (auto& p_box : m_static_objects) {
+    for (auto& p_gob : m_static_objects) {
             float offset = 0.0f;
-            if (offset = m_state->getPlayer()->intersectSideways(*p_box))
+            if (offset = m_state->getPlayer()->intersectSideways(*p_gob))
             {
                 m_state->getPlayer()->m_pos_x += offset;
                 m_state->getPlayer()->m_vx = 0.0f;
@@ -64,13 +64,13 @@ void Level::init()
     // Add Static & Dynamic Objects to Level
     // TODO: Load level by reading file.
     // Add Static & Dynamic Objects to Level
-    m_static_objects.push_back(new Block(1, 7, 1, 1, "tile.png"));
-    m_static_objects.push_back(new Block(2, 7, 1, 1, "tile.png"));
-    m_static_objects.push_back(new Block(5, 6, 1, 1, "tile.png"));
-    m_static_objects.push_back(new Block(6, 6, 1, 1, "tile.png"));
-    m_static_objects.push_back(new Block(7, 6, 1, 1, "tile.png"));
-    m_static_objects.push_back(new Block(8, 6, 1, 1, "tile.png"));
-    m_static_objects.push_back(new Block(10, 7, 1, 1, "tile.png"));
+    m_static_objects.push_back(new StaticBlock(1, 7, 1, 1, "tile.png"));
+    m_static_objects.push_back(new StaticBlock(2, 7, 1, 1, "tile.png"));
+    m_static_objects.push_back(new StaticBlock(5, 6, 1, 1, "tile.png"));
+    m_static_objects.push_back(new StaticBlock(6, 6, 1, 1, "tile.png"));
+    m_static_objects.push_back(new StaticBlock(7, 6, 1, 1, "tile.png"));
+    m_static_objects.push_back(new StaticBlock(8, 6, 1, 1, "tile.png"));
+    m_static_objects.push_back(new StaticBlock(10, 7, 1, 1, "tile.png"));
 
 	for (auto& p_gob : m_static_objects)
 		if (p_gob) p_gob->init();

@@ -130,7 +130,7 @@
   <ItemGroup>
     <ClCompile Include="spikes.cpp" />
     <ClCompile Include="src\background.cpp" />
-    <ClCompile Include="src\block.cpp" />
+    <ClCompile Include="src\static_block.cpp" />
     <ClCompile Include="src\gameobject.cpp" />
     <ClCompile Include="src\gamestate.cpp" />
     <ClCompile Include="src\level.cpp" />
@@ -139,7 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\background.h" />
-    <ClInclude Include="include\block.h" />
+    <ClInclude Include="include\static_block.h" />
     <ClInclude Include="include\box.h" />
     <ClInclude Include="include\config.h" />
     <ClInclude Include="include\spikes.h" />

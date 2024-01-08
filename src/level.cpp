@@ -75,21 +75,21 @@ void Level::init()
     m_static_objects.push_back(new Block(2, 10, 1, 1, "terrain\\dirt_block2.png"));
     m_static_objects.push_back(new Block(1, 11, 1, 1, "terrain\\dirt_block2.png"));
     m_static_objects.push_back(new Block(2, 11, 1, 1, "terrain\\dirt_block2.png"));
-    //floor
-    m_static_objects.push_back(new Block(3, 11.25, 1, 0.5, "terrain\\floor.png"));
-    m_static_objects.push_back(new Block(4, 11.25, 1, 0.5, "terrain\\floor.png"));
-    m_static_objects.push_back(new Block(5, 11.25, 1, 0.5, "terrain\\floor.png"));
-    m_static_objects.push_back(new Block(6, 11.25, 1, 0.5, "terrain\\floor.png"));
-    m_static_objects.push_back(new Block(7, 11.25, 1, 0.5, "terrain\\floor.png"));
-    m_static_objects.push_back(new Block(8, 11.25, 1, 0.5, "terrain\\floor.png"));
-    m_static_objects.push_back(new Block(9, 11.25, 1, 0.5, "terrain\\floor.png"));
-    m_static_objects.push_back(new Block(10, 11.25, 1, 0.5, "terrain\\floor.png"));
+    //floor_block
+    m_static_objects.push_back(new Block(4, 12, 1, 1, "terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(5, 12, 1, 1, "terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(6, 12, 1, 1, "terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(7, 12, 1, 1, "terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(8, 12, 1, 1, "terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(9, 12, 1, 1, "terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(10, 12, 1, 1,"terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(3, 12, 1, 1, "terrain\\floor_block.png"));
     // next platforms
     m_static_objects.push_back(new Block(5, 9, 1, 1, "terrain\\grass_block.png"));
     m_static_objects.push_back(new Block(6, 9, 1, 1, "terrain\\grass_block.png"));
     m_static_objects.push_back(new Block(7, 9, 1, 1, "terrain\\grass_block.png"));
     m_static_objects.push_back(new Block(8, 9, 1, 1, "terrain\\grass_block.png"));
-    m_static_objects.push_back(new Block(10, 7, 1, 1, "terrain\\grass_block.png"));
+    m_static_objects.push_back(new Block(10, 7, 1, 1,"terrain\\grass_block.png"));
 
 	for (auto& p_gob : m_static_objects)
 		if (p_gob) p_gob->init();

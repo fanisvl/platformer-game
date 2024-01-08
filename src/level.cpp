@@ -64,32 +64,67 @@ void Level::init()
     // Add Static & Dynamic Objects to Level
     // TODO: Load level by reading file.
     // Add Static & Dynamic Objects to Level
-    m_static_objects.push_back(new Block(1, 7, 1, 1, "terrain\\grass_block.png"));
-    m_static_objects.push_back(new Block(2, 7, 1, 1, "terrain\\grass_block.png"));
-    //vertical blocks
-    m_static_objects.push_back(new Block(1, 8, 1, 1, "terrain\\dirt_block2.png"));
-    m_static_objects.push_back(new Block(2, 8, 1, 1, "terrain\\dirt_block2.png"));
-    m_static_objects.push_back(new Block(1, 9, 1, 1, "terrain\\dirt_block2.png"));
-    m_static_objects.push_back(new Block(2, 9, 1, 1, "terrain\\dirt_block2.png"));
-    m_static_objects.push_back(new Block(1, 10, 1, 1, "terrain\\dirt_block2.png"));
-    m_static_objects.push_back(new Block(2, 10, 1, 1, "terrain\\dirt_block2.png"));
-    m_static_objects.push_back(new Block(1, 11, 1, 1, "terrain\\dirt_block2.png"));
-    m_static_objects.push_back(new Block(2, 11, 1, 1, "terrain\\dirt_block2.png"));
-    //floor_block
-    m_static_objects.push_back(new Block(4, 12, 1, 1, "terrain\\floor_block.png"));
-    m_static_objects.push_back(new Block(5, 12, 1, 1, "terrain\\floor_block.png"));
-    m_static_objects.push_back(new Block(6, 12, 1, 1, "terrain\\floor_block.png"));
-    m_static_objects.push_back(new Block(7, 12, 1, 1, "terrain\\floor_block.png"));
-    m_static_objects.push_back(new Block(8, 12, 1, 1, "terrain\\floor_block.png"));
-    m_static_objects.push_back(new Block(9, 12, 1, 1, "terrain\\floor_block.png"));
-    m_static_objects.push_back(new Block(10, 12, 1, 1,"terrain\\floor_block.png"));
-    m_static_objects.push_back(new Block(3, 12, 1, 1, "terrain\\floor_block.png"));
-    // next platforms
-    m_static_objects.push_back(new Block(5, 9, 1, 1, "terrain\\grass_block.png"));
-    m_static_objects.push_back(new Block(6, 9, 1, 1, "terrain\\grass_block.png"));
-    m_static_objects.push_back(new Block(7, 9, 1, 1, "terrain\\grass_block.png"));
-    m_static_objects.push_back(new Block(8, 9, 1, 1, "terrain\\grass_block.png"));
-    m_static_objects.push_back(new Block(10, 7, 1, 1,"terrain\\grass_block.png"));
+    m_static_objects.push_back(new Block(0.75, 6.225, 0.55, 0.55, "terrain\\block_with_triangles.png"));
+    m_static_objects.push_back(new Block(1, 7, 1, 1, "terrain\\moss_block.png"));
+    m_static_objects.push_back(new Block(2, 7, 1, 1, "terrain\\moss_block.png"));
+  //vertical blocks
+    m_static_objects.push_back(new Block(1, 8, 1, 1, "terrain\\dirt_block1.png"));
+    m_static_objects.push_back(new Block(2, 8, 1, 1, "terrain\\dirt_block1.png"));
+    m_static_objects.push_back(new Block(1, 9, 1, 1, "terrain\\dirt_block1.png"));
+    m_static_objects.push_back(new Block(2, 9, 1, 1, "terrain\\dirt_block1.png"));
+    m_static_objects.push_back(new Block(1, 10, 1, 1, "terrain\\dirt_block1.png"));
+    m_static_objects.push_back(new Block(0.75, 10.25, 0.55, 0.55, "terrain\\block_with_triangles.png"));
+    m_static_objects.push_back(new Block(2, 10, 1, 1, "terrain\\dirt_block1.png"));
+    m_static_objects.push_back(new Block(1, 11, 1, 1, "terrain\\block_with_triangles.png"));
+    m_static_objects.push_back(new Block(2, 11, 1, 1, "terrain\\dirt_block1.png"));
+  //floor_blocks
+    //main floor
+    m_static_objects.push_back(new Block(2.775, 10.52, 0.55, 0.55, "terrain\\block_with_triangles.png"));
+    m_static_objects.push_back(new Block(3, 11.3, 1, 1, "terrain\\floor_block_left_side.png"));
+    m_static_objects.push_back(new Block(2.75, 11.75, 0.55, 0.55, "terrain\\floor_left_edge.png"));
+    m_static_objects.push_back(new Block(4, 11.3, 1, 1, "terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(5, 11.3, 1, 1, "terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(6, 11.3, 1, 1, "terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(7, 11.3, 1, 1, "terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(8, 11.3, 1, 1, "terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(9, 11.3, 1, 1, "terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(10, 11.3, 1, 1,"terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(11, 11.3, 1, 1,"terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(12, 11.3, 1, 1,"terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(13, 11.3, 1, 1,"terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(14, 11.3, 1, 1,"terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(15, 11.3, 1, 1, "terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(15.79, 11.07, 0.55, 0.55, "terrain\\floor_left_edge.png"));
+    //walls and ceiling
+    m_static_objects.push_back(new Block(0.25, 11.75, 0.55, 0.55, "terrain\\floor_edge.png"));
+    m_static_objects.push_back(new Block(1, 12, 1, 1, "terrain\\floor_block.png"));
+    m_static_objects.push_back(new Block(2, 12, 1, 1, "terrain\\floor_block.png"));
+     // left wall
+    m_static_objects.push_back(new Block(0, 11, 1, 1, "terrain\\brick_outline.png"));
+    m_static_objects.push_back(new Block(0, 10, 1, 1, "terrain\\brick_outline.png"));
+    m_static_objects.push_back(new Block(0, 9, 1, 1, "terrain\\brick_outline.png"));
+    m_static_objects.push_back(new Block(0, 8, 1, 1, "terrain\\brick_outline.png"));
+    m_static_objects.push_back(new Block(0, 7, 1, 1, "terrain\\brick_outline.png"));
+    m_static_objects.push_back(new Block(0, 6, 1, 1, "terrain\\brick_outline.png"));
+    m_static_objects.push_back(new Block(0, 5, 1, 1, "terrain\\brick_outline.png"));
+    m_static_objects.push_back(new Block(0, 4, 1, 1, "terrain\\brick_outline.png"));
+    m_static_objects.push_back(new Block(0, 3, 1, 1, "terrain\\brick_outline.png"));
+     //right wall
+    m_static_objects.push_back(new Block(16, 10.3, 1, 1, "terrain\\right_wall.png"));
+    m_static_objects.push_back(new Block(16, 9.3, 1, 1, "terrain\\right_wall.png"));
+    m_static_objects.push_back(new Block(16, 8.3, 1, 1, "terrain\\floor_block_left_side.png"));
+
+
+  // next platforms
+    m_static_objects.push_back(new Block(7.5, 7.3, 1, 1, "terrain\\moss_block.png"));
+    m_static_objects.push_back(new Block(8.5, 7.3, 1, 1, "terrain\\moss_block.png"));
+    m_static_objects.push_back(new Block(9.5, 7.3, 1, 1, "terrain\\moss_block.png"));
+    m_static_objects.push_back(new Block(10.5, 7.3, 1, 1,"terrain\\moss_block.png"));
+    m_static_objects.push_back(new Block(11.5, 7.3, 1, 1, "terrain\\moss_block.png"));
+    m_static_objects.push_back(new Block(12.5, 7.3, 1, 1, "terrain\\moss_block.png"));
+    m_static_objects.push_back(new Block(13.5, 7.3, 1, 1, "terrain\\moss_block.png"));
+    m_static_objects.push_back(new Block(14.5, 7.3, 1, 1, "terrain\\moss_block.png"));
+    m_static_objects.push_back(new Block(15.5, 7.3, 1, 1, "terrain\\block_with_triangles.png"));
 
 	for (auto& p_gob : m_static_objects)
 		if (p_gob) p_gob->init();

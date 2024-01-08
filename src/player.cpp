@@ -19,9 +19,7 @@ void Player::update(float dt)
 
 void Player::init()
 {
-	m_pos_x = 2.0f;
-	m_pos_y = 6.0f;
-	
+
 	m_state->m_global_offset_x = CANVAS_WIDTH / 2.0f - m_pos_x;
 	m_state->m_global_offset_y = CANVAS_HEIGHT / 2.0f - m_pos_y;
 
@@ -110,3 +108,17 @@ void Player::movePlayer(float dt)
 	
 }
 
+void Player::setPosition(float x, float y) {
+	m_pos_x = x;
+	m_pos_y = y;
+}
+
+void Player::setInitialPosition(float x, float y) {
+	m_init_x = x;
+	m_init_y = y;
+}
+
+void Player::goToInitialPosition() {
+	m_pos_x = m_init_x;
+	m_pos_y = m_init_y;
+}

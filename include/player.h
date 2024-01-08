@@ -8,8 +8,10 @@ class Player : public Box, public GameObject
 {
 	// animated player
 	std::vector<std::string> m_sprites;
-
 	graphics::Brush m_brush_player;
+
+	float m_init_x;
+	float m_init_y;
 
 	const float m_accel_horizontal = 20.0f;
 	const float m_accel_vertical = 300.1f;
@@ -24,6 +26,9 @@ public:
 	void update(float dt) override;
 	void draw() override;
 	void init() override;
+	void setPosition(float x, float y);
+	void setInitialPosition(float x, float y);
+	void goToInitialPosition();
 	
 protected:
 	void debugDraw();

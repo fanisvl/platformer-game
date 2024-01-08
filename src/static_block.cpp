@@ -1,6 +1,5 @@
 #include "static_block.h"
 #include "config.h"
-#include "gamestate.h"
 
 void StaticBlock::update(float dt) {
 

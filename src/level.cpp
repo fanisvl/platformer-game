@@ -15,6 +15,8 @@ void Level::checkCollisions()
                     // Player death animation
                     // Player back to original position
                     // Reset level
+                    m_state->getPlayer()->goToInitialPosition();
+                    break;
                 }
 
                 m_state->getPlayer()->m_pos_y += offset;
@@ -70,6 +72,8 @@ void Level::init()
     // Add Static & Dynamic Objects to Level
     // TODO: Load level by reading file.
     // Add Static & Dynamic Objects to Level
+    m_state->getPlayer()->setInitialPosition(5.0f, 5.0f);
+    m_state->getPlayer()->goToInitialPosition();
     m_static_objects.push_back(new StaticBlock(1, 7, 1, 1, "tile.png"));
     m_static_objects.push_back(new StaticBlock(2, 7, 1, 1, "tile.png"));
     m_static_objects.push_back(new StaticBlock(5, 6, 1, 1, "tile.png"));

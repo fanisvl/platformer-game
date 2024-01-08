@@ -29,9 +29,8 @@ GameState* GameState::getInstance()
 bool GameState::init()
 {
 	m_current_level = new Level();
-	m_current_level->init();
-	
 	m_player = new Player();
+	m_current_level->init();
 	m_player->init();
 
 	graphics::preloadBitmaps(getAssetDir());

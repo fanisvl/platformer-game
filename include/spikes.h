@@ -2,7 +2,6 @@
 #include "static_block.h"
 
 class Spikes : public StaticBlock {
-	
 public:
 	void update(float dt) override;
 	void draw() override;

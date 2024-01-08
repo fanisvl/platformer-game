@@ -11,6 +11,12 @@ void Level::checkCollisions()
             float offset = 0.0f;
             if (offset = m_state->getPlayer()->intersectDown(*p_sb))
             {
+                if (p_sb->isDeadly()) {
+                    // Player death animation
+                    // Player back to original position
+                    // Reset level
+                }
+
                 m_state->getPlayer()->m_pos_y += offset;
                 m_state->getPlayer()->m_vy = 0.0f;
                 break;
@@ -71,6 +77,7 @@ void Level::init()
     m_static_objects.push_back(new StaticBlock(7, 6, 1, 1, "tile.png"));
     m_static_objects.push_back(new StaticBlock(8, 6, 1, 1, "tile.png"));
     m_static_objects.push_back(new StaticBlock(10, 7, 1, 1, "tile.png"));
+    m_static_objects.push_back(new Spikes(7, 5, 1, 1, "spikes.png"));
 
 	for (auto& p_gob : m_static_objects)
 		if (p_gob) p_gob->init();

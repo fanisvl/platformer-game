@@ -7,34 +7,44 @@ void Level::checkCollisions()
 {
     // Static Objects
     // Intersect Down
-    for (auto& p_sb : m_static_objects) {
+    for (auto& p_sob : m_static_objects) {
             float offset = 0.0f;
-            if (offset = m_state->getPlayer()->intersectDown(*p_sb))
+            if (offset = m_state->getPlayer()->intersectDown(*p_sob))
             {
-                if (p_sb->isDeadly()) {
-                    // Player death animation
-                    // Player back to original position
-                    // Reset level
-                    m_state->getPlayer()->goToInitialPosition();
-                    break;
+                // p_sob->resolveCollision() ??
+                if (p_sob->isDeadly()) {
+                    resetLevel();
                 }
 
                 m_state->getPlayer()->m_pos_y += offset;
                 m_state->getPlayer()->m_vy = 0.0f;
-                break;
             }
     }
     // Intersect Sideways
-    for (auto& p_gob : m_static_objects) {
+    for (auto& p_sob : m_static_objects) {
             float offset = 0.0f;
-            if (offset = m_state->getPlayer()->intersectSideways(*p_gob))
+            if (offset = m_state->getPlayer()->intersectSideways(*p_sob))
             {
+                if (p_sob->isDeadly()) {
+                    resetLevel();
+                }
                 m_state->getPlayer()->m_pos_x += offset;
                 m_state->getPlayer()->m_vx = 0.0f;
-                break;
             }
     }
 
+}
+
+void Level::resetLevel() {
+    // Hide dynamic objects instead of destroying and re-creating them.
+    // Add a hide()/die() method to dynamic objects
+    // init() will undo the effects of hide()
+
+    // TODO: Add die method to player that plays death animation
+    // TODO: Count deaths OR Add timer / Highscore??
+    m_state->getPlayer()->goToInitialPosition();
+    for (auto p_dob : m_dynamic_objects)
+        p_dob->init();
 }
 
 void Level::update(float dt)

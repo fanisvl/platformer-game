@@ -5,6 +5,6 @@
 #define ASSET_PATH "assets\\"
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 800
-#define CANVAS_WIDTH 6
-#define CANVAS_HEIGHT 6
+#define CANVAS_WIDTH 10
+#define CANVAS_HEIGHT 10
 #define SETCOLOR(c, r, g, b) {c[0]=r; c[1]=g; c[2]=b;}

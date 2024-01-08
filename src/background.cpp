@@ -4,7 +4,7 @@ void Background::update(float dt) {
 }
 
 void Background::init() {
-    m_background_path = m_state->getFullAssetPath("city_background.png");
+    m_background_path = m_state->getFullAssetPath("background\\forrest.png");
     m_brush_background.texture = m_background_path;
     m_brush_background.outline_opacity = 0.0f;
 }
@@ -16,5 +16,5 @@ void Background::draw() {
     float offset_y = m_state->m_global_offset_y / 2.0f + h/2.0f;
 
     //Draw Background
-    graphics::drawRect(offset_x, offset_y, 2.0f*w, 2.0f*h, m_brush_background);
+    graphics::drawRect(offset_x, offset_y, 1.5f*w, 1.5f*h, m_brush_background);
 }

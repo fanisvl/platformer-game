@@ -21,7 +21,7 @@ void Enemy::handleCollision(CollisionType type) {
 		case SIDEWAYS:
 			// kill player
 			std::cout << "kill player" << std::endl;
-			
+			m_state->playerDeath();
 			break;
 		case DOWNWARDS:
 			// kill self

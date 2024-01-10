@@ -29,4 +29,5 @@ public:
 	std::string getFullAssetPath(const std::string& asset);
 	std::string getAssetDir();
 	class Player* getPlayer() { return m_player; }
+	void playerDeath();
 };

@@ -17,12 +17,11 @@ class Level : public GameObject
 	std::list<DynamicObject*> m_dynamic_objects;
 
 	void checkCollisions();
-	void resetLevel();
 public:
 	void update(float dt) override;
 	void draw() override;
 	void init() override;
-
+	void resetLevel();
 	Level();
 	~Level() override;
 };

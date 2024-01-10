@@ -110,81 +110,7 @@ void Level::init()
   
     m_state->getPlayer()->setInitialPosition(10.0f, 6.0f);
     m_state->getPlayer()->goToInitialPosition();
-  
-  // Starting Platform
-    m_static_objects.push_back(new StaticBlock(0.75, 6.225, 0.55, 0.55, "terrain\\block_with_triangles.png"));
-    m_static_objects.push_back(new StaticBlock(1, 7, 1, 1, "terrain\\moss_block.png"));
-    m_static_objects.push_back(new StaticBlock(2, 7, 1, 1, "terrain\\moss_block.png"));
-  
-  //vertical blocks
-    m_static_objects.push_back(new StaticBlock(1, 8, 1, 1, "terrain\\dirt_block1.png"));
-    m_static_objects.push_back(new StaticBlock(2, 8, 1, 1, "terrain\\dirt_block1.png"));
-    m_static_objects.push_back(new StaticBlock(1, 9, 1, 1, "terrain\\dirt_block1.png"));
-    m_static_objects.push_back(new StaticBlock(2, 9, 1, 1, "terrain\\dirt_block1.png"));
-    m_static_objects.push_back(new StaticBlock(1, 10, 1, 1, "terrain\\dirt_block1.png"));
-    m_static_objects.push_back(new StaticBlock(0.75, 10.25, 0.55, 0.55, "terrain\\block_with_triangles.png"));
-    m_static_objects.push_back(new StaticBlock(2, 10, 1, 1, "terrain\\dirt_block1.png"));
-    m_static_objects.push_back(new StaticBlock(1, 11, 1, 1, "terrain\\block_with_triangles.png"));
-    m_static_objects.push_back(new StaticBlock(2, 11, 1, 1, "terrain\\dirt_block1.png"));
-  
-  //floor_blocks
-    //main floor
-    m_static_objects.push_back(new StaticBlock(2.775, 10.52, 0.55, 0.55, "terrain\\block_with_triangles.png"));
-    m_static_objects.push_back(new StaticBlock(3, 11.3, 1, 1, "terrain\\floor_block_left_side.png"));
-    m_static_objects.push_back(new StaticBlock(2.75, 11.75, 0.55, 0.55, "terrain\\floor_left_edge.png"));
-    m_static_objects.push_back(new StaticBlock(4, 11.3, 1, 1, "terrain\\floor_block.png"));
-    m_static_objects.push_back(new StaticBlock(5, 11.3, 1, 1, "terrain\\floor_block.png"));
-    m_static_objects.push_back(new StaticBlock(6, 11.3, 1, 1, "terrain\\floor_block.png"));
-    m_static_objects.push_back(new StaticBlock(7, 11.3, 1, 1, "terrain\\floor_block.png"));
-    m_static_objects.push_back(new StaticBlock(8, 11.3, 1, 1, "terrain\\floor_block.png"));
-    m_static_objects.push_back(new StaticBlock(9, 11.3, 1, 1, "terrain\\floor_block.png"));
-    m_static_objects.push_back(new StaticBlock(10, 11.3, 1, 1,"terrain\\floor_block.png"));
-    m_static_objects.push_back(new StaticBlock(11, 11.3, 1, 1,"terrain\\floor_block.png"));
-    m_static_objects.push_back(new StaticBlock(12, 11.3, 1, 1,"terrain\\floor_block.png"));
-    m_static_objects.push_back(new StaticBlock(13, 11.3, 1, 1,"terrain\\floor_block.png"));
-    m_static_objects.push_back(new StaticBlock(14, 11.3, 1, 1,"terrain\\floor_block.png"));
-    m_static_objects.push_back(new StaticBlock(15, 11.3, 1, 1, "terrain\\floor_block.png"));
-    m_static_objects.push_back(new StaticBlock(15.79, 11.07, 0.55, 0.55, "terrain\\floor_left_edge.png"));
- 
-  
-    //walls and ceiling
-    m_static_objects.push_back(new StaticBlock(0.25, 11.75, 0.55, 0.55, "terrain\\floor_edge.png"));
-    m_static_objects.push_back(new StaticBlock(1, 12, 1, 1, "terrain\\floor_block.png"));
-    m_static_objects.push_back(new StaticBlock(2, 12, 1, 1, "terrain\\floor_block.png"));
-  
-     // left wall
-    m_static_objects.push_back(new StaticBlock(0, 11, 1, 1, "terrain\\brick_outline.png"));
-    m_static_objects.push_back(new StaticBlock(0, 10, 1, 1, "terrain\\brick_outline.png"));
-    m_static_objects.push_back(new StaticBlock(0, 9, 1, 1, "terrain\\brick_outline.png"));
-    m_static_objects.push_back(new StaticBlock(0, 8, 1, 1, "terrain\\brick_outline.png"));
-    m_static_objects.push_back(new StaticBlock(0, 7, 1, 1, "terrain\\brick_outline.png"));
-    m_static_objects.push_back(new StaticBlock(0, 6, 1, 1, "terrain\\brick_outline.png"));
-    m_static_objects.push_back(new StaticBlock(0, 5, 1, 1, "terrain\\brick_outline.png"));
-    m_static_objects.push_back(new StaticBlock(0, 4, 1, 1, "terrain\\brick_outline.png"));
-    m_static_objects.push_back(new StaticBlock(0, 3, 1, 1, "terrain\\brick_outline.png"));
-  
-    //right wall
-    m_static_objects.push_back(new StaticBlock(16, 10.3, 1, 1, "terrain\\right_wall.png"));
-    m_static_objects.push_back(new StaticBlock(16, 9.3, 1, 1, "terrain\\right_wall.png"));
-    m_static_objects.push_back(new StaticBlock(16, 8.3, 1, 1, "terrain\\floor_block_left_side.png"));
-
-
-  // next platforms
-    m_static_objects.push_back(new StaticBlock(7.5, 7.3, 1, 1, "terrain\\moss_block.png"));
-    m_static_objects.push_back(new StaticBlock(8.5, 7.3, 1, 1, "terrain\\moss_block.png"));
-    m_static_objects.push_back(new StaticBlock(9.5, 7.3, 1, 1, "terrain\\moss_block.png"));
-    m_static_objects.push_back(new StaticBlock(10.5, 7.3, 1, 1,"terrain\\moss_block.png"));
-    m_static_objects.push_back(new StaticBlock(11.5, 7.3, 1, 1, "terrain\\moss_block.png"));
-    m_static_objects.push_back(new StaticBlock(12.5, 7.3, 1, 1, "terrain\\moss_block.png"));
-    m_static_objects.push_back(new StaticBlock(13.5, 7.3, 1, 1, "terrain\\moss_block.png"));
-    m_static_objects.push_back(new StaticBlock(14.5, 7.3, 1, 1, "terrain\\moss_block.png"));
-    m_static_objects.push_back(new StaticBlock(15.5, 7.3, 1, 1, "terrain\\block_with_triangles.png"));
-
-    // Spikes
-    m_static_objects.push_back(new Spikes(14, 10.3, 1, 1, "spikes.png"));
-    m_dynamic_objects.push_back(new Enemy(12, 10.3, 1, 1, "slime.png"));
-
-  
+    LoadLevel("levels\\level1.txt");  
 	for (auto& p_gob : m_static_objects)
 		if (p_gob) p_gob->init();
 	
@@ -205,4 +131,40 @@ Level::~Level()
 		delete p_go;
 	for (auto p_go : m_dynamic_objects)
 		delete p_go;
+}
+
+#include <fstream>
+#include <sstream>
+#include <string>>
+#include <iomanip>
+void Level::LoadLevel(std::string filepath) {
+    
+    std::ifstream inputFile(filepath);
+    if (!inputFile.is_open()) {
+        std::cerr << "Error opening file." << std::endl;
+        return;
+    }
+    std::string line;
+    while (std::getline(inputFile, line)) {
+        std::istringstream iss(line);
+
+        std::string Type;
+        float x_value;
+        float y_value;
+        float w_value;
+        float h_value;
+        std::string pngImage;
+
+        if (iss >> std::quoted(Type) >> x_value >> y_value >> w_value >> h_value >> std::quoted(pngImage)) {
+            if (Type == "Enemy") {
+                m_dynamic_objects.push_back(new Enemy(x_value, y_value, w_value, h_value, pngImage));
+            }
+            else if (Type == "Spikes") {
+                m_static_objects.push_back(new Spikes(x_value, y_value, w_value, h_value, pngImage));
+            }
+            else if (Type == "StaticBlock") {
+                m_static_objects.push_back(new StaticBlock(x_value, y_value, w_value, h_value, pngImage));
+            }
+        }
+    }
 }

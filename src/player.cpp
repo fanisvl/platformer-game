@@ -127,3 +127,8 @@ void Player::handleCollision(float offset) {
 	m_pos_x += offset;
 	m_vx = 0.0f;
 }
+
+std::pair<float, float> Player::getPositionXY()
+{
+	return std::make_pair(m_pos_x, m_pos_y);
+}

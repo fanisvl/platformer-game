@@ -3,6 +3,7 @@
 #include "gameobject.h"
 #include <sgg/graphics.h>
 #include "box.h"
+#include <utility>
 
 class Player : public Box, public GameObject
 {
@@ -30,6 +31,7 @@ public:
 	void setInitialPosition(float x, float y);
 	void goToInitialPosition();
 	void handleCollision(float offset);
+	std::pair<float, float> getPositionXY();
 	
 protected:
 	void debugDraw();

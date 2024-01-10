@@ -7,5 +7,6 @@ public:
 	void draw() override;
 	void init() override;
 	void handleCollision(CollisionType type) override;
+	void chasePlayer();
 	Enemy(float x, float y, float w, float h, const std::string& assetName);
 };

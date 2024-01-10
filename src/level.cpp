@@ -2,37 +2,63 @@
 #include <sgg/graphics.h>
 #include "player.h"
 #include "spikes.h"
+#include "dynamic_object.h"
+#include "enemy.h"
+#include <iostream>
+
 
 void Level::checkCollisions()
 {
     // Static Objects
-    // Intersect Down
-    for (auto& p_sob : m_static_objects) {
-            float offset = 0.0f;
-            if (offset = m_state->getPlayer()->intersectDown(*p_sob))
-            {
-                // p_sob->resolveCollision() ??
-                if (p_sob->isDeadly()) {
-                    resetLevel();
-                }
-
-                m_state->getPlayer()->m_pos_y += offset;
-                m_state->getPlayer()->m_vy = 0.0f;
-            }
-    }
     // Intersect Sideways
     for (auto& p_sob : m_static_objects) {
-            float offset = 0.0f;
-            if (offset = m_state->getPlayer()->intersectSideways(*p_sob))
-            {
-                if (p_sob->isDeadly()) {
-                    resetLevel();
-                }
+        float offset = 0.0f;
+        if (offset = m_state->getPlayer()->intersectSideways(*p_sob)) {
+            if (p_sob->isDeadly()) {
+                resetLevel();
+            }
                 m_state->getPlayer()->m_pos_x += offset;
                 m_state->getPlayer()->m_vx = 0.0f;
-            }
+                break;
+        }
     }
 
+    // Intersect Down
+    for (auto& p_sob : m_static_objects) {
+        float offset = 0.0f;
+        if (offset = m_state->getPlayer()->intersectDown(*p_sob)) {
+            // p_sob->resolveCollision() ??
+            if (p_sob->isDeadly()) {
+                resetLevel();
+            }
+
+            m_state->getPlayer()->m_pos_y += offset;
+            m_state->getPlayer()->m_vy = 0.0f;
+            break;
+        }
+    }
+
+    // Dynamic Objects
+    // TODO: Change to match all dynamic objects.
+    // Coins for example get "killed" when the player intersects in any direction.
+    // Enemies get killed when the player intersects down, and kill the player when they intersect sideways.
+    for (auto& p_dob : m_dynamic_objects) {
+        float offset = 0.0f;
+        if (offset = m_state->getPlayer()->intersectSideways(*p_dob)) {
+            // Dynamic objects should know if an intersection kills them, and what to do.
+            // We can add a method like handleCollision(SIDEWAYS) to all dynamic objects that kills (hides) the object based on the direction of the collision.
+            p_dob->handleCollision(SIDEWAYS);
+            break;
+        }
+    }
+
+    for (auto& p_dob : m_dynamic_objects) {
+        float offset = 0.0f;
+        if (offset = m_state->getPlayer()->intersectDown(*p_dob)) {
+            p_dob->handleCollision(DOWNWARDS);
+            break;
+        }
+    }
 }
 
 void Level::resetLevel() {
@@ -57,7 +83,6 @@ void Level::update(float dt)
 
 	checkCollisions();
 
-	GameObject::update(dt);
 }
 
 void Level::draw()
@@ -83,7 +108,7 @@ void Level::init()
     // TODO: Load level by reading file.
     // Add Static & Dynamic Objects to Level
   
-    m_state->getPlayer()->setInitialPosition(2.0f, 6.0f);
+    m_state->getPlayer()->setInitialPosition(10.0f, 6.0f);
     m_state->getPlayer()->goToInitialPosition();
   
   // Starting Platform
@@ -120,9 +145,6 @@ void Level::init()
     m_static_objects.push_back(new StaticBlock(14, 11.3, 1, 1,"terrain\\floor_block.png"));
     m_static_objects.push_back(new StaticBlock(15, 11.3, 1, 1, "terrain\\floor_block.png"));
     m_static_objects.push_back(new StaticBlock(15.79, 11.07, 0.55, 0.55, "terrain\\floor_left_edge.png"));
-  
-    // spikes
-    m_static_objects.push_back(new Spikes(14, 10.3, 1, 1, "spikes.png"));
  
   
     //walls and ceiling
@@ -157,6 +179,11 @@ void Level::init()
     m_static_objects.push_back(new StaticBlock(13.5, 7.3, 1, 1, "terrain\\moss_block.png"));
     m_static_objects.push_back(new StaticBlock(14.5, 7.3, 1, 1, "terrain\\moss_block.png"));
     m_static_objects.push_back(new StaticBlock(15.5, 7.3, 1, 1, "terrain\\block_with_triangles.png"));
+
+    // Spikes
+    m_static_objects.push_back(new Spikes(14, 10.3, 1, 1, "spikes.png"));
+    m_dynamic_objects.push_back(new Enemy(12, 10.3, 1, 1, "slime.png"));
+
   
 	for (auto& p_gob : m_static_objects)
 		if (p_gob) p_gob->init();

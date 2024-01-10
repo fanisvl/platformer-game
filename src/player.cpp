@@ -122,3 +122,8 @@ void Player::goToInitialPosition() {
 	m_pos_x = m_init_x;
 	m_pos_y = m_init_y;
 }
+
+void Player::handleCollision(float offset) {
+	m_pos_x += offset;
+	m_vx = 0.0f;
+}

@@ -29,10 +29,9 @@ public:
 	void setPosition(float x, float y);
 	void setInitialPosition(float x, float y);
 	void goToInitialPosition();
+	void handleCollision(float offset);
 	
 protected:
 	void debugDraw();
-	
-	// dynamic motion control
 	void movePlayer(float dt);
 };

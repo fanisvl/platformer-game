@@ -1,6 +1,4 @@
 #pragma once
-
-#include "sgg/graphics.h"
 #include "static_block.h"
 
 enum CollisionType {
@@ -10,6 +8,7 @@ enum CollisionType {
 };
 
 class DynamicObject : public StaticBlock {
+protected:
     bool hidden;
 public:
     void update(float dt) override;
@@ -18,5 +17,5 @@ public:
     DynamicObject(float x, float y, float w, float h, const std::string& assetName);
     void hide();
     void show();
-    void handleCollision(CollisionType type);
+    virtual void handleCollision(CollisionType type) {};
 };

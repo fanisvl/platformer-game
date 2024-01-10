@@ -128,7 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="include\enemy.cpp" />
+    <ClCompile Include="src\enemy.cpp" />
     <ClCompile Include="src\dynamic_object.cpp" />
     <ClCompile Include="src\spikes.cpp" />
     <ClCompile Include="src\background.cpp" />

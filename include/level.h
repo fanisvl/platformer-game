@@ -8,12 +8,13 @@
 #include "player.h"
 #include "static_block.h"
 #include "background.h"
+#include "dynamic_object.h"
 
 class Level : public GameObject
 {
     Background* m_background = nullptr;
 	std::vector<StaticBlock*> m_static_objects;
-	std::list<GameObject*> m_dynamic_objects;
+	std::list<DynamicObject*> m_dynamic_objects;
 
 	void checkCollisions();
 	void resetLevel();

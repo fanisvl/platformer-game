@@ -28,11 +28,8 @@ void StaticBlock::init() {
     SETCOLOR(m_brush_debug.outline_color, 0.5f, 1.0f, 0.2f);
 }
 
-StaticBlock::StaticBlock(float x, float y, float w, float h, const std::string &assetName) {
-    m_pos_x = x;
-    m_pos_y = y;
-    m_width = w;
-    m_height = h;
+StaticBlock::StaticBlock(float x, float y, float w, float h, const std::string &assetName) : Box(x, y, w, h)
+{
     m_asset_path = assetName;
 }
 

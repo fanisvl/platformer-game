@@ -87,4 +87,8 @@ std::string GameState::getAssetDir()
 	return ASSET_PATH;
 }
 
+void GameState::playerDeath() {
+	m_current_level->resetLevel();
+}
+
 GameState* GameState::m_unique_instance = nullptr;

@@ -42,7 +42,7 @@
     <ClCompile Include="src\dynamic_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="include\enemy.cpp">
+    <ClCompile Include="src\enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

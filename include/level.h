@@ -21,6 +21,7 @@ public:
 	void update(float dt) override;
 	void draw() override;
 	void init() override;
+	void LoadLevel(std::string filename);
 	void resetLevel();
 	Level();
 	~Level() override;

@@ -1,9 +1,7 @@
 #include "enemy.h"
 
 void Enemy::init() {
-	DynamicObject::init();
-	
-	// Fix collision box
+	DynamicObject::init();	
 }
 
 void Enemy::update(float dt) {

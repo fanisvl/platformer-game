@@ -92,7 +92,8 @@ void Player::movePlayer(float dt)
 
 	// jump only when not in flight:
 	if (m_vy == 0.0f) {
-		m_vy -= (graphics::getKeyState(graphics::SCANCODE_W) ? m_accel_vertical : 0.0f) * 0.02f; // not delta_time!! Burst 
+		float jump_multiplier = 0.02;
+		m_vy -= (graphics::getKeyState(graphics::SCANCODE_W) ? m_accel_vertical : 0.0f) * jump_multiplier;
 	}
 
 	// add gravity

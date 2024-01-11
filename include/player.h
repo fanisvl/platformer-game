@@ -32,7 +32,6 @@ public:
 	void goToInitialPosition();
 	void handleCollision(float offset);
 	std::pair<float, float> getPositionXY();
-	
 protected:
 	void debugDraw();
 	void movePlayer(float dt);

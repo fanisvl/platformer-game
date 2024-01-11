@@ -4,6 +4,7 @@
 #include "spikes.h"
 #include "dynamic_object.h"
 #include "enemy.h"
+#include "box.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -18,12 +19,9 @@ void Level::checkCollisions()
     for (auto& p_sob : m_static_objects) {
         float offset = 0.0f;
         if (offset = m_state->getPlayer()->intersectSideways(*p_sob)) {
-            if (p_sob->isDeadly()) {
-                m_state->playerDeath();
-            }
-                m_state->getPlayer()->m_pos_x += offset;
-                m_state->getPlayer()->m_vx = 0.0f;
-                break;
+            p_sob->handleCollision(SIDEWAYS);
+            m_state->getPlayer()->handleCollision(SIDEWAYS, offset);
+            break;
         }
     }
 
@@ -31,13 +29,8 @@ void Level::checkCollisions()
     for (auto& p_sob : m_static_objects) {
         float offset = 0.0f;
         if (offset = m_state->getPlayer()->intersectDown(*p_sob)) {
-            // p_sob->resolveCollision() ??
-            if (p_sob->isDeadly()) {
-                m_state->playerDeath();
-            }
-
-            m_state->getPlayer()->m_pos_y += offset;
-            m_state->getPlayer()->m_vy = 0.0f;
+            p_sob->handleCollision(DOWNWARDS);
+            m_state->getPlayer()->handleCollision(DOWNWARDS, offset);
             break;
         }
     }
@@ -151,7 +144,7 @@ void Level::LoadLevel(std::string filepath) {
                 m_static_objects.push_back(new Spikes(x_value, y_value, w_value, h_value, pngImage));
             }
             else if (Type == "StaticBlock") {
-                m_static_objects.push_back(new StaticBlock(x_value, y_value, w_value, h_value, pngImage));
+                m_static_objects.push_back(new StaticObject(x_value, y_value, w_value, h_value, pngImage));
             }
         }
     }

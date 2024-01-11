@@ -19,10 +19,6 @@ void Player::update(float dt)
 
 void Player::init()
 {
-
-	m_state->m_global_offset_x = CANVAS_WIDTH / 2.0f - m_pos_x;
-	m_state->m_global_offset_y = CANVAS_HEIGHT / 2.0f - m_pos_y;
-
 	m_brush_player.fill_opacity = 1.0f;
 	m_brush_player.outline_opacity = 0.0f;
 	m_brush_player.texture = m_state->getFullAssetPath("player\\WizardWalk00.png");
@@ -96,7 +92,8 @@ void Player::movePlayer(float dt)
 
 	// jump only when not in flight:
 	if (m_vy == 0.0f) {
-		m_vy -= (graphics::getKeyState(graphics::SCANCODE_W) ? m_accel_vertical : 0.0f) * 0.02f; // not delta_time!! Burst 
+		float jump_multiplier = 0.02;
+		m_vy -= (graphics::getKeyState(graphics::SCANCODE_W) ? m_accel_vertical : 0.0f) * jump_multiplier;
 	}
 
 	// add gravity
@@ -123,9 +120,18 @@ void Player::goToInitialPosition() {
 	m_pos_y = m_init_y;
 }
 
-void Player::handleCollision(float offset) {
-	m_pos_x += offset;
-	m_vx = 0.0f;
+void Player::handleCollision(CollisionType type, float offset) {
+
+	switch (type) {
+	case SIDEWAYS:
+		m_pos_x += offset;
+		m_vx = 0.0f;
+		break;
+	case DOWNWARDS:
+		m_pos_y += offset;
+		m_vy = 0.0f;
+		break;
+	}
 }
 
 std::pair<float, float> Player::getPositionXY()

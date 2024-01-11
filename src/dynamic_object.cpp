@@ -7,18 +7,22 @@ void DynamicObject::update(float dt) {
 void DynamicObject::draw() {
 
     if (!hidden) {
-        StaticBlock::draw();
+        StaticObject::draw();
     }
 }
 
 void DynamicObject::init() {
+    m_pos_x = init_x;
+    m_pos_y = init_y;
     show();
-    StaticBlock::init();
+    StaticObject::init();
 }
 
 DynamicObject::DynamicObject(float x, float y, float w, float h, const std::string& assetName) 
-    : StaticBlock(x, y, w, h, assetName)
+    : StaticObject(x, y, w, h, assetName)
 {
+    init_x = x;
+    init_y = y;
     hidden = false;
 }
 

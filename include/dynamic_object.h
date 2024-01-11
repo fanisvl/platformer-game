@@ -1,14 +1,10 @@
 #pragma once
-#include "static_block.h"
+#include "static_object.h"
 
-enum CollisionType {
-    SIDEWAYS,
-    DOWNWARDS,
-    UPWARDS,
-};
-
-class DynamicObject : public StaticBlock {
+class DynamicObject : public StaticObject {
 protected:
+    float init_x;
+    float init_y;
     bool hidden;
 public:
     void update(float dt) override;
@@ -17,5 +13,4 @@ public:
     DynamicObject(float x, float y, float w, float h, const std::string& assetName);
     void hide();
     void show();
-    virtual void handleCollision(CollisionType type) {};
 };

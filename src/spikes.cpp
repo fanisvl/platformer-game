@@ -18,8 +18,11 @@ void Spikes::init() {
     m_height /= 2.0f;
 }
 
+void Spikes::handleCollision(CollisionType type) {
+    m_state->playerDeath();
+}
+
 Spikes::Spikes(float x, float y, float w, float h, const std::string& asset) 
     : StaticObject(x, y, w, h, asset)
 {
-    is_deadly = true;
 }

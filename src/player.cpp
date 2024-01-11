@@ -123,9 +123,18 @@ void Player::goToInitialPosition() {
 	m_pos_y = m_init_y;
 }
 
-void Player::handleCollision(float offset) {
-	m_pos_x += offset;
-	m_vx = 0.0f;
+void Player::handleCollision(CollisionType type, float offset) {
+
+	switch (type) {
+	case SIDEWAYS:
+		m_pos_x += offset;
+		m_vx = 0.0f;
+		break;
+	case DOWNWARDS:
+		m_pos_y += offset;
+		m_vy = 0.0f;
+		break;
+	}
 }
 
 std::pair<float, float> Player::getPositionXY()

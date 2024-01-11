@@ -132,7 +132,7 @@
     <ClCompile Include="src\dynamic_object.cpp" />
     <ClCompile Include="src\spikes.cpp" />
     <ClCompile Include="src\background.cpp" />
-    <ClCompile Include="src\static_block.cpp" />
+    <ClCompile Include="src\static_object.cpp" />
     <ClCompile Include="src\gameobject.cpp" />
     <ClCompile Include="src\gamestate.cpp" />
     <ClCompile Include="src\level.cpp" />
@@ -143,7 +143,7 @@
     <ClInclude Include="include\background.h" />
     <ClInclude Include="include\dynamic_object.h" />
     <ClInclude Include="include\enemy.h" />
-    <ClInclude Include="include\static_block.h" />
+    <ClInclude Include="include\static_object.h" />
     <ClInclude Include="include\box.h" />
     <ClInclude Include="include\config.h" />
     <ClInclude Include="include\spikes.h" />

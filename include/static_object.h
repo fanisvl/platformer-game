@@ -4,7 +4,7 @@
 #include "sgg/graphics.h"
 #include <vector>
 
-class StaticBlock : public GameObject, public Box {
+class StaticObject : public GameObject, public Box {
 protected:
     std::string m_asset_path;
     graphics::Brush m_brush;
@@ -16,6 +16,6 @@ public:
     void draw() override;
     void init() override;
     bool isDeadly() { return is_deadly; }
-    StaticBlock(float x, float y, float w, float h, const std::string& assetName);
-    StaticBlock() {};
+    StaticObject(float x, float y, float w, float h, const std::string& assetName);
+    StaticObject() {};
 };

@@ -1,11 +1,11 @@
-#include "static_block.h"
+#include "static_object.h"
 #include "config.h"
 
-void StaticBlock::update(float dt) {
+void StaticObject::update(float dt) {
 
 }
 
-void StaticBlock::draw() {
+void StaticObject::draw() {
 
     float x = m_pos_x + m_state->m_global_offset_x;
     float y = m_pos_y + m_state->m_global_offset_y;
@@ -16,7 +16,7 @@ void StaticBlock::draw() {
     }
 }
 
-void StaticBlock::init() {
+void StaticObject::init() {
 
     // Normal Brush init
     m_brush.outline_opacity = 0.0f;
@@ -28,7 +28,7 @@ void StaticBlock::init() {
     SETCOLOR(m_brush_debug.outline_color, 0.5f, 1.0f, 0.2f);
 }
 
-StaticBlock::StaticBlock(float x, float y, float w, float h, const std::string &assetName) : Box(x, y, w, h)
+StaticObject::StaticObject(float x, float y, float w, float h, const std::string &assetName) : Box(x, y, w, h)
 {
     m_asset_path = assetName;
 }

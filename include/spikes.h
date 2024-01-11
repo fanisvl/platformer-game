@@ -1,7 +1,7 @@
 #pragma once
-#include "static_block.h"
+#include "static_object.h"
 
-class Spikes : public StaticBlock {
+class Spikes : public StaticObject {
 public:
 	void update(float dt) override;
 	void draw() override;

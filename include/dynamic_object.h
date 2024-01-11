@@ -1,5 +1,5 @@
 #pragma once
-#include "static_block.h"
+#include "static_object.h"
 
 enum CollisionType {
     SIDEWAYS,
@@ -7,7 +7,7 @@ enum CollisionType {
     UPWARDS,
 };
 
-class DynamicObject : public StaticBlock {
+class DynamicObject : public StaticObject {
 protected:
     float init_x;
     float init_y;

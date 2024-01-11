@@ -151,7 +151,7 @@ void Level::LoadLevel(std::string filepath) {
                 m_static_objects.push_back(new Spikes(x_value, y_value, w_value, h_value, pngImage));
             }
             else if (Type == "StaticBlock") {
-                m_static_objects.push_back(new StaticBlock(x_value, y_value, w_value, h_value, pngImage));
+                m_static_objects.push_back(new StaticObject(x_value, y_value, w_value, h_value, pngImage));
             }
         }
     }

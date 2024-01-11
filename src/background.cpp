@@ -16,4 +16,5 @@ void Background::draw() {
     float offset_y = m_state->m_global_offset_y / 2.0f + h / 2.0f;
 
     //Draw Background
-    graphics::drawRect(offset_x, offset_y, 2.0f*w, 2.0f*h, m_brush_background);
+    graphics::drawRect(offset_x, offset_y, 2.0f * w, 2.0f * h, m_brush_background);
+}

@@ -19,10 +19,6 @@ void Player::update(float dt)
 
 void Player::init()
 {
-
-	m_state->m_global_offset_x = CANVAS_WIDTH / 2.0f - m_pos_x;
-	m_state->m_global_offset_y = CANVAS_HEIGHT / 2.0f - m_pos_y;
-
 	m_brush_player.fill_opacity = 1.0f;
 	m_brush_player.outline_opacity = 0.0f;
 	m_brush_player.texture = m_state->getFullAssetPath("player\\WizardWalk00.png");

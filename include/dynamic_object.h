@@ -9,6 +9,8 @@ enum CollisionType {
 
 class DynamicObject : public StaticBlock {
 protected:
+    float init_x;
+    float init_y;
     bool hidden;
 public:
     void update(float dt) override;

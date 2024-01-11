@@ -12,6 +12,8 @@ void DynamicObject::draw() {
 }
 
 void DynamicObject::init() {
+    m_pos_x = init_x;
+    m_pos_y = init_y;
     show();
     StaticBlock::init();
 }
@@ -19,6 +21,8 @@ void DynamicObject::init() {
 DynamicObject::DynamicObject(float x, float y, float w, float h, const std::string& assetName) 
     : StaticBlock(x, y, w, h, assetName)
 {
+    init_x = x;
+    init_y = y;
     hidden = false;
 }
 

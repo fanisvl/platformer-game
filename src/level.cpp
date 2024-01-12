@@ -93,7 +93,7 @@ void Level::init()
     // TODO: Load level by reading file.
     // Add Static & Dynamic Objects to Level
   
-    m_state->getPlayer()->setInitialPosition(10.0f, 6.0f);
+    m_state->getPlayer()->setInitialPosition(2.0f, 6.0f);
     m_state->getPlayer()->goToInitialPosition();
     LoadLevel("levels\\level1.txt");  
 	for (auto& p_gob : m_static_objects)
@@ -143,7 +143,7 @@ void Level::LoadLevel(std::string filepath) {
             else if (Type == "Spikes") {
                 m_static_objects.push_back(new Spikes(x_value, y_value, w_value, h_value, pngImage));
             }
-            else if (Type == "StaticBlock") {
+            else if (Type == "StaticObject") {
                 m_static_objects.push_back(new StaticObject(x_value, y_value, w_value, h_value, pngImage));
             }
         }

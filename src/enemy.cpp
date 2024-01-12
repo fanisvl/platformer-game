@@ -38,7 +38,7 @@ void Enemy::chasePlayer() {
 	float player_x = player_xy.first;
 	float player_y = player_xy.second;
 
-	if ((m_pos_y - 1.7f) < player_y) {
+	if (player_y >= (m_pos_y - 1.7f) && (player_y <= m_pos_y + 0.3f)) {
 		if (m_pos_x < player_x) m_pos_x += 0.05f;
 		if (m_pos_x > player_x) m_pos_x -= 0.05f;
 	}

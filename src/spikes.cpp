@@ -14,8 +14,7 @@ void Spikes::init() {
     StaticObject::init();
 
     // Adjust hitbox
-    m_pos_y += 0.25f;
-    m_height /= 2.0f;
+    
 }
 
 void Spikes::handleCollision(CollisionType type) {

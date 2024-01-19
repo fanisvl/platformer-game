@@ -14,7 +14,6 @@ void Player::update(float dt)
 	m_state->m_global_offset_y = CANVAS_HEIGHT / 2.0f - m_pos_y;
 	
 	GameObject::update(dt);
-
 }
 
 void Player::init()

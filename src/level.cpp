@@ -93,9 +93,7 @@ void Level::init()
     // TODO: Load level by reading file.
     // Add Static & Dynamic Objects to Level
   
-    m_state->getPlayer()->setInitialPosition(2.0f, 1.5f);
-    m_state->getPlayer()->goToInitialPosition();
-    LoadLevel("level1.txt");  
+    LoadLevel("level2.txt");
 	for (auto& p_gob : m_static_objects)
 		if (p_gob) p_gob->init();
 	
@@ -127,8 +125,8 @@ void Level::LoadLevel(std::string levelName) {
     }
     std::string line;
     while (std::getline(inputFile, line)) {
-        std::istringstream iss(line);
 
+        std::istringstream iss(line);
         std::string Type;
         float x;
         float y;
@@ -139,7 +137,12 @@ void Level::LoadLevel(std::string levelName) {
         float right_boundary = 0.0f; // Default value
 
         if (iss >> std::quoted(Type) >> x >> y >> width >> height >> std::quoted(assetName)) {
-            if (Type == "MovingEnemy") {
+            if (Type == "Player") {
+                m_state->getPlayer()->setInitialPosition(x, y);
+                m_state->getPlayer()->goToInitialPosition();
+            }
+
+            else if (Type == "MovingEnemy") {
                 // Check if there are additional parameters for MovingEnemy
                 if (iss >> left_boundary >> right_boundary) {
                     m_dynamic_objects.push_back(new MovingEnemy(x, y, width, height, assetName, left_boundary, right_boundary));

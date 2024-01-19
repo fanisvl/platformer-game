@@ -10,10 +10,6 @@ void Player::update(float dt)
 	movePlayer(dt);
 
 	// update offset for other game objects
-	//m_state->m_global_offset_x = CANVAS_WIDTH / 2.0f - m_pos_x;
-	//m_state->m_global_offset_y = CANVAS_HEIGHT / 2.0f - m_pos_y;
-	m_state->m_global_offset_x = 0.0f;
-	m_state->m_global_offset_y = 0.0f;
 	GameObject::update(dt);
 
 }
@@ -76,7 +72,7 @@ void Player::debugDraw()
 	debug_brush.fill_opacity = 1.0f;
 	graphics::drawText(m_pos_x - 0.4f, m_pos_y - 0.6f, 0.15f, s, debug_brush);
 }
-#include <iostream>
+
 void Player::movePlayer(float dt)
 {
 	float delta_time = dt / 1000.0f;
@@ -116,7 +112,6 @@ void Player::movePlayer(float dt)
 	// adjust vertical position
 	m_pos_y += m_vy * delta_time;
 
-	
 }
 
 void Player::setPosition(float x, float y) {

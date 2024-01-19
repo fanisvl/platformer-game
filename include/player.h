@@ -10,6 +10,7 @@ class Player : public Box, public GameObject
 {
 	// animated player
 	std::vector<std::string> m_sprites;
+	std::vector<std::string> b_sprites;
 	graphics::Brush m_brush_player;
 
 	float m_init_x;
@@ -22,7 +23,7 @@ class Player : public Box, public GameObject
 public: 
 	float m_vx = 0.0f;
 	float m_vy = 0.0f;
-
+	bool is_going_left;
 
 public:
 	void update(float dt) override;

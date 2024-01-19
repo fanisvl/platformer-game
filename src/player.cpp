@@ -21,22 +21,24 @@ void Player::init()
 {
 	m_brush_player.fill_opacity = 1.0f;
 	m_brush_player.outline_opacity = 0.0f;
-	m_brush_player.texture = m_state->getFullAssetPath("player\\WizardWalk00.png");
+	
+	m_brush_player.texture = m_state->getFullAssetPath("player\\walk_right\\WizardWalk00.png");
 
-    for (int i = 0; i <= 9; ++i) {
-		m_sprites.push_back(m_state->getFullAssetPath("player\\WizardWalk0" + std::to_string(i) + ".png"));
-    }
 	for (int i = 0; i <= 9; ++i) {
-		m_sprites.push_back(m_state->getFullAssetPath("player\\WizardWalk1" + std::to_string(i) + ".png"));
+		m_sprites.push_back(m_state->getFullAssetPath("player\\walk_right\\WizardWalk0" + std::to_string(i) + ".png"));
+		b_sprites.push_back(m_state->getFullAssetPath("player\\walk_left\\WizardWalkLeft0" + std::to_string(i) + ".png"));
 	}
-	// Adjust width for finer collision detection
+	for (int i = 0; i <= 9; ++i) {
+		m_sprites.push_back(m_state->getFullAssetPath("player\\walk_right\\WizardWalk1" + std::to_string(i) + ".png"));
+		b_sprites.push_back(m_state->getFullAssetPath("player\\walk_left\\WizardWalkLeft1" + std::to_string(i) + ".png"));
+	}
+	// Adjust width for finer collision detections
 	m_width = 0.5f;
-
 }
 
 void Player::draw()
 {
-    if (!m_sprites.empty()) {
+    if (!m_sprites.empty() && is_going_left == false) {
         // Calculate the raw index
         int rawIndex = (int)fmod(100.0f - m_pos_x * 9.0f, m_sprites.size());
 
@@ -44,6 +46,14 @@ void Player::draw()
         int spriteIndex = (rawIndex + m_sprites.size()) % m_sprites.size();
         m_brush_player.texture = m_sprites[spriteIndex];
     }
+	if (!b_sprites.empty() && is_going_left == true) {
+		// Calculate the raw index
+		int rawIndex = (int)fmod(100.0f - m_pos_x * 9.0f, b_sprites.size());
+
+		// Use modulo to wrap the index within the bounds of m_sprites
+		int spriteIndex = (rawIndex + b_sprites.size()) % b_sprites.size();
+		m_brush_player.texture = b_sprites[spriteIndex];
+	}
 
     graphics::drawRect(CANVAS_WIDTH*0.5f, CANVAS_HEIGHT * 0.5f, 2.0f, 2.0f, m_brush_player);
     if (m_state->m_debugging)
@@ -65,18 +75,21 @@ void Player::debugDraw()
 	debug_brush.fill_opacity = 1.0f;
 	graphics::drawText(CANVAS_WIDTH * 0.5f - 0.4f, CANVAS_HEIGHT * 0.5f - 0.6f, 0.15f, s, debug_brush);
 }
-
+#include <iostream>
 void Player::movePlayer(float dt)
 {
 	float delta_time = dt / 1000.0f;
-
+	
 	// Acceleration-based velocity
 	float move = 0.0f;
-	if (graphics::getKeyState(graphics::SCANCODE_A))
+	if (graphics::getKeyState(graphics::SCANCODE_A)) {
+		is_going_left = true;
 		move -= 1.0f;
-	if (graphics::getKeyState(graphics::SCANCODE_D))
+	}
+	if (graphics::getKeyState(graphics::SCANCODE_D)) {
+		is_going_left = false;
 		move = 1.0f;
-
+	}
 	m_vx = std::min<float>(m_max_velocity, m_vx + delta_time * move * m_accel_horizontal);
 	m_vx = std::max<float>(-m_max_velocity, m_vx);
 

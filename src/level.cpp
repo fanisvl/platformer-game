@@ -93,7 +93,7 @@ void Level::init()
     // TODO: Load level by reading file.
     // Add Static & Dynamic Objects to Level
   
-    LoadLevel("level2.txt");
+    LoadLevel(m_level_path);
 	for (auto& p_gob : m_static_objects)
 		if (p_gob) p_gob->init();
 	
@@ -102,9 +102,10 @@ void Level::init()
 
 }
 
-Level::Level()
-{
+Level::Level(){}
 
+Level::Level(std::string level_path) {
+    m_level_path = level_path;
 }
 
 Level::~Level()

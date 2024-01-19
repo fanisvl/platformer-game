@@ -1,10 +1,12 @@
 #pragma once
 #include "gameobject.h"
 #include "sgg/graphics.h"
+#include "level.h"
 
 class LevelMaker : public GameObject {
 	graphics::MouseState mouse;
 	graphics::Brush mouse_brush;
+	Level* m_level = nullptr;
 	float mouse_canvas_x;
 	float mouse_canvas_y;
 

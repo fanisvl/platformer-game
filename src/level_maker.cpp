@@ -21,5 +21,5 @@ void LevelMaker::draw() {
 }
 
 void LevelMaker::init() {
-
+	m_level = new Level();
 }

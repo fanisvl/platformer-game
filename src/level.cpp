@@ -93,7 +93,7 @@ void Level::init()
     // TODO: Load level by reading file.
     // Add Static & Dynamic Objects to Level
   
-    m_state->getPlayer()->setInitialPosition(2.0f, 6.0f);
+    m_state->getPlayer()->setInitialPosition(2.0f, 11.4f);
     m_state->getPlayer()->goToInitialPosition();
     LoadLevel("level1.txt");  
 	for (auto& p_gob : m_static_objects)

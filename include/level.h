@@ -10,6 +10,7 @@
 #include "background.h"
 #include "dynamic_object.h"
 
+
 class Level : public GameObject
 {
     Background* m_background = nullptr;

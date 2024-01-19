@@ -15,7 +15,6 @@ void Player::update(float dt)
 	m_state->m_global_offset_x = 0.0f;
 	m_state->m_global_offset_y = 0.0f;
 	GameObject::update(dt);
-
 }
 
 void Player::init()

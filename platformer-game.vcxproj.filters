@@ -89,5 +89,8 @@
     <ClInclude Include="include\moving_enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="animated_object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

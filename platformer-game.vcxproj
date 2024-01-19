@@ -140,6 +140,7 @@
     <ClCompile Include="src\player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="animated_object.h" />
     <ClInclude Include="include\background.h" />
     <ClInclude Include="include\dynamic_object.h" />
     <ClInclude Include="include\moving_enemy.h" />

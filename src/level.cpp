@@ -93,7 +93,7 @@ void Level::init()
     // TODO: Load level by reading file.
     // Add Static & Dynamic Objects to Level
   
-    LoadLevel("level1.txt");
+    LoadLevel("level2.txt");
 	for (auto& p_gob : m_static_objects)
 		if (p_gob) p_gob->init();
 	
@@ -137,7 +137,6 @@ void Level::LoadLevel(std::string levelName) {
         float right_boundary = 0.0f; // Default value
 
         if (iss >> std::quoted(Type) >> x >> y >> width >> height >> std::quoted(assetName)) {
-            std::cout << Type << std::endl;
             if (Type == "Player") {
                 m_state->getPlayer()->setInitialPosition(x, y);
                 m_state->getPlayer()->goToInitialPosition();

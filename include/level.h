@@ -13,9 +13,10 @@
 
 class Level : public GameObject
 {
-    Background* m_background = nullptr;
+	Background* m_background = nullptr;
 	std::vector<StaticObject*> m_static_objects;
 	std::list<DynamicObject*> m_dynamic_objects;
+	std::string m_level_path;
 
 	void checkCollisions();
 public:
@@ -25,5 +26,6 @@ public:
 	void LoadLevel(std::string filename);
 	void resetLevel();
 	Level();
+	Level(std::string level_path);
 	~Level() override;
 };

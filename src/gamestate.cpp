@@ -1,8 +1,10 @@
 #include "gamestate.h"
 #include "level.h"
 #include "player.h"
+#include "level_maker.h"
 #include <thread>
 #include <chrono>
+#include <iostream>
 using namespace std::chrono_literals;
 
 GameState::GameState()
@@ -15,6 +17,8 @@ GameState::~GameState()
 		delete m_current_level;
 	if (m_player)
 		delete m_player;
+	if (m_level_maker)
+		delete m_level_maker;
 }
 
 GameState* GameState::getInstance()
@@ -49,6 +53,9 @@ void GameState::draw()
 
 	// Draw Player
 	if (m_player->isActive()) m_player->draw();
+
+	// Draw Level Maker
+	if (m_level_maker != nullptr) m_level_maker->draw();
 	
 	
 }
@@ -62,19 +69,36 @@ void GameState::update(float dt)
 	
 	// Avoid too quick updates
 	float sleep_time = std::max(17.0f - dt, 0.0f);
-	if (sleep_time > 0.0f)
-	{
+	if (sleep_time > 0.0f) {
 		std::this_thread::sleep_for(std::chrono::duration<float, std::milli>(sleep_time));
 	}
 
 	if (!m_current_level)
 		return;
-
 	m_current_level->update(dt);
 
 	m_debugging = graphics::getKeyState(graphics::SCANCODE_0);
-	
 
+
+	// Level Maker
+	if (m_level_maker != nullptr) m_level_maker->update(dt);
+
+	// Enter Level Maker mode
+	if (graphics::getKeyState(graphics::SCANCODE_1)) {
+		if (!m_level_maker) {
+			m_level_maker = new LevelMaker();
+			m_level_maker->init();
+			std::cout << "Level maker created";
+		}
+	}
+	// Exit Level Maker Mode
+	if (graphics::getKeyState(graphics::SCANCODE_2)) {
+		if (m_level_maker != nullptr) {
+			delete m_level_maker;
+			m_level_maker = nullptr;
+			std::cout << "Level maker deleted";
+		}
+	}
 }
 
 std::string GameState::getFullAssetPath(const std::string& asset)

@@ -9,6 +9,7 @@ private:
 
 	class Level * m_current_level = nullptr;
 	class Player* m_player = nullptr;
+	class LevelMaker* m_level_maker = nullptr;
 	
 	GameState();
 

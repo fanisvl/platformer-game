@@ -1,3 +1,5 @@
+"Player" 1.0 3.6 1 1 ""
+
 //spikes
 "Spikes" 2.2 8.545 1 1 "terrain\\cave_spikes3.png"
 "Spikes" 3 8.7 1 1 "terrain\\cave_spikes.png"

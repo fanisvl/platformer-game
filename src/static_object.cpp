@@ -7,12 +7,10 @@ void StaticObject::update(float dt) {
 
 void StaticObject::draw() {
 
-    float x = m_pos_x + m_state->m_global_offset_x;
-    float y = m_pos_y + m_state->m_global_offset_y;
-    graphics::drawRect(x, y, 1.0f*m_width, 1.0f*m_height, m_brush);
+    graphics::drawRect(m_pos_x, m_pos_y, 1.0f*m_width, 1.0f*m_height, m_brush);
 
     if (m_state->m_debugging) {
-        graphics::drawRect(x, y, m_width, m_height, m_brush_debug);
+        graphics::drawRect(m_pos_x, m_pos_y, m_width, m_height, m_brush_debug);
     }
 }
 

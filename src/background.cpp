@@ -12,9 +12,7 @@ void Background::init() {
 void Background::draw() {
     float w = CANVAS_WIDTH;
     float h = CANVAS_HEIGHT;
-    float offset_x = m_state->m_global_offset_x / 2.0f + w / 2.0f + 2.8f;
-    float offset_y = m_state->m_global_offset_y / 2.0f + h / 2.0f;
 
     //Draw Background
-    graphics::drawRect(offset_x, offset_y, 2.0f*w, 2.0f*h, m_brush_background);
+    graphics::drawRect(CANVAS_WIDTH / 2.0f, CANVAS_HEIGHT / 2.0f, 2.0f * w, 2.0f * h, m_brush_background);
 }

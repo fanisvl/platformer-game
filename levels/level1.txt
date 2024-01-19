@@ -74,5 +74,5 @@
 "StaticObject" 14.5 11 1 1 "terrain\\cave_block.png"
 "StaticObject" 15.5 11 1 1 "terrain\\block_with_triangles.png"
 "Spikes" 14 14.7 1 1 "spikes.png"
-"Enemy" 14 10.7 1 1 "slime.png"
-"Enemy" 12 14.7 1 1 "slime.png"
+"MovingEnemy" 14 10.7 1 1 "slime.png" 3 15
+"MovingEnemy" 12 14.7 1 1 "slime.png" 7.5 15

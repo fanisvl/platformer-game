@@ -20,7 +20,7 @@ class Player : public Box, public GameObject
 	const float m_accel_vertical = 300.1f;
 	const float m_max_velocity = 5.0f;
 	const float m_gravity = 12.0f;
-public:
+public: 
 	float m_vx = 0.0f;
 	float m_vy = 0.0f;
 	bool is_going_left;

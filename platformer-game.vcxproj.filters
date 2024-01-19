@@ -42,7 +42,7 @@
     <ClCompile Include="src\dynamic_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\enemy.cpp">
+    <ClCompile Include="src\moving_enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,7 +86,7 @@
     <ClInclude Include="include\dynamic_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\enemy.h">
+    <ClInclude Include="include\moving_enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

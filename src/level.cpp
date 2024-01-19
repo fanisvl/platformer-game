@@ -3,7 +3,7 @@
 #include "player.h"
 #include "spikes.h"
 #include "dynamic_object.h"
-#include "enemy.h"
+#include "moving_enemy.h"
 #include "box.h"
 #include <iostream>
 #include <fstream>
@@ -95,7 +95,7 @@ void Level::init()
   
     m_state->getPlayer()->setInitialPosition(2.0f, 6.0f);
     m_state->getPlayer()->goToInitialPosition();
-    LoadLevel("levels\\level1.txt");  
+    LoadLevel("level1.txt");  
 	for (auto& p_gob : m_static_objects)
 		if (p_gob) p_gob->init();
 	
@@ -118,9 +118,9 @@ Level::~Level()
 		delete p_go;
 }
 
-void Level::LoadLevel(std::string filepath) {
+void Level::LoadLevel(std::string levelName) {
     
-    std::ifstream inputFile(filepath);
+    std::ifstream inputFile("levels\\" + levelName);
     if (!inputFile.is_open()) {
         std::cerr << "Error opening file." << std::endl;
         return;
@@ -130,21 +130,30 @@ void Level::LoadLevel(std::string filepath) {
         std::istringstream iss(line);
 
         std::string Type;
-        float x_value;
-        float y_value;
-        float w_value;
-        float h_value;
-        std::string pngImage;
+        float x;
+        float y;
+        float width;
+        float height;
+        std::string assetName;
+        float left_boundary = 0.0f;  // Default value
+        float right_boundary = 0.0f; // Default value
 
-        if (iss >> std::quoted(Type) >> x_value >> y_value >> w_value >> h_value >> std::quoted(pngImage)) {
-            if (Type == "Enemy") {
-                m_dynamic_objects.push_back(new Enemy(x_value, y_value, w_value, h_value, pngImage));
+        if (iss >> std::quoted(Type) >> x >> y >> width >> height >> std::quoted(assetName)) {
+            if (Type == "MovingEnemy") {
+                // Check if there are additional parameters for MovingEnemy
+                if (iss >> left_boundary >> right_boundary) {
+                    m_dynamic_objects.push_back(new MovingEnemy(x, y, width, height, assetName, left_boundary, right_boundary));
+                }
+                else {
+                    // Handle case where boundaries are not provided
+                    std::cerr << "Error: MovingEnemy must have left and right boundary values." << std::endl;
+                }
             }
             else if (Type == "Spikes") {
-                m_static_objects.push_back(new Spikes(x_value, y_value, w_value, h_value, pngImage));
+                m_static_objects.push_back(new Spikes(x, y, width, height, assetName));
             }
             else if (Type == "StaticObject") {
-                m_static_objects.push_back(new StaticObject(x_value, y_value, w_value, h_value, pngImage));
+                m_static_objects.push_back(new StaticObject(x, y, width, height, assetName));
             }
         }
     }

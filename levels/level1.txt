@@ -75,7 +75,7 @@
 "StaticObject" 14.5 7.3 1 1 "terrain\\moss_block.png"
 "StaticObject" 15.5 7.3 1 1 "terrain\\block_with_triangles.png"
 "Spikes" 14 10.3 1 1 "spikes.png"
-"Enemy" 14 6.30 1 1 "slime.png"
-"Enemy" 12 10.30 1 1 "slime.png"
+"MovingEnemy" 12 10.30 1 1 "slime.png" 3 15
+"MovingEnemy" 14 6.30 1 1 "slime.png" 7.5 15
 
 

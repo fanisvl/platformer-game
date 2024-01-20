@@ -1,5 +1,6 @@
 #include "static_object.h"
 #include "config.h"
+#include <sstream>
 
 void StaticObject::update(float dt) {
 
@@ -31,3 +32,8 @@ StaticObject::StaticObject(float x, float y, float w, float h, const std::string
     m_asset_path = assetName;
 }
 
+std::string StaticObject::to_string() const {
+    std::ostringstream oss;
+    oss << "StaticObject" << " " << m_pos_x << " " << m_pos_y << " " << m_width << " " << m_height << " " << m_asset_path;
+    return oss.str();
+}

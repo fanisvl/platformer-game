@@ -9,6 +9,7 @@ private:
 
 	class Level * m_current_level = nullptr;
 	class Player* m_player = nullptr;
+	class LevelMaker* m_level_maker = nullptr;
 	
 	GameState();
 
@@ -27,4 +28,6 @@ public:
 	std::string getAssetDir();
 	class Player* getPlayer() { return m_player; }
 	void playerDeath();
+	void enter_level_maker();
+	void exit_level_maker();
 };

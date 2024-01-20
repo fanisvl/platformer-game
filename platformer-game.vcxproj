@@ -92,6 +92,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <WarningLevel>Level3</WarningLevel>
       <AdditionalIncludeDirectories>$(SolutionDir)include</AdditionalIncludeDirectories>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -128,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\level_maker.cpp" />
     <ClCompile Include="src\moving_enemy.cpp" />
     <ClCompile Include="src\dynamic_object.cpp" />
     <ClCompile Include="src\spikes.cpp" />
@@ -142,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="include\background.h" />
     <ClInclude Include="include\dynamic_object.h" />
+    <ClInclude Include="include\level_maker.h" />
     <ClInclude Include="include\moving_enemy.h" />
     <ClInclude Include="include\static_object.h" />
     <ClInclude Include="include\box.h" />

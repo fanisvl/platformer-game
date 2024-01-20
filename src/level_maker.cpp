@@ -130,9 +130,10 @@ void LevelMaker::show_options() {
 	graphics::setFont("assets\\Roboto-Bold.ttf");
 
 	graphics::drawText(0.5f, 0.5f, 0.4f, "Left/Right Click - Add/Remove Object", text_brush);
-	graphics::drawText(0.5f, 1.0f, 0.4f, "2 - Exit Level Maker", text_brush);
-	graphics::drawText(0.5f, 1.5f, 0.4f, "3 - Save Level", text_brush);
-	graphics::drawText(0.5f, 2.0f, 0.4f, "4 - Hold for Snap Mode", text_brush);
+	graphics::drawText(0.5f, 1.0f, 0.4f, "Middle Mouse Button - Change object type", text_brush);
+	graphics::drawText(0.5f, 1.5f, 0.4f, "2 - Exit Level Maker", text_brush);
+	graphics::drawText(0.5f, 2.0f, 0.4f, "3 - Save Level", text_brush);
+	graphics::drawText(0.5f, 2.5f, 0.4f, "4 - Hold for Snap Mode", text_brush);
 
 }
 

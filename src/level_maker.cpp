@@ -46,7 +46,7 @@ void LevelMaker::save_to_file() {
 	}
 
 	// Iterator through static objects and write to the file
-	for (auto& p_sob : m_level->getStaticObjects()) {
+	for (const auto& p_sob : m_level->getStaticObjects()) {
 		outputFile << p_sob->to_string() << std::endl;
 	}
 

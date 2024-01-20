@@ -2,6 +2,7 @@
 #include "gameobject.h"
 #include "sgg/graphics.h"
 #include "level.h"
+#include "spikes.h"
 
 enum BlockType {
 
@@ -10,10 +11,10 @@ enum BlockType {
 	// where incrementing beyond the last type wraps around to the first type.
 
 	Block,
-	Spikes,
-	MovingEnemy,
-	Coins,
-	PlayerSpawn,
+	SpikeBlock,
+	//MovingEnemyBlock,
+	//CoinsBlock,
+	//PlayerSpawnBlock,
 	LAST_TYPE,
 
 };

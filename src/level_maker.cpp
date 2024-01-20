@@ -2,6 +2,8 @@
 #include "level.h"
 #include <iostream>
 #include <fstream>
+#include "spikes.h"
+#include "static_object.h"
 
 void LevelMaker::update(float ms) {
 	// mouse.cur_pos_x and mouse.cur_pos_y are pixel coordinates
@@ -10,8 +12,10 @@ void LevelMaker::update(float ms) {
 	mouse_canvas_y = (mouse.cur_pos_y / static_cast<float>(WINDOW_HEIGHT)) * CANVAS_HEIGHT;
 
 	// Get snapped positions, used by snap mode.
-	snap_mouse_x = static_cast<int>(mouse_canvas_x) + 1;
-	snap_mouse_y = static_cast<int>(mouse_canvas_y) + 1;
+	if (snap_mode) {
+		mouse_canvas_x = static_cast<int>(mouse_canvas_x) + 1;
+		mouse_canvas_y = static_cast<int>(mouse_canvas_y) + 1;
+	}
 
 	// LevelMaker is responsible for m_level and player when enabled.
 	m_level->update(ms);
@@ -21,7 +25,7 @@ void LevelMaker::update(float ms) {
 	create_object();
 	remove_object();
 
-	if (mouse.button_middle_pressed) {
+	if (mouse.button_middle_pressed && !mouse.button_left_pressed) {
 		next_block_type();
 		std::cout << current_block_type << std::endl;
 	}
@@ -38,20 +42,26 @@ void LevelMaker::update(float ms) {
 // Create a new block (static object) with left click and add it to level vector.
 void LevelMaker::create_object() {
 	if (mouse.button_left_pressed) {
-		std::string asset_path = "terrain\\cave_block.png";
+
+		std::string asset_path = "";
 		auto& static_objects = m_level->getStaticObjects();
 
-		// Add new object to static_objects.
-		if (snap_mode) {
-			static_objects.push_back(new StaticObject(snap_mouse_x, snap_mouse_y, 1.0f, 1.0f, asset_path));
+		switch (current_block_type) {
+
+		case Block:
+			asset_path = "terrain\\cave_block.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+			static_objects.back()->init();
+			break;
+		case SpikeBlock:
+			asset_path = "spikes.png";
+			static_objects.push_back(new Spikes(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+			static_objects.back()->init();
+			break;
 		}
 
-		else {
-			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
-		}
 
 		// Call the init method for the newly added object.
-		static_objects.back()->init();
 	}
 }
 
@@ -132,15 +142,19 @@ void LevelMaker::draw() {
 
 	mouse_brush.fill_opacity = 0.5f;
 	mouse_brush.outline_opacity = 0.5f;
-	mouse_brush.texture = m_state->getFullAssetPath("terrain\\cave_block.png");
 
-	if (snap_mode) {
-		graphics::drawRect(snap_mouse_x, snap_mouse_y, 1.0f, 1.0f, mouse_brush);
-	}
-
-	else {
+	switch (current_block_type) {
+	case Block:
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\cave_block.png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+		break;
+	case SpikeBlock:
+		mouse_brush.texture = m_state->getFullAssetPath("spikes.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y + 0.25, 1.0f, 0.5f, mouse_brush);
+		break;
+
 	}
+
 
 	show_options();
 

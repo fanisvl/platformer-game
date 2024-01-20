@@ -88,7 +88,12 @@ void GameState::update(float dt)
 		if (!m_level_maker) {
 			m_level_maker = new LevelMaker();
 			m_level_maker->init();
-			std::cout << "Level maker created";
+			// Load default level to gamestate so that user can start building
+			// User can choose to save their new level or discard it
+			// If the user saves the level a new txt file is created with his level details
+			// If the user discards the level he's back to level 1
+			// TODO: Add level selector???
+			std::cout << "Level maker created" << std::endl;
 		}
 	}
 	// Exit Level Maker Mode
@@ -96,7 +101,7 @@ void GameState::update(float dt)
 		if (m_level_maker != nullptr) {
 			delete m_level_maker;
 			m_level_maker = nullptr;
-			std::cout << "Level maker deleted";
+			std::cout << "Level maker deleted" << std::endl;
 		}
 	}
 }

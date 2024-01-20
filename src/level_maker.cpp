@@ -24,12 +24,6 @@ void LevelMaker::update(float ms) {
 	}
 
 	snap_mode = graphics::getKeyState(graphics::SCANCODE_4);
-
-	//if (graphics::getKeyState(graphics::SCANCODE_4)) {
-	//	if (ms < 10)
-	//		return;
-	//	snap_mode = !snap_mode;
-	//}
 }
 
 // Create a new block (static object) with left click and add it to level vector.

@@ -54,7 +54,7 @@ void LevelMaker::create_object() {
 			static_objects.back()->init();
 			break;
 		case SpikeBlock:
-			asset_path = "spikes.png";
+			asset_path = "terrain\\cave_spikes2.png";
 			static_objects.push_back(new Spikes(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
 			static_objects.back()->init();
 			break;
@@ -150,8 +150,8 @@ void LevelMaker::draw() {
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 		break;
 	case SpikeBlock:
-		mouse_brush.texture = m_state->getFullAssetPath("spikes.png");
-		graphics::drawRect(mouse_canvas_x, mouse_canvas_y + 0.25, 1.0f, 0.5f, mouse_brush);
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\cave_spikes2.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 		break;
 
 	}

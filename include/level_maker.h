@@ -17,6 +17,7 @@ public:
 	void create_object();
 	void save_to_file();
 	bool file_exists(const std::string& filename);
+	void show_options();
 	LevelMaker();
 	~LevelMaker();
 };

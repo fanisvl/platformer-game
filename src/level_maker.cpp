@@ -22,7 +22,7 @@ void LevelMaker::create_object() {
 	if (mouse.button_left_pressed) {
 		std::string asset_path = "terrain\\cave_block.png";
 		m_level->getStaticObjects().push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
-		std::cout << "Mouse left pressed " << std::endl;
+		std::cout << "Object created" << std::endl;
 	}
 }
 
@@ -67,6 +67,17 @@ bool LevelMaker::file_exists(const std::string& filename) {
 	return false;
 }
 
+void LevelMaker::show_options() {
+	graphics::Brush text_brush;
+	text_brush.fill_opacity = 1.0f;
+	SETCOLOR(text_brush.fill_color, 255, 255, 255);
+	graphics::setFont("assets\\Roboto-Bold.ttf");
+
+	graphics::drawText(0.5f, 0.5f, 0.4f, "Left Click - Place Object", text_brush);
+	graphics::drawText(0.5f, 1.0f, 0.4f, "2 - Exit Level Maker", text_brush);
+	graphics::drawText(0.5f, 1.5f, 0.4f, "3 - Save Level", text_brush);
+}
+
 void LevelMaker::draw() {
 	m_level->draw();
 	m_state->getPlayer()->draw();
@@ -74,6 +85,8 @@ void LevelMaker::draw() {
 	mouse_brush.fill_opacity = 0.5f;
 	mouse_brush.outline_opacity = 1.0f;
 	graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+
+	show_options();
 
 }
 

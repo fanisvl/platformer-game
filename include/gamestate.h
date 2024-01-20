@@ -28,4 +28,6 @@ public:
 	std::string getAssetDir();
 	class Player* getPlayer() { return m_player; }
 	void playerDeath();
+	void enter_level_maker();
+	void exit_level_maker();
 };

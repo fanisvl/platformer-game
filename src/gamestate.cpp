@@ -82,31 +82,13 @@ void GameState::update(float dt)
 
 
 	// Level Maker
-
-	// Enter Level Maker mode
-	if (graphics::getKeyState(graphics::SCANCODE_1)) {
-		if (!m_level_maker) {
-			m_level_maker = new LevelMaker();
-			m_level_maker->init();
-			// Load default level to gamestate so that user can start building
-			// User can choose to save their new level or discard it
-			// If the user saves the level a new txt file is created with his level details
-			// If the user discards the level he's back to level 1
-			// TODO: Add level selector???
-			std::cout << "Level maker created" << std::endl;
-		}
-	}
-	// Exit Level Maker Mode
-	if (graphics::getKeyState(graphics::SCANCODE_2)) {
-		if (m_level_maker != nullptr) {
-			delete m_level_maker;
-			m_level_maker = nullptr;
-			std::cout << "Level maker deleted" << std::endl;
-		}
-	}
+	if (graphics::getKeyState(graphics::SCANCODE_1))
+		enter_level_maker();
+	if (graphics::getKeyState(graphics::SCANCODE_2))
+		exit_level_maker();
 
 	// If m_level_maker != nullptr the method returns so as not to call m_currentlevel->update() and m_player->update().
-	// If m_level_maker is active, it's responsible for level and player
+	// If m_level_maker is active, it's responsible for level and player.
 	if (m_level_maker != nullptr) {
 		m_level_maker->update(dt);
 		return;
@@ -135,3 +117,24 @@ void GameState::playerDeath() {
 }
 
 GameState* GameState::m_unique_instance = nullptr;
+
+void GameState::enter_level_maker() {
+	if (!m_level_maker) {
+		m_level_maker = new LevelMaker();
+		m_level_maker->init();
+		// User can choose to save their new level or discard it
+		// If the user saves the level a new txt file is created
+		// If the user discards the level he's back to level 1
+		// TODO: Add level selector???
+		std::cout << "Level maker created" << std::endl;
+	}
+}
+
+void GameState::exit_level_maker() {
+	// Exit Level Maker Mode
+	if (m_level_maker != nullptr) {
+		delete m_level_maker;
+		m_level_maker = nullptr;
+		std::cout << "Level maker deleted" << std::endl;
+	}
+}

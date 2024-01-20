@@ -10,6 +10,7 @@
 #include <sstream>
 #include <string>>
 #include <iomanip>
+#include "projectile_enemy.h"
 
 
 void Level::checkCollisions()
@@ -154,6 +155,15 @@ void Level::LoadLevel(std::string levelName) {
             }
             else if (Type == "StaticObject") {
                 m_static_objects.push_back(new StaticObject(x, y, width, height, assetName));
+            }
+            else if (Type == "ProjectileEnemy") {
+                if (iss >> left_boundary >> right_boundary) {
+                    m_dynamic_objects.push_back(new ProjectileEnemy(x, y, width, height, assetName, left_boundary, right_boundary));
+                }
+                else {
+                    // Handle case where boundaries are not provided
+                    std::cerr << "Error: ProjectileEnemy must have left and right boundary values." << std::endl;
+                }
             }
         }
     }

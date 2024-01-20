@@ -132,6 +132,7 @@
     <ClCompile Include="src\level_maker.cpp" />
     <ClCompile Include="src\moving_enemy.cpp" />
     <ClCompile Include="src\dynamic_object.cpp" />
+    <ClCompile Include="src\projectile_enemy.cpp" />
     <ClCompile Include="src\spikes.cpp" />
     <ClCompile Include="src\background.cpp" />
     <ClCompile Include="src\static_object.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="include\dynamic_object.h" />
     <ClInclude Include="include\level_maker.h" />
     <ClInclude Include="include\moving_enemy.h" />
+    <ClInclude Include="include\projectile_enemy.h" />
     <ClInclude Include="include\static_object.h" />
     <ClInclude Include="include\box.h" />
     <ClInclude Include="include\config.h" />

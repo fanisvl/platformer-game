@@ -52,3 +52,4 @@
 
 //enemies
 "MovingEnemy" 12 4.7 1 1 "slime.png" 7.5 15
+"ProjectileEnemy" 12 2.7 1 1 "slime.png" 7.5 15

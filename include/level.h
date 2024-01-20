@@ -14,7 +14,7 @@
 class Level : public GameObject
 {
     Background* m_background = nullptr;
-	std::vector<StaticObject*> m_static_objects;
+	std::list<StaticObject*> m_static_objects;
 	std::list<DynamicObject*> m_dynamic_objects;
 	std::string m_level_path;
 
@@ -30,7 +30,7 @@ public:
 	~Level();
 
 	// Used by level maker
-	std::vector<StaticObject*>& getStaticObjects() {return m_static_objects;}
+	std::list<StaticObject*>& getStaticObjects() {return m_static_objects;}
 	std::list<DynamicObject*>& getDynamicObjects() {return m_dynamic_objects;}
 ;
 };

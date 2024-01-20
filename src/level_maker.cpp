@@ -9,7 +9,9 @@ void LevelMaker::update(float ms) {
 	mouse_canvas_y = (mouse.cur_pos_y / static_cast<float>(WINDOW_HEIGHT)) * CANVAS_HEIGHT;
 	m_level->update(ms);
 	m_state->getPlayer()->update(ms);
+	graphics::getMouseState(mouse);
 	create_object();
+	remove_object();
 
 	if (graphics::getKeyState(graphics::SCANCODE_3)) {
 		save_to_file();
@@ -18,15 +20,30 @@ void LevelMaker::update(float ms) {
 
 // Create a new block (static object) with left click and add it to level vector.
 void LevelMaker::create_object() {
-	graphics::getMouseState(mouse);
 	if (mouse.button_left_pressed) {
 		std::string asset_path = "terrain\\cave_block.png";
 		m_level->getStaticObjects().push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
-		std::cout << "Object created" << std::endl;
 	}
 }
 
 // TODO: Add removeObject() method, StaticObjects should be stored in a list, in order to be dynamically removed.
+void LevelMaker::remove_object() {
+	if (mouse.button_right_pressed && !mouse.button_left_pressed) {
+		auto& static_objects = m_level->getStaticObjects();
+
+		for (auto it = static_objects.begin(); it != static_objects.end();) {
+			
+			const auto& p_sob = *it;
+
+			if (mouseIntersect(p_sob->m_pos_x, p_sob->m_pos_y)) {
+				it = static_objects.erase(it);
+			}
+
+			else ++it;
+
+		}
+	}
+}
 
 void LevelMaker::save_to_file() {
 
@@ -103,4 +120,8 @@ LevelMaker::LevelMaker() {
 
 LevelMaker::~LevelMaker() {
 	delete m_level;
+}
+
+bool LevelMaker::mouseIntersect(float x, float y) {
+	return static_cast<int>(x) == static_cast<int>(mouse_canvas_x) && static_cast<int>(y) == static_cast<int>(mouse_canvas_y);
 }

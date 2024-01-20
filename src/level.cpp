@@ -96,7 +96,7 @@ void Level::init()
     LoadLevel("level1.txt");
 	for (auto& p_gob : m_static_objects)
 		if (p_gob) p_gob->init();
-	
+	   
 	for (auto& p_gob : m_dynamic_objects)
 		if (p_gob) p_gob->init();
 

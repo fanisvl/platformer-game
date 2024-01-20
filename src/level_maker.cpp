@@ -26,8 +26,9 @@ void LevelMaker::draw() {
 	mouse_brush.fill_opacity = 1.0f;
 	graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 
-	// Add test level option, draw player then
-	// TODO: Draw player is being called twice, making to player run faster.
+	// ISSUE: Draw player is being called twice, making to player run faster.
+	// Modify draw() call of player in gamestate
+	// Only if levelMaker* is nullptr, should it call player draw() and level draw()
 	m_state->getPlayer()->draw();
 }
 

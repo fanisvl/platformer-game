@@ -31,12 +31,13 @@ void LevelMaker::create_object() {
 void LevelMaker::save_to_file() {
 
 	int level_id = 1;
-	std::string file_name = "levels\\my_level_" + std::to_string(level_id) + ".txt";
-
 	// Check for an existing file and increment level_id if necessary
+	while (file_exists("levels\\my_level_" + std::to_string(level_id) + ".txt")) {
+		level_id++;
+	}
 
-	// Open the file to write
-	std::ofstream outputFile(file_name);
+	// Open the file to write with the updated level_id
+	std::ofstream outputFile("levels\\my_level_" + std::to_string(level_id) + ".txt");
 
 	// Check if the file is opened successfully
 	if (!outputFile.is_open()) {
@@ -55,6 +56,15 @@ void LevelMaker::save_to_file() {
 
 	m_state->exit_level_maker();
 
+}
+
+bool LevelMaker::file_exists(const std::string& filename) {
+	FILE* file = fopen(filename.c_str(), "r");
+	if (file != nullptr) {
+		fclose(file);
+		return true;
+	}
+	return false;
 }
 
 void LevelMaker::draw() {

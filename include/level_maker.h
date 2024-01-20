@@ -16,6 +16,7 @@ public:
 	void init() override;
 	void create_object();
 	void save_to_file();
+	bool file_exists(const std::string& filename);
 	LevelMaker();
 	~LevelMaker();
 };

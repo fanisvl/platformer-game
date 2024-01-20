@@ -9,6 +9,9 @@ class LevelMaker : public GameObject {
 	Level* m_level = nullptr;
 	float mouse_canvas_x;
 	float mouse_canvas_y;
+	int snap_mouse_x;
+	int snap_mouse_y;
+	bool snap_mode;
 
 public:
 	void update(float ms) override;

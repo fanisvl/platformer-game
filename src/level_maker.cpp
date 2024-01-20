@@ -7,6 +7,12 @@ void LevelMaker::update(float ms) {
 	// mouse.cur_pos_x and mouse.cur_pos_y are pixel coordinates
 	mouse_canvas_x = (mouse.cur_pos_x / static_cast<float>(WINDOW_WIDTH)) * CANVAS_WIDTH;
 	mouse_canvas_y = (mouse.cur_pos_y / static_cast<float>(WINDOW_HEIGHT)) * CANVAS_HEIGHT;
+
+	// Get snapped positions, used by snap mode.
+	snap_mouse_x = static_cast<int>(mouse_canvas_x) + 1;
+	snap_mouse_y = static_cast<int>(mouse_canvas_y) + 1;
+
+
 	m_level->update(ms);
 	m_state->getPlayer()->update(ms);
 	graphics::getMouseState(mouse);
@@ -16,6 +22,14 @@ void LevelMaker::update(float ms) {
 	if (graphics::getKeyState(graphics::SCANCODE_3)) {
 		save_to_file();
 	}
+
+	snap_mode = graphics::getKeyState(graphics::SCANCODE_4);
+
+	//if (graphics::getKeyState(graphics::SCANCODE_4)) {
+	//	if (ms < 10)
+	//		return;
+	//	snap_mode = !snap_mode;
+	//}
 }
 
 // Create a new block (static object) with left click and add it to level vector.
@@ -25,7 +39,14 @@ void LevelMaker::create_object() {
 		auto& static_objects = m_level->getStaticObjects();
 
 		// Add new object to static_objects.
-		static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+		if (snap_mode) {
+			static_objects.push_back(new StaticObject(snap_mouse_x, snap_mouse_y, 1.0f, 1.0f, asset_path));
+		}
+
+		else {
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+		}
+
 		// Call the init method for the newly added object.
 		static_objects.back()->init();
 	}
@@ -98,6 +119,8 @@ void LevelMaker::show_options() {
 	graphics::drawText(0.5f, 0.5f, 0.4f, "Left Click - Place Object", text_brush);
 	graphics::drawText(0.5f, 1.0f, 0.4f, "2 - Exit Level Maker", text_brush);
 	graphics::drawText(0.5f, 1.5f, 0.4f, "3 - Save Level", text_brush);
+	graphics::drawText(0.5f, 2.0f, 0.4f, "4 - Hold for Snap Mode", text_brush);
+
 }
 
 void LevelMaker::draw() {
@@ -107,7 +130,14 @@ void LevelMaker::draw() {
 	mouse_brush.fill_opacity = 0.5f;
 	mouse_brush.outline_opacity = 0.5f;
 	mouse_brush.texture = m_state->getFullAssetPath("terrain\\cave_block.png");
-	graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+
+	if (snap_mode) {
+		graphics::drawRect(snap_mouse_x, snap_mouse_y, 1.0f, 1.0f, mouse_brush);
+	}
+
+	else {
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+	}
 
 	show_options();
 
@@ -121,6 +151,10 @@ LevelMaker::LevelMaker() {
 	m_level->init();
 	mouse_canvas_x = 0;
 	mouse_canvas_y = 0;
+	snap_mouse_x = 0;
+	snap_mouse_y = 0;
+	snap_mode = false;
+
 }
 
 

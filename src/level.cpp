@@ -60,8 +60,6 @@ void Level::checkCollisions()
 
 void Level::update(float dt)
 {
-	if (m_state->getPlayer()->isActive())
-		m_state->getPlayer()->update(dt);
 
     for (auto& p_go : m_dynamic_objects)
         p_go->update(dt);

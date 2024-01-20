@@ -7,6 +7,7 @@ void LevelMaker::update(float ms) {
 	mouse_canvas_x = (mouse.cur_pos_x / static_cast<float>(WINDOW_WIDTH)) * CANVAS_WIDTH;
 	mouse_canvas_y = (mouse.cur_pos_y / static_cast<float>(WINDOW_HEIGHT)) * CANVAS_HEIGHT;
 	m_level->update(ms);
+	m_state->getPlayer()->update(ms);
 	createObject();
 
 }
@@ -27,15 +28,12 @@ void LevelMaker::saveToFile() {
 
 void LevelMaker::draw() {
 	m_level->draw();
+	m_state->getPlayer()->draw();
 
 	mouse_brush.fill_opacity = 0.5f;
 	mouse_brush.outline_opacity = 1.0f;
 	graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 
-	// ISSUE: Draw player is being called twice, making to player run faster.
-	// Modify draw() call of player in gamestate
-	// Only if levelMaker* is nullptr, should it call player draw() and level draw()
-	m_state->getPlayer()->draw();
 }
 
 void LevelMaker::init() {

@@ -48,14 +48,20 @@ void GameState::draw()
 	if (!m_current_level)
 		return;
 
+
+	// Draw Level Maker
+	if (m_level_maker != nullptr) {
+		m_level_maker->draw();
+		// level maker handles it's own level
+		return; // don't draw m_current_level or m_player if level maker is active
+	}
+
 	// Draw Level
 	m_current_level->draw();
 
 	// Draw Player
 	if (m_player->isActive()) m_player->draw();
 
-	// Draw Level Maker
-	if (m_level_maker != nullptr) m_level_maker->draw();
 	
 	
 }
@@ -73,15 +79,9 @@ void GameState::update(float dt)
 		std::this_thread::sleep_for(std::chrono::duration<float, std::milli>(sleep_time));
 	}
 
-	if (!m_current_level)
-		return;
-	m_current_level->update(dt);
-
-	m_debugging = graphics::getKeyState(graphics::SCANCODE_0);
 
 
 	// Level Maker
-	if (m_level_maker != nullptr) m_level_maker->update(dt);
 
 	// Enter Level Maker mode
 	if (graphics::getKeyState(graphics::SCANCODE_1)) {
@@ -104,6 +104,20 @@ void GameState::update(float dt)
 			std::cout << "Level maker deleted" << std::endl;
 		}
 	}
+
+	// If m_level_maker != nullptr the method returns so as not to call m_currentlevel->update() and m_player->update().
+	// If m_level_maker is active, it's responsible for level and player
+	if (m_level_maker != nullptr) {
+		m_level_maker->update(dt);
+		return;
+	}
+
+
+	if (m_current_level != nullptr) m_current_level->update(dt);
+	if (m_player->isActive()) m_player->update(dt);
+
+	m_debugging = graphics::getKeyState(graphics::SCANCODE_0);
+
 }
 
 std::string GameState::getFullAssetPath(const std::string& asset)

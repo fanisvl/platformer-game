@@ -15,6 +15,7 @@ public:
 	void draw() override;
 	void init() override;
 	void createObject();
+	void saveToFile();
 	LevelMaker();
 	~LevelMaker();
 };

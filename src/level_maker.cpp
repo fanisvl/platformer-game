@@ -15,15 +15,21 @@ void LevelMaker::update(float ms) {
 void LevelMaker::createObject() {
 	graphics::getMouseState(mouse);
 	if (mouse.button_left_pressed) {
-		m_level->getStaticObjects().push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, "terrain\\cave_block.png"));
+		std::string asset_path = "terrain\\cave_block.png";
+		m_level->getStaticObjects().push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
 		std::cout << "Mouse left pressed " << std::endl;
 	}
+}
+
+void LevelMaker::saveToFile() {
+
 }
 
 void LevelMaker::draw() {
 	m_level->draw();
 
-	mouse_brush.fill_opacity = 1.0f;
+	mouse_brush.fill_opacity = 0.5f;
+	mouse_brush.outline_opacity = 1.0f;
 	graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 
 	// ISSUE: Draw player is being called twice, making to player run faster.

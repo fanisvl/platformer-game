@@ -22,7 +22,12 @@ void LevelMaker::update(float ms) {
 void LevelMaker::create_object() {
 	if (mouse.button_left_pressed) {
 		std::string asset_path = "terrain\\cave_block.png";
-		m_level->getStaticObjects().push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+		auto& static_objects = m_level->getStaticObjects();
+
+		// Add new object to static_objects.
+		static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+		// Call the init method for the newly added object.
+		static_objects.back()->init();
 	}
 }
 
@@ -100,7 +105,8 @@ void LevelMaker::draw() {
 	m_state->getPlayer()->draw();
 
 	mouse_brush.fill_opacity = 0.5f;
-	mouse_brush.outline_opacity = 1.0f;
+	mouse_brush.outline_opacity = 0.5f;
+	mouse_brush.texture = m_state->getFullAssetPath("terrain\\cave_block.png");
 	graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 
 	show_options();

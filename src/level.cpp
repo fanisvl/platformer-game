@@ -86,15 +86,13 @@ void Level::init()
         m_background = new Background();
     }
     if (m_background) m_background->init();
-
-    // Add Static & Dynamic Objects to Level
-    // TODO: Load level by reading file.
-    // Add Static & Dynamic Objects to Level
   
-    LoadLevel(m_level_path);
+  LoadLevel(m_level_path);
+  
+  // Add Static & Dynamic Objects to Level
 	for (auto& p_gob : m_static_objects)
 		if (p_gob) p_gob->init();
-	
+	   
 	for (auto& p_gob : m_dynamic_objects)
 		if (p_gob) p_gob->init();
 

@@ -1,3 +1,4 @@
+"Player" 3.0 3.6 1 1 " "
 //spikes
 "Spikes" 2.2 8.545 1 1 "terrain\\cave_spikes3.png"
 "Spikes" 3 8.7 1 1 "terrain\\cave_spikes.png"
@@ -15,6 +16,21 @@
 "Spikes" 13 8.545 1 1 "terrain\\cave_spikes3.png"
 
 //left ledge
+"StaticObject" 0.5 0 1 1 "terrain\\Square_Black.png"
+"StaticObject" 0.5 0.6 1 1 "terrain\\Square_Black.png"
+"StaticObject" 0.5 1.6 1 1 "terrain\\Square_Black.png"
+"StaticObject" 0.5 1.6 1 1 "terrain\\Square_Black.png"
+"StaticObject" 0.5 2.6 1 1 "terrain\\Square_Black.png"
+"StaticObject" 0.5 1.6 1 1 "terrain\\Square_Black.png"
+"StaticObject" 2 3.6 1 1 "terrain\\cave_platform3.png"
+"StaticObject" 3 3.6 1 1 "terrain\\cave_platform3.png"
+"StaticObject" 4 3.6 1 1 "terrain\\cave_platform3.png"
+"StaticObject" 3.99 4.25 1 0.5 "terrain\\Rock5.png"
+"StaticObject" 3.2 4.25 1 0.5 "terrain\\Rock6.png"
+"StaticObject" 2.4 4.25 1 0.5 "terrain\\Rock5.png"
+"StaticObject" 1.9 4.7 1 1 "terrain\\big_rock1.png"
+"StaticObject" 0 3.6 1 1 "terrain\\Square_Black.png"
+"StaticObject" 1 3.6 1 1 "terrain\\Square_Black.png"
 "StaticObject" 0 4.6 1 1 "terrain\\Square_Black.png"
 "StaticObject" 1 4.6 1 1 "terrain\\Square_Black.png"
 "StaticObject" 0 5.6 1 1 "terrain\\Square_Black.png"
@@ -28,7 +44,11 @@
 "StaticObject" 1.7 8.3 1 2 "terrain\\Rock1.png"
 "StaticObject" 1.7 7.3 1 2 "terrain\\Rock3.png"
 "StaticObject" 1.7 6.3 1 2 "terrain\\Rock2.png"
+"StaticObject" 1.7 5.3 1 2 "terrain\\Rock7.png"
+"StaticObject" 1.7 4.1 1 2 "terrain\\Rock4.png"
+"StaticObject" 1.5 2.15 1 2 "terrain\\Rock7.png"
+"StaticObject" 1.5 1.15 1 2 "terrain\\Rock3.png"
+
 
 //enemies
-"MovingEnemy" 14 0.7 1 1 "slime.png" 3 15
 "MovingEnemy" 12 4.7 1 1 "slime.png" 7.5 15

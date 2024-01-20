@@ -60,8 +60,6 @@ void Level::checkCollisions()
 
 void Level::update(float dt)
 {
-	if (m_state->getPlayer()->isActive())
-		m_state->getPlayer()->update(dt);
 
     for (auto& p_go : m_dynamic_objects)
         p_go->update(dt);
@@ -88,12 +86,10 @@ void Level::init()
         m_background = new Background();
     }
     if (m_background) m_background->init();
-
-    // Add Static & Dynamic Objects to Level
-    // TODO: Load level by reading file.
-    // Add Static & Dynamic Objects to Level
   
-    LoadLevel("level1.txt");
+  LoadLevel(m_level_path);
+  
+  // Add Static & Dynamic Objects to Level
 	for (auto& p_gob : m_static_objects)
 		if (p_gob) p_gob->init();
 	   
@@ -102,9 +98,10 @@ void Level::init()
 
 }
 
-Level::Level()
-{
+Level::Level(){}
 
+Level::Level(std::string level_path) {
+    m_level_path = level_path;
 }
 
 Level::~Level()

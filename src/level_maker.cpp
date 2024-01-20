@@ -26,7 +26,7 @@ void LevelMaker::create_object() {
 	}
 }
 
-// TODO: Add removeObject() method, StaticObjects should be stored in a list, in order to be dynamically removed.
+// Remove a block with right click.
 void LevelMaker::remove_object() {
 	if (mouse.button_right_pressed && !mouse.button_left_pressed) {
 		auto& static_objects = m_level->getStaticObjects();

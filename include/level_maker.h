@@ -14,8 +14,8 @@ public:
 	void update(float ms) override;
 	void draw() override;
 	void init() override;
-	void createObject();
-	void saveToFile();
+	void create_object();
+	void save_to_file();
 	LevelMaker();
 	~LevelMaker();
 };

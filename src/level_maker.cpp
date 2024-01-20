@@ -9,15 +9,15 @@ void LevelMaker::update(float ms) {
 	mouse_canvas_y = (mouse.cur_pos_y / static_cast<float>(WINDOW_HEIGHT)) * CANVAS_HEIGHT;
 	m_level->update(ms);
 	m_state->getPlayer()->update(ms);
-	createObject();
+	create_object();
 
 	if (graphics::getKeyState(graphics::SCANCODE_3)) {
-		saveToFile();
+		save_to_file();
 	}
 }
 
 // Create a new block (static object) with left click and add it to level vector.
-void LevelMaker::createObject() {
+void LevelMaker::create_object() {
 	graphics::getMouseState(mouse);
 	if (mouse.button_left_pressed) {
 		std::string asset_path = "terrain\\cave_block.png";
@@ -28,7 +28,7 @@ void LevelMaker::createObject() {
 
 // TODO: Add removeObject() method, StaticObjects should be stored in a list, in order to be dynamically removed.
 
-void LevelMaker::saveToFile() {
+void LevelMaker::save_to_file() {
 
 	int level_id = 1;
 	std::string file_name = "levels\\my_level_" + std::to_string(level_id) + ".txt";

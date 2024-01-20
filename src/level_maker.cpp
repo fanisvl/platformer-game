@@ -5,6 +5,7 @@
 
 void LevelMaker::update(float ms) {
 	// mouse.cur_pos_x and mouse.cur_pos_y are pixel coordinates
+	graphics::getMouseState(mouse);
 	mouse_canvas_x = (mouse.cur_pos_x / static_cast<float>(WINDOW_WIDTH)) * CANVAS_WIDTH;
 	mouse_canvas_y = (mouse.cur_pos_y / static_cast<float>(WINDOW_HEIGHT)) * CANVAS_HEIGHT;
 
@@ -12,17 +13,25 @@ void LevelMaker::update(float ms) {
 	snap_mouse_x = static_cast<int>(mouse_canvas_x) + 1;
 	snap_mouse_y = static_cast<int>(mouse_canvas_y) + 1;
 
-
+	// LevelMaker is responsible for m_level and player when enabled.
 	m_level->update(ms);
 	m_state->getPlayer()->update(ms);
-	graphics::getMouseState(mouse);
+
+	// Check if any mouse button is clicked and perform necessary operations
 	create_object();
 	remove_object();
 
+	if (mouse.button_middle_pressed) {
+		next_block_type();
+		std::cout << current_block_type << std::endl;
+	}
+
+	// Save to file
 	if (graphics::getKeyState(graphics::SCANCODE_3)) {
 		save_to_file();
 	}
 
+	// Enable snap mode
 	snap_mode = graphics::getKeyState(graphics::SCANCODE_4);
 }
 
@@ -55,7 +64,7 @@ void LevelMaker::remove_object() {
 			
 			const auto& p_sob = *it;
 
-			if (mouseIntersect(p_sob->m_pos_x, p_sob->m_pos_y)) {
+			if (mouse_intersect(p_sob->m_pos_x, p_sob->m_pos_y)) {
 				it = static_objects.erase(it);
 			}
 
@@ -148,7 +157,7 @@ LevelMaker::LevelMaker() {
 	snap_mouse_x = 0;
 	snap_mouse_y = 0;
 	snap_mode = false;
-
+	current_block_type = Block;
 }
 
 
@@ -156,6 +165,11 @@ LevelMaker::~LevelMaker() {
 	delete m_level;
 }
 
-bool LevelMaker::mouseIntersect(float x, float y) {
+bool LevelMaker::mouse_intersect(float x, float y) {
 	return static_cast<int>(x) == static_cast<int>(mouse_canvas_x) && static_cast<int>(y) == static_cast<int>(mouse_canvas_y);
+}
+
+void LevelMaker::next_block_type() {
+	int nextTypeIndex = static_cast<int>(current_block_type) + 1;
+	current_block_type = (nextTypeIndex >= LAST_TYPE) ? static_cast<BlockType>(0) : static_cast<BlockType>(nextTypeIndex);
 }

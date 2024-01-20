@@ -10,6 +10,9 @@ void LevelMaker::update(float ms) {
 	m_state->getPlayer()->update(ms);
 	createObject();
 
+	if (graphics::getKeyState(graphics::SCANCODE_3)) {
+		saveToFile();
+	}
 }
 
 // Create a new block (static object) with left click and add it to level vector.
@@ -23,7 +26,9 @@ void LevelMaker::createObject() {
 }
 
 void LevelMaker::saveToFile() {
-
+	for (auto& p_sob : m_level->getStaticObjects()) {
+		std::cout << p_sob->to_string() << std::endl;
+	}
 }
 
 void LevelMaker::draw() {

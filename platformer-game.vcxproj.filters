@@ -51,7 +51,7 @@
     <ClCompile Include="src\projectile_enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="projectile.cpp">
+    <ClCompile Include="src\projectile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -104,7 +104,7 @@
     <ClInclude Include="include\projectile_enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="projectile.h">
+    <ClInclude Include="include\projectile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

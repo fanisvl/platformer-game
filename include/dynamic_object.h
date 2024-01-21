@@ -7,6 +7,8 @@ protected:
     float init_y;
     bool hidden;
 public:
+    class Projectile* m_projectile = nullptr;
+public:
     void update(float dt) override;
     void draw() override;
     void init() override;

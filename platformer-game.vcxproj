@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="projectile.cpp" />
     <ClCompile Include="src\level_maker.cpp" />
     <ClCompile Include="src\moving_enemy.cpp" />
     <ClCompile Include="src\dynamic_object.cpp" />
@@ -157,6 +158,9 @@
     <ClInclude Include="include\level.h" />
     <ClInclude Include="include\player.h" />
     <ClInclude Include="include\util.h" />
+    <ClInclude Include="projectile.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="sgg\include\graphics.h" />
     <ClInclude Include="sgg\include\scancodes.h" />
   </ItemGroup>

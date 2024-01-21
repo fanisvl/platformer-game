@@ -49,7 +49,6 @@
 "StaticObject" 1.5 2.15 1 2 "terrain\\Rock7.png"
 "StaticObject" 1.5 1.15 1 2 "terrain\\Rock3.png"
 
-
 //enemies
 "MovingEnemy" 12 4.7 1 1 "slime.png" 7.5 15
 "ProjectileEnemy" 12 2.7 1 1 "slime.png" 7.5 15

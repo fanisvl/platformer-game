@@ -25,6 +25,8 @@ int main(int argc, char** argv)
     graphics::setCanvasSize(CANVAS_WIDTH, CANVAS_HEIGHT);
     graphics::setCanvasScaleMode(graphics::CANVAS_SCALE_FIT);
 
+    graphics::setFont("assets\\Roboto-Bold.ttf");
+
     graphics::startMessageLoop();
 	return 0;
 }

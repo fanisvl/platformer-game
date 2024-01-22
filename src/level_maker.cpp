@@ -110,7 +110,7 @@ void LevelMaker::save_to_file() {
 
 	std::cout << "File save complete!" << std::endl;
 
-	m_state->exit_level_maker();
+	m_state->exitLevelMaker();
 
 }
 

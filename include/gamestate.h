@@ -13,7 +13,7 @@ enum CurrentState {
 class GameState {
 private:
 	static GameState* m_unique_instance;
-	
+	CurrentState m_current_state;
 	class Menu* m_menu = nullptr;
 	class Level * m_current_level = nullptr;
 	class Player* m_player = nullptr;
@@ -32,6 +32,8 @@ public:
 	std::string getAssetDir();
 	class Player* getPlayer() { return m_player; }
 	void playerDeath();
-	void enter_level_maker();
-	void exit_level_maker();
+	void enterLevelMaker();
+	void exitLevelMaker();
+	void startNewGame();
+	void exitToMenu();
 };

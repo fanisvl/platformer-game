@@ -1,15 +1,14 @@
 #include "background.h"
+#include <iostream>
 
 void Background::update(float dt) {
 }
 
 void Background::init() {
-    m_background_path = m_state->getFullAssetPath("background\\cave_background.png");
-    m_brush_background.texture = m_background_path;
-    m_brush_background.outline_opacity = 0.0f;
 }
 
 void Background::draw() {
+
     float w = CANVAS_WIDTH;
     float h = CANVAS_HEIGHT;
 
@@ -19,4 +18,5 @@ void Background::draw() {
 
 Background::Background(std::string background) {
     m_background_path = m_state->getFullAssetPath(background);
+    m_brush_background.texture = m_background_path;
 }

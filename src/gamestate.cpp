@@ -8,8 +8,7 @@
 #include <iostream>
 using namespace std::chrono_literals;
 
-GameState::GameState()
-{
+GameState::GameState(){
 }
 
 GameState::~GameState()
@@ -29,13 +28,11 @@ GameState* GameState::getInstance()
 
 void GameState::init()
 {
-	m_menu = new Menu();
-	m_current_level = new Level("level1.txt");
-	m_player = new Player();
 
+	m_current_state = MenuActive;
+
+	m_menu = new Menu();
 	m_menu->init();
-	m_current_level->init();
-	m_player->init();
 
 	graphics::preloadBitmaps(getAssetDir());
 	graphics::setFont(getFullAssetPath("OpenSans-Regular.ttf"));
@@ -44,29 +41,27 @@ void GameState::init()
 
 void GameState::draw()
 {
-	if (!m_current_level)
-		return;
 
+	switch (m_current_state) {
+	case MenuActive:
+		m_menu->draw();
+		break;
 
-	// Draw Level Maker
-	if (m_level_maker != nullptr) {
+	case GameActive:
+		m_current_level->draw();
+		m_player->draw();
+		break;
+
+	case LevelMakerActive:
 		m_level_maker->draw();
-		// level maker handles it's own level
-		return; // don't draw m_current_level or m_player if level maker is active
+		break;
 	}
 
-	// Draw Level
-	m_current_level->draw();
-
-	// Draw Player
-	if (m_player->isActive()) m_player->draw();
-
-	
-	
 }
 
 void GameState::update(float dt)
 {
+
 	// Skip an update if a long delay is detected 
 	// to avoid messing up the collision simulation
 	if (dt > 500) // ms
@@ -78,38 +73,46 @@ void GameState::update(float dt)
 		std::this_thread::sleep_for(std::chrono::duration<float, std::milli>(sleep_time));
 	}
 
+	if (graphics::getKeyState(graphics::SCANCODE_1)) exitToMenu();
 
+	switch (m_current_state) {
+	case MenuActive:
+		m_menu->update(dt);
+		break;
+		
+	case GameActive:
+		m_current_level->update(dt);
+		m_player->update(dt);
+		break;
 
-	// Level Maker
-	if (graphics::getKeyState(graphics::SCANCODE_1))
-		enter_level_maker();
-	if (graphics::getKeyState(graphics::SCANCODE_2))
-		exit_level_maker();
-
-	// If m_level_maker != nullptr the method returns so as not to call m_currentlevel->update() and m_player->update().
-	// If m_level_maker is active, it's responsible for level and player.
-	if (m_level_maker != nullptr) {
+	case LevelMakerActive:
 		m_level_maker->update(dt);
-		return;
+		break;
 	}
 
-
-	if (m_current_level != nullptr) m_current_level->update(dt);
-	if (m_player->isActive()) m_player->update(dt);
-
 	m_debugging = graphics::getKeyState(graphics::SCANCODE_0);
+}
+
+void GameState::startNewGame() {
+
+	m_current_state = GameActive;
+
+	// Move these back to gameState init for quicker load time.
+	m_current_level = new Level("level1.txt");
+	m_player = new Player();
+	m_current_level->init();
+	m_player->init();
 
 }
 
-std::string GameState::getFullAssetPath(const std::string& asset)
-{
-	return ASSET_PATH + asset;
+void GameState::exitToMenu() {
+	if (m_current_state == GameActive) {
+		m_current_state = MenuActive;
+		delete m_current_level;
+		delete m_player;
+	}
 }
 
-std::string GameState::getAssetDir()
-{
-	return ASSET_PATH;
-}
 
 void GameState::playerDeath() {
 	m_current_level->resetLevel();
@@ -117,7 +120,7 @@ void GameState::playerDeath() {
 
 GameState* GameState::m_unique_instance = nullptr;
 
-void GameState::enter_level_maker() {
+void GameState::enterLevelMaker() {
 	if (!m_level_maker) {
 		m_level_maker = new LevelMaker(); // I get a warning "expected a type specifier" but no errors. ????
 		m_level_maker->init();
@@ -129,7 +132,7 @@ void GameState::enter_level_maker() {
 	}
 }
 
-void GameState::exit_level_maker() {
+void GameState::exitLevelMaker() {
 	// Exit Level Maker Mode
 	if (m_level_maker != nullptr) {
 		delete m_level_maker;
@@ -138,4 +141,12 @@ void GameState::exit_level_maker() {
 	}
 }
 
+std::string GameState::getFullAssetPath(const std::string& asset)
+{
+	return ASSET_PATH + asset;
+}
 
+std::string GameState::getAssetDir()
+{
+	return ASSET_PATH;
+}

@@ -3,6 +3,7 @@
 #include "sgg/graphics.h"
 #include "level.h"
 #include "spikes.h"
+#include "player.h"
 
 enum BlockType {
 
@@ -20,6 +21,7 @@ enum BlockType {
 };
 
 class LevelMaker : public GameObject {
+	Player* m_player;
 	graphics::MouseState mouse;
 	graphics::Brush mouse_brush;
 	Level* m_level = nullptr;

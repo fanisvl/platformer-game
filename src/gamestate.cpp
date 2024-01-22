@@ -125,8 +125,9 @@ void GameState::playerDeath() {
 GameState* GameState::m_unique_instance = nullptr;
 
 void GameState::enterLevelMaker() {
+	m_current_state = LevelMakerActive;
 	if (!m_level_maker) {
-		m_level_maker = new LevelMaker(); // I get a warning "expected a type specifier" but no errors. ????
+		m_level_maker = new LevelMaker();
 		m_level_maker->init();
 		// User can choose to save their new level or discard it
 		// If the user saves the level a new txt file is created
@@ -143,6 +144,7 @@ void GameState::exitLevelMaker() {
 		m_level_maker = nullptr;
 		std::cout << "Level maker deleted" << std::endl;
 	}
+	m_current_state = MenuActive;
 }
 
 std::string GameState::getFullAssetPath(const std::string& asset)

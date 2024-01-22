@@ -19,7 +19,7 @@ void LevelMaker::update(float ms) {
 
 	// LevelMaker is responsible for m_level and player when enabled.
 	m_level->update(ms);
-	m_state->getPlayer()->update(ms);
+	m_player->update(ms);
 
 	// Check if any mouse button is clicked and perform necessary operations
 	create_object();
@@ -60,8 +60,6 @@ void LevelMaker::create_object() {
 			break;
 		}
 
-
-		// Call the init method for the newly added object.
 	}
 }
 
@@ -139,7 +137,7 @@ void LevelMaker::show_options() {
 
 void LevelMaker::draw() {
 	m_level->draw();
-	m_state->getPlayer()->draw();
+	m_player->draw();
 
 	mouse_brush.fill_opacity = 0.5f;
 	mouse_brush.outline_opacity = 0.5f;
@@ -165,6 +163,8 @@ void LevelMaker::init() {
 }
 
 LevelMaker::LevelMaker() {
+	m_player = new Player();
+	m_player->init();
 	m_level = new Level("default_level.txt");
 	m_level->init();
 	mouse_canvas_x = 0;
@@ -178,6 +178,7 @@ LevelMaker::LevelMaker() {
 
 LevelMaker::~LevelMaker() {
 	delete m_level;
+	delete m_player;
 }
 
 bool LevelMaker::mouse_intersect(float x, float y) {

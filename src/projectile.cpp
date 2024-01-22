@@ -4,10 +4,20 @@
 
 void Projectile::init() {
 	DynamicObject::init();
+	std::pair<float, float> player_xy = { GameObject::m_state->getPlayer()->getPositionXY() };
+	playerpos_x = player_xy.first;
+	if (playerpos_x > m_pos_x) {
+		is_right = true;
+	}
 }
 
 void Projectile::update(float dt) {
-	chasePlayer();
+	if (!is_right) {
+		chasePlayerLeft();
+	}
+	else {
+		chasePlayerRight();
+	}
 }
 
 void Projectile::draw() {
@@ -24,13 +34,14 @@ void Projectile::handleCollision(CollisionType type) {
 			break;
 	}
 }
-
-void Projectile::chasePlayer() {
-	std::pair<float, float> player_xy = { GameObject::m_state->getPlayer()->getPositionXY() };
-	float playerpos_x = player_xy.first;
-
-	if (m_pos_x < playerpos_x) m_pos_x += 0.05f;
-	if (m_pos_x > playerpos_x) m_pos_x -= 0.05f;
+float Projectile::getPosx() {
+	return m_pos_x;
+}
+void Projectile::chasePlayerRight() {
+	 m_pos_x += 0.05f;
+}
+void Projectile::chasePlayerLeft() {
+	m_pos_x -= 0.05f;
 }
 
 Projectile::Projectile(float x, float y, float w, float h, const std::string& assetName) : DynamicObject(x, y, w, h, assetName) {

@@ -6,7 +6,6 @@ enum CurrentState {
 	MenuActive,
 	GameActive,
 	LevelMakerActive,
-	DebuggingActive,
 	//PausedActive,
 };
 
@@ -20,7 +19,7 @@ private:
 	class LevelMaker* m_level_maker = nullptr;
 
 public:
-	bool m_debugging = false; // TODO: Modify this functionality to use CurrentState enum instead of a boolean
+	bool m_debugging = false;
 	GameState();
 	~GameState();
 	static GameState* getInstance();

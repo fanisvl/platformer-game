@@ -73,8 +73,13 @@ void GameState::update(float dt)
 		std::this_thread::sleep_for(std::chrono::duration<float, std::milli>(sleep_time));
 	}
 
+	// Press 1 to go back to main menu
 	if (graphics::getKeyState(graphics::SCANCODE_1)) exitToMenu();
 
+	// Hold 0 to activate debug mode
+	m_debugging = graphics::getKeyState(graphics::SCANCODE_0);
+
+	// Check the CurrentState and call the appropriate update methods.
 	switch (m_current_state) {
 	case MenuActive:
 		m_menu->update(dt);
@@ -90,7 +95,6 @@ void GameState::update(float dt)
 		break;
 	}
 
-	m_debugging = graphics::getKeyState(graphics::SCANCODE_0);
 }
 
 void GameState::startNewGame() {

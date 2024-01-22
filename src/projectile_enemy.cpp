@@ -74,28 +74,32 @@ void ProjectileEnemy::checkPlayerpos() {
 	// The enemy will start moving towards the player's x position.
 	if (player_y >= (m_pos_y - verticalThreshold) && player_y <= (m_pos_y + verticalThreshold)) {
 		//calls a function that checks if 3 seconds have passed since last projectiles creation
-		checkifcalled();
+		createProjectileEveryThreeSeconds();
 	}
 }
-void ProjectileEnemy::start() {
-	//starts a timer
+void ProjectileEnemy::startTimer() {
 	startTime = std::chrono::system_clock::now();
 }
-bool ProjectileEnemy::threeseconds() {
-	//checks the difference between the start time and the current time and converts it to seconds
+bool ProjectileEnemy::threeSecondsPassed() {
+
+	// Checks the difference between the start time and the current time and converts it to seconds
+
 	auto currentTime = std::chrono::system_clock::now();
 	auto seconds = std::chrono::duration_cast<std::chrono::seconds>(currentTime - startTime).count();
 	return seconds >= 3;
 }
-void ProjectileEnemy::checkifcalled() {
+
+void ProjectileEnemy::createProjectileEveryThreeSeconds() {
 	//checks if 3 seconds have passed since last projectiles creation
-	if (!threeseconds()) {
+	if (!threeSecondsPassed()) {
 		return;
 	}
-	//creates a new one if three seconds have passed
+
+	// creates a new one if three seconds have passed
 	createProjectile();
-	start();
+	startTimer();
 }
+
 void ProjectileEnemy::chekckProjectileBoundaries() {
 	for (auto it = m_projectiles.begin(); it != m_projectiles.end(); ++it) {
 		if ((*it)->getPosx() < 0.5f || (*it)->getPosx() > 16.0f) {

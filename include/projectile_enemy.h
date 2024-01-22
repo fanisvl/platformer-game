@@ -10,10 +10,10 @@ class ProjectileEnemy : public DynamicObject {
 	std::chrono::time_point<std::chrono::system_clock> startTime;
 public:
 	std::list<Projectile*> m_projectiles;
-	void start();
-	bool threeseconds();
+	void startTimer();
+	bool threeSecondsPassed();
 	void update(float dt) override;
-	void checkifcalled();
+	void createProjectileEveryThreeSeconds();
 	void draw() override;
 	void init()	override;
 	void handleCollision(CollisionType type) override;

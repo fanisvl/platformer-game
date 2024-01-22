@@ -2,6 +2,7 @@
 #include "level.h"
 #include "player.h"
 #include "level_maker.h"
+#include "menu.h"
 #include <thread>
 #include <chrono>
 #include <iostream>
@@ -13,34 +14,32 @@ GameState::GameState()
 
 GameState::~GameState()
 {
-	if (m_current_level)
-		delete m_current_level;
-	if (m_player)
-		delete m_player;
-	if (m_level_maker)
-		delete m_level_maker;
+	// It's safe to delete a nullptr
+	delete m_menu;
+	delete m_current_level;
+	delete m_player;
+	delete m_level_maker;
 }
 
 GameState* GameState::getInstance()
 {
-	if (!m_unique_instance)
-	{
-		m_unique_instance = new GameState();
-	}
+	if (!m_unique_instance) m_unique_instance = new GameState();
 	return m_unique_instance;
 }
 
-bool GameState::init()
+void GameState::init()
 {
+	m_menu = new Menu();
 	m_current_level = new Level("level1.txt");
 	m_player = new Player();
+
+	m_menu->init();
 	m_current_level->init();
 	m_player->init();
 
 	graphics::preloadBitmaps(getAssetDir());
 	graphics::setFont(getFullAssetPath("OpenSans-Regular.ttf"));
 
-	return true;
 }
 
 void GameState::draw()
@@ -120,7 +119,7 @@ GameState* GameState::m_unique_instance = nullptr;
 
 void GameState::enter_level_maker() {
 	if (!m_level_maker) {
-		m_level_maker = new LevelMaker();
+		m_level_maker = new LevelMaker(); // I get a warning "expected a type specifier" but no errors. ????
 		m_level_maker->init();
 		// User can choose to save their new level or discard it
 		// If the user saves the level a new txt file is created

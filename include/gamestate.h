@@ -2,24 +2,29 @@
 #include "config.h"
 #include <string>
 
-class GameState
-{
+enum CurrentState {
+	MenuActive,
+	GameActive,
+	LevelMakerActive,
+	DebuggingActive,
+	//PausedActive,
+};
+
+class GameState {
 private:
 	static GameState* m_unique_instance;
-
+	
+	class Menu* m_menu = nullptr;
 	class Level * m_current_level = nullptr;
 	class Player* m_player = nullptr;
 	class LevelMaker* m_level_maker = nullptr;
+
+public:
+	bool m_debugging = false; // TODO: Modify this functionality to use CurrentState enum instead of a boolean
 	GameState();
-
-public:
-	bool m_debugging = false;
-
-public:
 	~GameState();
 	static GameState* getInstance();
-
-	bool init();
+	void init();
 	void draw();
 	void update(float dt);
 

@@ -5,12 +5,12 @@
 #include "dynamic_object.h"
 #include "moving_enemy.h"
 #include "box.h"
+#include "projectile_enemy.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>>
 #include <iomanip>
-#include "projectile_enemy.h"
 
 
 void Level::checkCollisions()

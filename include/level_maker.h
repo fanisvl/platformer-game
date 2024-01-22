@@ -21,7 +21,6 @@ enum BlockType {
 };
 
 class LevelMaker : public GameObject {
-	Player* m_player;
 	graphics::MouseState mouse;
 	graphics::Brush mouse_brush;
 	Level* m_level = nullptr;

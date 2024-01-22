@@ -124,15 +124,20 @@ void GameState::playerDeath() {
 
 GameState* GameState::m_unique_instance = nullptr;
 
+// !level_maker => 
+// 1) nullptr => !false => true
+
 void GameState::enterLevelMaker() {
 	m_current_state = LevelMakerActive;
 	if (!m_level_maker) {
 		m_level_maker = new LevelMaker();
 		m_level_maker->init();
-		// User can choose to save their new level or discard it
-		// If the user saves the level a new txt file is created
-		// If the user discards the level he's back to level 1
-		// TODO: Add level selector???
+
+		if (!m_player) {
+			m_player = new Player();
+			m_player->init();
+		}
+
 		std::cout << "Level maker created" << std::endl;
 	}
 }

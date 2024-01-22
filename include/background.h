@@ -10,5 +10,6 @@ public:
     void update(float dt) override;
     void init() override;
     void draw() override;
+    Background(std::string background);
 
 };

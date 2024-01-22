@@ -16,3 +16,7 @@ void Background::draw() {
     //Draw Background
     graphics::drawRect(CANVAS_WIDTH / 2.0f, CANVAS_HEIGHT / 2.0f, 2.0f * w, 2.0f * h, m_brush_background);
 }
+
+Background::Background(std::string background) {
+    m_background_path = m_state->getFullAssetPath(background);
+}

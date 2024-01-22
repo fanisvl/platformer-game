@@ -86,7 +86,7 @@ void Level::init()
   
     // Create background
     if (m_background == nullptr) {
-        m_background = new Background();
+        m_background = new Background("background/cave_background.png");
     }
     if (m_background) m_background->init();
   

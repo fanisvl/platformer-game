@@ -61,7 +61,7 @@ void ProjectileEnemy::update(float dt) {
 		checkPlayerpos();
 		checkcollision();
 	}
-	chekckProjectileBoundaries();
+	checkProjectileBoundaries();
 }
 void ProjectileEnemy::checkPlayerpos() {
 	std::pair<float, float> player_xy = { m_state->getPlayer()->getPositionXY() };
@@ -100,7 +100,7 @@ void ProjectileEnemy::createProjectileEveryThreeSeconds() {
 	startTimer();
 }
 
-void ProjectileEnemy::chekckProjectileBoundaries() {
+void ProjectileEnemy::checkProjectileBoundaries() {
 	for (auto it = m_projectiles.begin(); it != m_projectiles.end(); ++it) {
 		if ((*it)->getPosx() < 0.5f || (*it)->getPosx() > 16.0f) {
 			delete* it;

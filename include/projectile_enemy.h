@@ -20,6 +20,6 @@ public:
 	void createProjectile();
 	void checkPlayerpos();
 	void checkcollision();
-	void chekckProjectileBoundaries();
+	void checkProjectileBoundaries();
 	ProjectileEnemy(float x, float y, float w, float h , const std::string& assetName);
 };

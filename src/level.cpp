@@ -82,8 +82,8 @@ void Level::draw()
 
 void Level::init()
 {
-    //graphics::playMusic("assets\\music.mp3", 0.1f, true, 0);
-  
+    //graphics::playMusic("assets\\music.mp3", 0.1f, true, 0);  
+
     // Create background
     if (m_background == nullptr) {
         m_background = new Background("background/cave_background.png");

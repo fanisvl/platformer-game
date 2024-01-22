@@ -57,31 +57,53 @@ void ProjectileEnemy::createProjectile() {
 void ProjectileEnemy::update(float dt) {
 	for (auto& p_gob : m_projectiles)
 		if (p_gob) p_gob->update(dt);
-	checkPlayerpos();
-	checkcollision();
+	if (!hidden) {
+		checkPlayerpos();
+		checkcollision();
+	}
+	chekckProjectileBoundaries();
 }
 void ProjectileEnemy::checkPlayerpos() {
 	std::pair<float, float> player_xy = { m_state->getPlayer()->getPositionXY() };
-	float player_x = player_xy.first;
 	float player_y = player_xy.second;
 
 	// Vertical threshold allows the enemy to keep chasing the player even if they're jumping over them.
-	float verticalThreshold = 1.5f;
+	float verticalThreshold = 1.0f;
 
 	// If the player is at the same horizontal level
 	// The enemy will start moving towards the player's x position.
 	if (player_y >= (m_pos_y - verticalThreshold) && player_y <= (m_pos_y + verticalThreshold)) {
-		//delays the creation of projectiles to about every 3 seconds
-		counter = counter + 1;
-		if (counter != 1 && counter % 300 == 0) {
-			std::cout << "Im in" << std::endl;
-			createProjectile();
-		}
-		else if (counter == 1) {
-			std::cout << "Im in" << std::endl;
-			createProjectile();
-		}
+		//calls a function that checks if 3 seconds have passed since last projectiles creation
+		checkifcalled();
 	}
+}
+void ProjectileEnemy::start() {
+	//starts a timer
+	startTime = std::chrono::system_clock::now();
+}
+bool ProjectileEnemy::threeseconds() {
+	//checks the difference between the start time and the current time and converts it to seconds
+	auto currentTime = std::chrono::system_clock::now();
+	auto seconds = std::chrono::duration_cast<std::chrono::seconds>(currentTime - startTime).count();
+	return seconds >= 3;
+}
+void ProjectileEnemy::checkifcalled() {
+	//checks if 3 seconds have passed since last projectiles creation
+	if (!threeseconds()) {
+		return;
+	}
+	//creates a new one if three seconds have passed
+	createProjectile();
+	start();
+}
+void ProjectileEnemy::chekckProjectileBoundaries() {
+	for (auto it = m_projectiles.begin(); it != m_projectiles.end(); ++it) {
+		if ((*it)->getPosx() < 0.5f || (*it)->getPosx() > 16.0f) {
+			delete* it;
+			m_projectiles.erase(it);
+			break;
+		}
+	}	
 }
 ProjectileEnemy::ProjectileEnemy(float x, float y, float w, float h, const std::string& assetName) : DynamicObject(x, y, w, h, assetName) {
 	

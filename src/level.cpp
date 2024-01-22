@@ -138,10 +138,8 @@ void Level::LoadLevel(std::string levelName) {
 
         if (iss >> std::quoted(Type) >> x >> y >> width >> height >> std::quoted(assetName)) {
             if (Type == "Player") {
-                if (m_state->getPlayer() != nullptr) {
-                    m_state->getPlayer()->setInitialPosition(x, y);
-                    m_state->getPlayer()->goToInitialPosition();
-                }
+                m_state->getPlayer()->setInitialPosition(x, y);
+                m_state->getPlayer()->goToInitialPosition();
             }
 
             else if (Type == "MovingEnemy") {

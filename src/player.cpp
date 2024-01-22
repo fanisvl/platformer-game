@@ -31,10 +31,6 @@ void Player::init()
 	}
 	// Adjust width for finer collision detections
 	m_width = 0.5f;
-
-	// Set default initial position
-	m_init_x = 1.0f;
-	m_init_y = 1.0f;
 }
 
 void Player::draw()

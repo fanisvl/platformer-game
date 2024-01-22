@@ -1,4 +1,4 @@
-"Player" 1.0 8.0 1.0 1.0 " "
+"Player" 2.0 8.0 1.0 1.0 " "
 
 // Floor 
 "StaticObject" 1 9 1 1 "terrain\\cave_block.png"

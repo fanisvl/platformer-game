@@ -18,6 +18,7 @@ GameState::~GameState()
 	delete m_current_level;
 	delete m_player;
 	delete m_level_maker;
+	
 }
 
 GameState* GameState::getInstance()
@@ -33,6 +34,9 @@ void GameState::init()
 
 	m_menu = new Menu();
 	m_menu->init();
+
+	m_player = new Player();
+	m_player->init();
 
 	graphics::preloadBitmaps(getAssetDir());
 	graphics::setFont(getFullAssetPath("OpenSans-Regular.ttf"));
@@ -103,18 +107,17 @@ void GameState::startNewGame() {
 
 	// Move these back to gameState init for quicker load time.
 	m_current_level = new Level("level1.txt");
-	m_player = new Player();
 	m_current_level->init();
-	m_player->init();
 
 }
 
 void GameState::exitToMenu() {
-	if (m_current_state == GameActive) {
-		m_current_state = MenuActive;
-		delete m_current_level;
-		delete m_player;
-	}
+	
+	if (m_current_state == LevelMakerActive) exitLevelMaker();
+
+	m_current_state = MenuActive;
+	delete m_current_level;
+	m_current_level = nullptr;
 }
 
 
@@ -124,32 +127,23 @@ void GameState::playerDeath() {
 
 GameState* GameState::m_unique_instance = nullptr;
 
-// !level_maker => 
-// 1) nullptr => !false => true
-
 void GameState::enterLevelMaker() {
 	m_current_state = LevelMakerActive;
+
+	// Create a level maker
 	if (!m_level_maker) {
 		m_level_maker = new LevelMaker();
 		m_level_maker->init();
-
-		if (!m_player) {
-			m_player = new Player();
-			m_player->init();
-		}
-
 		std::cout << "Level maker created" << std::endl;
 	}
 }
 
 void GameState::exitLevelMaker() {
-	// Exit Level Maker Mode
-	if (m_level_maker != nullptr) {
-		delete m_level_maker;
-		m_level_maker = nullptr;
-		std::cout << "Level maker deleted" << std::endl;
-	}
-	m_current_state = MenuActive;
+
+	// Delete level maker
+	delete m_level_maker;
+	m_level_maker = nullptr;
+	std::cout << "Level maker deleted" << std::endl;
 }
 
 std::string GameState::getFullAssetPath(const std::string& asset)

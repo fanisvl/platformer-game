@@ -10,6 +10,7 @@
 #include <sstream>
 #include <string>>
 #include <iomanip>
+#include "projectile_enemy.h"
 
 
 void Level::checkCollisions()
@@ -81,6 +82,7 @@ void Level::draw()
 
 void Level::init()
 {
+    graphics::playMusic("assets\\music.mp3", 0.5f, true, 0);
     // Create background
     if (m_background == nullptr) {
         m_background = new Background();
@@ -154,6 +156,9 @@ void Level::LoadLevel(std::string levelName) {
             }
             else if (Type == "StaticObject") {
                 m_static_objects.push_back(new StaticObject(x, y, width, height, assetName));
+            }
+            else if (Type == "ProjectileEnemy") {
+                    m_dynamic_objects.push_back(new ProjectileEnemy(x, y, width, height, assetName));
             }
         }
     }

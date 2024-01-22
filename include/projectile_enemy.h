@@ -6,8 +6,7 @@
 #include <list>
 class ProjectileEnemy : public DynamicObject {
 
-	float m_left_boundary;
-	float m_right_boundary;
+	
 	int counter = 0;
 public:
 	std::list<Projectile*> m_projectiles;
@@ -19,5 +18,4 @@ public:
 	void checkPlayerpos();
 	void checkcollision();
 	ProjectileEnemy(float x, float y, float w, float h , const std::string& assetName);
-	ProjectileEnemy(float x, float y, float w, float h, const std::string& assetName, float left_boundary, float right_boundary);
 };

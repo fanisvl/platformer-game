@@ -71,6 +71,7 @@ void ProjectileEnemy::checkPlayerpos() {
 	// If the player is at the same horizontal level
 	// The enemy will start moving towards the player's x position.
 	if (player_y >= (m_pos_y - verticalThreshold) && player_y <= (m_pos_y + verticalThreshold)) {
+		//delays the creation of projectiles to about every 3 seconds
 		counter = counter + 1;
 		if (counter != 1 && counter % 300 == 0) {
 			std::cout << "Im in" << std::endl;
@@ -84,12 +85,5 @@ void ProjectileEnemy::checkPlayerpos() {
 }
 ProjectileEnemy::ProjectileEnemy(float x, float y, float w, float h, const std::string& assetName) : DynamicObject(x, y, w, h, assetName) {
 	
-	m_left_boundary = init_x;
-	m_right_boundary = init_x;
 }
 
-ProjectileEnemy::ProjectileEnemy(float x, float y, float w, float h, const std::string& assetName, float left_boundary, float right_boundary) : DynamicObject(x, y, w, h, assetName) {
-	
-	m_left_boundary = left_boundary;
-	m_right_boundary = right_boundary;
-}

@@ -130,6 +130,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\level_maker.cpp" />
+    <ClCompile Include="src\menu.cpp" />
     <ClCompile Include="src\moving_enemy.cpp" />
     <ClCompile Include="src\dynamic_object.cpp" />
     <ClCompile Include="src\projectile.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="include\background.h" />
     <ClInclude Include="include\dynamic_object.h" />
     <ClInclude Include="include\level_maker.h" />
+    <ClInclude Include="include\menu.h" />
     <ClInclude Include="include\moving_enemy.h" />
     <ClInclude Include="include\projectile.h" />
     <ClInclude Include="include\projectile_enemy.h" />

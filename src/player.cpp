@@ -78,16 +78,18 @@ void Player::movePlayer(float dt)
 	float delta_time = dt / 1000.0f;
 	
 	// Acceleration-based velocity
-	float move = 0.0f;
+	float move_direction = 0.0f;
 	if (graphics::getKeyState(graphics::SCANCODE_A)) {
 		is_going_left = true;
-		move -= 1.0f;
+		move_direction -= 1.0f;
 	}
 	if (graphics::getKeyState(graphics::SCANCODE_D)) {
 		is_going_left = false;
-		move = 1.0f;
+		move_direction = 1.0f;
 	}
-	m_vx = std::min<float>(m_max_velocity, m_vx + delta_time * move * m_accel_horizontal);
+	
+	// Ensure that m_vx doesn't exceed m_max_velocity
+	m_vx = std::min<float>(m_max_velocity, m_vx + delta_time * move_direction * m_accel_horizontal);
 	m_vx = std::max<float>(-m_max_velocity, m_vx);
 
 	// friction

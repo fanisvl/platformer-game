@@ -1,7 +1,8 @@
 #pragma once
 #include "dynamic_object.h"
+#include "animated_object.h"
 
-class MovingEnemy : public DynamicObject {
+class MovingEnemy : public DynamicObject , public AnimatedObject{
 
 	float m_left_boundary;
 	float m_right_boundary;

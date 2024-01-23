@@ -8,7 +8,6 @@ void Player::update(float dt)
 	float delta_time = dt / 1000.0f;
 
 	movePlayer(dt);
-
 	// update offset for other game objects
 	GameObject::update(dt);
 
@@ -16,44 +15,17 @@ void Player::update(float dt)
 
 void Player::init()
 {
-	m_brush_player.fill_opacity = 1.0f;
-	m_brush_player.outline_opacity = 0.0f;
-	
-	m_brush_player.texture = m_state->getFullAssetPath("player\\walk_right\\WizardWalk00.png");
-
-	for (int i = 0; i <= 9; ++i) {
-		m_sprites.push_back(m_state->getFullAssetPath("player\\walk_right\\WizardWalk0" + std::to_string(i) + ".png"));
-		b_sprites.push_back(m_state->getFullAssetPath("player\\walk_left\\WizardWalkLeft0" + std::to_string(i) + ".png"));
-	}
-	for (int i = 0; i <= 9; ++i) {
-		m_sprites.push_back(m_state->getFullAssetPath("player\\walk_right\\WizardWalk1" + std::to_string(i) + ".png"));
-		b_sprites.push_back(m_state->getFullAssetPath("player\\walk_left\\WizardWalkLeft1" + std::to_string(i) + ".png"));
-	}
+	AnimatedObject::LoadAssets("player\\walk_right\\WizardWalk.png",1.0f,0.0f);
 	// Adjust width for finer collision detections
 	m_width = 0.5f;
 }
 
 void Player::draw()
 {
-    if (!m_sprites.empty() && is_going_left == false) {
-        // Calculate the raw index
-        int rawIndex = (int)fmod(100.0f - m_pos_x * 9.0f, m_sprites.size());
+	AnimatedObject::draw(m_pos_x,m_pos_y,current_animation);
 
-        // Use modulo to wrap the index within the bounds of m_sprites
-        int spriteIndex = (rawIndex + m_sprites.size()) % m_sprites.size();
-        m_brush_player.texture = m_sprites[spriteIndex];
-    }
-	if (!b_sprites.empty() && is_going_left == true) {
-		// Calculate the raw index
-		int rawIndex = (int)fmod(100.0f - m_pos_x * 9.0f, b_sprites.size());
-
-		// Use modulo to wrap the index within the bounds of m_sprites
-		int spriteIndex = (rawIndex + b_sprites.size()) % b_sprites.size();
-		m_brush_player.texture = b_sprites[spriteIndex];
-	}
-
-    graphics::drawRect(m_pos_x, m_pos_y, 2.0f, 2.0f, m_brush_player);
-    if (m_state->m_debugging)
+    graphics::drawRect(m_pos_x, m_pos_y, 2.0f, 2.0f, m_brush_object);
+    if (GameObject::m_state->m_debugging)
         debugDraw();
 }
 
@@ -80,11 +52,11 @@ void Player::movePlayer(float dt)
 	// Acceleration-based velocity
 	float move_direction = 0.0f;
 	if (graphics::getKeyState(graphics::SCANCODE_A)) {
-		is_going_left = true;
+		current_animation = Left;
 		move_direction -= 1.0f;
 	}
 	if (graphics::getKeyState(graphics::SCANCODE_D)) {
-		is_going_left = false;
+		current_animation = Right;
 		move_direction = 1.0f;
 	}
 	

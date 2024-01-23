@@ -134,12 +134,21 @@ void GameState::enterLevelMaker() {
 	if (!m_level_maker) {
 		m_level_maker = new LevelMaker();
 		m_level_maker->init();
+
+		// Level maker has it's own level, however we need to pass it to gamestate as m_current_level
+		// in order to use it for methods like playerDeath (m_current_level->resetLevel())
+		m_current_level = m_level_maker->getLevel();
+
 		std::cout << "Level maker created" << std::endl;
 	}
 }
 
 void GameState::exitLevelMaker() {
 
+	// Set current level (previously level maker's m_level) to nullptr
+	// Level maker will delete their m_level
+	m_current_level = nullptr;
+	
 	// Delete level maker
 	delete m_level_maker;
 	m_level_maker = nullptr;

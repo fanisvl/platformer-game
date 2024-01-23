@@ -42,6 +42,7 @@ public:
 	void show_options();
 	bool mouse_intersect(float x, float y);
 	void next_block_type();
+	Level* getLevel() { return m_level; }
 	LevelMaker();
 	~LevelMaker();
 };

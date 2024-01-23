@@ -48,16 +48,16 @@ void GameState::draw()
 
 	switch (m_current_state) {
 	case MenuActive:
-		m_menu->draw();
+		if (m_menu) m_menu->draw();
 		break;
 
 	case GameActive:
-		m_current_level->draw();
-		m_player->draw();
+		if (m_current_level) m_current_level->draw();
+		if (m_player) m_player->draw();
 		break;
 
 	case LevelMakerActive:
-		m_level_maker->draw();
+		if (m_level_maker) m_level_maker->draw();
 		break;
 	}
 
@@ -86,16 +86,16 @@ void GameState::update(float dt)
 	// Check the CurrentState and call the appropriate update methods.
 	switch (m_current_state) {
 	case MenuActive:
-		m_menu->update(dt);
+		if (m_menu) m_menu->update(dt);
 		break;
 		
 	case GameActive:
-		m_current_level->update(dt);
-		m_player->update(dt);
+		if (m_current_level) m_current_level->update(dt);
+		if (m_player) m_player->update(dt);
 		break;
 
 	case LevelMakerActive:
-		m_level_maker->update(dt);
+		if (m_level_maker) m_level_maker->update(dt);
 		break;
 	}
 

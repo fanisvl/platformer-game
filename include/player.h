@@ -5,14 +5,11 @@
 #include "box.h"
 #include <utility>
 #include "dynamic_object.h"
+#include "animated_object.h"
 
-class Player : public Box, public GameObject
+class Player : public Box, public GameObject , public AnimatedObject
 {
 	// animated player
-	std::vector<std::string> m_sprites;
-	std::vector<std::string> b_sprites;
-	graphics::Brush m_brush_player;
-
 	float m_init_x;
 	float m_init_y;
 
@@ -23,7 +20,6 @@ class Player : public Box, public GameObject
 public: 
 	float m_vx = 0.0f;
 	float m_vy = 0.0f;
-	bool is_going_left;
 
 public:
 	void update(float dt) override;

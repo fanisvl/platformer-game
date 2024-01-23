@@ -17,7 +17,7 @@ void ProjectileEnemy::draw() {
 void ProjectileEnemy::checkcollision() {
 	for (auto it = m_projectiles.begin(); it != m_projectiles.end(); ++it) {
 		float offset = 0.0f;
-		if (offset = m_state->getPlayer()->intersectSideways(**it)) {
+		if (offset = GameObject::m_state->getPlayer()->intersectSideways(**it)) {
 			(*it)->handleCollision(SIDEWAYS);
 			delete* it;
 			m_projectiles.erase(it);
@@ -28,7 +28,7 @@ void ProjectileEnemy::checkcollision() {
 	// Intersect Down
 	for (auto it = m_projectiles.begin(); it != m_projectiles.end(); ++it) {
 		float offset = 0.0f;
-		if (offset = m_state->getPlayer()->intersectDown(**it)) {
+		if (offset = GameObject::m_state->getPlayer()->intersectDown(**it)) {
 			(*it)->handleCollision(DOWNWARDS);
 			delete* it;
 			m_projectiles.erase(it);
@@ -64,7 +64,7 @@ void ProjectileEnemy::update(float dt) {
 	checkProjectileBoundaries();
 }
 void ProjectileEnemy::checkPlayerpos() {
-	std::pair<float, float> player_xy = { m_state->getPlayer()->getPositionXY() };
+	std::pair<float, float> player_xy = { GameObject::m_state->getPlayer()->getPositionXY() };
 	float player_y = player_xy.second;
 
 	// Vertical threshold allows the enemy to keep chasing the player even if they're jumping over them.

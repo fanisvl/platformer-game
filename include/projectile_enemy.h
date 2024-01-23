@@ -6,7 +6,8 @@
 #include <list>
 #include <chrono>
 #include <ctime>
-class ProjectileEnemy : public DynamicObject {
+#include "animated_object.h"
+class ProjectileEnemy : public DynamicObject , public AnimatedObject {
 	std::chrono::time_point<std::chrono::system_clock> startTime;
 public:
 	std::list<Projectile*> m_projectiles;

@@ -19,7 +19,7 @@ void MovingEnemy::handleCollision(CollisionType type) {
 		switch (type) {
 		case SIDEWAYS:
 			// kill player
-			m_state->playerDeath();
+			GameObject::m_state->playerDeath();
 			break;
 		case DOWNWARDS:
 			// kill self
@@ -32,7 +32,7 @@ void MovingEnemy::handleCollision(CollisionType type) {
 void MovingEnemy::chasePlayer() {
 
 	// Get player position
-	std::pair<float, float> player_xy = { m_state->getPlayer()->getPositionXY() };
+	std::pair<float, float> player_xy = { GameObject::m_state->getPlayer()->getPositionXY() };
 	float player_x = player_xy.first;
 	float player_y = player_xy.second;
 

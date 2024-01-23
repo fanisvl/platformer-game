@@ -22,25 +22,25 @@ void LevelMaker::update(float ms) {
 	m_state->getPlayer()->update(ms);
 
 	// Check if any mouse button is clicked and perform necessary operations
-	create_object();
-	remove_object();
+	createObject();
+	removeObject();
 
 	if (mouse.button_middle_pressed && !mouse.button_left_pressed) {
-		next_block_type();
+		nextBlockType();
 		std::cout << current_block_type << std::endl;
 	}
 
 	// Save to file
-	if (graphics::getKeyState(graphics::SCANCODE_2)) {
-		save_to_file();
+	if (graphics::getKeyState(graphics::SCANCODE_BACKSPACE)) {
+		saveToFile();
 	}
 
 	// Enable snap mode
-	snap_mode = graphics::getKeyState(graphics::SCANCODE_3);
+	snap_mode = graphics::getKeyState(graphics::SCANCODE_E);
 }
 
 // Create a new block (static object) with left click and add it to level vector.
-void LevelMaker::create_object() {
+void LevelMaker::createObject() {
 	if (mouse.button_left_pressed) {
 
 		std::string asset_path = "";
@@ -64,7 +64,7 @@ void LevelMaker::create_object() {
 }
 
 // Remove a block with right click.
-void LevelMaker::remove_object() {
+void LevelMaker::removeObject() {
 	if (mouse.button_right_pressed && !mouse.button_left_pressed) {
 		auto& static_objects = m_level->getStaticObjects();
 
@@ -72,7 +72,7 @@ void LevelMaker::remove_object() {
 			
 			const auto& p_sob = *it;
 
-			if (mouse_intersect(p_sob->m_pos_x, p_sob->m_pos_y)) {
+			if (mouseIntersect(p_sob->m_pos_x, p_sob->m_pos_y)) {
 				it = static_objects.erase(it);
 			}
 
@@ -82,16 +82,24 @@ void LevelMaker::remove_object() {
 	}
 }
 
-void LevelMaker::save_to_file() {
+void LevelMaker::saveToFile() {
+	std::ofstream outputFile;
 
-	int level_id = 1;
-	// Check for an existing file and increment level_id if necessary
-	while (file_exists("levels\\my_level_" + std::to_string(level_id) + ".txt")) {
-		level_id++;
+	if (edit_mode) {
+		outputFile.open("levels\\" + save_to);
 	}
 
-	// Open the file to write with the updated level_id
-	std::ofstream outputFile("levels\\my_level_" + std::to_string(level_id) + ".txt");
+	else {
+
+		int level_id = 1;
+		// Check for an existing file and increment level_id if necessary
+		while (fileExists("levels\\my_level_" + std::to_string(level_id) + ".txt")) {
+			level_id++;
+		}
+
+		// Open the file to write with the updated level_id
+		outputFile.open("levels\\my_level_" + std::to_string(level_id) + ".txt");
+	}
 
 	// Check if the file is opened successfully
 	if (!outputFile.is_open()) {
@@ -99,7 +107,7 @@ void LevelMaker::save_to_file() {
 		return;
 	}
 
-	// Iterator through static objects and write to the file
+	// Iterate through static objects and write to the file
 	for (const auto& p_sob : m_level->getStaticObjects()) {
 		outputFile << p_sob->to_string() << std::endl;
 	}
@@ -109,10 +117,9 @@ void LevelMaker::save_to_file() {
 	std::cout << "File save complete!" << std::endl;
 
 	m_state->exitToMenu();
-
 }
 
-bool LevelMaker::file_exists(const std::string& filename) {
+bool LevelMaker::fileExists(const std::string& filename) {
 	FILE* file = fopen(filename.c_str(), "r");
 	if (file != nullptr) {
 		fclose(file);
@@ -121,18 +128,17 @@ bool LevelMaker::file_exists(const std::string& filename) {
 	return false;
 }
 
-void LevelMaker::show_options() {
+void LevelMaker::showOptions() {
 	graphics::Brush text_brush;
 	text_brush.fill_opacity = 1.0f;
 	SETCOLOR(text_brush.fill_color, 255, 255, 255);
 	graphics::setFont("assets\\Roboto-Bold.ttf");
 
-	graphics::drawText(0.5f, 0.5f, 0.4f, "Left/Right Click - Add/Remove Object", text_brush);
-	graphics::drawText(0.5f, 1.0f, 0.4f, "Middle Mouse Button - Change object type", text_brush);
-	graphics::drawText(0.5f, 1.5f, 0.4f, "1 - Exit Level Maker", text_brush);
-	graphics::drawText(0.5f, 2.0f, 0.4f, "2 - Save Level", text_brush);
-	graphics::drawText(0.5f, 2.5f, 0.4f, "3 - Hold for Snap Mode", text_brush);
-
+	graphics::drawText(7.0f, 0.5f, 0.4f, "Left/Right Click   ---   Add/Remove Object", text_brush);
+	graphics::drawText(7.0f, 1.0f, 0.4f, "Middle Mouse Button   ---   Change object type", text_brush);
+	graphics::drawText(0.5f, 0.5f, 0.4f, "BACKSPACE   ---   Save Level", text_brush);
+	graphics::drawText(0.5f, 1.0f, 0.4f, "Q   ---   Exit Level Maker", text_brush);
+	graphics::drawText(0.5f, 1.5f, 0.4f, "E   ---   Hold for Snap Mode", text_brush);
 }
 
 void LevelMaker::draw() {
@@ -154,16 +160,20 @@ void LevelMaker::draw() {
 
 	}
 
-
-	show_options();
+	showOptions();
 
 }
 
 void LevelMaker::init() {
 }
 
-LevelMaker::LevelMaker() {
-	m_level = new Level("default_level.txt");
+LevelMaker::LevelMaker(const std::string& load_level) {
+
+	if (load_level != "default_level") {
+		edit_mode = true;
+		save_to = load_level;
+	}
+	m_level = new Level(load_level);
 	m_level->init();
 	mouse_canvas_x = 0;
 	mouse_canvas_y = 0;
@@ -178,11 +188,11 @@ LevelMaker::~LevelMaker() {
 	delete m_level;
 }
 
-bool LevelMaker::mouse_intersect(float x, float y) {
+bool LevelMaker::mouseIntersect(float x, float y) {
 	return static_cast<int>(x) == static_cast<int>(mouse_canvas_x) && static_cast<int>(y) == static_cast<int>(mouse_canvas_y);
 }
 
-void LevelMaker::next_block_type() {
+void LevelMaker::nextBlockType() {
 	int nextTypeIndex = static_cast<int>(current_block_type) + 1;
 	current_block_type = (nextTypeIndex >= LAST_TYPE) ? static_cast<BlockType>(0) : static_cast<BlockType>(nextTypeIndex);
 }

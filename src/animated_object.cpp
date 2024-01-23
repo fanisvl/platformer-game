@@ -9,10 +9,8 @@ void AnimatedObject::LoadAssets(std::string assetName,float fill_opacity,float o
 	for (int i = 0; i <= 9; ++i) {
 		m_sprites.push_back(m_state->getFullAssetPath("player\\walk_right\\WizardWalk0" + std::to_string(i) + ".png"));
 		b_sprites.push_back(m_state->getFullAssetPath("player\\walk_left\\WizardWalkLeft0" + std::to_string(i) + ".png"));
-		std::cout << "Right full" << std::endl;
 	}
 	for (int i = 0; i <= 9; ++i) {
-		std::cout << "left full" << std::endl;
 		m_sprites.push_back(m_state->getFullAssetPath("player\\walk_right\\WizardWalk1" + std::to_string(i) + ".png"));
 		b_sprites.push_back(m_state->getFullAssetPath("player\\walk_left\\WizardWalkLeft1" + std::to_string(i) + ".png"));
 	}
@@ -26,7 +24,6 @@ void AnimatedObject::draw(float pos_x, float pos_y, AnimationType current_animat
 
 			// Use modulo to wrap the index within the bounds of m_sprites
 			int spriteIndex = (rawIndex + m_sprites.size()) % m_sprites.size();
-			std::cout << "sprite indexRight: " << spriteIndex << std::endl;
 			m_brush_object.texture = m_sprites[spriteIndex];
 			break;
 		}
@@ -38,7 +35,6 @@ void AnimatedObject::draw(float pos_x, float pos_y, AnimationType current_animat
 
 			// Use modulo to wrap the index within the bounds of m_sprites
 			int spriteIndex = (rawIndex + b_sprites.size()) % b_sprites.size();
-			std::cout << "sprite indexLeft: " << spriteIndex << std::endl;
 			m_brush_object.texture = b_sprites[spriteIndex];
 			break;
 		}

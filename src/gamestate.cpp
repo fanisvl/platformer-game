@@ -77,8 +77,8 @@ void GameState::update(float dt)
 		std::this_thread::sleep_for(std::chrono::duration<float, std::milli>(sleep_time));
 	}
 
-	// Press 1 to go back to main menu
-	if (graphics::getKeyState(graphics::SCANCODE_1)) exitToMenu();
+	// Press BackSpace to go back to main menu
+	if (graphics::getKeyState(graphics::SCANCODE_Q)) exitToMenu();
 
 	// Hold 0 to activate debug mode
 	m_debugging = graphics::getKeyState(graphics::SCANCODE_0);
@@ -127,12 +127,12 @@ void GameState::playerDeath() {
 
 GameState* GameState::m_unique_instance = nullptr;
 
-void GameState::enterLevelMaker() {
+void GameState::enterLevelMaker(const std::string& load_level) {
 	m_current_state = LevelMakerActive;
 
 	// Create a level maker
 	if (!m_level_maker) {
-		m_level_maker = new LevelMaker();
+		m_level_maker = new LevelMaker(load_level);
 		m_level_maker->init();
 
 		// Level maker has it's own level, however we need to pass it to gamestate as m_current_level

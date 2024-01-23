@@ -31,7 +31,7 @@ public:
 	std::string getAssetDir();
 	class Player* getPlayer() { return m_player; }
 	void playerDeath();
-	void enterLevelMaker();
+	void enterLevelMaker(const std::string& load_level);
 	void exitLevelMaker();
 	void startNewGame();
 	void exitToMenu();

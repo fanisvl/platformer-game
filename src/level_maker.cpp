@@ -83,8 +83,82 @@ void LevelMaker::createObject() {
 			dynamic_objects.push_back(new ProjectileEnemy(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
 			dynamic_objects.back()->init();
 			break;
+		case BlackBlock : 
+			asset_path = "terrain\\Square_Black.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+			static_objects.back()->init();
+			break;
+		case BigRockBlock:
+			asset_path = "terrain\\big_rock1.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+			static_objects.back()->init();
+			break;
+		case Rock1Block:
+			asset_path = "terrain\\Rock1.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 2.0f, asset_path));
+			static_objects.back()->init();
+			break;
+		case Rock2Block:
+			asset_path = "terrain\\Rock2.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 2.0f, asset_path));
+			static_objects.back()->init();
+			break;
+		case Rock3Block:
+			asset_path = "terrain\\Rock3.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 2.0f, asset_path));
+			static_objects.back()->init();;
+			break;
+		case Rock4Block:
+			asset_path = "terrain\\Rock4.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 2.0f, asset_path));
+			static_objects.back()->init();
+			break;
+		case Rock5Block:
+			asset_path = "terrain\\Rock5.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+			static_objects.back()->init();
+			break;
+		case Rock6Block:
+			asset_path = "terrain\\Rock6.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+			static_objects.back()->init();
+			break;
+		case Rock7Block:
+			asset_path = "terrain\\Rock7.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 2.0f, asset_path));
+			static_objects.back()->init();
+			break;
+		case Rock8Block:
+			asset_path = "terrain\\Rock8.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 2.0f, asset_path));
+			static_objects.back()->init();
+			break;
+		case CaveBlock2:
+			asset_path = "terrain\\cave_block2.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+			static_objects.back()->init();
+			break;
+		case CaveFloor1Block:
+			asset_path = "terrain\\cave_floor1.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+			static_objects.back()->init();
+			break;
+		case CavePlatform2Block:
+			asset_path = "terrain\\cave_platform2.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+			static_objects.back()->init();
+			break;
+		case CavePlatform3Block:
+			asset_path = "terrain\\cave_platform3.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+			static_objects.back()->init();
+			break;
+		case CavePlatformsBlock:
+			asset_path = "terrain\\cave_platforms.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+			static_objects.back()->init();
+			break;
 		}
-
 	}
 }
 
@@ -227,10 +301,68 @@ void LevelMaker::draw() {
 		break;
 
 	case ProjectileEnemyBlock:
-		mouse_brush.outline_opacity = 0.0f;
 		mouse_brush.texture = m_state->getFullAssetPath("EnemyMushroom/attackSprites/mushroom_000.png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
-		mouse_brush.outline_opacity = 0.5f;
+		break;
+	case BlackBlock :
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\Square_Black.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+		break;
+	case BigRockBlock :
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\big_rock1.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+		break;
+	case Rock1Block :
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\Rock1.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 2.0f, mouse_brush);
+		break;
+	case Rock2Block :
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\Rock2.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 2.0f, mouse_brush);
+		break;
+	case Rock3Block :
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\Rock3.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 2.0f, mouse_brush);
+		break;
+	case Rock4Block :
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\Rock4.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 2.0f, mouse_brush);
+		break;
+	case Rock5Block :
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\Rock5.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+		break;
+	case Rock6Block :
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\Rock6.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+		break;
+	case Rock7Block :
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\Rock7.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 2.0f, mouse_brush);
+		break;
+	case Rock8Block :
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\Rock8.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 2.0f, mouse_brush);
+		break;
+	case CaveBlock2 :
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\cave_block2.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+		break;
+	case CaveFloor1Block :
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\cave_floor1.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+		break;
+	case CavePlatform2Block :
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\cave_platform2.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+		break;
+	case CavePlatform3Block :
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\cave_platform3.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+		break;
+	case CavePlatformsBlock :
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\cave_platforms.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 		break;
 	}
 

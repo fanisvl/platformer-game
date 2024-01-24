@@ -17,7 +17,22 @@ enum BlockType {
 	ProjectileEnemyBlock,
 	//CoinsBlock,
 	PlayerSpawn,
-	LAST_TYPE,
+	BlackBlock,
+	BigRockBlock,
+	Rock1Block,
+	Rock2Block,
+	Rock3Block,
+	Rock4Block,
+	Rock5Block,
+	Rock6Block,
+	Rock7Block,
+	Rock8Block,
+	CaveBlock2,
+	CaveFloor1Block,
+	CavePlatform2Block,
+	CavePlatform3Block,
+	CavePlatformsBlock,
+	LAST_TYPE, // enum to circle back to the first block
 
 };
 

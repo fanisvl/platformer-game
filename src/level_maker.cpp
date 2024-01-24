@@ -74,7 +74,9 @@ void LevelMaker::createObject() {
 			dynamic_objects.push_back(new MovingEnemy(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path, mouse_canvas_x - 5.0f, mouse_canvas_x + 5.0f));
 			dynamic_objects.back()->init();
 			break;
-
+		
+		case ProjectileEnemyBlock:
+			asset_path = "slime.png";
 		}
 
 	}
@@ -146,7 +148,7 @@ void LevelMaker::saveToFile() {
 	}
 
 	// Write Player Spawn Position
-	outputFile << m_state->getPlayer()->to_string();
+	outputFile << m_state->getPlayer()->to_string() << std::endl;
 
 	// Iterate through static objects and write to file
 	for (const auto& p_sob : m_level->getStaticObjects()) {

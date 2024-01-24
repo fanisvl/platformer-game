@@ -173,8 +173,10 @@ void LevelMaker::draw() {
 		break;
 
 	case PlayerSpawn:
+		mouse_brush.outline_opacity = 0.0f;
 		mouse_brush.texture = m_state->getFullAssetPath("player/walk_right/WizardWalk00.png");
-		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 2.0f, 2.0f, mouse_brush);
+		mouse_brush.outline_opacity = 0.5f;
 		break;
 	}
 

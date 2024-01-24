@@ -117,6 +117,8 @@ void LevelMaker::saveToFile() {
 	std::cout << "File save complete!" << std::endl;
 
 	m_state->exitToMenu();
+		
+	std::cout << "Edit Mode: " << edit_mode << std::endl;
 }
 
 bool LevelMaker::fileExists(const std::string& filename) {
@@ -169,10 +171,14 @@ void LevelMaker::init() {
 
 LevelMaker::LevelMaker(const std::string& load_level) {
 
-	if (load_level != "default_level") {
+	if (load_level != "default_level.txt") {
 		edit_mode = true;
 		save_to = load_level;
 	}
+
+	else 
+		edit_mode = false;
+
 	m_level = new Level(load_level);
 	m_level->init();
 	mouse_canvas_x = 0;
@@ -181,6 +187,7 @@ LevelMaker::LevelMaker(const std::string& load_level) {
 	snap_mouse_y = 0;
 	snap_mode = false;
 	current_block_type = Block;
+
 }
 
 

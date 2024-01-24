@@ -7,6 +7,7 @@
 #include <chrono>
 #include <ctime>
 #include "animated_object.h"
+#include <projectile.h>
 class ProjectileEnemy : public DynamicObject , public AnimatedObject {
 	std::chrono::time_point<std::chrono::system_clock> startTime;
 public:
@@ -23,4 +24,5 @@ public:
 	void checkcollision();
 	void checkProjectileBoundaries();
 	ProjectileEnemy(float x, float y, float w, float h , const std::string& assetName);
+	std::string ProjectileEnemy::to_string() const override;
 };

@@ -5,6 +5,7 @@
 #include "spikes.h"
 #include "moving_enemy.h"
 #include "static_object.h"
+#include "projectile_enemy.h"
 
 void LevelMaker::update(float ms) {
 	// mouse.cur_pos_x and mouse.cur_pos_y are pixel coordinates
@@ -77,6 +78,9 @@ void LevelMaker::createObject() {
 		
 		case ProjectileEnemyBlock:
 			asset_path = "slime.png";
+			dynamic_objects.push_back(new ProjectileEnemy(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+			dynamic_objects.back()->init();
+			break;
 		}
 
 	}
@@ -216,6 +220,11 @@ void LevelMaker::draw() {
 		break;
 		
 	case MovingEnemyBlock:
+		mouse_brush.texture = m_state->getFullAssetPath("slime.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+		break;
+
+	case ProjectileEnemyBlock:
 		mouse_brush.texture = m_state->getFullAssetPath("slime.png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 		break;

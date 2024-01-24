@@ -4,6 +4,7 @@
 #include <utility>
 #include <thread>
 #include <chrono>
+#include <sstream>
 
 void ProjectileEnemy::init() {
 	DynamicObject::init();
@@ -111,5 +112,11 @@ void ProjectileEnemy::checkProjectileBoundaries() {
 }
 ProjectileEnemy::ProjectileEnemy(float x, float y, float w, float h, const std::string& assetName) : DynamicObject(x, y, w, h, assetName) {
 	
+}
+
+std::string ProjectileEnemy::to_string() const {
+	std::ostringstream oss;
+	oss << "\"ProjectileEnemy\"" << " " << m_pos_x << " " << m_pos_y << " " << m_width << " " << m_height << " " << m_asset_path;
+	return oss.str();
 }
 

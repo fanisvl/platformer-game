@@ -30,6 +30,8 @@ public:
 	void goToInitialPosition();
 	void handleCollision(CollisionType type, float offset);
 	std::pair<float, float> getPositionXY();
+	std::string Player::to_string() const;
+
 protected:
 	void debugDraw();
 	void movePlayer(float dt);

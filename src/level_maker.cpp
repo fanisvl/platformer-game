@@ -58,6 +58,10 @@ void LevelMaker::createObject() {
 			static_objects.push_back(new Spikes(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
 			static_objects.back()->init();
 			break;
+
+		case PlayerSpawn:
+			m_state->getPlayer()->setInitialPosition(mouse_canvas_x, mouse_canvas_y);
+			m_state->getPlayer()->goToInitialPosition();
 		}
 
 	}
@@ -107,9 +111,17 @@ void LevelMaker::saveToFile() {
 		return;
 	}
 
-	// Iterate through static objects and write to the file
+	// Write Player Spawn Position
+	outputFile << m_state->getPlayer()->to_string();
+
+	// Iterate through static objects and write to file
 	for (const auto& p_sob : m_level->getStaticObjects()) {
 		outputFile << p_sob->to_string() << std::endl;
+	}
+
+	// Iterate through dynamic objects and write to file
+	for (const auto& p_dob : m_level->getDynamicObjects()) {
+		outputFile << p_dob->to_string() << std::endl;
 	}
 
 	outputFile.close();
@@ -160,6 +172,10 @@ void LevelMaker::draw() {
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 		break;
 
+	case PlayerSpawn:
+		mouse_brush.texture = m_state->getFullAssetPath("player/walk_right/WizardWalk00.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+		break;
 	}
 
 	showOptions();

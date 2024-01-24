@@ -2,6 +2,7 @@
 #include "util.h"
 #include <cmath>
 #include <iomanip>
+#include <sstream>
 
 void Player::update(float dt)
 {
@@ -117,7 +118,12 @@ void Player::handleCollision(CollisionType type, float offset) {
 	}
 }
 
-std::pair<float, float> Player::getPositionXY()
-{
+std::pair<float, float> Player::getPositionXY() {
 	return std::make_pair(m_pos_x, m_pos_y);
+}
+
+std::string Player::to_string() const {
+	std::ostringstream oss;
+	oss << "Player" << " " << m_init_x << " " << m_init_y << " " << m_width << " " << m_height << " " << " ";
+	return oss.str();
 }

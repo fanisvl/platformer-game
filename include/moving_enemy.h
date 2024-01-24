@@ -15,6 +15,7 @@ public:
 	void chasePlayer();
 	bool withinRightBoundary();
 	bool withinLeftBoundary();
+	std::string MovingEnemy::to_string() const override;
 	MovingEnemy(float x, float y, float w, float h, const std::string& assetName);
 	MovingEnemy(float x, float y, float w, float h, const std::string& assetName, float left_boundary, float right_boundary);
 };

@@ -1,6 +1,7 @@
 #include "moving_enemy.h"
 #include "player.h"
 #include <utility>
+#include <sstream>
 
 void MovingEnemy::init() {
 	DynamicObject::init();	
@@ -55,6 +56,13 @@ bool MovingEnemy::withinRightBoundary() {
 bool MovingEnemy::withinLeftBoundary() {
 	if (m_pos_x - 0.05f < m_left_boundary) return false;
 	return true;
+}
+
+std::string MovingEnemy::to_string() const
+{
+	std::ostringstream oss;
+	oss << "\"MovingEnemy\"" << " " << m_pos_x << " " << m_pos_y << " " << m_width << " " << m_height << " " << m_asset_path << " " << m_left_boundary << " " << m_right_boundary;
+	return oss.str();
 }
 
 MovingEnemy::MovingEnemy(float x, float y, float w, float h, const std::string& assetName) : DynamicObject(x, y, w, h, assetName) {

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include "spikes.h"
+#include "moving_enemy.h"
 #include "static_object.h"
 
 void LevelMaker::update(float ms) {
@@ -45,6 +46,8 @@ void LevelMaker::createObject() {
 
 		std::string asset_path = "";
 		auto& static_objects = m_level->getStaticObjects();
+		auto& dynamic_objects = m_level->getDynamicObjects();
+
 
 		switch (current_block_type) {
 
@@ -62,6 +65,16 @@ void LevelMaker::createObject() {
 		case PlayerSpawn:
 			m_state->getPlayer()->setInitialPosition(mouse_canvas_x, mouse_canvas_y);
 			m_state->getPlayer()->goToInitialPosition();
+			break;
+
+		case MovingEnemyBlock:
+			asset_path = "slime.png";
+
+			// By default set left and right boundary to +/-5.0f to the initial spawn position.
+			dynamic_objects.push_back(new MovingEnemy(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path, mouse_canvas_x - 5.0f, mouse_canvas_x + 5.0f));
+			dynamic_objects.back()->init();
+			break;
+
 		}
 
 	}
@@ -69,9 +82,14 @@ void LevelMaker::createObject() {
 
 // Remove a block with right click.
 void LevelMaker::removeObject() {
+
+	// Ensure right click
 	if (mouse.button_right_pressed && !mouse.button_left_pressed) {
 		auto& static_objects = m_level->getStaticObjects();
+		auto& dynamic_objects = m_level->getDynamicObjects();
 
+
+		// Delete static object if mouse intersects with it
 		for (auto it = static_objects.begin(); it != static_objects.end();) {
 			
 			const auto& p_sob = *it;
@@ -83,20 +101,36 @@ void LevelMaker::removeObject() {
 			else ++it;
 
 		}
+
+		// Delete dynamic object if mouse intersects with it
+		for (auto it = dynamic_objects.begin(); it != dynamic_objects.end();) {
+
+			const auto& p_dob = *it;
+
+			if (mouseIntersect(p_dob->m_pos_x, p_dob->m_pos_y)) {
+				it = dynamic_objects.erase(it);
+			}
+
+			else ++it;
+
+		}
 	}
 }
 
 void LevelMaker::saveToFile() {
 	std::ofstream outputFile;
 
+
+	// If in edit mode save to the existing file
 	if (edit_mode) {
 		outputFile.open("levels\\" + save_to);
 	}
 
+	// Otherwise, create a new file
 	else {
 
 		int level_id = 1;
-		// Check for an existing file and increment level_id if necessary
+		// Check for an existing file and increment level_id if necessary, to avoid duplicate names
 		while (fileExists("levels\\my_level_" + std::to_string(level_id) + ".txt")) {
 			level_id++;
 		}
@@ -177,6 +211,11 @@ void LevelMaker::draw() {
 		mouse_brush.texture = m_state->getFullAssetPath("player/walk_right/WizardWalk00.png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 2.0f, 2.0f, mouse_brush);
 		mouse_brush.outline_opacity = 0.5f;
+		break;
+		
+	case MovingEnemyBlock:
+		mouse_brush.texture = m_state->getFullAssetPath("slime.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 		break;
 	}
 

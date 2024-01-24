@@ -34,6 +34,6 @@ StaticObject::StaticObject(float x, float y, float w, float h, const std::string
 
 std::string StaticObject::to_string() const {
     std::ostringstream oss;
-    oss << "StaticObject" << " " << m_pos_x << " " << m_pos_y << " " << m_width << " " << m_height << " " << m_asset_path;
+    oss << "\"StaticObject\"" << " " << m_pos_x << " " << m_pos_y << " " << m_width << " " << m_height << " " << m_asset_path;
     return oss.str();
 }

@@ -15,6 +15,6 @@ public:
     void draw() override;
     void init() override;
     StaticObject(float x, float y, float w, float h, const std::string& assetName);
-    std::string StaticObject::to_string() const;
+    virtual std::string StaticObject::to_string() const;
     StaticObject() {};
 };

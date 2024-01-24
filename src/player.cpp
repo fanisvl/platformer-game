@@ -60,6 +60,14 @@ void Player::movePlayer(float dt)
 		current_animation = Right;
 		move_direction = 1.0f;
 	}
+	if (!graphics::getKeyState(graphics::SCANCODE_A) && !graphics::getKeyState(graphics::SCANCODE_D)) {
+		if (current_animation == Right) {
+			current_animation = IdleRight;
+		}
+		else if(current_animation ==Left){
+			current_animation = IdleLeft;
+		}
+	}
 	
 	// Ensure that m_vx doesn't exceed m_max_velocity
 	m_vx = std::min<float>(m_max_velocity, m_vx + delta_time * move_direction * m_accel_horizontal);

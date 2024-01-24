@@ -16,16 +16,16 @@ void Player::update(float dt)
 
 void Player::init()
 {
-	AnimatedObject::LoadAssets("player\\walk_right\\WizardWalk.png",1.0f,0.0f);
+	AnimatedObject::loadPlayerAssets();
+	AnimatedObject::init();
 	// Adjust width for finer collision detections
 	m_width = 0.5f;
 }
 
 void Player::draw()
 {
-	AnimatedObject::draw(m_pos_x,m_pos_y,current_animation);
-
-    graphics::drawRect(m_pos_x, m_pos_y, 2.0f, 2.0f, m_brush_object);
+	AnimatedObject::animate(m_pos_x, m_pos_y, current_animation);
+	graphics::drawRect(m_pos_x, m_pos_y, 2.0f, 2.0f, m_animation_brush);
     if (GameObject::m_state->m_debugging)
         debugDraw();
 }

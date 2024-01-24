@@ -21,13 +21,14 @@ protected:
 	std::vector<std::string> idle_right;
 	std::vector<std::string> idle_left;
 	AnimationType current_animation = Right;
-	graphics::Brush m_brush_object;
+	graphics::Brush m_animation_brush;
 public:
-	void draw(float pos_x,float pos_y,AnimationType current_animation);
+	void animate(float pos_x,float pos_y,AnimationType current_animation);
 	void init() override;
-	void animate(std::vector<std::string> vector_name,float pos_x);
+	void animateWalk(std::vector<std::string> vector_name,float pos_x);
 	void animateIdle(std::vector<std::string>& vector_name);
-	void FillVector(std::vector<std::string>& vector, std::string asset);
-	void LoadAssets(std::string assetName,float fill_opacity,float outline_opacity);
+	void fillVector(std::vector<std::string>& vector, std::string asset_folder);
+	void loadPlayerAssets();
+	void loadMovingEnemyAssets();
 	AnimatedObject();
 };

@@ -9,6 +9,8 @@ void Projectile::init() {
 	if (playerpos_x > m_pos_x) {
 		is_right = true;
 	}
+	m_width /= 2.0f;
+	m_height /= 2.0f;
 }
 
 void Projectile::update(float dt) {

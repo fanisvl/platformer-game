@@ -51,7 +51,7 @@ void ProjectileEnemy::handleCollision(CollisionType type) {
 	}
 }
 void ProjectileEnemy::createProjectile() {
-	m_projectile = new Projectile(m_pos_x, m_pos_y, 0.55f, 0.55f, "slime.png");
+	m_projectile = new Projectile(m_pos_x, m_pos_y, 0.55f, 0.55f, "EnemyMushroom/projectileSprites/tile000.png");
 	m_projectile->init();
 	m_projectiles.push_back(m_projectile);
 }

@@ -77,7 +77,7 @@ void LevelMaker::createObject() {
 			break;
 		
 		case ProjectileEnemyBlock:
-			asset_path = "slime.png";
+			asset_path = "EnemyMushroom/attackSprites/mushroom_000.png";
 			dynamic_objects.push_back(new ProjectileEnemy(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
 			dynamic_objects.back()->init();
 			break;
@@ -204,11 +204,11 @@ void LevelMaker::draw() {
 
 	switch (current_block_type) {
 	case Block:
-		mouse_brush.texture = m_state->getFullAssetPath("terrain\\cave_block.png");
+		mouse_brush.texture = m_state->getFullAssetPath("terrain/cave_block.png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 		break;
 	case SpikeBlock:
-		mouse_brush.texture = m_state->getFullAssetPath("terrain\\cave_spikes2.png");
+		mouse_brush.texture = m_state->getFullAssetPath("terrain/cave_spikes2.png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 		break;
 
@@ -225,8 +225,10 @@ void LevelMaker::draw() {
 		break;
 
 	case ProjectileEnemyBlock:
-		mouse_brush.texture = m_state->getFullAssetPath("slime.png");
+		mouse_brush.outline_opacity = 0.0f;
+		mouse_brush.texture = m_state->getFullAssetPath("EnemyMushroom/attackSprites/mushroom_000.png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+		mouse_brush.outline_opacity = 0.5f;
 		break;
 	}
 

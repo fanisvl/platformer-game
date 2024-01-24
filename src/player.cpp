@@ -124,6 +124,6 @@ std::pair<float, float> Player::getPositionXY() {
 
 std::string Player::to_string() const {
 	std::ostringstream oss;
-	oss << "Player" << " " << m_init_x << " " << m_init_y << " " << m_width << " " << m_height << " " << " ";
+	oss << "\"Player\"" << " " << m_init_x << " " << m_init_y << " " << 1.0 << " " << 1.0 << " " << "\"\"";
 	return oss.str();
 }

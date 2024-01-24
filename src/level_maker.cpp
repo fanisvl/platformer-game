@@ -66,6 +66,8 @@ void LevelMaker::createObject() {
 		case PlayerSpawn:
 			m_state->getPlayer()->setInitialPosition(mouse_canvas_x, mouse_canvas_y);
 			m_state->getPlayer()->goToInitialPosition();
+			std::cout << "LevelMAKER sending player to original position by PlayerSPAWN" << std::endl;
+
 			break;
 
 		case MovingEnemyBlock:

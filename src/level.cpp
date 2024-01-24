@@ -140,6 +140,7 @@ void Level::LoadLevel(std::string levelName) {
             if (Type == "Player") {
                 m_state->getPlayer()->setInitialPosition(x, y);
                 m_state->getPlayer()->goToInitialPosition();
+                std::cout << "Level sending player to original position by READFILE" << std::endl;
             }
 
             else if (Type == "MovingEnemy") {
@@ -173,6 +174,7 @@ void Level::resetLevel() {
     // TODO: Add die method to player that plays death animation
     // TODO: Count deaths OR Add timer / Highscore??
     m_state->getPlayer()->goToInitialPosition();
+    std::cout << "Level sending player to original position by RESET_LEVEL" << std::endl;
     for (auto p_dob : m_dynamic_objects)
         p_dob->init();
 }

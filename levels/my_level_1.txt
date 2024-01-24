@@ -1,0 +1,17 @@
+"Player" 14.8167 7.65 1 1 ""
+"StaticObject" 1 9 1 1 terrain\cave_block.png
+"StaticObject" 2 9 1 1 terrain\cave_block.png
+"StaticObject" 3 9 1 1 terrain\cave_block.png
+"StaticObject" 4 9 1 1 terrain\cave_block.png
+"StaticObject" 5 9 1 1 terrain\cave_block.png
+"StaticObject" 6 9 1 1 terrain\cave_block.png
+"StaticObject" 7 9 1 1 terrain\cave_block.png
+"StaticObject" 8 9 1 1 terrain\cave_block.png
+"StaticObject" 9 9 1 1 terrain\cave_block.png
+"StaticObject" 10 9 1 1 terrain\cave_block.png
+"StaticObject" 11 9 1 1 terrain\cave_block.png
+"StaticObject" 12 9 1 1 terrain\cave_block.png
+"StaticObject" 13 9 1 1 terrain\cave_block.png
+"StaticObject" 14 9 1 1 terrain\cave_block.png
+"StaticObject" 15 9 1 1 terrain\cave_block.png
+"ProjectileEnemy" 12 8 1 1 EnemyMushroom/attackSprites/mushroom_000.png

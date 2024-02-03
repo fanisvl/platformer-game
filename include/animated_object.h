@@ -7,12 +7,13 @@
 enum AnimationType {
 
 	//enum used for each animation type
-	Left, //move left animation
-	Right, //move right animation
+	WalkLeft, //move left animation
+	WalkRight, //move right animation
  	Jump, //jump animation
 	IdleRight,//Idle right animation
 	IdleLeft,//Idle left animation
 };
+
 
 class AnimatedObject : public GameObject {
 protected:

@@ -19,6 +19,10 @@ void AnimatedObject::loadMovingEnemyAssets() {
 
 }
 
+void AnimatedObject::loadAssets() {
+
+}
+
 void AnimatedObject::fillVector(std::vector<std::string>& vector, std::string asset_folder) {
 	
 
@@ -39,12 +43,12 @@ void AnimatedObject::fillVector(std::vector<std::string>& vector, std::string as
 
 void AnimatedObject::animate(float pos_x, float pos_y, AnimationType current_animation) {
 	switch (current_animation) {
-	case Right:
+	case WalkRight:
 		// setScale changes the direction the player looks (1 right, -1 left)
 		graphics::setScale(1.0f, 1.0f); 
 		animateWalk(walk, pos_x);
 		break;
-	case Left:
+	case WalkLeft:
 		graphics::setScale(-1.0f, 1.0f); 
 		animateWalk(walk, pos_x);
 		break;

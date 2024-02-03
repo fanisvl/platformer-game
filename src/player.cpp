@@ -53,18 +53,18 @@ void Player::movePlayer(float dt)
 	// Acceleration-based velocity
 	float move_direction = 0.0f;
 	if (graphics::getKeyState(graphics::SCANCODE_A)) {
-		current_animation = Left;
+		current_animation = WalkLeft;
 		move_direction -= 1.0f;
 	}
 	if (graphics::getKeyState(graphics::SCANCODE_D)) {
-		current_animation = Right;
+		current_animation = WalkRight;
 		move_direction = 1.0f;
 	}
 	if (!graphics::getKeyState(graphics::SCANCODE_A) && !graphics::getKeyState(graphics::SCANCODE_D)) {
-		if (current_animation == Right) {
+		if (current_animation == WalkRight) {
 			current_animation = IdleRight;
 		}
-		else if(current_animation ==Left){
+		else if(current_animation == WalkLeft){
 			current_animation = IdleLeft;
 		}
 	}

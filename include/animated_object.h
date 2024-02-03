@@ -16,10 +16,8 @@ enum AnimationType {
 
 class AnimatedObject : public GameObject {
 protected:
-	std::vector<std::string> walk_right;
-	std::vector<std::string> walk_left;
-	std::vector<std::string> idle_right;
-	std::vector<std::string> idle_left;
+	std::vector<std::string> walk;
+	std::vector<std::string> idle;
 	AnimationType current_animation = Right;
 	graphics::Brush m_animation_brush;
 public:

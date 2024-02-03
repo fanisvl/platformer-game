@@ -7,13 +7,15 @@ void AnimatedObject::init() {
 
 }
 void AnimatedObject::loadPlayerAssets() {
-	fillVector(walk_right, "assets/player/walk_right/");
-	fillVector(walk_left, "assets/player/walk_left/");
-	fillVector(idle_right, "assets/player/idle_right/");
-	fillVector(idle_left, "assets/player/idle_left/");
+	fillVector(walk, "assets/player/walk_right/");
+	fillVector(idle, "assets/player/idle_right/");
 }
 
 void AnimatedObject::loadMovingEnemyAssets() {
+	//fillVector(walk_right, "assets/player/walk_right/");
+	//fillVector(walk_left, "assets/player/walk_left/");
+	//fillVector(idle_right, "assets/player/idle_right/");
+	//fillVector(idle_left, "assets/player/idle_left/");
 
 }
 
@@ -38,16 +40,21 @@ void AnimatedObject::fillVector(std::vector<std::string>& vector, std::string as
 void AnimatedObject::animate(float pos_x, float pos_y, AnimationType current_animation) {
 	switch (current_animation) {
 	case Right:
-		animateWalk(walk_right, pos_x);
+		// setScale changes the direction the player looks (1 right, -1 left)
+		graphics::setScale(1.0f, 1.0f); 
+		animateWalk(walk, pos_x);
 		break;
 	case Left:
-		animateWalk(walk_left, pos_x);
+		graphics::setScale(-1.0f, 1.0f); 
+		animateWalk(walk, pos_x);
 		break;
 	case IdleRight:
-		animateIdle(idle_right);
+		graphics::setScale(1.0f, 1.0f); 
+		animateIdle(idle);
 		break;
 	case IdleLeft:
-		animateIdle(idle_left);
+		graphics::setScale(-1.0f, 1.0f);
+		animateIdle(idle);
 		break;
 	}
 }
@@ -64,7 +71,6 @@ void AnimatedObject::animateWalk(std::vector<std::string> vector_name,float pos_
 
 }
 
-#include <iostream>
 void AnimatedObject::animateIdle(std::vector<std::string>& vector_name) {
 	static float timer = 0.0f;  // Keeps track of elapsed time
 	static int frame_index = 0; // Keeps track of the index

@@ -12,6 +12,9 @@ void MovingEnemy::update(float dt) {
 }
 
 void MovingEnemy::draw() {
+	if (!hidden) {
+		AnimatedObject::animate(m_pos_x, m_pos_y, current_animation);
+	}
 	DynamicObject::draw();
 }
 

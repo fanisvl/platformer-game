@@ -32,6 +32,7 @@ void Player::draw()
 
 void Player::debugDraw()
 {
+	graphics::setScale(1.0f, 1.0f);
 	graphics::Brush debug_brush;
 	SETCOLOR(debug_brush.fill_color, 1, 0.3f, 0);
 	SETCOLOR(debug_brush.outline_color, 1, 0.1f, 0);

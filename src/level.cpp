@@ -176,5 +176,5 @@ void Level::resetLevel() {
     m_state->getPlayer()->goToInitialPosition();
     std::cout << "Level sending player to original position by RESET_LEVEL" << std::endl;
     for (auto p_dob : m_dynamic_objects)
-        p_dob->init();
+        p_dob->reset();
 }

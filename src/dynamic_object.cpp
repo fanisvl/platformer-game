@@ -18,6 +18,12 @@ void DynamicObject::init() {
     StaticObject::init();
 }
 
+void DynamicObject::reset() {
+    m_pos_x = init_x;
+    m_pos_y = init_y;
+    show();
+}
+
 DynamicObject::DynamicObject(float x, float y, float w, float h, const std::string& assetName) 
     : StaticObject(x, y, w, h, assetName)
 {

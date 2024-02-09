@@ -19,7 +19,7 @@ class AnimatedObject : public GameObject {
 protected:
 	std::vector<std::string> walk;
 	std::vector<std::string> idle;
-	AnimationType current_animation = Right;
+	AnimationType current_animation;
 	graphics::Brush m_animation_brush;
 public:
 	void animate(float pos_x,float pos_y,AnimationType current_animation);

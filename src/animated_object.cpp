@@ -7,20 +7,14 @@ void AnimatedObject::init() {
 
 }
 void AnimatedObject::loadPlayerAssets() {
-	fillVector(walk, "assets/player/walk_right/");
-	fillVector(idle, "assets/player/idle_right/");
+	fillVector(walk, "assets/player/walk");
+	fillVector(idle, "assets/player/idle");
+	std::cout << "Assets loaded" << std::endl;
 }
 
 void AnimatedObject::loadMovingEnemyAssets() {
-	//fillVector(walk_right, "assets/player/walk_right/");
-	//fillVector(walk_left, "assets/player/walk_left/");
-	//fillVector(idle_right, "assets/player/idle_right/");
-	//fillVector(idle_left, "assets/player/idle_left/");
-
-}
-
-void AnimatedObject::loadAssets() {
-
+	fillVector(walk, "assets/fireWorm/walk");
+	fillVector(idle, "assets/fireWorm/idle");
 }
 
 void AnimatedObject::fillVector(std::vector<std::string>& vector, std::string asset_folder) {
@@ -30,7 +24,6 @@ void AnimatedObject::fillVector(std::vector<std::string>& vector, std::string as
 		for (const auto& entry : std::filesystem::directory_iterator(asset_folder)) {
 			// Convert std::filesystem::path to std::string
 			std::string filename = entry.path().string();
-			std::cout << "Pushing to animation vector: " + filename << std::endl;
 			vector.push_back(filename);
 		}
 	}

@@ -18,6 +18,7 @@ void Player::init()
 {
 	AnimatedObject::loadPlayerAssets();
 	AnimatedObject::init();
+	current_animation = IdleRight;
 	// Adjust width for finer collision detections
 	m_width = 0.5f;
 }

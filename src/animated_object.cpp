@@ -9,12 +9,13 @@ void AnimatedObject::init() {
 void AnimatedObject::loadPlayerAssets() {
 	fillVector(walk, "assets/player/walk");
 	fillVector(idle, "assets/player/idle");
-	std::cout << "Assets loaded" << std::endl;
+	m_animation_brush.texture = "assets/player/idle/idle00.png";
 }
 
 void AnimatedObject::loadMovingEnemyAssets() {
 	fillVector(walk, "assets/fireWorm/walk");
 	fillVector(idle, "assets/fireWorm/idle");
+	m_animation_brush.texture = "assets/fireWorm/idle/tile (1).png";
 }
 
 void AnimatedObject::fillVector(std::vector<std::string>& vector, std::string asset_folder) {
@@ -25,6 +26,7 @@ void AnimatedObject::fillVector(std::vector<std::string>& vector, std::string as
 			// Convert std::filesystem::path to std::string
 			std::string filename = entry.path().string();
 			vector.push_back(filename);
+			std::cout << "Pushing: " << filename << std::endl;
 		}
 	}
 

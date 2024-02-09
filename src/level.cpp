@@ -36,10 +36,7 @@ void Level::checkCollisions()
         }
     }
 
-    // Dynamic Objects
-    // TODO: Change to match all dynamic objects.
-    // Coins for example get "killed" when the player intersects in any direction.
-    // Enemies get killed when the player intersects down, and kill the player when they intersect sideways.
+    // Player Sideways - Dynamic Objects
     for (auto& p_dob : m_dynamic_objects) {
         float offset = 0.0f;
         if (offset = m_state->getPlayer()->intersectSideways(*p_dob)) {
@@ -50,13 +47,6 @@ void Level::checkCollisions()
         }
     }
 
-    for (auto& p_dob : m_dynamic_objects) {
-        float offset = 0.0f;
-        if (offset = m_state->getPlayer()->intersectDown(*p_dob)) {
-            p_dob->handleCollision(DOWNWARDS);
-            break;
-        }
-    }
 }
 
 void Level::update(float dt)

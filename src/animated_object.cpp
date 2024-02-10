@@ -5,6 +5,9 @@ void AnimatedObject::init() {
 	m_animation_brush.fill_opacity = 1.0f;
 	m_animation_brush.outline_opacity = 0.0f;
 
+	timer = 0.0f;  // Keeps track of elapsed time
+	frame_index = 0;
+
 }
 void AnimatedObject::loadPlayerAssets() {
 	m_animation_brush.texture = "assets/player/idle/idle00.png";
@@ -88,9 +91,6 @@ void AnimatedObject::animateAction(const std::vector<std::string>& vector, float
 }
 
 void AnimatedObject::animateIdle(const std::vector<std::string>& vector) {
-	static float timer = 0.0f;  // Keeps track of elapsed time
-	static int frame_index = 0;
-
 	float time_unit = 0.1f;  // added to the timer every time the function is called to delay the display of the next frame
 	float total_frame_duration = 0.5f; // variable to display each frame every time the timer reaches 0.5f
 

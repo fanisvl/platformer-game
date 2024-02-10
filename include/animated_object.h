@@ -21,6 +21,8 @@ protected:
 	std::vector<std::string> m_rotation;
 	AnimationType current_animation;
 	graphics::Brush m_animation_brush;
+	float timer;
+	int frame_index;
 public:
 	void init() override;
 	void animate(float pos_x, float pos_y, AnimationType current_animation);

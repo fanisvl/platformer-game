@@ -61,3 +61,4 @@
 "Coin" 8 5 1 1 assets/coins/tile000.png
 "Coin" 9 5 1 1 assets/coins/tile000.png
 "Coin" 9 4 1 1 assets/coins/tile000.png
+"MovingEnemy" 8.39999 5 1 1 fireWorm/walk/tile(1).png 0 20

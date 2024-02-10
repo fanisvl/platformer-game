@@ -41,9 +41,16 @@ void Level::checkCollisions()
     for (auto& p_dob : m_dynamic_objects) {
         float offset = 0.0f;
         if (offset = m_state->getPlayer()->intersectSideways(*p_dob)) {
-            // Dynamic objects should know if an intersection kills them, and what to do.
-            // We can add a method like handleCollision(SIDEWAYS) to all dynamic objects that kills (hides) the object based on the direction of the collision.
             p_dob->handleCollision(SIDEWAYS);
+            break;
+        }
+    }
+
+    // Player Downwards - Dynamic Objects
+    for (auto& p_dob : m_dynamic_objects) {
+        float offset = 0.0f;
+        if (offset = m_state->getPlayer()->intersectDown(*p_dob)) {
+            p_dob->handleCollision(DOWNWARDS);
             break;
         }
     }

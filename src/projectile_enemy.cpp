@@ -14,16 +14,18 @@ void ProjectileEnemy::init() {
 
 void ProjectileEnemy::draw() {
 
-	// Animate and draw Projectile Enemy
-	AnimatedObject::animate(m_pos_x, m_pos_y, current_animation);
-	graphics::drawRect(m_pos_x, m_pos_y, m_width, m_height, m_animation_brush);
+	if (!hidden) {
+		// Animate and draw Projectile Enemy
+		AnimatedObject::animate(m_pos_x, m_pos_y, current_animation);
+		graphics::drawRect(m_pos_x, m_pos_y, m_width, m_height, m_animation_brush);
+	}
 
 	// Debug draw
 	m_brush_debug.fill_opacity = 0.5f;
 	if (GameObject::m_state->m_debugging) {
 		graphics::drawRect(m_pos_x, m_pos_y, m_width, m_height, m_brush_debug);
 	}
-
+	
 	// Call draw for projectiles
 	for (auto& p_gob : m_projectiles)
 		if (p_gob) p_gob->draw();

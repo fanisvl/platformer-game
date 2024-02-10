@@ -117,6 +117,11 @@ void GameState::update(float dt)
 }
 
 void GameState::startNewGame() {
+	delete m_current_level;
+	m_current_level = nullptr;
+	current_level_index = 0;
+	m_player->resetPoints();
+
 	m_current_state = GameActive;
 	// Move these back to gameState init for quicker load time.
 	m_current_level = new Level("level1.txt");

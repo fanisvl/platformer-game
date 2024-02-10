@@ -19,9 +19,10 @@ void MovingEnemy::draw() {
 		AnimatedObject::animate(m_pos_x, m_pos_y, current_animation);
 		m_animation_brush.outline_opacity = 0.0f;
 		graphics::drawRect(m_pos_x, m_pos_y, 1.0f, 1.0f, m_animation_brush);
-		if (GameObject::m_state->m_debugging) {
-			graphics::drawRect(m_pos_x, m_pos_y, m_width, m_height, m_brush_debug);
-		}
+	}
+
+	if (GameObject::m_state->m_debugging) {
+		graphics::drawRect(m_pos_x, m_pos_y, m_width, m_height, m_brush_debug);
 	}
 }
 

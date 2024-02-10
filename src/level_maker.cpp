@@ -248,6 +248,7 @@ void LevelMaker::draw() {
 }
 
 void LevelMaker::init() {
+	
 }
 
 LevelMaker::LevelMaker(const std::string& load_level) {
@@ -262,6 +263,7 @@ LevelMaker::LevelMaker(const std::string& load_level) {
 
 	m_level = new Level(load_level);
 	m_level->init();
+	m_level->resetLevel();
 	mouse_canvas_x = 0;
 	mouse_canvas_y = 0;
 	snap_mouse_x = 0;

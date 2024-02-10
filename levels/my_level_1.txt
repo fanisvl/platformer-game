@@ -17,3 +17,4 @@
 "StaticObject" 16 9 1 1 terrain\cave_block.png
 "StaticObject" 0.0333333 8.95 1 1 terrain\cave_block.png
 "ProjectileEnemy" 12 8 1 1 EnemyMushroom/attackSprites/mushroom_000.png
+"MovingEnemy" 6.39999 8 1 1 fireWorm/walk/tile(1).png 0 20

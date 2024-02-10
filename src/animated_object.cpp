@@ -7,15 +7,20 @@ void AnimatedObject::init() {
 
 }
 void AnimatedObject::loadPlayerAssets() {
+	m_animation_brush.texture = "assets/player/idle/idle00.png";
 	fillVector(walk, "assets/player/walk");
 	fillVector(idle, "assets/player/idle");
-	m_animation_brush.texture = "assets/player/idle/idle00.png";
 }
 
 void AnimatedObject::loadMovingEnemyAssets() {
+	m_animation_brush.texture = "assets/fireWorm/idle/tile (1).png";
 	fillVector(walk, "assets/fireWorm/walk");
 	fillVector(idle, "assets/fireWorm/idle");
-	m_animation_brush.texture = "assets/fireWorm/idle/tile (1).png";
+}
+
+void AnimatedObject::loadProjectileEnemyAssets() {
+	m_animation_brush.texture = "assets/projectileEnemy/idle/idle (1).png";
+	fillVector(idle, "assets/projectileEnemy/idle");
 }
 
 void AnimatedObject::fillVector(std::vector<std::string>& vector, std::string asset_folder) {
@@ -38,14 +43,17 @@ void AnimatedObject::fillVector(std::vector<std::string>& vector, std::string as
 
 void AnimatedObject::animate(float pos_x, float pos_y, AnimationType current_animation) {
 	switch (current_animation) {
+
+	// Walk & ProjectileAttack both call animateAction()
 	case WalkRight:
 		// setScale changes the direction the player looks (1 right, -1 left)
 		graphics::setScale(1.0f, 1.0f); 
-		animateWalk(walk, pos_x);
+		animateAction(walk, pos_x);
 		break;
+
 	case WalkLeft:
 		graphics::setScale(-1.0f, 1.0f); 
-		animateWalk(walk, pos_x);
+		animateAction(walk, pos_x);
 		break;
 	case IdleRight:
 		graphics::setScale(1.0f, 1.0f); 
@@ -58,39 +66,40 @@ void AnimatedObject::animate(float pos_x, float pos_y, AnimationType current_ani
 	}
 }
 
-void AnimatedObject::animateWalk(std::vector<std::string> vector_name,float pos_x) {
-	if (!vector_name.empty()) {
+void AnimatedObject::animateAction(const std::vector<std::string>& vector, float pos_x) {
+	if (!vector.empty()) {
 		// Calculate the raw index
-		int rawIndex = (int)fmod(100.0f - pos_x * 9.0f, vector_name.size());
+		int rawIndex = (int)fmod(100.0f - pos_x * 9.0f, vector.size());
 
 		// Use modulo to wrap the index within the bounds of m_sprites
-		int spriteIndex = (rawIndex + vector_name.size()) % vector_name.size();
-		m_animation_brush.texture = vector_name[spriteIndex];
+		int spriteIndex = (rawIndex + vector.size()) % vector.size();
+		m_animation_brush.texture = vector[spriteIndex];
 	}
 
 }
 
-void AnimatedObject::animateIdle(std::vector<std::string>& vector_name) {
+void AnimatedObject::animateIdle(const std::vector<std::string>& vector) {
 	static float timer = 0.0f;  // Keeps track of elapsed time
-	static int frame_index = 0; // Keeps track of the index
-	float time_unit = 0.1f;  // is added to the timer every time the function is called to delay the display of the next frame
-	float frame_duration = 0.5f; // variable to display each frame every time the timer reaches 0.5f
-	// is added to the timer every time the function is called to delay the display of the next frame
-	if (!vector_name.empty()) { // checks if the vector is empty
+	static int frame_index = 0;
+
+	float time_unit = 0.1f;  // added to the timer every time the function is called to delay the display of the next frame
+	float total_frame_duration = 0.5f; // variable to display each frame every time the timer reaches 0.5f
+
+	if (!vector.empty()) { // checks if the vector is empty
 		
-		timer += time_unit; //adds the time unit (0.1f) to the timer
+		timer += time_unit; // adds the time unit (0.1f) to the timer
 		
 		// checks if the timer is greater or equal to the set frame duration ensuring that each frame is displayed every time the timer reaches 0.5f
-		if (timer >= frame_duration) {
-			// display the current frame 
-			m_animation_brush.texture = vector_name[frame_index];
-			//increment the index for the next frame and then use modulo to reset it back to zero when the index exceeds the size of the vector
-			frame_index = (frame_index + 1) % vector_name.size();
-			// Resets the timer by subtracting the frame duration
-			timer -= frame_duration;
+		if (timer >= total_frame_duration) {
+
+			// Increment the index for the next frame and then use modulo to reset it back to zero when the index exceeds the size of the vector
+			frame_index = (frame_index + 1) % vector.size();
+
+			// Display the current frame 
+			m_animation_brush.texture = vector[frame_index];
+
+			// Resets the timer by subtracting the total frame duration
+			timer -= total_frame_duration;
 		}
 	}
-}
-AnimatedObject::AnimatedObject() {
-
 }

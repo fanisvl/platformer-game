@@ -62,11 +62,6 @@ void MovingEnemy::chasePlayer() {
 			m_pos_x -= 0.05f;
 			current_animation = WalkLeft;
 		}
-		
-		//else {
-		//	if (current_animation == WalkRight) current_animation = IdleRight;
-		//	if (current_animation == WalkLeft) current_animation = IdleLeft;
-		//}
 	}
 }	
 

@@ -4,16 +4,14 @@
 #include <vector>
 #include <list>
 #include <sgg/graphics.h>
+
 enum AnimationType {
-
-	//enum used for each animation type
-	WalkLeft, //move left animation
-	WalkRight, //move right animation
- 	Jump, //jump animation
-	IdleRight,//Idle right animation
-	IdleLeft,//Idle left animation
+	WalkLeft,
+	WalkRight, 
+ 	Jump,
+	IdleRight,
+	IdleLeft,
 };
-
 
 class AnimatedObject : public GameObject {
 protected:
@@ -22,12 +20,12 @@ protected:
 	AnimationType current_animation;
 	graphics::Brush m_animation_brush;
 public:
-	void animate(float pos_x,float pos_y,AnimationType current_animation);
 	void init() override;
-	void animateWalk(std::vector<std::string> vector_name,float pos_x);
-	void animateIdle(std::vector<std::string>& vector_name);
+	void animate(float pos_x, float pos_y, AnimationType current_animation);
+	void animateAction(const std::vector<std::string>& vector, float pos_x);
+	void animateIdle(const std::vector<std::string>& vector);
 	void fillVector(std::vector<std::string>& vector, std::string asset_folder);
 	void loadPlayerAssets();
 	void loadMovingEnemyAssets();
-	AnimatedObject();
+	void loadProjectileEnemyAssets();
 };

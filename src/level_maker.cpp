@@ -79,7 +79,7 @@ void LevelMaker::createObject() {
 			break;
 		
 		case ProjectileEnemyBlock:
-			asset_path = "EnemyMushroom/attackSprites/mushroom_000.png";
+			asset_path = "assets/projectileEnemy/idle/idle (1).png";
 			dynamic_objects.push_back(new ProjectileEnemy(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
 			dynamic_objects.back()->init();
 			break;
@@ -225,7 +225,7 @@ void LevelMaker::draw() {
 		break;
 
 	case ProjectileEnemyBlock:
-		mouse_brush.texture = m_state->getFullAssetPath("EnemyMushroom/attackSprites/mushroom_000.png");
+		mouse_brush.texture = m_state->getFullAssetPath("projectileEnemy/idle/idle (1).png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 		break;
 	}

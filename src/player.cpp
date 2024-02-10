@@ -12,6 +12,11 @@ void Player::update(float dt)
 	// update offset for other game objects
 	GameObject::update(dt);
 
+	if (graphics::getKeyState(graphics::SCANCODE_8)) {
+		m_points++;
+		std::cout << "Points: " << m_points << std::endl;
+	}
+
 }
 
 void Player::init()

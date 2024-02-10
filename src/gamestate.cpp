@@ -6,6 +6,7 @@
 #include <thread>
 #include <chrono>
 #include <iostream>
+#include <filesystem>
 using namespace std::chrono_literals;
 
 GameState::GameState(){
@@ -40,6 +41,8 @@ void GameState::init()
 
 	graphics::preloadBitmaps(getAssetDir());
 	graphics::setFont(getFullAssetPath("OpenSans-Regular.ttf"));
+
+	loadLevelNames();
 
 }
 
@@ -92,6 +95,18 @@ void GameState::update(float dt)
 	case GameActive:
 		if (m_current_level) m_current_level->update(dt);
 		if (m_player) m_player->update(dt);
+
+
+		if (m_player->getPoints() >= 8 && m_next_level == nullptr) {
+			// Start loading next level
+			loadNextLevel();
+		}
+
+		// If player collected all points, go to next level
+		if (m_player->getPoints() >= 20 && m_next_level != nullptr) {
+			goToNextLevel();
+			m_player->resetPoints();
+		}
 		break;
 
 	case LevelMakerActive:
@@ -102,13 +117,61 @@ void GameState::update(float dt)
 }
 
 void GameState::startNewGame() {
-
 	m_current_state = GameActive;
-
 	// Move these back to gameState init for quicker load time.
 	m_current_level = new Level("level1.txt");
 	m_current_level->init();
+	m_current_level->resetLevel();
 
+}
+
+void GameState::loadNextLevel() {
+
+	std::cout << "Load next level" << std::endl;
+	int next_level_index = current_level_index + 1;
+	std::cout << "Next level index: " << next_level_index << std::endl;
+	if (next_level_index >= m_level_names.size()) {
+		std::cout << "No more levels - Go to Main Menu" << std::endl;
+		m_current_state = MenuActive;
+
+		delete m_current_level;
+		m_current_level = nullptr;
+		current_level_index = 0;
+
+		m_player->resetPoints();
+		return;
+	}
+
+	m_next_level = new Level(m_level_names[next_level_index]);
+	std::cout << "Created level: " << m_level_names[next_level_index] << std::endl;
+	m_next_level->init();
+}
+
+void GameState::goToNextLevel() {
+	std::cout << "Go to next level" << std::endl;
+	delete m_current_level;
+	m_current_level = m_next_level;
+	current_level_index++;
+	m_current_level->resetLevel();
+	m_next_level = nullptr;
+}
+
+void GameState::loadLevelNames() {
+	std::string level_folder = "levels/";
+	try {
+		for (const auto& entry : std::filesystem::directory_iterator(level_folder)) {
+			// Convert std::filesystem::path to std::string
+			std::string filename = entry.path().filename().string();
+			if (filename != "default_level.txt") {
+				std::cout << "Pushing: " << filename << std::endl;
+				m_level_names.push_back(filename);
+			}
+		}
+	}
+
+	catch (const std::filesystem::filesystem_error& ex) {
+		std::cerr << "Error accessing the directory: " << ex.what() << std::endl;
+	}
 }
 
 void GameState::exitToMenu() {

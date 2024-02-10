@@ -129,8 +129,7 @@ void Level::LoadLevel(std::string levelName) {
         if (iss >> std::quoted(Type) >> x >> y >> width >> height >> std::quoted(assetName)) {
             if (Type == "Player") {
                 m_state->getPlayer()->setInitialPosition(x, y);
-                m_state->getPlayer()->goToInitialPosition();
-                std::cout << "Level sending player to original position by READFILE" << std::endl;
+                std::cout << "Level setting initial position for player" << std::endl;
             }
 
             else if (Type == "MovingEnemy") {

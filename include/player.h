@@ -23,7 +23,6 @@ class Player : public Box, public GameObject , public AnimatedObject
 public: 
 	float m_vx = 0.0f;
 	float m_vy = 0.0f;
-	float m_pointsPlayer = 0.0f;
 
 public:
 	void update(float dt) override;

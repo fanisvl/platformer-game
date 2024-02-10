@@ -24,7 +24,7 @@ void AnimatedObject::loadProjectileEnemyAssets() {
 }
 
 void AnimatedObject::loadCoinAssets() {
-	fillVector(m_rotation, "assets/coin/");
+	fillVector(m_rotation, "assets/coins");
 }
 
 void AnimatedObject::fillVector(std::vector<std::string>& vector, std::string asset_folder) {

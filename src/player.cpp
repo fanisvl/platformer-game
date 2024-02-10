@@ -26,7 +26,7 @@ void Player::init()
 	current_animation = IdleRight;
 	// Adjust width for finer collision detections
 	m_width = 0.5f;
-	m_pointsPlayer = 0.0f;
+	m_points = 0;
 }
 
 void Player::draw()
@@ -145,5 +145,5 @@ std::string Player::to_string() const {
 }
 
 void Player::gainPoint() {
-	m_pointsPlayer += 1.0f;
+	m_points += 1;
 }

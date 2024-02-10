@@ -11,6 +11,7 @@ enum AnimationType {
  	Jump,
 	IdleRight,
 	IdleLeft,
+	Rotation,
 };
 
 class AnimatedObject : public GameObject {
@@ -30,5 +31,5 @@ public:
 	void loadMovingEnemyAssets();
 	void loadCoinAssets();
 	void loadProjectileEnemyAssets();
-	AnimatedObject();
+	AnimatedObject() {};
 };

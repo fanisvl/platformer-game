@@ -24,6 +24,7 @@ void AnimatedObject::loadProjectileEnemyAssets() {
 }
 
 void AnimatedObject::loadCoinAssets() {
+	m_animation_brush.texture = "assets/coins/tile000.png";
 	fillVector(m_rotation, "assets/coins");
 }
 

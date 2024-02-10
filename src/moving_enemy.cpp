@@ -4,7 +4,10 @@
 #include <sstream>
 
 void MovingEnemy::init() {
+	AnimatedObject::loadMovingEnemyAssets();
+	AnimatedObject::init();
 	DynamicObject::init();	
+	
 }
 
 void MovingEnemy::update(float dt) {
@@ -14,8 +17,13 @@ void MovingEnemy::update(float dt) {
 void MovingEnemy::draw() {
 	if (!hidden) {
 		AnimatedObject::animate(m_pos_x, m_pos_y, current_animation);
+		m_animation_brush.outline_opacity = 0.0f;
+		graphics::drawRect(m_pos_x, m_pos_y, 1.0f, 1.0f, m_animation_brush);
 	}
-	DynamicObject::draw();
+
+	if (GameObject::m_state->m_debugging) {
+		graphics::drawRect(m_pos_x, m_pos_y, m_width, m_height, m_brush_debug);
+	}
 }
 
 void MovingEnemy::handleCollision(CollisionType type) {
@@ -46,8 +54,15 @@ void MovingEnemy::chasePlayer() {
 	// If the player is at the same horizontal level
 	// The enemy will start moving towards the player's x position.
 	if (player_y >= (m_pos_y - verticalThreshold) && player_y <= (m_pos_y + verticalThreshold)) {
-		if (m_pos_x < player_x && withinRightBoundary()) m_pos_x += 0.05f;
-		if (m_pos_x > player_x && withinLeftBoundary()) m_pos_x -= 0.05f;
+		if (m_pos_x < player_x && withinRightBoundary()) {
+			m_pos_x += 0.05f;
+			current_animation = WalkRight;
+		}
+
+		else if (m_pos_x > player_x && withinLeftBoundary()) {
+			m_pos_x -= 0.05f;
+			current_animation = WalkLeft;
+		}
 	}
 }	
 

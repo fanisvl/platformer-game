@@ -10,7 +10,9 @@
 
 class Player : public Box, public GameObject , public AnimatedObject
 {
-	// animated player
+	// Test next level logic
+	int m_points;
+
 	float m_init_x;
 	float m_init_y;
 
@@ -34,6 +36,8 @@ public:
 	std::pair<float, float> getPositionXY();
 	std::string Player::to_string() const;
 	void gainPoint();
+	int getPoints() { return m_points; }
+	void resetPoints() { m_points = 0; }
 
 protected:
 	void debugDraw();

@@ -12,12 +12,18 @@ void Player::update(float dt)
 	// update offset for other game objects
 	GameObject::update(dt);
 
+	if (graphics::getKeyState(graphics::SCANCODE_8)) {
+		m_points++;
+		std::cout << "Points: " << m_points << std::endl;
+	}
+
 }
 
 void Player::init()
 {
 	AnimatedObject::loadPlayerAssets();
 	AnimatedObject::init();
+	current_animation = IdleRight;
 	// Adjust width for finer collision detections
 	m_width = 0.5f;
 	m_pointsPlayer = 0.0f;
@@ -33,6 +39,7 @@ void Player::draw()
 
 void Player::debugDraw()
 {
+	graphics::setScale(1.0f, 1.0f);
 	graphics::Brush debug_brush;
 	SETCOLOR(debug_brush.fill_color, 1, 0.3f, 0);
 	SETCOLOR(debug_brush.outline_color, 1, 0.1f, 0);
@@ -54,18 +61,18 @@ void Player::movePlayer(float dt)
 	// Acceleration-based velocity
 	float move_direction = 0.0f;
 	if (graphics::getKeyState(graphics::SCANCODE_A)) {
-		current_animation = Left;
+		current_animation = WalkLeft;
 		move_direction -= 1.0f;
 	}
 	if (graphics::getKeyState(graphics::SCANCODE_D)) {
-		current_animation = Right;
+		current_animation = WalkRight;
 		move_direction = 1.0f;
 	}
 	if (!graphics::getKeyState(graphics::SCANCODE_A) && !graphics::getKeyState(graphics::SCANCODE_D)) {
-		if (current_animation == Right) {
+		if (current_animation == WalkRight) {
 			current_animation = IdleRight;
 		}
-		else if(current_animation ==Left){
+		else if(current_animation == WalkLeft){
 			current_animation = IdleLeft;
 		}
 	}

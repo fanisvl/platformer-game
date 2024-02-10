@@ -37,10 +37,7 @@ void Level::checkCollisions()
         }
     }
 
-    // Dynamic Objects
-    // TODO: Change to match all dynamic objects.
-    // Coins for example get "killed" when the player intersects in any direction.
-    // Enemies get killed when the player intersects down, and kill the player when they intersect sideways.
+    // Player Sideways - Dynamic Objects
     for (auto& p_dob : m_dynamic_objects) {
         float offset = 0.0f;
         if (offset = m_state->getPlayer()->intersectSideways(*p_dob)) {
@@ -51,13 +48,6 @@ void Level::checkCollisions()
         }
     }
 
-    for (auto& p_dob : m_dynamic_objects) {
-        float offset = 0.0f;
-        if (offset = m_state->getPlayer()->intersectDown(*p_dob)) {
-            p_dob->handleCollision(DOWNWARDS);
-            break;
-        }
-    }
 }
 
 void Level::update(float dt)
@@ -140,8 +130,7 @@ void Level::LoadLevel(std::string levelName) {
         if (iss >> std::quoted(Type) >> x >> y >> width >> height >> std::quoted(assetName)) {
             if (Type == "Player") {
                 m_state->getPlayer()->setInitialPosition(x, y);
-                m_state->getPlayer()->goToInitialPosition();
-                std::cout << "Level sending player to original position by READFILE" << std::endl;
+                std::cout << "Level setting initial position for player" << std::endl;
             }
 
             else if (Type == "MovingEnemy") {
@@ -180,5 +169,5 @@ void Level::resetLevel() {
     m_state->getPlayer()->goToInitialPosition();
     std::cout << "Level sending player to original position by RESET_LEVEL" << std::endl;
     for (auto p_dob : m_dynamic_objects)
-        p_dob->init();
+        p_dob->reset();
 }

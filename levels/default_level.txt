@@ -1,6 +1,7 @@
 "Player" 2.0 8.0 1.0 1.0 " "
 
 // Floor 
+"StaticObject" 0 9 1 1 "terrain\\cave_block.png"
 "StaticObject" 1 9 1 1 "terrain\\cave_block.png"
 "StaticObject" 2 9 1 1 "terrain\\cave_block.png"
 "StaticObject" 3 9 1 1 "terrain\\cave_block.png"
@@ -16,4 +17,5 @@
 "StaticObject" 13 9 1 1 "terrain\\cave_block.png"
 "StaticObject" 14 9 1 1 "terrain\\cave_block.png"
 "StaticObject" 15 9 1 1 "terrain\\cave_block.png"
+"StaticObject" 16 9 1 1 "terrain\\cave_block.png"
 

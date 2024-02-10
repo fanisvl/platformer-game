@@ -71,15 +71,15 @@ void LevelMaker::createObject() {
 			break;
 
 		case MovingEnemyBlock:
-			asset_path = "slime.png";
+			asset_path = "fireWorm/walk/tile (1).png";
 
-			// By default set left and right boundary to +/-5.0f to the initial spawn position.
-			dynamic_objects.push_back(new MovingEnemy(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path, mouse_canvas_x - 5.0f, mouse_canvas_x + 5.0f));
+			// By default set left and right boundary to +/-10.0f to the initial spawn position.
+			dynamic_objects.push_back(new MovingEnemy(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path, mouse_canvas_x - 10.0f, mouse_canvas_x + 10.0f));
 			dynamic_objects.back()->init();
 			break;
 		
 		case ProjectileEnemyBlock:
-			asset_path = "EnemyMushroom/attackSprites/mushroom_000.png";
+			asset_path = "assets/projectileEnemy/idle/idle (1).png";
 			dynamic_objects.push_back(new ProjectileEnemy(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
 			dynamic_objects.back()->init();
 			break;
@@ -202,8 +202,8 @@ void LevelMaker::draw() {
 	m_state->getPlayer()->draw();
 
 	mouse_brush.fill_opacity = 0.5f;
-	mouse_brush.outline_opacity = 0.5f;
-
+	mouse_brush.outline_opacity = 0.0f;
+	graphics::setScale(1.0f, 1.0f);
 	switch (current_block_type) {
 	case Block:
 		mouse_brush.texture = m_state->getFullAssetPath("terrain/cave_block.png");
@@ -215,22 +215,18 @@ void LevelMaker::draw() {
 		break;
 
 	case PlayerSpawn:
-		mouse_brush.outline_opacity = 0.0f;
-		mouse_brush.texture = m_state->getFullAssetPath("player/walk_right/WizardWalk00.png");
+		mouse_brush.texture = m_state->getFullAssetPath("player/walk/WizardWalk00.png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 2.0f, 2.0f, mouse_brush);
-		mouse_brush.outline_opacity = 0.5f;
 		break;
 		
 	case MovingEnemyBlock:
-		mouse_brush.texture = m_state->getFullAssetPath("slime.png");
-		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+		mouse_brush.texture = m_state->getFullAssetPath("fireWorm/walk/tile (1).png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, -1.0f, 1.0f, mouse_brush);
 		break;
 
 	case ProjectileEnemyBlock:
-		mouse_brush.outline_opacity = 0.0f;
-		mouse_brush.texture = m_state->getFullAssetPath("EnemyMushroom/attackSprites/mushroom_000.png");
+		mouse_brush.texture = m_state->getFullAssetPath("projectileEnemy/idle/idle (1).png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
-		mouse_brush.outline_opacity = 0.5f;
 		break;
 	}
 

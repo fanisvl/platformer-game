@@ -16,13 +16,13 @@ void AnimatedObject::loadPlayerAssets() {
 }
 
 void AnimatedObject::loadMovingEnemyAssets() {
-	m_animation_brush.texture = "assets/fireWorm/idle/tile (1).png";
+	m_animation_brush.texture = "assets/fireWorm/idle/tile(1).png";
 	fillVector(walk, "assets/fireWorm/walk");
 	fillVector(idle, "assets/fireWorm/idle");
 }
 
 void AnimatedObject::loadProjectileEnemyAssets() {
-	m_animation_brush.texture = "assets/projectileEnemy/idle/idle (1).png";
+	m_animation_brush.texture = "assets/projectileEnemy/idle/idle(1).png";
 	fillVector(idle, "assets/projectileEnemy/idle");
 }
 

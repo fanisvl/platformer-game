@@ -20,6 +20,7 @@ void Player::init()
 	AnimatedObject::init();
 	// Adjust width for finer collision detections
 	m_width = 0.5f;
+	m_pointsPlayer = 0.0f;
 }
 
 void Player::draw()

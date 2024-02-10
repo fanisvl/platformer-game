@@ -11,13 +11,15 @@ enum AnimationType {
 	Right, //move right animation
  	Jump, //jump animation
 	IdleRight,//Idle right animation
-	IdleLeft,//Idle left animation
+	IdleLeft, //Idle left animation
+	Rotation, //coin animation
 };
 
 class AnimatedObject : public GameObject {
 protected:
 	std::vector<std::string> walk;
 	std::vector<std::string> idle;
+	std::vector<std::string> m_rotation;
 	AnimationType current_animation = Right;
 	graphics::Brush m_animation_brush;
 public:
@@ -28,5 +30,6 @@ public:
 	void fillVector(std::vector<std::string>& vector, std::string asset_folder);
 	void loadPlayerAssets();
 	void loadMovingEnemyAssets();
+	void loadCoinAssets();
 	AnimatedObject();
 };

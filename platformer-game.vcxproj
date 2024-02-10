@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\animated_object.cpp" />
+    <ClCompile Include="src\coin.cpp" />
     <ClCompile Include="src\level_maker.cpp" />
     <ClCompile Include="src\menu.cpp" />
     <ClCompile Include="src\moving_enemy.cpp" />
@@ -149,6 +150,7 @@
   <ItemGroup>
     <ClInclude Include="include\animated_object.h" />
     <ClInclude Include="include\background.h" />
+    <ClInclude Include="include\coin.h" />
     <ClInclude Include="include\dynamic_object.h" />
     <ClInclude Include="include\level_maker.h" />
     <ClInclude Include="include\menu.h" />

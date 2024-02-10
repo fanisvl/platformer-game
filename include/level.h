@@ -17,6 +17,8 @@ class Level : public GameObject
 	std::list<StaticObject*> m_static_objects;
 	std::list<DynamicObject*> m_dynamic_objects;
 	std::string m_level_path;
+	float player_spawn_x;
+	float player_spawn_y;
 
 	void checkCollisions();
 public:
@@ -25,6 +27,7 @@ public:
 	void init() override;
 	void LoadLevel(std::string filename);
 	void resetLevel();
+	void setPlayerSpawn(float x, float y);
 	Level();
 	Level(std::string level_path);
 	~Level();
@@ -32,4 +35,7 @@ public:
 	// Used by level maker
 	std::list<StaticObject*>& getStaticObjects() {return m_static_objects;}
 	std::list<DynamicObject*>& getDynamicObjects() {return m_dynamic_objects;}
+	float getPlayerSpawnX() { return player_spawn_x; }
+	float getPlayerSpawnY() { return player_spawn_y; }
+
 };

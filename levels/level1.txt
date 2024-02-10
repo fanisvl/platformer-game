@@ -1,4 +1,4 @@
-"Player" 3.06667 1.78333 1 1 ""
+"Player" 3 2 1 1 ""
 "Spikes" 2.2 8.545 1 1 terrain\cave_spikes3.png
 "Spikes" 3 8.7 1 1 terrain\cave_spikes.png
 "Spikes" 3.83 8.6 1 1 terrain\cave_spikes2.png
@@ -55,9 +55,9 @@
 "Coin" 6 4 1 1 assets/coins/tile000.png
 "Coin" 7 4 1 1 assets/coins/tile000.png
 "Coin" 8 4 1 1 assets/coins/tile000.png
-"Coin" 9 4 1 1 assets/coins/tile000.png
 "Coin" 5 5 1 1 assets/coins/tile000.png
 "Coin" 6 5 1 1 assets/coins/tile000.png
 "Coin" 7 5 1 1 assets/coins/tile000.png
 "Coin" 8 5 1 1 assets/coins/tile000.png
 "Coin" 9 5 1 1 assets/coins/tile000.png
+"Coin" 9 4 1 1 assets/coins/tile000.png

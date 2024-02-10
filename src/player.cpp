@@ -110,16 +110,6 @@ void Player::setPosition(float x, float y) {
 	m_pos_y = y;
 }
 
-void Player::setInitialPosition(float x, float y) {
-	m_init_x = x;
-	m_init_y = y;
-}
-
-void Player::goToInitialPosition() {
-	m_pos_x = m_init_x;
-	m_pos_y = m_init_y;
-}
-
 void Player::handleCollision(CollisionType type, float offset) {
 
 	switch (type) {
@@ -136,12 +126,6 @@ void Player::handleCollision(CollisionType type, float offset) {
 
 std::pair<float, float> Player::getPositionXY() {
 	return std::make_pair(m_pos_x, m_pos_y);
-}
-
-std::string Player::to_string() const {
-	std::ostringstream oss;
-	oss << "\"Player\"" << " " << m_init_x << " " << m_init_y << " " << 1.0 << " " << 1.0 << " " << "\"\"";
-	return oss.str();
 }
 
 void Player::gainPoint() {

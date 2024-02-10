@@ -92,6 +92,11 @@ void Level::init()
 
 }
 
+void Level::setPlayerSpawn(float x, float y) {
+    player_spawn_x = x; 
+    player_spawn_y = y;
+}
+
 Level::Level(){}
 
 Level::Level(std::string level_path) {
@@ -129,7 +134,8 @@ void Level::LoadLevel(std::string levelName) {
 
         if (iss >> std::quoted(Type) >> x >> y >> width >> height >> std::quoted(assetName)) {
             if (Type == "Player") {
-                m_state->getPlayer()->setInitialPosition(x, y);
+                player_spawn_x = x;
+                player_spawn_y = y;
                 std::cout << "Level setting initial position for player" << std::endl;
             }
 
@@ -166,7 +172,7 @@ void Level::resetLevel() {
 
     // TODO: Add die method to player that plays death animation
     // TODO: Count deaths OR Add timer / Highscore??
-    m_state->getPlayer()->goToInitialPosition();
+    m_state->getPlayer()->goToPosition(player_spawn_x, player_spawn_y);
     m_state->getPlayer()->resetPoints();
     std::cout << "Level sending player to original position by RESET_LEVEL" << std::endl;
     for (auto p_dob : m_dynamic_objects)

@@ -13,9 +13,6 @@ class Player : public Box, public GameObject , public AnimatedObject
 	// Test next level logic
 	int m_points;
 
-	float m_init_x;
-	float m_init_y;
-
 	const float m_accel_horizontal = 50.0f;
 	const float m_accel_vertical = 300.0f;
 	const float m_max_velocity = 4.5f;
@@ -29,11 +26,9 @@ public:
 	void draw() override;
 	void init() override;
 	void setPosition(float x, float y);
-	void setInitialPosition(float x, float y);
-	void goToInitialPosition();
+	void goToPosition(float x, float y) { m_pos_x = x; m_pos_y = y; }
 	void handleCollision(CollisionType type, float offset);
 	std::pair<float, float> getPositionXY();
-	std::string Player::to_string() const;
 	void gainPoint();
 	int getPoints() { return m_points; }
 	void resetPoints() { m_points = 0; }

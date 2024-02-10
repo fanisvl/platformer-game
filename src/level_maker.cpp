@@ -64,8 +64,8 @@ void LevelMaker::createObject() {
 			break;
 
 		case PlayerSpawn:
-			m_state->getPlayer()->setInitialPosition(mouse_canvas_x, mouse_canvas_y);
-			m_state->getPlayer()->goToInitialPosition();
+			m_level->setPlayerSpawn(mouse_canvas_x, mouse_canvas_y);
+			m_level->resetLevel();
 			std::cout << "LevelMAKER sending player to original position by PlayerSPAWN" << std::endl;
 
 			break;
@@ -161,7 +161,7 @@ void LevelMaker::saveToFile() {
 	}
 
 	// Write Player Spawn Position
-	outputFile << m_state->getPlayer()->to_string() << std::endl;
+	outputFile << "\"Player\"" << " " << m_level->getPlayerSpawnX() << " " << m_level->getPlayerSpawnY() << " " << 1.0 << " " << 1.0 << " " << "\"\"" << std::endl;
 
 	// Iterate through static objects and write to file
 	for (const auto& p_sob : m_level->getStaticObjects()) {

@@ -167,6 +167,7 @@ void Level::resetLevel() {
     // TODO: Add die method to player that plays death animation
     // TODO: Count deaths OR Add timer / Highscore??
     m_state->getPlayer()->goToInitialPosition();
+    m_state->getPlayer()->resetPoints();
     std::cout << "Level sending player to original position by RESET_LEVEL" << std::endl;
     for (auto p_dob : m_dynamic_objects)
         p_dob->reset();

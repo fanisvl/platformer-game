@@ -3,9 +3,8 @@
 
 void Coin::init() {
 	// η μεθοδος καλειται συνεχως 
+	AnimatedObject::loadCoinAssets();
 	AnimatedObject:init();
-	
-
 
 }
 
@@ -24,15 +23,16 @@ void Coin::handleCollision(CollisionType type) {
 		case SIDEWAYS:
 			// hide coin
 			hide();
+			GameObject::m_state->getPlayer()->gainPoint();
 			break;
 		case DOWNWARDS:
 			// hide coin
 			hide();
+			GameObject::m_state->getPlayer()->gainPoint();
 			break;
 		}
 	}
 }
 
-float Coin::getPoint() { return m_point; }
 
 Coin::Coin(float x, float y, float w, float h, const std::string& assetName) : DynamicObject(x, y, w, h, assetName) {};

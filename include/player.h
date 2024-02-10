@@ -6,6 +6,7 @@
 #include <utility>
 #include "dynamic_object.h"
 #include "animated_object.h"
+#include "coin.h"
 
 class Player : public Box, public GameObject , public AnimatedObject
 {
@@ -20,6 +21,7 @@ class Player : public Box, public GameObject , public AnimatedObject
 public: 
 	float m_vx = 0.0f;
 	float m_vy = 0.0f;
+	float m_pointsPlayer = 0.0f;
 
 public:
 	void update(float dt) override;
@@ -31,6 +33,7 @@ public:
 	void handleCollision(CollisionType type, float offset);
 	std::pair<float, float> getPositionXY();
 	std::string Player::to_string() const;
+	void gainPoint();
 
 protected:
 	void debugDraw();

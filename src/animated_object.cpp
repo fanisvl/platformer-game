@@ -61,6 +61,7 @@ void AnimatedObject::animate(float pos_x, float pos_y, AnimationType current_ani
 		animateIdle(idle);
 		break;
 	case Rotation:
+		graphics::setScale(-1.0f, 1.0f);
 		animateIdle(m_rotation);
 		break;
 	}

@@ -136,3 +136,7 @@ std::string Player::to_string() const {
 	oss << "\"Player\"" << " " << m_init_x << " " << m_init_y << " " << 1.0 << " " << 1.0 << " " << "\"\"";
 	return oss.str();
 }
+
+void Player::gainPoint() {
+	m_pointsPlayer += 1.0f;
+}

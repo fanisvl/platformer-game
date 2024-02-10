@@ -23,6 +23,10 @@ void AnimatedObject::loadProjectileEnemyAssets() {
 	fillVector(idle, "assets/projectileEnemy/idle");
 }
 
+void AnimatedObject::loadCoinAssets() {
+	fillVector(m_rotation, "assets/coin/");
+}
+
 void AnimatedObject::fillVector(std::vector<std::string>& vector, std::string asset_folder) {
 	
 
@@ -62,6 +66,10 @@ void AnimatedObject::animate(float pos_x, float pos_y, AnimationType current_ani
 	case IdleLeft:
 		graphics::setScale(-1.0f, 1.0f);
 		animateIdle(idle);
+		break;
+	case Rotation:
+		graphics::setScale(-1.0f, 1.0f);
+		animateIdle(m_rotation);
 		break;
 	}
 }

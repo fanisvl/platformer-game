@@ -71,7 +71,7 @@ void LevelMaker::createObject() {
 			break;
 
 		case MovingEnemyBlock:
-			asset_path = "fireWorm/walk/tile (1).png";
+			asset_path = "fireWorm/walk/tile(1).png";
 
 			// By default set left and right boundary to +/-10.0f to the initial spawn position.
 			dynamic_objects.push_back(new MovingEnemy(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path, mouse_canvas_x - 10.0f, mouse_canvas_x + 10.0f));
@@ -79,10 +79,17 @@ void LevelMaker::createObject() {
 			break;
 		
 		case ProjectileEnemyBlock:
-			asset_path = "assets/projectileEnemy/idle/idle (1).png";
+			asset_path = "assets/projectileEnemy/idle/idle(1).png";
 			dynamic_objects.push_back(new ProjectileEnemy(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
 			dynamic_objects.back()->init();
 			break;
+
+		case CoinsBlock:
+			asset_path = "assets/coins/tile000.png";
+			dynamic_objects.push_back(new Coin(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+			dynamic_objects.back()->init();
+			break;
+			
 		}
 
 	}
@@ -220,14 +227,20 @@ void LevelMaker::draw() {
 		break;
 		
 	case MovingEnemyBlock:
-		mouse_brush.texture = m_state->getFullAssetPath("fireWorm/walk/tile (1).png");
+		mouse_brush.texture = m_state->getFullAssetPath("fireWorm/walk/tile(1).png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, -1.0f, 1.0f, mouse_brush);
 		break;
 
 	case ProjectileEnemyBlock:
-		mouse_brush.texture = m_state->getFullAssetPath("projectileEnemy/idle/idle (1).png");
+		mouse_brush.texture = m_state->getFullAssetPath("projectileEnemy/idle/idle(1).png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 		break;
+
+	case CoinsBlock:
+		mouse_brush.texture = m_state->getFullAssetPath("coins/tile004.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 0.5, 0.5, mouse_brush);
+		break;
+
 	}
 
 	showOptions();

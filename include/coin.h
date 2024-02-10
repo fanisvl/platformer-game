@@ -9,6 +9,7 @@ public:
 	void draw() override;
 	void init() override;
 	void handleCollision(CollisionType type) override;
+	std::string to_string() const;
 	Coin(float x, float y, float w, float h, const std::string& assetName);
 
 };

@@ -1,6 +1,7 @@
 #include "coin.h"
 #include "player.h"
 #include "animated_object.h"
+#include <sstream>
 
 void Coin::init() {
 	AnimatedObject::loadCoinAssets();
@@ -32,5 +33,10 @@ void Coin::handleCollision(CollisionType type) {
 	}
 }
 
+std::string Coin::to_string() const {
+	std::ostringstream oss;
+	oss << "\"Coin\"" << " " << m_pos_x << " " << m_pos_y << " " << m_width << " " << m_height << " " << m_asset_path;
+	return oss.str();
+}
 
 Coin::Coin(float x, float y, float w, float h, const std::string& assetName) : DynamicObject(x, y, w, h, assetName) {};

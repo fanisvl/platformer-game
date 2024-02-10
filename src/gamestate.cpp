@@ -97,13 +97,13 @@ void GameState::update(float dt)
 		if (m_player) m_player->update(dt);
 
 		// Start loading next level when the player has collected almost all the points
-		if (m_player->getPoints() >= 8 && m_next_level == nullptr) {
+		if (m_player->getPoints() >= 5 && m_next_level == nullptr) {
 			// Start loading next level
 			loadNextLevel();
 		}
 
 		// If player collected all points, go to next level
-		if (m_player->getPoints() >= 20 && m_next_level != nullptr) {
+		if (m_player->getPoints() >= 10 && m_next_level != nullptr) {
 			goToNextLevel();
 			m_player->resetPoints();
 		}

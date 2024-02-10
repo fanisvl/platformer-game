@@ -15,7 +15,7 @@ enum BlockType {
 	SpikeBlock,
 	MovingEnemyBlock,
 	ProjectileEnemyBlock,
-	//CoinsBlock,
+	CoinsBlock,
 	PlayerSpawn,
 	LAST_TYPE,
 

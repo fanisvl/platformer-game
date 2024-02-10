@@ -80,7 +80,7 @@ void GameState::update(float dt)
 		std::this_thread::sleep_for(std::chrono::duration<float, std::milli>(sleep_time));
 	}
 
-	// Press BackSpace to go back to main menu
+	// Press Q to go back to main menu
 	if (graphics::getKeyState(graphics::SCANCODE_Q)) exitToMenu();
 
 	// Hold 0 to activate debug mode
@@ -96,7 +96,7 @@ void GameState::update(float dt)
 		if (m_current_level) m_current_level->update(dt);
 		if (m_player) m_player->update(dt);
 
-
+		// Start loading next level when the player has collected almost all the points
 		if (m_player->getPoints() >= 8 && m_next_level == nullptr) {
 			// Start loading next level
 			loadNextLevel();
@@ -117,13 +117,14 @@ void GameState::update(float dt)
 }
 
 void GameState::startNewGame() {
+	// Reset everything from previous games
 	delete m_current_level;
 	m_current_level = nullptr;
 	current_level_index = 0;
 	m_player->resetPoints();
 
+	// Start new game
 	m_current_state = GameActive;
-	// Move these back to gameState init for quicker load time.
 	m_current_level = new Level("level1.txt");
 	m_current_level->init();
 	m_current_level->resetLevel();
@@ -135,6 +136,8 @@ void GameState::loadNextLevel() {
 	std::cout << "Load next level" << std::endl;
 	int next_level_index = current_level_index + 1;
 	std::cout << "Next level index: " << next_level_index << std::endl;
+
+	// Check if there are any more levels left, if not reset & return to menu
 	if (next_level_index >= m_level_names.size()) {
 		std::cout << "No more levels - Go to Main Menu" << std::endl;
 		m_current_state = MenuActive;
@@ -147,6 +150,7 @@ void GameState::loadNextLevel() {
 		return;
 	}
 
+	// Create next level object and initialize
 	m_next_level = new Level(m_level_names[next_level_index]);
 	std::cout << "Created level: " << m_level_names[next_level_index] << std::endl;
 	m_next_level->init();
@@ -154,10 +158,12 @@ void GameState::loadNextLevel() {
 
 void GameState::goToNextLevel() {
 	std::cout << "Go to next level" << std::endl;
+
 	delete m_current_level;
 	m_current_level = m_next_level;
 	current_level_index++;
-	m_current_level->resetLevel();
+
+	m_current_level->resetLevel(); // called to move player to the initial position
 	m_next_level = nullptr;
 }
 

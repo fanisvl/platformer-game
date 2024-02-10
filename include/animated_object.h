@@ -17,6 +17,7 @@ class AnimatedObject : public GameObject {
 protected:
 	std::vector<std::string> walk;
 	std::vector<std::string> idle;
+	std::vector<std::string> m_rotation;
 	AnimationType current_animation;
 	graphics::Brush m_animation_brush;
 public:
@@ -27,5 +28,7 @@ public:
 	void fillVector(std::vector<std::string>& vector, std::string asset_folder);
 	void loadPlayerAssets();
 	void loadMovingEnemyAssets();
+	void loadCoinAssets();
 	void loadProjectileEnemyAssets();
+	AnimatedObject();
 };

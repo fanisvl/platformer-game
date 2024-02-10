@@ -2,6 +2,7 @@
 #include <sgg/graphics.h>
 #include "player.h"
 #include "spikes.h"
+#include "coin.h"
 #include "dynamic_object.h"
 #include "moving_enemy.h"
 #include "box.h"
@@ -150,6 +151,9 @@ void Level::LoadLevel(std::string levelName) {
             }
             else if (Type == "ProjectileEnemy") {
                     m_dynamic_objects.push_back(new ProjectileEnemy(x, y, width, height, assetName));
+            }
+            else if (Type == "Coin") {
+                m_dynamic_objects.push_back(new Coin(x, y, width, height, assetName));
             }
         }
     }

@@ -13,7 +13,8 @@ public:
     void draw() override;
     void init() override;
     DynamicObject(float x, float y, float w, float h, const std::string& assetName);
-    void reset();
+    virtual void reset();
     void hide();
     void show();
+    bool isHidden();
 };

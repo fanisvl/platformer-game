@@ -39,3 +39,7 @@ void DynamicObject::hide() {
 void DynamicObject::show() {
     hidden = false;
 }
+
+bool DynamicObject::isHidden() {
+    return hidden;
+}

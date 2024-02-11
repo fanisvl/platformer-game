@@ -42,6 +42,7 @@ void Level::checkCollisions()
         if (offset = m_state->getPlayer()->intersectUp(*p_sob)) {
             std::cout << "Collision Upwards" << std::endl;
             m_state->getPlayer()->handleCollision(UPWARDS, offset);
+            break;
         }
     }
 

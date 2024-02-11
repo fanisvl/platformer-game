@@ -6,6 +6,7 @@
 #include "moving_enemy.h"
 #include "static_object.h"
 #include "projectile_enemy.h"
+#include "danger_flatform.h"
 
 void LevelMaker::update(float ms) {
 	// mouse.cur_pos_x and mouse.cur_pos_y are pixel coordinates
@@ -60,6 +61,12 @@ void LevelMaker::createObject() {
 		case SpikeBlock:
 			asset_path = "terrain\\cave_spikes2.png";
 			static_objects.push_back(new Spikes(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+			static_objects.back()->init();
+			break;
+
+		case DangerBlock:
+			asset_path = "dangerTerrain\\falling\\platform.png";
+			static_objects.push_back(new DangerPlatform(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
 			static_objects.back()->init();
 			break;
 
@@ -216,8 +223,14 @@ void LevelMaker::draw() {
 		mouse_brush.texture = m_state->getFullAssetPath("terrain/cave_block.png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 		break;
+
 	case SpikeBlock:
 		mouse_brush.texture = m_state->getFullAssetPath("terrain/cave_spikes2.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+		break;
+
+	case DangerBlock:
+		mouse_brush.texture = m_state->getFullAssetPath("dangerTerrain/falling/platform.png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 		break;
 

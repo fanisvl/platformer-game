@@ -55,12 +55,12 @@ void MovingEnemy::chasePlayer() {
 	// The enemy will start moving towards the player's x position.
 	if (player_y >= (m_pos_y - verticalThreshold) && player_y <= (m_pos_y + verticalThreshold)) {
 		if (m_pos_x < player_x && withinRightBoundary()) {
-			m_pos_x += 0.05f;
+			m_pos_x += 0.1f;
 			current_animation = WalkRight;
 		}
 
 		else if (m_pos_x > player_x && withinLeftBoundary()) {
-			m_pos_x -= 0.05f;
+			m_pos_x -= 0.1f;
 			current_animation = WalkLeft;
 		}
 	}

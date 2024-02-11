@@ -1,4 +1,4 @@
-"Player" 2 7.76667 1 1 ""
+"Player" 15 3 1 1 ""
 "StaticObject" 1 9 1 1 terrain\cave_block.png
 "StaticObject" 2 9 1 1 terrain\cave_block.png
 "StaticObject" 3 9 1 1 terrain\cave_block.png
@@ -16,5 +16,40 @@
 "StaticObject" 15 9 1 1 terrain\cave_block.png
 "StaticObject" 16 9 1 1 terrain\cave_block.png
 "StaticObject" 0.0333333 8.95 1 1 terrain\cave_block.png
-"ProjectileEnemy" 12 8 1 1 EnemyMushroom/attackSprites/mushroom_000.png
-"MovingEnemy" 6.39999 8 1 1 fireWorm/walk/tile(1).png 0 20
+"StaticObject" 16 4 1 1 terrain\cave_block.png
+"StaticObject" 15 4 1 1 terrain\cave_block.png
+"StaticObject" 13 4 1 1 terrain\cave_block.png
+"StaticObject" 14 4 1 1 terrain\cave_block.png
+"StaticObject" 12 4 1 1 terrain\cave_block.png
+"StaticObject" 11 4 1 1 terrain\cave_block.png
+"StaticObject" 1 8 1 1 terrain\cave_block.png
+"StaticObject" 1 7 1 1 terrain\cave_block.png
+"StaticObject" 2 8 1 1 terrain\cave_block.png
+"StaticObject" 3 8 1 1 terrain\cave_block.png
+"StaticObject" 4 8 1 1 terrain\cave_block.png
+"StaticObject" 5 8 1 1 terrain\cave_block.png
+"StaticObject" 5 8 1 1 terrain\cave_block.png
+"StaticObject" 5 7 1 1 terrain\cave_block.png
+"StaticObject" 4 7 1 1 terrain\cave_block.png
+"StaticObject" 4 8 1 1 terrain\cave_block.png
+"StaticObject" 3 7 1 1 terrain\cave_block.png
+"StaticObject" 2 7 1 1 terrain\cave_block.png
+"StaticObject" 0 8.01667 1 1 terrain\cave_block.png
+"StaticObject" 0.0166667 7.01667 1 1 terrain\cave_block.png
+"StaticObject" 6 7 1 1 terrain\cave_block.png
+"StaticObject" 6 8 1 1 terrain\cave_block.png
+"StaticObject" 8 5 1 1 terrain\cave_block.png
+"Spikes" 8 4 1 1 terrain\cave_spikes2.png
+"StaticObject" 7 8 1 1 terrain\cave_block.png
+"MovingEnemy" 15 8 1 1 fireWorm/walk/tile(1).png 6 20
+"MovingEnemy" 1 6 1 1 fireWorm/walk/tile(1).png -9 6
+"Coin" 3 6 1 1 assets/coins/tile000.png
+"Coin" 4 6 1 1 assets/coins/tile000.png
+"Coin" 5 6 1 1 assets/coins/tile000.png
+"Coin" 13 8 1 1 assets/coins/tile000.png
+"Coin" 12 8 1 1 assets/coins/tile000.png
+"Coin" 11 8 1 1 assets/coins/tile000.png
+"Coin" 10 8 1 1 assets/coins/tile000.png
+"Coin" 8 3 1 1 assets/coins/tile000.png
+"Coin" 2 6 1 1 assets/coins/tile000.png
+"Coin" 6 6 1 1 assets/coins/tile000.png

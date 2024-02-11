@@ -10,7 +10,7 @@
 #include <projectile.h>
 class ProjectileEnemy : public DynamicObject , public AnimatedObject {
 	std::chrono::time_point<std::chrono::system_clock> intervalResetTime;
-	float attack_interval = 3.0f;
+	float attack_interval = 2.0f;
 public:
 	std::list<Projectile*> m_projectiles;
 	bool secondsPassed(float seconds);

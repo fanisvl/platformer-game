@@ -64,6 +64,7 @@ void Level::checkCollisions()
         }
     }
 
+    // Dynamic Objects - Player - Upwards
     for (auto& p_dob : m_dynamic_objects) {
         float offset = 0.0f;
         if (m_state->getPlayer()->intersectDown(*p_dob)) {
@@ -79,8 +80,11 @@ void Level::checkCollisions()
 
 void Level::checkCollusionPlatform(DynamicObject* ob, float offset, CollisionType type){
     // checkPlatform
-    if (FallingPlatform* ptr = dynamic_cast<FallingPlatform*>(ob)){
-        m_state->getPlayer()->handleCollision(type, offset);
+    if (FallingPlatform* ptr = dynamic_cast<FallingPlatform*>(ob) ){
+        if (!ptr->isHidden()) {
+            m_state->getPlayer()->handleCollision(type, offset);
+        }
+        
     }
 }
 

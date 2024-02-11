@@ -16,4 +16,5 @@ public:
     virtual void reset();
     void hide();
     void show();
+    bool isHidden();
 };

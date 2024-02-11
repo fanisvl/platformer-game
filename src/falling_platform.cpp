@@ -64,7 +64,7 @@ std::string FallingPlatform::to_string() const
 }
 
 void FallingPlatform::checkHide() {
-	if (m_pos_y == 7.0f){
+	if (m_pos_y >= 7.0f){
 		hide();
 	}
 }

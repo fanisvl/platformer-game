@@ -1,4 +1,4 @@
-"Player" 2 8 1 1 ""
+"Player" 1 3 1 1 ""
 "StaticObject" 0 9 1 1 terrain\cave_block.png
 "StaticObject" 1 9 1 1 terrain\cave_block.png
 "StaticObject" 2 9 1 1 terrain\cave_block.png
@@ -16,4 +16,22 @@
 "StaticObject" 14 9 1 1 terrain\cave_block.png
 "StaticObject" 15 9 1 1 terrain\cave_block.png
 "StaticObject" 16 9 1 1 terrain\cave_block.png
-"RotatingTrap" 9 5 1 1 rotatingTrap.png 3.14 0 2 0.001
+"StaticObject" 1 8 1 1 terrain\cave_block.png
+"StaticObject" 0 8 1 1 terrain\cave_block.png
+"StaticObject" 2 8 1 1 terrain\cave_block.png
+"StaticObject" 3 8 1 1 terrain\cave_block.png
+"StaticObject" 7 4 1 1 terrain\cave_block.png
+"StaticObject" 8 4 1 1 terrain\cave_block.png
+"StaticObject" 9 4 1 1 terrain\cave_block.png
+"StaticObject" 4 4 1 1 terrain\cave_block.png
+"StaticObject" 3 4 1 1 terrain\cave_block.png
+"StaticObject" 2 4 1 1 terrain\cave_block.png
+"StaticObject" 1 4 1 1 terrain\cave_block.png
+"StaticObject" 0.0166667 4 1 1 terrain\cave_block.png
+"StaticObject" 6 4 1 1 terrain\cave_block.png
+"StaticObject" 5 4 1 1 terrain\cave_block.png
+"StaticObject" 16 8 1 1 terrain\cave_block.png
+"StaticObject" 15 8 1 1 terrain\cave_block.png
+"StaticObject" 16 7 1 1 terrain\cave_block.png
+"RotatingTrap" 5.98333 4.4 1 1 rotatingTrap.png 3.14 0 2 0.001
+"RotatingTrap" 6.1 0.15 1 1 rotatingTrap.png 3.14 0 2 -0.001

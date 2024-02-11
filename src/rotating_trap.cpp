@@ -4,6 +4,7 @@
 #include <sstream>
 #include <cmath>
 #include <iostream>
+#include "config.h"
 
 void RotatingTrap::update(float dt) {
 
@@ -11,17 +12,16 @@ void RotatingTrap::update(float dt) {
 
     // Increment the rotation angle based on the rotation speed
     current_rotation_angle += rotation_speed * dt;
-    std::cout << current_rotation_angle << std::endl;
 
     if (current_rotation_angle > max_left_rotation_angle) {
         // If it exceeds, start rotating in the opposite direction
-        std::cout << "Angle " << current_rotation_angle << "exceeded LEFT rotation angle" << std::endl;
+        current_rotation_angle = max_left_rotation_angle;
         rotation_speed = -rotation_speed;
     }
 
     else if (current_rotation_angle < max_right_rotation_angle) {
         // If it exceeds in the opposite direction, reverse again
-        std::cout << "Angle " << current_rotation_angle << "exceeded RIGHT direction rotation angle" << std::endl;
+        current_rotation_angle = max_right_rotation_angle;
         rotation_speed = -rotation_speed;
     }
 
@@ -34,6 +34,11 @@ void RotatingTrap::draw() {
     // Draw center
     graphics::Brush br;
     br.fill_opacity = 1.0f;
+    br.outline_opacity = 1.0f;
+
+    SETCOLOR(br.fill_color, 0.5f, 0.5f, 0.5f);
+    SETCOLOR(br.outline_color, 0.5f, 0.5f, 0.5f);
+
     graphics::drawRect(center_x, center_y, 0.5f, 0.5f, br);
     graphics::drawLine(center_x, center_y, m_pos_x, m_pos_y, br);
     StaticObject::draw();
@@ -63,14 +68,15 @@ RotatingTrap::RotatingTrap(float x, float y, float w, float h, const std::string
     center_y = y;
 
     radius = rad;
-    current_rotation_angle = 0.0f;
     rotation_speed = speed;
     max_left_rotation_angle = max_left;
     max_right_rotation_angle = max_right;
+
+    current_rotation_angle = rand() % int((max_left_rotation_angle - max_right_rotation_angle) + 1) + max_right_rotation_angle;
 }
 
 std::string RotatingTrap::to_string() const {
     std::ostringstream oss;
-    oss << "\"Spikes\"" << " " << m_pos_x << " " << m_pos_y << " " << m_width << " " << m_height << " " << m_asset_path;
+    oss << "\"RotatingTrap\"" << " " << center_x << " " << center_y << " " << m_width << " " << m_height << " " << m_asset_path << " " << max_left_rotation_angle << " " << max_right_rotation_angle << " " << radius << " " << rotation_speed;
     return oss.str();
 }

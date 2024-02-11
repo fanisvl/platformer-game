@@ -24,7 +24,6 @@ void Level::checkCollisions()
         if (offset = m_state->getPlayer()->intersectSideways(*p_sob)) {
             p_sob->handleCollision(SIDEWAYS);
             m_state->getPlayer()->handleCollision(SIDEWAYS, offset);
-            break;
         }
     }
 
@@ -34,7 +33,6 @@ void Level::checkCollisions()
         if (offset = m_state->getPlayer()->intersectDown(*p_sob)) {
             p_sob->handleCollision(DOWNWARDS);
             m_state->getPlayer()->handleCollision(DOWNWARDS, offset);
-            break;
         }
     }
 
@@ -44,7 +42,6 @@ void Level::checkCollisions()
         if (offset = m_state->getPlayer()->intersectUp(*p_sob)) {
             p_sob->handleCollision(UPWARDS);
             m_state->getPlayer()->handleCollision(UPWARDS, offset);
-            break;
         }
     }
 
@@ -196,8 +193,8 @@ void Level::LoadLevel(std::string levelName) {
                 }
                 
                 else {
-                    // Handle where boundaries, rad and speed are not provided
                     std::cerr << "Error: RotatingTrap must have boundaries, radius and speed values." << std::endl;
+                    // Handle where boundaries, rad and speed are not provided
                 }
             }
 

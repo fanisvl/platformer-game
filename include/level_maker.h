@@ -17,6 +17,7 @@ enum BlockType {
 	ProjectileEnemyBlock,
 	CoinsBlock,
 	PlayerSpawn,
+	RotatingTrapBlock ,
 	LAST_TYPE,
 
 };

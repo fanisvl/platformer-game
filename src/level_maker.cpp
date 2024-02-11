@@ -6,6 +6,7 @@
 #include "moving_enemy.h"
 #include "static_object.h"
 #include "projectile_enemy.h"
+#include "rotating_trap.h"
 
 void LevelMaker::update(float ms) {
 	// mouse.cur_pos_x and mouse.cur_pos_y are pixel coordinates
@@ -89,7 +90,13 @@ void LevelMaker::createObject() {
 			dynamic_objects.push_back(new Coin(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
 			dynamic_objects.back()->init();
 			break;
-			
+		
+		case RotatingTrapBlock:
+			asset_path = "rotatingTrap.png";
+			static_objects.push_back(new RotatingTrap(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path, 3.14f, 0.0f, 2.0f, 0.001f));
+			static_objects.back()->init();
+			break;
+
 		}
 
 	}
@@ -225,7 +232,7 @@ void LevelMaker::draw() {
 		mouse_brush.texture = m_state->getFullAssetPath("player/walk/WizardWalk00.png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 2.0f, 2.0f, mouse_brush);
 		break;
-		
+
 	case MovingEnemyBlock:
 		mouse_brush.texture = m_state->getFullAssetPath("fireWorm/walk/tile(1).png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, -1.0f, 1.0f, mouse_brush);
@@ -238,7 +245,12 @@ void LevelMaker::draw() {
 
 	case CoinsBlock:
 		mouse_brush.texture = m_state->getFullAssetPath("coins/tile004.png");
-		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 0.5, 0.5, mouse_brush);
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 0.5f, 0.5f, mouse_brush);
+		break;
+
+	case RotatingTrapBlock:
+		mouse_brush.texture = m_state->getFullAssetPath("rotatingTrap.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 		break;
 
 	}

@@ -38,8 +38,11 @@ void RotatingTrap::draw() {
     SETCOLOR(br.outline_color, 0.5f, 0.5f, 0.5f);
 
     // Draw base and rope
-    graphics::drawRect(center_x, center_y, 0.5f, 0.5f, br);
     graphics::drawLine(center_x, center_y, m_pos_x, m_pos_y, br);
+    br.fill_opacity = 0.0f;
+    br.outline_opacity = 0.0f;
+    graphics::drawRect(center_x, center_y, 0.5f, 0.5f, br);
+
 
     // Draw spikes
     StaticObject::draw();

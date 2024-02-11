@@ -171,6 +171,9 @@ void GameState::goToNextLevel() {
 
 void GameState::loadLevelNames() {
 	std::string level_folder = "levels/";
+
+	if (!m_level_names.empty()) m_level_names.clear();
+
 	try {
 		for (const auto& entry : std::filesystem::directory_iterator(level_folder)) {
 			// Convert std::filesystem::path to std::string
@@ -229,6 +232,7 @@ void GameState::exitLevelMaker() {
 	delete m_level_maker;
 	m_level_maker = nullptr;
 	std::cout << "Level maker deleted" << std::endl;
+	loadLevelNames();
 }
 
 std::string GameState::getFullAssetPath(const std::string& asset)

@@ -35,6 +35,8 @@ public:
 	std::string getFullAssetPath(const std::string& asset);
 	std::string getAssetDir();
 	class Player* getPlayer() { return m_player; }
+	class Level* getLevel() { return m_current_level; }
+
 	void playerDeath();
 	void enterLevelMaker(const std::string& load_level);
 	void exitLevelMaker();

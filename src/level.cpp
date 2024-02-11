@@ -60,7 +60,14 @@ void Level::checkCollisions()
         }
     }
 
-    // 
+    // Dynamic Objects - Static Objects
+    //for (auto& p_dob : m_dynamic_objects) {
+    //    for (auto& p_sob : m_static_objects) {
+    //        if (p_dob->intersect(*p_sob)) {
+    //            p_dob->handleCollision(STATIC_OBJECT);
+    //        }
+    //    }
+    //}
 
 }
 

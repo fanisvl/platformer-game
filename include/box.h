@@ -7,6 +7,7 @@ enum CollisionType {
     SIDEWAYS,
     DOWNWARDS,
     UPWARDS,
+    STATIC_OBJECT,
 };
 
 struct Box

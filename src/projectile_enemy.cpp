@@ -5,6 +5,7 @@
 #include <thread>
 #include <chrono>
 #include <sstream>
+#include "level.h"
 
 void ProjectileEnemy::init() {
 	AnimatedObject::loadProjectileEnemyAssets();
@@ -31,9 +32,10 @@ void ProjectileEnemy::draw() {
 		if (p_gob) p_gob->draw();
 }
 void ProjectileEnemy::checkCollision() {
+
+	// Player collision with projectile
 	for (auto it = m_projectiles.begin(); it != m_projectiles.end(); ++it) {
-		float offset = 0.0f;
-		if (offset = GameObject::m_state->getPlayer()->intersectSideways(**it)) {
+		if (GameObject::m_state->getPlayer()->intersectSideways(**it) || GameObject::m_state->getPlayer()->intersectDown(**it)) {
 			(*it)->handleCollision(SIDEWAYS);
 			delete* it;
 			m_projectiles.erase(it);
@@ -41,16 +43,25 @@ void ProjectileEnemy::checkCollision() {
 		}
 	}
 
-	// Intersect Down
-	for (auto it = m_projectiles.begin(); it != m_projectiles.end(); ++it) {
-		float offset = 0.0f;
-		if (offset = GameObject::m_state->getPlayer()->intersectDown(**it)) {
-			(*it)->handleCollision(DOWNWARDS);
-			delete* it;
-			m_projectiles.erase(it);
-			break;
+	// Projectile collision with Static Object
+	auto it = m_projectiles.begin();
+	while (it != m_projectiles.end()) {
+		bool projectileDeleted = false;
+		for (auto p_sob : GameObject::m_state->getLevel()->getStaticObjects()) {
+			if ((*it)->intersect(*p_sob)) {
+				delete* it;
+				it = m_projectiles.erase(it);
+				projectileDeleted = true;
+				break;
+			}
+		}
+
+		if (!projectileDeleted) {
+			++it;
 		}
 	}
+
+
 }
 
 void ProjectileEnemy::handleCollision(CollisionType type) {

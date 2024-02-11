@@ -180,12 +180,8 @@ void Level::LoadLevel(std::string levelName) {
 }
 
 void Level::resetLevel() {
-    // Hide dynamic objects instead of destroying and re-creating them.
-    // Add a hide()/die() method to dynamic objects
-    // init() will undo the effects of hide()
+    // Resets level to initial state (player spawn, points, dynamic objects)
 
-    // TODO: Add die method to player that plays death animation
-    // TODO: Count deaths OR Add timer / Highscore??
     m_state->getPlayer()->goToPosition(player_spawn_x, player_spawn_y);
     m_state->getPlayer()->resetPoints();
     std::cout << "Level sending player to original position by RESET_LEVEL" << std::endl;

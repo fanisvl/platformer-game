@@ -31,7 +31,7 @@
 "StaticObject" 16 7 1 1 terrain\cave_block.png
 "RotatingTrap" 6.1 0.15 1 1 rotatingTrap.png 3.14 0 2 -0.001
 "RotatingTrap" 13 3 1 1 rotatingTrap.png 3.14 0 2 -0.001
-"RotatingTrap" 10.0333 5.73333 1 1 rotatingTrap.png 3.14 0 2 0.001
+"RotatingTrap" 10.0333 5.73333 1 1 rotatingTrap.png 3.14 0 2.4 0.001
 "StaticObject" 0.416667 6.01667 1 2 terrain\Rock3.png
 "StaticObject" 0.183333 2.51667 1 2 terrain\Rock1.png
 "StaticObject" 0.35 4.46667 1 2 terrain\Rock1.png

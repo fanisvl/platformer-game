@@ -42,11 +42,7 @@ void RotatingTrap::draw() {
     graphics::drawLine(center_x, center_y, m_pos_x, m_pos_y, br);
 
     // Draw spikes
-    graphics::drawRect(m_pos_x, m_pos_y, 1.0f * m_width, 1.0f * m_height, m_brush);
-
-    if (m_state->m_debugging) {
-        graphics::drawRect(m_pos_x, m_pos_y, m_width, m_height, m_brush_debug);
-    }
+    StaticObject::draw();
 }
 
 void RotatingTrap::init() {

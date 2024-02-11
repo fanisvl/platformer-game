@@ -3,7 +3,7 @@
 
 class DangerPlatform : public StaticObject {
 protected:
-    bool falling = true;
+    bool falling = false;
     bool destruct = false;
 public:
     void update(float dt) override;
@@ -14,5 +14,6 @@ public:
     void setFalling();
     void goDown();
     void handleCollision(CollisionType type) override;
+    std::string DangerPlatform::to_string() const override;
 
 };

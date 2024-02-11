@@ -7,6 +7,7 @@
 #include "moving_enemy.h"
 #include "box.h"
 #include "projectile_enemy.h"
+#include "danger_flatform.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -31,6 +32,7 @@ void Level::checkCollisions()
         float offset = 0.0f;
         if (offset = m_state->getPlayer()->intersectDown(*p_sob)) {
             p_sob->handleCollision(DOWNWARDS);
+            std::cout << "Collision down" << std::endl;
             m_state->getPlayer()->handleCollision(DOWNWARDS, offset);
             break;
         }
@@ -180,6 +182,9 @@ void Level::LoadLevel(std::string levelName) {
             }
             else if (Type == "StaticObject") {
                 m_static_objects.push_back(new StaticObject(x, y, width, height, assetName));
+            }
+            else if (Type == "DangerPlatform") {
+                m_static_objects.push_back(new DangerPlatform(x, y, width, height, assetName));
             }
             else if (Type == "ProjectileEnemy") {
                     m_dynamic_objects.push_back(new ProjectileEnemy(x, y, width, height, assetName));

@@ -59,6 +59,18 @@ void Level::update(float dt)
         p_go->update(dt);
 
 	checkCollisions();
+    resetIfPlayerOutOfBounds();
+
+}
+
+void Level::resetIfPlayerOutOfBounds() {
+    // Get player position
+    std::pair<float, float> player_xy = { GameObject::m_state->getPlayer()->getPositionXY() };
+    float player_x = player_xy.first;
+    float player_y = player_xy.second;
+
+    if (player_y < -1.0f || player_y > 10.0f) resetLevel();
+    if (player_x < 0.0f || player_y > 17.0f) resetLevel();
 
 }
 

@@ -28,6 +28,7 @@ public:
 	void LoadLevel(std::string filename);
 	void resetLevel();
 	void setPlayerSpawn(float x, float y);
+	void resetIfPlayerOutOfBounds();
 	Level();
 	Level(std::string level_path);
 	~Level();

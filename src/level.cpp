@@ -16,8 +16,7 @@
 
 void Level::checkCollisions()
 {
-    // Static Objects
-    // Intersect Sideways
+    // Static Objects - Player - Sideways
     for (auto& p_sob : m_static_objects) {
         float offset = 0.0f;
         if (offset = m_state->getPlayer()->intersectSideways(*p_sob)) {
@@ -27,7 +26,7 @@ void Level::checkCollisions()
         }
     }
 
-    // Intersect Down
+    // Static Objects - Player - Downwards
     for (auto& p_sob : m_static_objects) {
         float offset = 0.0f;
         if (offset = m_state->getPlayer()->intersectDown(*p_sob)) {
@@ -37,21 +36,17 @@ void Level::checkCollisions()
         }
     }
 
-    // Player Sideways - Dynamic Objects
+    // Dynamic Objects - Player - Sideways
     for (auto& p_dob : m_dynamic_objects) {
-        float offset = 0.0f;
-        if (offset = m_state->getPlayer()->intersectSideways(*p_dob)) {
+        if (m_state->getPlayer()->intersectSideways(*p_dob)) {
             p_dob->handleCollision(SIDEWAYS);
-            break;
         }
     }
 
-    // Player Downwards - Dynamic Objects
+    // Dynamic Objects - Player - Downwards
     for (auto& p_dob : m_dynamic_objects) {
-        float offset = 0.0f;
-        if (offset = m_state->getPlayer()->intersectDown(*p_dob)) {
+        if (m_state->getPlayer()->intersectDown(*p_dob)) {
             p_dob->handleCollision(DOWNWARDS);
-            break;
         }
     }
 

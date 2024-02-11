@@ -103,8 +103,20 @@ void GameState::update(float dt)
 		}
 
 		// If player collected all points, go to next level
-		if (m_player->getPoints() >= 10 && m_next_level != nullptr) {
-			goToNextLevel();
+		if (m_player->getPoints() >= 10) {
+
+			if (m_next_level != nullptr) goToNextLevel();
+			else if (m_next_level == nullptr) {
+				std::cout << "No more levels - Go back to main menu" << std::endl;
+
+				m_current_state = MenuActive;
+
+				delete m_current_level;
+				m_current_level = nullptr;
+				current_level_index = 0;
+
+				m_player->resetPoints();
+			}
 			m_player->resetPoints();
 		}
 		break;
@@ -133,20 +145,10 @@ void GameState::startNewGame() {
 
 void GameState::loadNextLevel() {
 
-	std::cout << "Load next level" << std::endl;
 	int next_level_index = current_level_index + 1;
-	std::cout << "Next level index: " << next_level_index << std::endl;
 
 	// Check if there are any more levels left, if not reset & return to menu
 	if (next_level_index >= m_level_names.size()) {
-		std::cout << "No more levels - Go to Main Menu" << std::endl;
-		m_current_state = MenuActive;
-
-		delete m_current_level;
-		m_current_level = nullptr;
-		current_level_index = 0;
-
-		m_player->resetPoints();
 		return;
 	}
 

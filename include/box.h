@@ -40,6 +40,25 @@ struct Box
         return std::min<float>(0.0f, other.m_pos_y - (other.m_height / 2.0f) - m_pos_y - (m_height / 2.0f));
     }
 
+    float intersectUp(Box& other) {
+        if (fabs(m_pos_x - other.m_pos_x) * 2.0f >= (m_width + other.m_width) || m_pos_y < other.m_pos_y)
+            return 0.0f;
+        return std::min<float>(0.0f, other.m_pos_y - (other.m_height / 2.0f) - m_pos_y - (m_height / 2.0f));
+    }
+
+//    float intersectUp(Box& other) {
+//    float offset = 0.0f;
+//    bool intersectDown = this->intersectDown(other);
+//    bool intersectSideways = this->intersectSideways(other);
+//    bool intersect = this->intersect(other);
+//    
+//    bool intersectUp = intersect && (!intersectDown && !intersectSideways);
+//
+//    return intersectUp;
+//}
+
+
+
 
     /** Detects a horizontal intersection this Box is beside a target box (other).
     *   and reports the adjustment offset so that the two boxes are separated.

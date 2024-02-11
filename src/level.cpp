@@ -36,6 +36,15 @@ void Level::checkCollisions()
         }
     }
 
+    // Static Objects - Player - Upwards
+    for (auto& p_sob : m_static_objects) { 
+
+        if (m_state->getPlayer()->intersectUp(*p_sob)) {
+            std::cout << "Collision Upwards" << std::endl;
+            m_state->getPlayer()->handleCollision(DOWNWARDS, 0.05f);
+        }
+    }
+
     // Dynamic Objects - Player - Sideways
     for (auto& p_dob : m_dynamic_objects) {
         if (m_state->getPlayer()->intersectSideways(*p_dob)) {
@@ -49,6 +58,8 @@ void Level::checkCollisions()
             p_dob->handleCollision(DOWNWARDS);
         }
     }
+
+    // 
 
 }
 

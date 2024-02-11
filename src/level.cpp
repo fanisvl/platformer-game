@@ -9,7 +9,7 @@
 #include "box.h"
 #include "projectile_enemy.h"
 #include "rotating_trap.h"
-#include "falling_flatform.h"
+#include "falling_platform.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>

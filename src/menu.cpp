@@ -117,7 +117,7 @@ void Menu::showLevelMakerMenu() {
 	else if (graphics::getKeyState(graphics::SCANCODE_9)) selection = 9;
 	else selection = -1; // -1 indicates no selection.
 
-	if (selection != -1) {
+	if (selection != -1 && selection < level_names.size()) {
 		std::string selected_level = level_names[selection];
 		std::cout << selected_level << std::endl;
 		m_state->enterLevelMaker(selected_level + ".txt");

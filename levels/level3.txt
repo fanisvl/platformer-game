@@ -41,8 +41,8 @@
 "StaticObject" 8 5 1 1 terrain\cave_block.png
 "Spikes" 8 4 1 1 terrain\cave_spikes2.png
 "StaticObject" 7 8 1 1 terrain\cave_block.png
-"MovingEnemy" 15 8 1 1 fireWorm/walk/tile(1).png 6 20
-"MovingEnemy" 1 6 1 1 fireWorm/walk/tile(1).png -9 6
+"MovingEnemy" 15 8 1 1 fireWorm/walk/tile(1).png 8 15
+"MovingEnemy" 1 6 1 1 fireWorm/walk/tile(1).png 0 6
 "Coin" 3 6 1 1 assets/coins/tile000.png
 "Coin" 4 6 1 1 assets/coins/tile000.png
 "Coin" 5 6 1 1 assets/coins/tile000.png

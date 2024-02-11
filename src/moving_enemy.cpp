@@ -30,12 +30,9 @@ void MovingEnemy::handleCollision(CollisionType type) {
 	if (!hidden) {
 		switch (type) {
 		case SIDEWAYS:
+		case DOWNWARDS:
 			// kill player
 			GameObject::m_state->playerDeath();
-			break;
-		case DOWNWARDS:
-			// kill self
-			hide();
 			break;
 		}
 	}
@@ -53,14 +50,19 @@ void MovingEnemy::chasePlayer() {
 
 	// If the player is at the same horizontal level
 	// The enemy will start moving towards the player's x position.
+
+	float changeDirectionBuffer = 0.05f; // Don't change direction immediately, wait until buffer for better animations
 	if (player_y >= (m_pos_y - verticalThreshold) && player_y <= (m_pos_y + verticalThreshold)) {
-		if (m_pos_x + 0.05f < player_x && withinRightBoundary()) {
-			m_pos_x += 0.1f;
+
+		float chaseSpeed = 0.025f;
+
+		if (m_pos_x + changeDirectionBuffer < player_x && withinRightBoundary()) {
+			m_pos_x += chaseSpeed;
 			current_animation = WalkRight;
 		}
 
-		else if (m_pos_x - 0.05f > player_x && withinLeftBoundary()) {
-			m_pos_x -= 0.1f;
+		else if (m_pos_x - changeDirectionBuffer > player_x && withinLeftBoundary()) {
+			m_pos_x -= chaseSpeed;
 			current_animation = WalkLeft;
 		}
 	}

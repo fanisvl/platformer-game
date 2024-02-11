@@ -17,7 +17,7 @@ enum BlockType {
 	ProjectileEnemyBlock,
 	CoinsBlock,
 	PlayerSpawn,
-	DangerBlock,
+	FallingBlock,
 	LAST_TYPE,
 
 };

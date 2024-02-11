@@ -20,8 +20,6 @@
 "StaticObject" 5.56667 6.9 1 1 terrain\cave_block.png
 "StaticObject" 7.4 6.05 1 1 terrain\cave_block.png
 "StaticObject" 8.95 4.86667 1 1 terrain\cave_block.png
-"StaticObject" 8.15 5.01667 1 1 terrain\cave_block.png
-"StaticObject" 9.1 4.28333 1 1 terrain\cave_block.png
-"DangerPlatform" 10.5 3.7 1 1 dangerTerrain\falling\platform.png
+"FallingPlatform" 10.65 3.63333 1 1 dangerTerrain\falling\platform.png
 "Coin" 4.85 7.25 1 1 assets/coins/tile000.png
 "MovingEnemy" 7.96667 7.8 1 1 fireWorm/walk/tile(1).png -2.03333 17.9667

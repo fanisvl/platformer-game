@@ -63,7 +63,7 @@
     <ClCompile Include="src\coin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\danger_platform.cpp">
+    <ClCompile Include="src\falling_platform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -128,7 +128,7 @@
     <ClInclude Include="include\coin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\danger_flatform.h">
+    <ClInclude Include="include\falling_flatform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

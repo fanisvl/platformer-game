@@ -7,7 +7,7 @@
 #include "moving_enemy.h"
 #include "box.h"
 #include "projectile_enemy.h"
-#include "danger_flatform.h"
+#include "falling_flatform.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -32,7 +32,6 @@ void Level::checkCollisions()
         float offset = 0.0f;
         if (offset = m_state->getPlayer()->intersectDown(*p_sob)) {
             p_sob->handleCollision(DOWNWARDS);
-            std::cout << "Collision down" << std::endl;
             m_state->getPlayer()->handleCollision(DOWNWARDS, offset);
             break;
         }
@@ -42,7 +41,6 @@ void Level::checkCollisions()
     for (auto& p_sob : m_static_objects) { 
         float offset = 0.0f;
         if (offset = m_state->getPlayer()->intersectUp(*p_sob)) {
-            std::cout << "Collision Upwards" << std::endl;
             m_state->getPlayer()->handleCollision(UPWARDS, offset);
             break;
         }
@@ -50,20 +48,40 @@ void Level::checkCollisions()
 
     // Dynamic Objects - Player - Sideways
     for (auto& p_dob : m_dynamic_objects) {
+        float offset = 0.0f;
         if (m_state->getPlayer()->intersectSideways(*p_dob)) {
             p_dob->handleCollision(SIDEWAYS);
+            checkCollusionPlatform(p_dob, offset,SIDEWAYS);
         }
     }
 
     // Dynamic Objects - Player - Downwards
     for (auto& p_dob : m_dynamic_objects) {
+        float offset = 0.0f;
         if (m_state->getPlayer()->intersectDown(*p_dob)) {
             p_dob->handleCollision(DOWNWARDS);
+            checkCollusionPlatform(p_dob, offset,DOWNWARDS);
         }
     }
 
+    for (auto& p_dob : m_dynamic_objects) {
+        float offset = 0.0f;
+        if (m_state->getPlayer()->intersectDown(*p_dob)) {
+            p_dob->handleCollision(UPWARDS);
+            checkCollusionPlatform(p_dob, offset, UPWARDS);
+        }
+    }
+   
     // 
 
+}
+
+
+void Level::checkCollusionPlatform(DynamicObject* ob, float offset, CollisionType type){
+    // checkPlatform
+    if (FallingPlatform* ptr = dynamic_cast<FallingPlatform*>(ob)){
+        m_state->getPlayer()->handleCollision(type, offset);
+    }
 }
 
 void Level::update(float dt)
@@ -183,8 +201,8 @@ void Level::LoadLevel(std::string levelName) {
             else if (Type == "StaticObject") {
                 m_static_objects.push_back(new StaticObject(x, y, width, height, assetName));
             }
-            else if (Type == "DangerPlatform") {
-                m_static_objects.push_back(new DangerPlatform(x, y, width, height, assetName));
+            else if (Type == "FallingPlatform") {
+                m_dynamic_objects.push_back(new FallingPlatform(x, y, width, height, assetName));
             }
             else if (Type == "ProjectileEnemy") {
                     m_dynamic_objects.push_back(new ProjectileEnemy(x, y, width, height, assetName));

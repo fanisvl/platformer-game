@@ -6,7 +6,7 @@
 #include "moving_enemy.h"
 #include "static_object.h"
 #include "projectile_enemy.h"
-#include "danger_flatform.h"
+#include "falling_flatform.h"
 
 void LevelMaker::update(float ms) {
 	// mouse.cur_pos_x and mouse.cur_pos_y are pixel coordinates
@@ -64,9 +64,9 @@ void LevelMaker::createObject() {
 			static_objects.back()->init();
 			break;
 
-		case DangerBlock:
+		case FallingBlock:
 			asset_path = "dangerTerrain\\falling\\platform.png";
-			static_objects.push_back(new DangerPlatform(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
+			static_objects.push_back(new FallingPlatform(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
 			static_objects.back()->init();
 			break;
 
@@ -229,7 +229,7 @@ void LevelMaker::draw() {
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 		break;
 
-	case DangerBlock:
+	case FallingBlock:
 		mouse_brush.texture = m_state->getFullAssetPath("dangerTerrain/falling/platform.png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
 		break;

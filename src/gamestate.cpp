@@ -14,11 +14,10 @@ GameState::GameState(){
 
 GameState::~GameState()
 {
-	// It's safe to delete a nullptr
-	delete m_menu;
-	delete m_current_level;
-	delete m_player;
-	delete m_level_maker;
+	if (m_menu) delete m_menu;
+	if (m_current_level) delete m_current_level;
+	if (m_player) delete m_player;
+	if (m_level_maker) delete m_level_maker;
 	
 }
 

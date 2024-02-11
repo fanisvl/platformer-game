@@ -33,5 +33,14 @@
 "StaticObject" 16 8 1 1 terrain\cave_block.png
 "StaticObject" 15 8 1 1 terrain\cave_block.png
 "StaticObject" 16 7 1 1 terrain\cave_block.png
-"RotatingTrap" 5.98333 4.4 1 1 rotatingTrap.png 3.14 0 2 0.001
+"RotatingTrap" 5.98333 4.4 1 1 rotatingTrap.png 3.14 0 2 -0.001
 "RotatingTrap" 6.1 0.15 1 1 rotatingTrap.png 3.14 0 2 -0.001
+"RotatingTrap" 13 3 1 1 rotatingTrap.png 3.14 0 2 -0.001
+"RotatingTrap" 10.0333 5.73333 1 1 rotatingTrap.png 3.14 0 2 0.001
+"Coin" 1 7 1 1 assets/coins/tile000.png
+"Coin" 2 7 1 1 assets/coins/tile000.png
+"Coin" 3 7 1 1 assets/coins/tile000.png
+"Coin" 15 7 1 1 assets/coins/tile000.png
+"Coin" 11.1167 4.96667 1 1 assets/coins/tile000.png
+"Coin" 6 8 1 1 assets/coins/tile000.png
+"Coin" 10 8 1 1 assets/coins/tile000.png

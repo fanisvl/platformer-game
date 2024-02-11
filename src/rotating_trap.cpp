@@ -72,6 +72,7 @@ RotatingTrap::RotatingTrap(float x, float y, float w, float h, const std::string
     max_left_rotation_angle = max_left;
     max_right_rotation_angle = max_right;
 
+    // Initialize the rotation angle randomly
     current_rotation_angle = rand() % int((max_left_rotation_angle - max_right_rotation_angle) + 1) + max_right_rotation_angle;
 }
 

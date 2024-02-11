@@ -47,9 +47,6 @@ void RotatingTrap::draw() {
 
 void RotatingTrap::init() {
 
-    // Adjust hitbox
-    m_width *= 0.9f;
-    m_height *= 0.9f;
     StaticObject::init();
 
 
@@ -68,6 +65,10 @@ void RotatingTrap::rotate(float angle) {
 RotatingTrap::RotatingTrap(float x, float y, float w, float h, const std::string& asset, float max_left, float max_right, float rad, float speed)
     : StaticObject(x, y, w, h, asset)
 {
+    // Adjust hitbox
+    m_width *= 0.9f;
+    m_height *= 0.9f;
+
     center_x = x;
     center_y = y;
 

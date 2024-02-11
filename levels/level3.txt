@@ -70,7 +70,7 @@
 "StaticObject" 14 0.416667 1 1 terrain\Rock5.png
 "StaticObject" 14.85 0.416667 1 1 terrain\Rock5.png
 "StaticObject" 15.2667 0.416667 1 1 terrain\Rock5.png
-"RotatingTrap" 4.53333 2.38333 0.729 0.729 rotatingTrap.png 3.14 0 2 0.001
+"RotatingTrap" 4.53333 2.38333 1.0 1.0 rotatingTrap.png 3.14 0 2 0.001
 "StaticObject" 4.5 2.16667 1 1 terrain\cave_platform2.png
 "StaticObject" 15.5 7.98333 1 2 terrain\Rock2_flipped.png
 "Coin" 3 6 1 1 assets/coins/tile000.png

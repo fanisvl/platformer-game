@@ -8,11 +8,8 @@
 #include "moving_enemy.h"
 #include "box.h"
 #include "projectile_enemy.h"
-<<<<<<< HEAD
 #include "rotating_trap.h"
-=======
 #include "falling_flatform.h"
->>>>>>> 58b51c30f80cf934fb4e6203f37e075bc200abac
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -44,10 +41,7 @@ void Level::checkCollisions()
     for (auto& p_sob : m_static_objects) { 
         float offset = 0.0f;
         if (offset = m_state->getPlayer()->intersectUp(*p_sob)) {
-<<<<<<< HEAD
             p_sob->handleCollision(UPWARDS);
-=======
->>>>>>> 58b51c30f80cf934fb4e6203f37e075bc200abac
             m_state->getPlayer()->handleCollision(UPWARDS, offset);
         }
     }
@@ -70,7 +64,6 @@ void Level::checkCollisions()
         }
     }
 
-<<<<<<< HEAD
     // Dynamic Objects - Static Objects
     //for (auto& p_dob : m_dynamic_objects) {
     //    for (auto& p_sob : m_static_objects) {
@@ -79,7 +72,6 @@ void Level::checkCollisions()
     //        }
     //    }
     //}
-=======
     // Dynamic Objects - Player - Upwards
     for (auto& p_dob : m_dynamic_objects) {
         float offset = 0.0f;
@@ -89,8 +81,6 @@ void Level::checkCollisions()
         }
     }
    
-    // 
->>>>>>> 58b51c30f80cf934fb4e6203f37e075bc200abac
 
 }
 
@@ -236,19 +226,14 @@ void Level::LoadLevel(std::string levelName) {
             else if (Type == "StaticObject") {
                 m_static_objects.push_back(new StaticObject(x, y, width, height, assetName));
             }
-<<<<<<< HEAD
-
             else if (Type == "Spikes") {
                 m_static_objects.push_back(new Spikes(x, y, width, height, assetName));
             }
 
 
-
-=======
             else if (Type == "FallingPlatform") {
                 m_dynamic_objects.push_back(new FallingPlatform(x, y, width, height, assetName));
             }
->>>>>>> 58b51c30f80cf934fb4e6203f37e075bc200abac
             else if (Type == "ProjectileEnemy") {
                     m_dynamic_objects.push_back(new ProjectileEnemy(x, y, width, height, assetName));
             }

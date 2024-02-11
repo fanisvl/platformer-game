@@ -64,6 +64,8 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\rotating_trap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\falling_platform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

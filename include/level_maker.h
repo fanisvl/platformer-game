@@ -17,8 +17,7 @@ enum BlockType {
 	ProjectileEnemyBlock,
 	CoinsBlock,
 	PlayerSpawn,
-<<<<<<< HEAD
-	RotatingTrapBlock ,
+	RotatingTrapBlock,
 	BlackBlock,
 	BigRockBlock,
 	Rock1Block,
@@ -35,12 +34,8 @@ enum BlockType {
 	CavePlatform3Block,
 	CavePlatformsBlock,
 	Rock2_flipped,
-	LAST_TYPE, // enum to circle back to the first block
-=======
 	FallingBlock,
-	LAST_TYPE,
->>>>>>> 58b51c30f80cf934fb4e6203f37e075bc200abac
-
+	LAST_TYPE, // enum to circle back to the first block
 };
 
 class LevelMaker : public GameObject {

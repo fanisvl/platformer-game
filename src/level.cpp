@@ -38,10 +38,10 @@ void Level::checkCollisions()
 
     // Static Objects - Player - Upwards
     for (auto& p_sob : m_static_objects) { 
-
-        if (m_state->getPlayer()->intersectUp(*p_sob)) {
+        float offset = 0.0f;
+        if (offset = m_state->getPlayer()->intersectUp(*p_sob)) {
             std::cout << "Collision Upwards" << std::endl;
-            m_state->getPlayer()->handleCollision(DOWNWARDS, 0.05f);
+            m_state->getPlayer()->handleCollision(UPWARDS, offset);
         }
     }
 

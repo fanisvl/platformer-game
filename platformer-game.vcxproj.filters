@@ -132,6 +132,8 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\rotating_trap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="include\falling_flatform.h">
       <Filter>Header Files</Filter>
     </ClInclude>

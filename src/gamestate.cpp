@@ -44,7 +44,7 @@ void GameState::init()
 
 	loadLevelNames();
 
-	graphics::playMusic("assets\\music.mp3", 0.01f, true, 0);
+	graphics::playMusic("assets\\music.mp3", 0.1f, true, 0);
 }
 
 void GameState::draw()

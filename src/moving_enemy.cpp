@@ -31,11 +31,9 @@ void MovingEnemy::handleCollision(CollisionType type) {
 		switch (type) {
 		case SIDEWAYS:
 			// kill player
-			std::cout << "MovingEnemy handleCollision Sideways Called" << std::endl;
 			GameObject::m_state->playerDeath();
 			break;
 		case DOWNWARDS:
-			std::cout << "MovingEnemy handleCollision Downwards Called" << std::endl;
 			// kill self
 			hide();
 			break;

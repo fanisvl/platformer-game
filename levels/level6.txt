@@ -11,7 +11,6 @@
 "StaticObject" 1 6 1 1 terrain\cave_platform2.png
 "StaticObject" 1 5 1 1 terrain\cave_platform2.png
 "StaticObject" 2 5 1 1 terrain\cave_platform2.png
-"StaticObject" 2 4 1 1 terrain\cave_platform2.png
 "StaticObject" 1 4 1 1 terrain\cave_platform2.png
 "Spikes" 2.85 8.2 1 1 terrain\cave_spikes2.png
 "Spikes" 3.33333 8.21667 1 1 terrain\cave_spikes2.png
@@ -79,24 +78,31 @@
 "StaticObject" 0.3 2.25 1 2 terrain\Rock1.png
 "StaticObject" 0.433333 0.383333 1 2 terrain\Rock1.png
 "StaticObject" 14.0333 3.28333 1 1 terrain\cave_platform2.png
-"RotatingTrap" 6.65 1.28333 1 1 rotatingTrap.png 3.14 0 2 0.001
+"RotatingTrap" 6.65 1.28333 0.430467 0.430467 rotatingTrap.png 3.14 0 2 0.001
 "StaticObject" 6.7 1.25 1 1 terrain\cave_platform2.png
 "StaticObject" 5 5.01667 1 1 terrain\cave_platform2.png
 "StaticObject" 5.96667 5.01667 1 1 terrain\cave_platform2.png
-"RotatingTrap" 10.2 1.23333 1 1 rotatingTrap.png 3.14 0 2 -0.001
+"RotatingTrap" 10.2 1.23333 0.430467 0.430467 rotatingTrap.png 3.14 0 2 0.001
 "StaticObject" 10.1667 1 1 1 terrain\cave_platform2.png
+"StaticObject" 2 4 1 1 terrain\cave_platform2.png
+"FallingPlatform" 7 19.1603 1 1 dangerTerrain\falling\platform.png
+"FallingPlatform" 3 5 1 1 dangerTerrain\falling\platform.png
+"FallingPlatform" 4 26.0404 1 1 dangerTerrain\falling\platform.png
+"FallingPlatform" 3.01667 82.2782 1 1 dangerTerrain\falling\platform.png
+"FallingPlatform" 4.01667 79.1787 1 1 dangerTerrain\falling\platform.png
+"FallingPlatform" 3 51.6977 1 1 dangerTerrain\falling\platform.png
+"FallingPlatform" 3.96667 44.5942 1 1 dangerTerrain\falling\platform.png
+"FallingPlatform" 3 71.0401 1 1 dangerTerrain\falling\platform.png
+"FallingPlatform" 4 65.1611 1 1 dangerTerrain\falling\platform.png
+"FallingPlatform" 3.01667 34.0406 1 1 dangerTerrain\falling\platform.png
+"FallingPlatform" 4.01667 28.6038 1 1 dangerTerrain\falling\platform.png
 "ProjectileEnemy" 11.9667 4.03333 1 1 EnemyMushroom/attackSprites/mushroom_000.png
-"Coin" 1.83333 3.25 1 1 assets/coins/tile000.png
-"Coin" 1.96667 3.2 1 1 assets/coins/tile000.png
-"Coin" 1.93333 3.23333 1 1 assets/coins/tile000.png
 "Coin" 2.08333 3.21667 1 1 assets/coins/tile000.png
 "Coin" 7.66667 5.15 1 1 assets/coins/tile000.png
 "Coin" 8.26667 5.13333 1 1 assets/coins/tile000.png
-"Coin" 1.65 3.23333 1 1 assets/coins/tile000.png
-"Coin" 4.66667 4.15 1 1 assets/coins/tile000.png
-"Coin" 6.25 4.21667 1 1 assets/coins/tile000.png
 "Coin" 13.6333 2.5 1 1 assets/coins/tile000.png
 "Coin" 14.15 2.48333 1 1 assets/coins/tile000.png
 "Coin" 14.6833 2.5 1 1 assets/coins/tile000.png
 "Coin" 2.16667 3.21667 1 1 assets/coins/tile000.png
-"Coin" 5.48333 4.15 1 1 assets/coins/tile000.png
+"Coin" 5.45 4.18333 1 1 assets/coins/tile000.png
+"Coin" 3.43333 4.21667 1 1 assets/coins/tile000.png

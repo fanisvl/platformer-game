@@ -46,7 +46,6 @@ void FallingPlatform::handleCollision(CollisionType type) {
 	case SIDEWAYS:
 		break;
 	case DOWNWARDS:
-		std::cout << "fall" << std::endl;
 		setFalling(true);
 		break;
 	case UPWARDS:

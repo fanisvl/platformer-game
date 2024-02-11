@@ -30,9 +30,12 @@ void MovingEnemy::handleCollision(CollisionType type) {
 	if (!hidden) {
 		switch (type) {
 		case SIDEWAYS:
-		case DOWNWARDS:
 			// kill player
 			GameObject::m_state->playerDeath();
+			break;
+
+		case DOWNWARDS:
+			hide();
 			break;
 		}
 	}
@@ -65,6 +68,14 @@ void MovingEnemy::chasePlayer() {
 			m_pos_x -= chaseSpeed;
 			current_animation = WalkLeft;
 		}
+	}
+
+	else if (player_x > m_pos_x) {
+		current_animation = IdleRight;
+	}
+
+	else if (player_x < m_pos_x) {
+		current_animation = IdleLeft;
 	}
 }	
 

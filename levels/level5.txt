@@ -34,7 +34,6 @@
 "StaticObject" 0.433333 1.86667 1 2 terrain\Rock4.png
 "StaticObject" 0.466667 6.3 1 2 terrain\Rock4.png
 "StaticObject" 0.3 9.11667 1 2 terrain\Rock4.png
-"StaticObject" 14.1167 7.46667 1 1 terrain\cave_platform2.png
 "StaticObject" 15.0333 2.48333 1 1 terrain\cave_platform2.png
 "StaticObject" 14.05 2.5 1 1 terrain\cave_platform2.png
 "StaticObject" 11.05 2.5 1 1 terrain\cave_platform2.png
@@ -79,9 +78,14 @@
 "Spikes" 8.66667 5.21667 1 1 terrain\cave_spikes2.png
 "StaticObject" 7.96667 5.76667 1 1 terrain\cave_platform2.png
 "StaticObject" 8.95 5.76667 1 1 terrain\cave_platform2.png
-"RotatingTrap" 12.6333 2.73333 0.9 0.9 rotatingTrap.png 3.14 0 2 -0.001
+"RotatingTrap" 12.6333 2.73333 0.81 0.81 rotatingTrap.png 3.14 0 2 -0.001
 "StaticObject" 12.05 2.5 1 1 terrain\cave_platform2.png
 "StaticObject" 13.0333 2.5 1 1 terrain\cave_platform2.png
+"StaticObject" 15 8 1 1 terrain\cave_block.png
+"StaticObject" 14 8 1 1 terrain\cave_block.png
+"StaticObject" 13 8 1 1 terrain\cave_block.png
+"StaticObject" 15 7 1 1 terrain\cave_block.png
+"StaticObject" 14 7 1 1 terrain\cave_block.png
 "Coin" 4.83333 4.96667 1 1 assets/coins/tile000.png
 "Coin" 5.7 4.98333 1 1 assets/coins/tile000.png
 "Coin" 6.6 4.98333 1 1 assets/coins/tile000.png

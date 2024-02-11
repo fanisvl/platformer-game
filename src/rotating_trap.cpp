@@ -31,21 +31,29 @@ void RotatingTrap::update(float dt) {
 
 void RotatingTrap::draw() {
 
-    // Draw center
     graphics::Brush br;
     br.fill_opacity = 1.0f;
     br.outline_opacity = 1.0f;
-
     SETCOLOR(br.fill_color, 0.5f, 0.5f, 0.5f);
     SETCOLOR(br.outline_color, 0.5f, 0.5f, 0.5f);
 
+    // Draw base and rope
     graphics::drawRect(center_x, center_y, 0.5f, 0.5f, br);
     graphics::drawLine(center_x, center_y, m_pos_x, m_pos_y, br);
-    StaticObject::draw();
+
+    // Draw spikes
+    graphics::drawRect(m_pos_x, m_pos_y, 1.0f * m_width, 1.0f * m_height, m_brush);
+
+    if (m_state->m_debugging) {
+        graphics::drawRect(m_pos_x, m_pos_y, m_width, m_height, m_brush_debug);
+    }
 }
 
 void RotatingTrap::init() {
 
+    // Adjust hitbox
+    m_width *= 0.9f;
+    m_height *= 0.9f;
     StaticObject::init();
 
 

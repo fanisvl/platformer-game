@@ -2,9 +2,7 @@
 #include "config.h"
 #include <sstream>
 
-void StaticObject::update(float dt) {
-
-}
+void StaticObject::update(float dt) {}
 
 void StaticObject::draw() {
 

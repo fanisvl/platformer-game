@@ -1,4 +1,5 @@
 #include "level.h"
+#include "level.h"
 #include <sgg/graphics.h>
 #include "player.h"
 #include "spikes.h"
@@ -7,6 +8,7 @@
 #include "moving_enemy.h"
 #include "box.h"
 #include "projectile_enemy.h"
+#include "rotating_trap.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -40,7 +42,7 @@ void Level::checkCollisions()
     for (auto& p_sob : m_static_objects) { 
         float offset = 0.0f;
         if (offset = m_state->getPlayer()->intersectUp(*p_sob)) {
-            std::cout << "Collision Upwards" << std::endl;
+            p_sob->handleCollision(UPWARDS);
             m_state->getPlayer()->handleCollision(UPWARDS, offset);
             break;
         }
@@ -74,8 +76,11 @@ void Level::checkCollisions()
 void Level::update(float dt)
 {
 
-    for (auto& p_go : m_dynamic_objects)
-        p_go->update(dt);
+    for (auto& p_dob: m_dynamic_objects)
+        p_dob->update(dt);
+
+    for (auto& p_sob : m_static_objects)
+        p_sob->update(dt);
 
 	checkCollisions();
     resetIfPlayerOutOfBounds();
@@ -182,18 +187,27 @@ void Level::LoadLevel(std::string levelName) {
                     std::cerr << "Error: MovingEnemy must have left and right boundary values." << std::endl;
                 }
             }
-            else if (Type == "Spikes") {
-                m_static_objects.push_back(new Spikes(x, y, width, height, assetName));
-            }
+
             else if (Type == "StaticObject") {
                 m_static_objects.push_back(new StaticObject(x, y, width, height, assetName));
             }
+
+            else if (Type == "Spikes") {
+                m_static_objects.push_back(new Spikes(x, y, width, height, assetName));
+            }
+
+            else if (Type == "RotatingTrap") {
+                m_static_objects.push_back(new RotatingTrap(x, y, width, height, assetName));
+                std::cout << "Rotating trap added to level" << std::endl;
+            }
+
             else if (Type == "ProjectileEnemy") {
                     m_dynamic_objects.push_back(new ProjectileEnemy(x, y, width, height, assetName));
             }
             else if (Type == "Coin") {
                 m_dynamic_objects.push_back(new Coin(x, y, width, height, assetName));
             }
+
         }
     }
 }

@@ -138,6 +138,7 @@
     <ClCompile Include="src\dynamic_object.cpp" />
     <ClCompile Include="src\projectile.cpp" />
     <ClCompile Include="src\projectile_enemy.cpp" />
+    <ClCompile Include="src\rotating_trap.cpp" />
     <ClCompile Include="src\spikes.cpp" />
     <ClCompile Include="src\background.cpp" />
     <ClCompile Include="src\static_object.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="include\moving_enemy.h" />
     <ClInclude Include="include\projectile.h" />
     <ClInclude Include="include\projectile_enemy.h" />
+    <ClInclude Include="include\rotating_trap.h" />
     <ClInclude Include="include\static_object.h" />
     <ClInclude Include="include\box.h" />
     <ClInclude Include="include\config.h" />

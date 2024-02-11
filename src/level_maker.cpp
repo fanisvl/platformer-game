@@ -302,7 +302,7 @@ void LevelMaker::draw() {
 	m_state->getPlayer()->draw();
 
 	mouse_brush.fill_opacity = 0.5f;
-	mouse_brush.outline_opacity = 0.0f;
+	mouse_brush.outline_opacity = 0.5f;
 	graphics::setScale(1.0f, 1.0f);
 	switch (current_block_type) {
 	case Block:

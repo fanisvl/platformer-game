@@ -79,10 +79,23 @@
 "StaticObject" 0.3 2.25 1 2 terrain\Rock1.png
 "StaticObject" 0.433333 0.383333 1 2 terrain\Rock1.png
 "StaticObject" 14.0333 3.28333 1 1 terrain\cave_platform2.png
-"RotatingTrap" 6.65 1.28333 1 1 rotatingTrap.png 3.14 0 2 0.001
+"RotatingTrap" 6.65 1.28333 0.59049 0.59049 rotatingTrap.png 3.14 0 2 0.001
 "StaticObject" 6.7 1.25 1 1 terrain\cave_platform2.png
 "StaticObject" 5 5.01667 1 1 terrain\cave_platform2.png
 "StaticObject" 5.96667 5.01667 1 1 terrain\cave_platform2.png
-"RotatingTrap" 10.2 1.23333 1 1 rotatingTrap.png 3.14 0 2 -0.001
+"RotatingTrap" 10.2 1.23333 0.59049 0.59049 rotatingTrap.png 3.14 0 2 0.001
 "StaticObject" 10.1667 1 1 1 terrain\cave_platform2.png
+"FallingPlatform" 3 5 1 1 dangerTerrain\falling\platform.png
+"FallingPlatform" 4 5 1 1 dangerTerrain\falling\platform.png
+"FallingPlatform" 7 6 1 1 dangerTerrain\falling\platform.png
 "ProjectileEnemy" 11.9667 4.03333 1 1 EnemyMushroom/attackSprites/mushroom_000.png
+"Coin" 3 4 1 1 assets/coins/tile000.png
+"Coin" 4 4 1 1 assets/coins/tile000.png
+"Coin" 5 4 1 1 assets/coins/tile000.png
+"Coin" 6 4 1 1 assets/coins/tile000.png
+"Coin" 8 5 1 1 assets/coins/tile000.png
+"Coin" 14.0167 2.46667 1 1 assets/coins/tile000.png
+"Coin" 14.7667 2.5 1 1 assets/coins/tile000.png
+"Coin" 14.4 2.5 1 1 assets/coins/tile000.png
+"Coin" 7.45 5.01667 1 1 assets/coins/tile000.png
+"Coin" 6.91667 5.03333 1 1 assets/coins/tile000.png

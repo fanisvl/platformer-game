@@ -35,3 +35,4 @@
 "Spikes" 10 8 1 1 terrain\cave_spikes2.png
 "Spikes" 11 8 1 1 terrain\cave_spikes2.png
 "StaticObject" 2 8 1 1 terrain\cave_block.png
+"StaticObject" 5 8 1 1 terrain\cave_block.png

@@ -39,7 +39,6 @@ void AnimatedObject::fillVector(std::vector<std::string>& vector, std::string as
 			// Convert std::filesystem::path to std::string
 			std::string filename = entry.path().string();
 			vector.push_back(filename);
-			std::cout << "Pushing: " << filename << std::endl;
 		}
 	}
 

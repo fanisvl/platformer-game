@@ -158,6 +158,11 @@ void LevelMaker::createObject() {
 			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, asset_path));
 			static_objects.back()->init();
 			break;
+		case Rock2_flipped:
+			asset_path = "terrain\\Rock2_flipped.png";
+			static_objects.push_back(new StaticObject(mouse_canvas_x, mouse_canvas_y, 1.0f, 2.0f, asset_path));
+			static_objects.back()->init();
+			break;
 		}
 	}
 }
@@ -363,6 +368,10 @@ void LevelMaker::draw() {
 	case CavePlatformsBlock :
 		mouse_brush.texture = m_state->getFullAssetPath("terrain\\cave_platforms.png");
 		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 1.0f, mouse_brush);
+		break;
+	case Rock2_flipped:
+		mouse_brush.texture = m_state->getFullAssetPath("terrain\\Rock2_flipped.png");
+		graphics::drawRect(mouse_canvas_x, mouse_canvas_y, 1.0f, 2.0f, mouse_brush);
 		break;
 	}
 

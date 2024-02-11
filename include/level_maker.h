@@ -32,6 +32,7 @@ enum BlockType {
 	CavePlatform2Block,
 	CavePlatform3Block,
 	CavePlatformsBlock,
+	Rock2_flipped,
 	LAST_TYPE, // enum to circle back to the first block
 
 };

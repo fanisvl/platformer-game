@@ -97,8 +97,8 @@
 "Coin" 9.91667 5.75 1 1 assets/coins/tile000.png
 "Coin" 11.6 5.76667 1 1 assets/coins/tile000.png
 "Coin" 12.0667 5.76667 1 1 assets/coins/tile000.png
-"Coin" 3.06667 2.83333 1 1 assets/coins/tile000.png
-"Coin" 3.13333 2.75 1 1 assets/coins/tile000.png
-"Coin" 3.65 2.75 1 1 assets/coins/tile000.png
-"Coin" 4.2 2.73333 1 1 assets/coins/tile000.png
 "Coin" 6.81667 4.06667 1 1 assets/coins/tile000.png
+"Coin" 4.25 2.85 1 1 assets/coins/tile000.png
+"Coin" 3.78333 2.83333 1 1 assets/coins/tile000.png
+"Coin" 3.33333 2.83333 1 1 assets/coins/tile000.png
+"Coin" 13.6333 4.46667 1 1 assets/coins/tile000.png

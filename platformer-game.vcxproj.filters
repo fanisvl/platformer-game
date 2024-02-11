@@ -64,6 +64,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\rotating_trap.cpp">
+    <ClCompile Include="src\falling_platform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -129,6 +130,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\rotating_trap.h">
+    <ClInclude Include="include\falling_flatform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -38,5 +38,5 @@ public:
 	std::list<DynamicObject*>& getDynamicObjects() {return m_dynamic_objects;}
 	float getPlayerSpawnX() { return player_spawn_x; }
 	float getPlayerSpawnY() { return player_spawn_y; }
-
+	void checkCollusionPlatform(DynamicObject* ob, float offset, CollisionType type);
 };

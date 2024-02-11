@@ -17,6 +17,7 @@ enum BlockType {
 	ProjectileEnemyBlock,
 	CoinsBlock,
 	PlayerSpawn,
+<<<<<<< HEAD
 	RotatingTrapBlock ,
 	BlackBlock,
 	BigRockBlock,
@@ -35,6 +36,10 @@ enum BlockType {
 	CavePlatformsBlock,
 	Rock2_flipped,
 	LAST_TYPE, // enum to circle back to the first block
+=======
+	FallingBlock,
+	LAST_TYPE,
+>>>>>>> 58b51c30f80cf934fb4e6203f37e075bc200abac
 
 };
 

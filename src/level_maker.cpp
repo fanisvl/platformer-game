@@ -7,7 +7,7 @@
 #include "static_object.h"
 #include "projectile_enemy.h"
 #include "rotating_trap.h"
-#include "falling_flatform.h"
+#include "falling_platform.h"
 
 void LevelMaker::update(float ms) {
 	// mouse.cur_pos_x and mouse.cur_pos_y are pixel coordinates

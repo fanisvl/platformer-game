@@ -1,4 +1,4 @@
-#include "falling_flatform.h"
+#include "falling_platform.h"
 #include <sstream>
 #include <iostream>
 void FallingPlatform::update(float dt) {

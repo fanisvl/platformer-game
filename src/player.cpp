@@ -124,7 +124,7 @@ void Player::handleCollision(CollisionType type, float offset) {
 	case UPWARDS:
 		m_pos_y -= offset;
 		m_vy =	0.01f;
-		break;	
+		break;	 
 	}
 }
 

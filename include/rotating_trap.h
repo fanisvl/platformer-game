@@ -16,7 +16,7 @@ public:
 	void draw() override;
 	void init() override;
 	void handleCollision(CollisionType type) override;
-	RotatingTrap(float x, float y, float w, float h, const std::string& asset);
+	RotatingTrap(float x, float y, float w, float h, const std::string& asset, float max_left, float max_right, float radius, float speed);
 	std::string RotatingTrap::to_string() const override;
 	void rotate(float angle);
 

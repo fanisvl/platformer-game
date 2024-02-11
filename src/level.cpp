@@ -169,6 +169,8 @@ void Level::LoadLevel(std::string levelName) {
         std::string assetName;
         float left_boundary = 0.0f;  // Default value
         float right_boundary = 0.0f; // Default value
+        float rotatingTrapRad = 0.0f;
+        float rotatingTrapSpeed = 0.0f;
 
         if (iss >> std::quoted(Type) >> x >> y >> width >> height >> std::quoted(assetName)) {
             if (Type == "Player") {
@@ -188,6 +190,17 @@ void Level::LoadLevel(std::string levelName) {
                 }
             }
 
+            else if (Type == "RotatingTrap") {
+                if (iss >> left_boundary >> right_boundary >> rotatingTrapRad >> rotatingTrapSpeed ) {
+                    m_static_objects.push_back(new RotatingTrap(x, y, width, height, assetName, left_boundary, right_boundary, rotatingTrapRad, rotatingTrapSpeed));
+                }
+                
+                else {
+                    // Handle where boundaries, rad and speed are not provided
+                    std::cerr << "Error: RotatingTrap must have boundaries, radius and speed values." << std::endl;
+                }
+            }
+
             else if (Type == "StaticObject") {
                 m_static_objects.push_back(new StaticObject(x, y, width, height, assetName));
             }
@@ -196,10 +209,7 @@ void Level::LoadLevel(std::string levelName) {
                 m_static_objects.push_back(new Spikes(x, y, width, height, assetName));
             }
 
-            else if (Type == "RotatingTrap") {
-                m_static_objects.push_back(new RotatingTrap(x, y, width, height, assetName));
-                std::cout << "Rotating trap added to level" << std::endl;
-            }
+
 
             else if (Type == "ProjectileEnemy") {
                     m_dynamic_objects.push_back(new ProjectileEnemy(x, y, width, height, assetName));

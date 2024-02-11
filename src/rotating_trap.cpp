@@ -56,7 +56,7 @@ void RotatingTrap::rotate(float angle) {
     m_pos_y = center_y + radius * std::sin(angle);
 }
 
-RotatingTrap::RotatingTrap(float x, float y, float w, float h, const std::string& asset, float rad, float speed, float max_left, float max_right)
+RotatingTrap::RotatingTrap(float x, float y, float w, float h, const std::string& asset, float max_left, float max_right, float rad, float speed)
     : StaticObject(x, y, w, h, asset)
 {
     center_x = x;
@@ -67,20 +67,6 @@ RotatingTrap::RotatingTrap(float x, float y, float w, float h, const std::string
     rotation_speed = speed;
     max_left_rotation_angle = max_left;
     max_right_rotation_angle = max_right;
-}
-
-RotatingTrap::RotatingTrap(float x, float y, float w, float h, const std::string& asset)
-    : StaticObject(x, y, w, h, asset) 
-{
-    center_x = x;
-    center_y = y;
-    current_rotation_angle = 0.0f;
-
-    // Default values
-    radius = 2.0f;
-    rotation_speed = 0.001f;
-    max_left_rotation_angle = 3.14159f; 
-    max_right_rotation_angle = 0;
 }
 
 std::string RotatingTrap::to_string() const {
